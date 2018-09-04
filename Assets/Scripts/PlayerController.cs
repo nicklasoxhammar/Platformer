@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -41,7 +43,11 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+        if (transform.position.y < -50f) {
+            Die();
+        }
+
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded) {
 
             rb.AddForce(new Vector2(0.0f, jumpForce));
         }
@@ -50,8 +56,14 @@ public class PlayerController : MonoBehaviour {
 
     void Move() {
 
-        float direction = Input.GetAxis("Horizontal");
+        float direction = CrossPlatformInputManager.GetAxis("Horizontal");
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+
+    }
+
+    void Die() {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
 }
