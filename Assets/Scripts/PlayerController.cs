@@ -9,25 +9,39 @@ public class PlayerController : MonoBehaviour {
     public float speed = 15.0f;
     public float jumpForce = 1700.0f;
 
+    Transform groundCheck;
+    const float groundedRadius = 0.4f;
+    [SerializeField] private LayerMask whatIsGround;
+
+
     bool isGrounded = true;
 
 	void Start () {
 
         rb = GetComponent<Rigidbody2D>();
-		
-	}
+        groundCheck = transform.Find("GroundCheck");
+
+    }
 
 	void FixedUpdate () {
 
         Move();
-		
-	}
+
+
+        isGrounded = false;
+
+        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
+        for (int i = 0; i < colliders.Length; i++) {
+            if (colliders[i].gameObject != gameObject)
+                isGrounded = true;
+        }
+    }
 
     void Update() {
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
-
-            isGrounded = false;
 
             rb.AddForce(new Vector2(0.0f, jumpForce));
         }
@@ -39,12 +53,5 @@ public class PlayerController : MonoBehaviour {
         float direction = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-
-        if (collision.gameObject.tag == "Ground") { 
-        isGrounded = true;
-        }
     }
 }
