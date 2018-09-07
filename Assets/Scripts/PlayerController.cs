@@ -10,6 +10,17 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 15.0f;
     public float jumpForce = 1700.0f;
+    public float dashForce = 50.0f;
+    public float startDashTime = 0.5f;
+    public float dashCooldownTime = 2.0f;
+
+    bool isDashing = false;
+    bool dashCooldown = false;
+
+    private float timer = 0;
+    private float dashTime;
+
+
 
     Transform groundCheck;
     const float groundedRadius = 0.4f;
@@ -18,17 +29,17 @@ public class PlayerController : MonoBehaviour {
 
     bool isGrounded = true;
 
-	void Start () {
+    void Start() {
 
         rb = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
+        dashTime = startDashTime;
 
     }
 
-	void FixedUpdate () {
+    void FixedUpdate() {
 
         Move();
-
 
         isGrounded = false;
 
@@ -52,12 +63,46 @@ public class PlayerController : MonoBehaviour {
             rb.AddForce(new Vector2(0.0f, jumpForce));
         }
 
+        if (isDashing) {
+            dashTime -= Time.deltaTime;
+
+            if (dashTime <= 0) {
+                isDashing = false;
+                dashCooldown = true;
+                dashTime = startDashTime;
+            }
+        }
+
+        if (dashCooldown) {
+            timer -= Time.deltaTime;
+
+            if (timer <= 0) {
+                dashCooldown = false;
+                timer = dashCooldownTime;
+            }
+        }
+
     }
 
     void Move() {
 
         float direction = CrossPlatformInputManager.GetAxis("Horizontal");
-        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+
+        //Dash
+        if (Input.GetKey(KeyCode.LeftShift) && !dashCooldown) {
+            isDashing = true;
+            if (direction < 0) {
+                rb.velocity = new Vector2(-1.0f * dashForce, rb.velocity.y);
+            }else {
+                rb.velocity = new Vector2(1.0f * dashForce, rb.velocity.y);
+            }
+        }
+        //Move at regular speed
+        else {
+            
+            rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+
+        }
 
     }
 
@@ -66,4 +111,6 @@ public class PlayerController : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
+
+
 }
