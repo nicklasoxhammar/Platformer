@@ -1808,6 +1808,18 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 2129919618}
+    - target: {fileID: 4419666039561958, guid: 6ebfa6cdcf3d1744290b4f5f9ced634e, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419666039561958, guid: 6ebfa6cdcf3d1744290b4f5f9ced634e, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419666039561958, guid: 6ebfa6cdcf3d1744290b4f5f9ced634e, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ebfa6cdcf3d1744290b4f5f9ced634e, type: 2}
   m_IsPrefabAsset: 0
@@ -3121,6 +3133,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4304885308405244, guid: 2d2d536b209861841a2b9b031b0e2a6a,
     type: 2}
   m_PrefabInternal: {fileID: 53256143}
+--- !u!1 &1273712975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1419803915725668, guid: 6ebfa6cdcf3d1744290b4f5f9ced634e,
+    type: 2}
+  m_PrefabInternal: {fileID: 693246123}
+--- !u!114 &1273712980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1273712975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdbd55a445d17040934cd3659ec5686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minShakeValue: 0.1
+  maxShakeValue: 1
+  shake: 0
 --- !u!1001 &1295295786
 Prefab:
   m_ObjectHideFlags: 0

@@ -96,11 +96,15 @@ public class PlayerController : MonoBehaviour {
             }else {
                 rb.velocity = new Vector2(1.0f * dashForce, rb.velocity.y);
             }
+            //Enable camera shake
+            Camera.main.gameObject.GetComponent<CameraShake>().shake = true;
         }
         //Move at regular speed
         else {
             
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+            //Disable camera shake
+            Camera.main.gameObject.GetComponent<CameraShake>().shake = false;
 
         }
 
