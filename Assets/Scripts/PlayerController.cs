@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     public float startDashTime = 0.5f;
     public float dashCooldownTime = 2.0f;
 
+    float dashDirection = 1.0f;
+
     bool isDashing = false;
     bool dashCooldown = false;
 
@@ -86,26 +88,32 @@ public class PlayerController : MonoBehaviour {
 
     void Move() {
 
+
         float direction = CrossPlatformInputManager.GetAxis("Horizontal");
+
+        //set direction of dash
+        if (!isDashing) {
+            if(direction < 0.0f) {
+                dashDirection = -1.0f;
+            }
+            else {
+                dashDirection = 1.0f;
+            }
+        }
 
         //Dash
         if (Input.GetKey(KeyCode.LeftShift) && !dashCooldown) {
             isDashing = true;
-            if (direction < 0) {
-                rb.velocity = new Vector2(-1.0f * dashForce, rb.velocity.y);
-            }else {
-                rb.velocity = new Vector2(1.0f * dashForce, rb.velocity.y);
-            }
+
+            rb.velocity = new Vector2(dashDirection * dashForce, rb.velocity.y);
             //Enable camera shake
             Camera.main.gameObject.GetComponent<CameraShake>().shake = true;
         }
         //Move at regular speed
         else {
-            
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
             //Disable camera shake
             Camera.main.gameObject.GetComponent<CameraShake>().shake = false;
-
         }
 
     }
