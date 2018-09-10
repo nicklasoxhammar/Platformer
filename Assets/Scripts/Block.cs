@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Block : MonoBehaviour {
-
+    //test
     Color[] colors = { Color.green, Color.blue, Color.red, Color.yellow, Color.magenta, Color.cyan };
     GameObject particles;
 
