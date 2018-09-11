@@ -55,8 +55,11 @@ public class Bee : MonoBehaviour {
 
 
     void OnCollisionStay2D(Collision2D col) {
-        target = col.gameObject;
-        offset = target.transform.position - transform.position;
+
+        if (col.gameObject.tag == "Player") {
+            target = col.gameObject;
+            offset = target.transform.position - transform.position;
+        }
     }
     void OnCollisionExit2D(Collision2D col) {
         target = null;

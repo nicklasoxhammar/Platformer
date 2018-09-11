@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviour {
 
     float dashDirection = 1.0f;
 
-    public bool isDashing = false;
+
+
+    [HideInInspector]public bool isDashing = false;
+    [HideInInspector] public bool freezeMovement = false;
     bool dashCooldown = false;
 
     private float timer = 0;
@@ -54,6 +57,11 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
+        if (freezeMovement) {
+            return;
+        }
+
+
         if (transform.position.y < -50f) {
             Die();
         }
@@ -89,6 +97,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Move() {
+
+        if (freezeMovement) {
+            return;
+        }
 
 
         float direction = CrossPlatformInputManager.GetAxis("Horizontal");
