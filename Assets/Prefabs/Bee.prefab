@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 61405525702042742}
   - component: {fileID: 212295695909990536}
   - component: {fileID: 114932590026730918}
+  - component: {fileID: 95108198493461858}
   m_Layer: 9
   m_Name: Bee
   m_TagString: Ground
@@ -67,6 +68,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 2.95}
   m_EdgeRadius: 0
+--- !u!95 &95108198493461858
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051721400386188}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad72875f34f47624eaceaf54841cf161, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114932590026730918
 MonoBehaviour:
   m_ObjectHideFlags: 1
