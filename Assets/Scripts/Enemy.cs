@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField] float speed = 5.0f;
     [SerializeField] float distance = 10.0f;
+    [SerializeField] GameObject deathParticles;
 
     float direction = 1;
 
@@ -53,6 +54,9 @@ public class Enemy : MonoBehaviour {
     }
 
     void Die() {
+
+        GameObject particles = Instantiate(deathParticles, transform.position, Quaternion.identity);
+        Destroy(particles, 3.0f);
 
         Destroy(gameObject);
     }

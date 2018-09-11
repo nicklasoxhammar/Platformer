@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour {
     private float timer = 0;
     private float dashTime;
 
-
-
     Transform groundCheck;
     const float groundedRadius = 0.4f;
     [SerializeField] private LayerMask whatIsGround;
@@ -65,7 +63,7 @@ public class PlayerController : MonoBehaviour {
             rb.AddForce(new Vector2(0.0f, jumpForce));
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift)) {
+        if (CrossPlatformInputManager.GetButtonUp("Dash")) {
             isDashing = false;
         }
 
@@ -106,7 +104,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Dash
-        if (Input.GetKey(KeyCode.LeftShift) && !dashCooldown) {
+        if (CrossPlatformInputManager.GetButton("Dash") && !dashCooldown) {
             isDashing = true;
 
             rb.velocity = new Vector2(dashDirection * dashForce, rb.velocity.y);
@@ -115,10 +113,11 @@ public class PlayerController : MonoBehaviour {
         }
         //Move at regular speed
         else {
+
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
             //Disable camera shake
             Camera.main.gameObject.GetComponent<CameraShake>().shake = false;
-        }
+       }
 
     }
 
@@ -127,6 +126,5 @@ public class PlayerController : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
-
 
 }
