@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     float dashDirection = 1.0f;
 
-    bool isDashing = false;
+    public bool isDashing = false;
     bool dashCooldown = false;
 
     private float timer = 0;
@@ -63,6 +63,10 @@ public class PlayerController : MonoBehaviour {
         if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded) {
 
             rb.AddForce(new Vector2(0.0f, jumpForce));
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            isDashing = false;
         }
 
         if (isDashing) {
@@ -118,7 +122,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    void Die() {
+    public void Die() {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
