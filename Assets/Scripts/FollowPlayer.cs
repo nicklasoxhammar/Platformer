@@ -17,6 +17,10 @@ public class FollowPlayer : MonoBehaviour {
 
 	void Update () {
 
+        if(player == null) {
+            return;
+        }
+
         //move camera to the right
         if (player.transform.position.x > transform.position.x + moveCameraAt) {
 
