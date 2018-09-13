@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public int flowerCounter;
-
+  [SerializeField] GameObject levelCompleteScreen;
+  public int flowerCounter;
 
 	// Use this for initialization
 	void Start () {
@@ -17,9 +17,11 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
-
-
-public void pickedFlower()
+    public void LevelComplete() {
+        levelCompleteScreen.SetActive(true);
+    }
+  
+  public void pickedFlower()
     {
         flowerCounter--;
         Debug.Log("FLOWER PICKED");
@@ -30,9 +32,6 @@ public void pickedFlower()
             Debug.Log("ALLA PLOCKADE");
         }
     }
-
-
-
 
 
 

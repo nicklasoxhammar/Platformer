@@ -16,13 +16,14 @@ public class PlayerController : MonoBehaviour {
 
     float dashDirection = 1.0f;
 
-    bool isDashing = false;
+
+
+    [HideInInspector]public bool isDashing = false;
+    [HideInInspector] public bool freezeMovement = false;
     bool dashCooldown = false;
 
     private float timer = 0;
     private float dashTime;
-
-
 
     Transform groundCheck;
     const float groundedRadius = 0.4f;
@@ -56,6 +57,11 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
 
+        if (freezeMovement) {
+            return;
+        }
+
+
         if (transform.position.y < -50f) {
             Die();
         }
@@ -63,6 +69,10 @@ public class PlayerController : MonoBehaviour {
         if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded) {
 
             rb.AddForce(new Vector2(0.0f, jumpForce));
+        }
+
+        if (CrossPlatformInputManager.GetButtonUp("Dash")) {
+            isDashing = false;
         }
 
         if (isDashing) {
@@ -88,6 +98,10 @@ public class PlayerController : MonoBehaviour {
 
     void Move() {
 
+        if (freezeMovement) {
+            return;
+        }
+
 
         float direction = CrossPlatformInputManager.GetAxis("Horizontal");
 
@@ -102,7 +116,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Dash
-        if (Input.GetKey(KeyCode.LeftShift) && !dashCooldown) {
+        if (CrossPlatformInputManager.GetButton("Dash") && !dashCooldown) {
             isDashing = true;
 
             rb.velocity = new Vector2(dashDirection * dashForce, rb.velocity.y);
@@ -111,18 +125,18 @@ public class PlayerController : MonoBehaviour {
         }
         //Move at regular speed
         else {
+
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
             //Disable camera shake
             Camera.main.gameObject.GetComponent<CameraShake>().shake = false;
-        }
+       }
 
     }
 
-    void Die() {
+    public void Die() {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
-
 
 }
