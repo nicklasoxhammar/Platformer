@@ -14,6 +14,7 @@ public class Bee : MonoBehaviour {
     float direction = 1;
 
     Vector3 scale;
+    Vector3 position;
 
     float startingXPos;
     float startingYPos;
@@ -28,14 +29,18 @@ public class Bee : MonoBehaviour {
 
     void Update() {
 
-        Vector3 position = transform.position;
+        position = transform.position;
 
         if (upAndDown) {
 
             position.y += speed * direction * Time.deltaTime;
 
-            if (position.y >= startingYPos + distance || position.y <= startingYPos - distance) {
-                ChangeDirection();
+            if (position.y > startingYPos + distance) {
+                direction = -1;
+            }
+
+            if (position.y < startingYPos - distance) {
+                direction = 1;
             }
 
         }
@@ -44,11 +49,17 @@ public class Bee : MonoBehaviour {
 
             position.x += speed * direction * Time.deltaTime;
 
-            if (position.x >= startingXPos + distance || position.x <= startingXPos - distance) {
-                ChangeDirection();
+            if (position.x > startingXPos + distance) {
+                direction = -1;
             }
+
+            if (position.x < startingXPos - distance) {
+                direction = 1;
+            }
+
         }
 
+        transform.localScale = new Vector3(scale.x * direction, scale.y, scale.z);
         transform.position = position;
 
     }
@@ -73,11 +84,18 @@ public class Bee : MonoBehaviour {
     }
 
 
-    void ChangeDirection() {
+    /*void ChangeYDirection() {
 
-        direction *= -1;
+
+        if (position.y > startingYPos + distance ){
+            direction = -1;
+        }
+
+        if (position.y < startingYPos - distance) {
+            direction = 1;
+        }
+
         transform.localScale = new Vector3(scale.x * direction, scale.y, scale.z);
-
-    }
+    }*/
 
 }
