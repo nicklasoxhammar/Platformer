@@ -38,6 +38,5 @@ public class GameManager : MonoBehaviour {
     public void AddFlower()
     {
         flowerCounter++;
-        Debug.Log("FLOWER ADD");
     }
 }
