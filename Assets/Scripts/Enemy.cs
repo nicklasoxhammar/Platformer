@@ -32,9 +32,15 @@ public class Enemy : MonoBehaviour {
         transform.position = position;
 
 
-        if (position.x >= startingXPos + distance || position.x <= startingXPos - distance) {
-            ChangeDirection();
+        if (position.y < startingYPos + 0.2f && position.x > startingXPos + distance){
+            direction = -1;
         }
+
+        if (position.y < startingYPos + 0.2f && position.x < startingXPos - distance) {
+            direction = 1;
+        }
+
+        
 
     }
 
@@ -50,12 +56,6 @@ public class Enemy : MonoBehaviour {
                 player.Die();
             }
         }
-    }
-
-    void ChangeDirection() {
-
-        direction *= -1;
-
     }
 
     void Die() {
