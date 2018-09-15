@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 20983800415608288}
   - component: {fileID: 81885279593895810}
   - component: {fileID: 114254314317159328}
+  - component: {fileID: 114339271900007134}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -102,3 +103,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   moveCameraAt: 7
+--- !u!114 &114339271900007134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419803915725668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdbd55a445d17040934cd3659ec5686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minShakeValue: 0.1
+  maxShakeValue: 1
+  shake: 0

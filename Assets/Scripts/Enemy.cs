@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour {
                 endPos = startPos + jumpHeight;
             }
             else {
-                endPos = startPos - jumpHeight; 
+                endPos = startingYPos;
             }
             float t = 0.0f;
             while (t < duration) {
