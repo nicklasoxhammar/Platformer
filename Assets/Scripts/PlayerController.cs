@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.SceneManagement;
 using Spine.Unity;
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
 
     Rigidbody2D rb;
 
@@ -13,60 +12,50 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 1700.0f;
     public float dashForce = 50.0f;
     public float startDashTime = 0.5f;
-    public float dashCooldownTime = 2.0f;
-    public float cameraShakeTime = 1f;
+    public float dashRefreshTime = 0.05f;
+
     float dashDirection = 1.0f;
-
-
+    bool isGrounded = true;
 
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public bool freezeMovement = false;
-    bool dashCooldown = false;
-
-    private float timer = 0;
-    private float dashTime;
+    [HideInInspector] public bool canDash = true;
+    [HideInInspector] public float dashTime;
 
     Transform groundCheck;
     const float groundedRadius = 0.4f;
     [SerializeField] private LayerMask whatIsGround;
 
 
-    bool isGrounded = true;
-
     private SkeletonAnimation skeletonAnimation;
-        
 
 
 
-    void Start()
-    {
+
+    void Start() {
         skeletonAnimation = GetComponent<SkeletonAnimation>();
 
         rb = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
         dashTime = startDashTime;
-        timer = dashCooldownTime;
 
     }
 
-    void FixedUpdate()
-    {
-        
+    void FixedUpdate() {
+
         MoveHorizontal();
 
     }
 
-    void Update()
-    {
-        
+    void Update() {
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 
         Jump();
 
 
 
-        if (transform.position.y < -50f)
-        {
+        if (transform.position.y < -50f) {
             Die();
         }
 
@@ -75,63 +64,51 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void DashTimers()
-    {
-        if (CrossPlatformInputManager.GetButtonUp("Dash"))
-        {
-            isDashing = false;
-        }
+    private void DashTimers() {
 
-        if (isDashing)
-        {
+        if (isDashing) {
             dashTime -= Time.deltaTime;
 
-            if (dashTime <= 0)
-            {
+            if (dashTime <= 0) {
                 isDashing = false;
-                dashCooldown = true;
-                dashTime = startDashTime;
+                canDash = false;
+            }
+        }
+        else {
+            if (dashTime < startDashTime) {
+                dashTime += Time.deltaTime * dashRefreshTime;
+            }
+
+            if (dashTime > startDashTime * 0.25) {
+                canDash = true;
             }
         }
 
-        if (dashCooldown)
-        {
-            timer -= Time.deltaTime;
-
-            if (timer <= 0)
-            {
-                dashCooldown = false;
-                timer = dashCooldownTime;
-            }
-        }
     }
 
 
 
-    private void MoveHorizontal()
-    {
-        if (freezeMovement){return;}
+
+    private void MoveHorizontal() {
+        if (freezeMovement) { return; }
 
 
         //Right
-        if (CrossPlatformInputManager.GetAxisRaw("Horizontal") > 0f)
-        {
+        if (CrossPlatformInputManager.GetAxisRaw("Horizontal") > 0f) {
             rb.velocity = new Vector2(speed * Time.deltaTime, rb.velocity.y);
             transform.localScale = new Vector3(1f, 1f, 1f);
             skeletonAnimation.AnimationName = "RUN";
             Dash(dashForce);
         }
         //Left
-        else if (CrossPlatformInputManager.GetAxisRaw("Horizontal") < 0f)
-        {
+        else if (CrossPlatformInputManager.GetAxisRaw("Horizontal") < 0f) {
             rb.velocity = new Vector2(-speed * Time.deltaTime, rb.velocity.y);
             transform.localScale = new Vector3(-1f, 1f, 1f);
             skeletonAnimation.AnimationName = "RUN";
             Dash(-dashForce);
 
         }
-        else
-        {
+        else {
             rb.velocity = new Vector2(0f, rb.velocity.y);
             ShowRightAnimation();
             //Dash when no movement
@@ -141,66 +118,50 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Jump()
-    {
+    private void Jump() {
         if (freezeMovement) { return; }
 
-        if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded)
-        {
-            
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded) {
+
             rb.AddForce(new Vector2(0.0f, jumpForce));
         }
     }
 
 
-    private void ShowRightAnimation()
-    {
-        if(rb.velocity.y < 0 && !isGrounded)
-        {
+    private void ShowRightAnimation() {
+        if (rb.velocity.y < 0 && !isGrounded) {
             skeletonAnimation.AnimationName = "FALLING";
 
         }
-        else if(rb.velocity.y > 0 && !isGrounded)
-        {
+        else if (rb.velocity.y > 0 && !isGrounded) {
             skeletonAnimation.AnimationName = "JUMP";
 
         }
-        else
-        {
+        else {
             skeletonAnimation.AnimationName = "STANDING";
         }
     }
 
 
 
-    private void Dash(float force)
-    {
+    private void Dash(float force) {
 
-        if (CrossPlatformInputManager.GetButton("Dash") && !dashCooldown)
-        {
+        if (CrossPlatformInputManager.GetButton("Dash") && canDash) {
             isDashing = true;
             rb.velocity = new Vector2(force, rb.velocity.y);
             skeletonAnimation.AnimationName = "RUN";
-            StartCoroutine(StartCameraShake());
+            Camera.main.gameObject.GetComponent<CameraShake>().shake = true;
 
+        }
+        else {
+            isDashing = false;
+            Camera.main.gameObject.GetComponent<CameraShake>().shake = false;
         }
 
     }
 
 
-    IEnumerator StartCameraShake()
-    {
-        Camera.main.gameObject.GetComponent<CameraShake>().shake = true;
-        yield return new WaitForSeconds(cameraShakeTime);
-        Camera.main.gameObject.GetComponent<CameraShake>().shake = false;
-
-    }
-
-
-
-
-    public void Die()
-    {
+    public void Die() {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 

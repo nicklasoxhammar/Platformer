@@ -22,7 +22,7 @@ public class CompleteLevelSkateboard : MonoBehaviour {
             //Make player a child of the skateboard, so they move together
             player.transform.parent = transform;
             //center the player on top of the skateboard
-            player.transform.position = new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z);
+            player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
             CompleteLevel();
         }
