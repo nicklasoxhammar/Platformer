@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114137115554140090}
   - component: {fileID: 50443034515714784}
   - component: {fileID: 61614769280968648}
+  - component: {fileID: 58952694557145768}
   m_Layer: 0
   m_Name: SunHero ANIMATED
   m_TagString: Player
@@ -136,6 +137,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58952694557145768
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1856417450700274}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.35}
+  serializedVersion: 2
+  m_Radius: 0.35
 --- !u!61 &61614769280968648
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -148,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.037148714, y: 1.2476361}
+  m_Offset: {x: 0, y: 1.4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -159,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9848654, y: 2.5020137}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &114137115554140090
 MonoBehaviour:
@@ -210,6 +226,6 @@ MonoBehaviour:
   calculateTangents: 0
   logErrors: 0
   disableRenderingOnOverride: 1
-  _animationName: FALLING
+  _animationName: STANDING
   loop: 1
   timeScale: 1
