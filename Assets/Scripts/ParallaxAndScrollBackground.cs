@@ -43,7 +43,6 @@ public class ParallaxAndScrollBackground : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
     void Update() {
 
         //for each background

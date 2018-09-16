@@ -22,7 +22,7 @@ public class CompleteLevelSkateboard : MonoBehaviour {
             //Make player a child of the skateboard, so they move together
             player.transform.parent = transform;
             //center the player on top of the skateboard
-            player.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            player.transform.position = new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z);
 
             CompleteLevel();
         }
@@ -38,7 +38,7 @@ public class CompleteLevelSkateboard : MonoBehaviour {
 
     IEnumerator MoveAround() {
 
-        float duration = 3.0f;
+        float duration = 2.0f;
 
         float startRotation = transform.eulerAngles.z;
         float endRotation = startRotation + 360.0f;
@@ -47,7 +47,7 @@ public class CompleteLevelSkateboard : MonoBehaviour {
             t += Time.deltaTime;
             float zRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360.0f;
             transform.eulerAngles = new Vector3(0, 0, zRotation);
-            transform.position = new Vector3(transform.position.x + 1, transform.position.y + 1, transform.position.z);
+            transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y + 0.1f, transform.position.z);
             yield return null;
         }
 
