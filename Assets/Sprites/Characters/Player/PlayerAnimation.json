@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "9LbbuW7HXyZnL6DUMjYeIcqHxLE", "spine": "3.6.53", "width": 183.11, "height": 250.22, "images": "./images/" },
+"skeleton": { "hash": "/gUijXEuaWb8iePj3q4L627SC48", "spine": "3.6.53", "width": 183.11, "height": 250.22, "images": "./images/" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "HELA KROPPEN", "parent": "root", "length": 32.99, "rotation": 89.86, "x": -1.69, "y": 44.5 },
@@ -281,6 +281,92 @@
 						"curve": [ 0.553, 0, 0.75, 1 ]
 					},
 					{ "time": 1, "angle": 0 }
+				]
+			}
+		}
+	},
+	"JUMP": {
+		"bones": {
+			"ÖRALEFT": {
+				"rotate": [
+					{ "time": 0, "angle": 23.96 }
+				]
+			},
+			"ÖRALEFT2": {
+				"rotate": [
+					{ "time": 0, "angle": -21.44 },
+					{ "time": 0.1333, "angle": -3.23 },
+					{ "time": 0.2667, "angle": -21.44 }
+				]
+			},
+			"ÖRARIGHT": {
+				"rotate": [
+					{ "time": 0, "angle": -26.75 }
+				]
+			},
+			"ÖRARIGHT3": {
+				"rotate": [
+					{ "time": 0, "angle": -11.4 }
+				]
+			},
+			"ÖRARIGHT5": {
+				"rotate": [
+					{ "time": 0, "angle": 48.22 }
+				]
+			},
+			"HÖGER BEN3": {
+				"scale": [
+					{ "time": 0, "x": 1.483, "y": 1 }
+				]
+			},
+			"VÄNSTER BEN 3": {
+				"scale": [
+					{ "time": 0, "x": 1.515, "y": 1 }
+				]
+			},
+			"VÄNSTER ARM 3": {
+				"rotate": [
+					{ "time": 0, "angle": 10.3, "curve": "stepped" },
+					{ "time": 0.2667, "angle": 10.3 }
+				],
+				"translate": [
+					{ "time": 0, "x": 7.27, "y": 3.26, "curve": "stepped" },
+					{ "time": 0.2667, "x": 7.27, "y": 3.26 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1.579, "y": 1, "curve": "stepped" },
+					{ "time": 0.2667, "x": 1.579, "y": 1 }
+				]
+			},
+			"HÖGER ARM3": {
+				"rotate": [
+					{ "time": 0, "angle": -18.07 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1.635, "y": 1 }
+				]
+			},
+			"ÖRARIGHT6": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1333, "angle": -41.81 },
+					{ "time": 0.2667, "angle": 0 }
+				]
+			},
+			"PUPILL HÖGER": {
+				"translate": [
+					{ "time": 0, "x": 8.94, "y": 2.4 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1.43, "y": 1.948 }
+				]
+			},
+			"PUPILL VÄNSTER": {
+				"translate": [
+					{ "time": 0, "x": 7.61, "y": -1.52 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1.476, "y": 2.25 }
 				]
 			}
 		}

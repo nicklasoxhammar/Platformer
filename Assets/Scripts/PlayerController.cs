@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
-            ShowFallingVSStandingAnimation();
+            ShowRightAnimation();
             //Dash when no movement
             Dash(dashForce);
         }
@@ -153,11 +153,16 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void ShowFallingVSStandingAnimation()
+    private void ShowRightAnimation()
     {
         if(rb.velocity.y < 0 && !isGrounded)
         {
             skeletonAnimation.AnimationName = "FALLING";
+
+        }
+        else if(rb.velocity.y > 0 && !isGrounded)
+        {
+            skeletonAnimation.AnimationName = "JUMP";
 
         }
         else
