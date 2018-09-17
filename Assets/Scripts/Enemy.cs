@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 public class Enemy : MonoBehaviour {
 
+    Rigidbody2D rb;
+
     [SerializeField] float speed = 5.0f;
-    [SerializeField] float jumpHeight = 3.0f;
+    //[SerializeField] float jumpHeight = 3.0f;
     [SerializeField] float distance = 10.0f;
     [SerializeField] GameObject deathParticles;
 
@@ -14,21 +17,28 @@ public class Enemy : MonoBehaviour {
     float startingXPos;
     float startingYPos;
 
-	void Start () {
+    private SkeletonAnimation skeletonAnimation;
+
+    void Start () {
+        skeletonAnimation = GetComponent<SkeletonAnimation>();
+
+        rb = GetComponent<Rigidbody2D>();
+
 
         startingXPos = transform.position.x;
         startingYPos = transform.position.y;
 
-        if (jumpHeight > 0) {
+        /*if (jumpHeight > 0) {
             StartCoroutine(Jump());
-        }
+        }*/
 	}
 
 	void Update () {
 
         Vector3 position = transform.position;
         position.x += speed * direction * Time.deltaTime;
-        
+        skeletonAnimation.AnimationName = "RUN";
+
         transform.position = position;
 
 
@@ -40,7 +50,9 @@ public class Enemy : MonoBehaviour {
             direction = 1;
         }
 
-        
+        transform.localScale = new Vector3(direction, 1.0f, 1.0f);
+
+
 
     }
 
@@ -58,6 +70,20 @@ public class Enemy : MonoBehaviour {
         }
     }
 
+    private void ShowRightAnimation() {
+        if (rb.velocity.y < 0) {
+            skeletonAnimation.AnimationName = "FALLING";
+
+        }
+        else if (rb.velocity.y > 0) {
+            skeletonAnimation.AnimationName = "JUMP";
+
+        }
+        else {
+            skeletonAnimation.AnimationName = "STANDING";
+        }
+    }
+
     void Die() {
 
         GameObject particles = Instantiate(deathParticles, transform.position, Quaternion.identity);
@@ -66,7 +92,7 @@ public class Enemy : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    IEnumerator Jump() {
+    /*IEnumerator Jump() {
 
 
         float duration = 0.5f;
@@ -90,7 +116,7 @@ public class Enemy : MonoBehaviour {
             }
         }
 
-        /*while (true) {
+         while (true) {
 
             transform.position = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
 
@@ -100,11 +126,10 @@ public class Enemy : MonoBehaviour {
 
             yield return new WaitForSeconds(0.5f);
 
-        }*/
-
+        }
        
 
-    }
+    }*/
 
 
 }
