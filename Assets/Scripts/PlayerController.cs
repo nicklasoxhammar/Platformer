@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour {
 
     Rigidbody2D rb;
 
-    public float speed = 15.0f;
-    public float jumpForce = 1700.0f;
+    public float speed = 400.0f;
+    public float jumpForce = 500.0f;
     public float dashForce = 50.0f;
     public float startDashTime = 0.5f;
     public float dashRefreshTime = 0.05f;
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 
     Transform groundCheck;
     const float groundedRadius = 0.4f;
+
     [SerializeField] private LayerMask whatIsGround;
 
 
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
 
         MoveHorizontal();
+        //limit player velocity to the dashforce.
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, dashForce);
 
     }
 

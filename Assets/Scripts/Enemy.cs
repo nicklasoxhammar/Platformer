@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
     Rigidbody2D rb;
 
     [SerializeField] float speed = 5.0f;
-    //[SerializeField] float jumpHeight = 3.0f;
+    [SerializeField] float jumpForce = 500.0f;
     [SerializeField] float distance = 10.0f;
     [SerializeField] GameObject deathParticles;
 
@@ -21,16 +21,11 @@ public class Enemy : MonoBehaviour {
 
     void Start () {
         skeletonAnimation = GetComponent<SkeletonAnimation>();
-
         rb = GetComponent<Rigidbody2D>();
-
 
         startingXPos = transform.position.x;
         startingYPos = transform.position.y;
 
-        /*if (jumpHeight > 0) {
-            StartCoroutine(Jump());
-        }*/
 	}
 
 	void Update () {
@@ -42,18 +37,21 @@ public class Enemy : MonoBehaviour {
         transform.position = position;
 
 
-        if (position.y < startingYPos + 0.2f && position.x > startingXPos + distance){
+        if (position.x > startingXPos + distance){
             direction = -1;
         }
 
-        if (position.y < startingYPos + 0.2f && position.x < startingXPos - distance) {
+        if (position.x < startingXPos - distance) {
             direction = 1;
         }
 
         transform.localScale = new Vector3(direction, 1.0f, 1.0f);
 
+    }
 
-
+    private void FixedUpdate() {
+        //limit velocity
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, jumpForce / 50);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -68,7 +66,14 @@ public class Enemy : MonoBehaviour {
                 player.Die();
             }
         }
+
+
+        if(collision.gameObject.tag == "Ground") {
+
+            rb.AddForce(new Vector2(0.0f, jumpForce));
+        }
     }
+
 
     private void ShowRightAnimation() {
         if (rb.velocity.y < 0) {
@@ -91,45 +96,6 @@ public class Enemy : MonoBehaviour {
 
         Destroy(gameObject);
     }
-
-    /*IEnumerator Jump() {
-
-
-        float duration = 0.5f;
-
-        while (true) {
-            float startPos = transform.position.y;
-            float endPos;
-
-            if (startPos < startingYPos + jumpHeight) {
-                endPos = startPos + jumpHeight;
-            }
-            else {
-                endPos = startingYPos;
-            }
-            float t = 0.0f;
-            while (t < duration) {
-                t += Time.deltaTime;
-                float yPos = Mathf.Lerp(startPos, endPos, t / duration);
-                transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
-                yield return null;
-            }
-        }
-
-         while (true) {
-
-            transform.position = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
-
-            yield return new WaitForSeconds(0.5f);
-
-            transform.position = new Vector3(transform.position.x, transform.position.y - jumpHeight, transform.position.z);
-
-            yield return new WaitForSeconds(0.5f);
-
-        }
-       
-
-    }*/
 
 
 }
