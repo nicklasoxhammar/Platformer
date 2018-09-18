@@ -88,7 +88,9 @@ public class ColorWhenTouch : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SetColorToWhite();
+        if (collision.gameObject.tag == "Player") {
+            SetColorToWhite();
+        }
     }
 
 }
