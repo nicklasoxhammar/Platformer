@@ -8,6 +8,8 @@ public class OnOffSwitchController : MonoBehaviour {
     [SerializeField] Sprite onSprite;
     [SerializeField] Sprite offSprite;
     [SerializeField] bool switchStatus = false;
+    [SerializeField] bool lockSwitchWhenTurnedOn = false;
+
 
     private SpriteRenderer myRenderer;
 
@@ -51,13 +53,16 @@ public class OnOffSwitchController : MonoBehaviour {
 
     private void TurnSwitch()
     {
-        switchStatus = !switchStatus;
-        changeSprite();
+        if (lockSwitchWhenTurnedOn && switchStatus) { return; }
 
-        foreach (StoneController stone in stoneElevators)
-        {
-            stone.SetElevatorStatusTo(switchStatus);
-        }
+
+            switchStatus = !switchStatus;
+            changeSprite();
+
+            foreach (StoneController stone in stoneElevators)
+            {
+                stone.SetElevatorStatusTo(switchStatus);
+            }
     }
 
 
