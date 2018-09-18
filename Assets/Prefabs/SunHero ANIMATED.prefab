@@ -192,10 +192,12 @@ MonoBehaviour:
   jumpForce: 500
   dashForce: 50
   startDashTime: 0.5
-  dashCooldownTime: 2
-  cameraShakeTime: 1
+  dashRefreshTime: 0.05
+  rb: {fileID: 0}
   isDashing: 0
   freezeMovement: 0
+  canDash: 1
+  dashTime: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512

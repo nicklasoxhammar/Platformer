@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 using Spine.Unity;
 public class PlayerController : MonoBehaviour {
 
-    Rigidbody2D rb;
-
     public float speed = 400.0f;
     public float jumpForce = 500.0f;
     public float dashForce = 50.0f;
@@ -17,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     float dashDirection = 1.0f;
     bool isGrounded = true;
 
+    [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public bool freezeMovement = false;
     [HideInInspector] public bool canDash = true;
