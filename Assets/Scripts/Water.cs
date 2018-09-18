@@ -32,6 +32,26 @@ public class Water : MonoBehaviour {
             progress = 0;
         }
 
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+
+        if (collision.gameObject.tag == "Player") {
+            StartCoroutine(DrownPlayer(collision.gameObject.GetComponent<PlayerController>()));
+        }
+
+    }
+
+    IEnumerator DrownPlayer(PlayerController player) {
+
+        player.rb.velocity = new Vector2(0, -2.0f);
+        player.rb.gravityScale = 0.5f;
+        player.freezeMovement = true;
+
+        yield return new WaitForSeconds(1.5f);
+
+        player.Die();
 
     }
 
