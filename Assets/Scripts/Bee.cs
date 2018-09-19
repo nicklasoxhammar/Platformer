@@ -27,7 +27,7 @@ public class Bee : MonoBehaviour {
         scale = transform.localScale;
     }
 
-    void Update() {
+    void FixedUpdate() {
 
         position = transform.position;
 
@@ -62,6 +62,10 @@ public class Bee : MonoBehaviour {
         transform.localScale = new Vector3(scale.x * direction, scale.y, scale.z);
         transform.position = position;
 
+        if (target != null) {
+            target.transform.position = transform.position + offset;
+        }
+
     }
 
 
@@ -76,26 +80,5 @@ public class Bee : MonoBehaviour {
         target = null;
     }
 
-    void LateUpdate() {
-        if (target != null) {
-            target.transform.position = transform.position + offset;
-        }
-
-    }
-
-
-    /*void ChangeYDirection() {
-
-
-        if (position.y > startingYPos + distance ){
-            direction = -1;
-        }
-
-        if (position.y < startingYPos - distance) {
-            direction = 1;
-        }
-
-        transform.localScale = new Vector3(scale.x * direction, scale.y, scale.z);
-    }*/
 
 }

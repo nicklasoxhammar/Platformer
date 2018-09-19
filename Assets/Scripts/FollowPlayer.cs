@@ -70,7 +70,7 @@ public class FollowPlayer : MonoBehaviour {
 
         }
 
-        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothing);
 
 
     }
