@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +29,6 @@ public class Bee : MonoBehaviour {
 
     void FixedUpdate()
     {
-
         position = transform.position;
 
         if (upAndDown)
@@ -69,8 +68,10 @@ public class Bee : MonoBehaviour {
         transform.localScale = new Vector3(scale.x * direction, scale.y, scale.z);
         transform.position = position;
 
+
         if (target != null)
         {
+
             target.transform.position = transform.position + offset;
         }
 

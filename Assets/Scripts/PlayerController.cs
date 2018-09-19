@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public bool freezeMovement = false;
     [HideInInspector] public bool canDash = true;
     [HideInInspector] public float dashTime;
+    [HideInInspector] public bool isCarryingBox = false;
+
+    public float direction = 1.0f;
 
     Transform groundCheck;
     const float groundedRadius = 0.4f;
@@ -38,14 +41,15 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
         dashTime = startDashTime;
-
     }
 
     void FixedUpdate() {
 
         MoveHorizontal();
         //limit player velocity to the dashforce.
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, dashForce);
+        if (rb != null) {
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, dashForce);
+        }
 
     }
 
@@ -94,13 +98,14 @@ public class PlayerController : MonoBehaviour {
     private void MoveHorizontal() {
         if (freezeMovement) { return; }
 
-
         //Right
         if (CrossPlatformInputManager.GetAxisRaw("Horizontal") > 0f) {
             rb.velocity = new Vector2(speed * Time.deltaTime, rb.velocity.y);
             transform.localScale = new Vector3(1f, 1f, 1f);
             skeletonAnimation.AnimationName = "RUN";
             Dash(dashForce);
+
+            direction = 1.0f;
         }
         //Left
         else if (CrossPlatformInputManager.GetAxisRaw("Horizontal") < 0f) {
@@ -108,6 +113,8 @@ public class PlayerController : MonoBehaviour {
             transform.localScale = new Vector3(-1f, 1f, 1f);
             skeletonAnimation.AnimationName = "RUN";
             Dash(-dashForce);
+
+            direction = -1.0f;
 
         }
         else {
@@ -148,7 +155,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Dash(float force) {
 
-        if (CrossPlatformInputManager.GetButton("Dash") && canDash) {
+        if (CrossPlatformInputManager.GetButton("Dash") && canDash && !isCarryingBox) {
             isDashing = true;
             rb.velocity = new Vector2(force, rb.velocity.y);
             skeletonAnimation.AnimationName = "RUN";

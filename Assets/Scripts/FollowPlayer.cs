@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour {
 
@@ -130,6 +130,7 @@ public class FollowPlayer : MonoBehaviour {
 
 
 
+        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothing);
 
     }
 }
