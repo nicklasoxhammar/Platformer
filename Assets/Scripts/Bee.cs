@@ -1,9 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bee : MonoBehaviour {
-
     [SerializeField] float speed = 5.0f;
     [SerializeField] float distance = 10.0f;
     [SerializeField] bool upAndDown = false;
@@ -19,7 +18,8 @@ public class Bee : MonoBehaviour {
     float startingXPos;
     float startingYPos;
 
-    void Start() {
+    void Start()
+    {
 
         startingXPos = transform.position.x;
         startingYPos = transform.position.y;
@@ -27,33 +27,39 @@ public class Bee : MonoBehaviour {
         scale = transform.localScale;
     }
 
-    void FixedUpdate() {
-
+    void FixedUpdate()
+    {
         position = transform.position;
 
-        if (upAndDown) {
+        if (upAndDown)
+        {
 
             position.y += speed * direction * Time.deltaTime;
 
-            if (position.y > startingYPos + distance) {
+            if (position.y > startingYPos + distance)
+            {
                 direction = -1;
             }
 
-            if (position.y < startingYPos - distance) {
+            if (position.y < startingYPos - distance)
+            {
                 direction = 1;
             }
 
         }
 
-        if (upAndDown == false) {
+        if (upAndDown == false)
+        {
 
             position.x += speed * direction * Time.deltaTime;
 
-            if (position.x > startingXPos + distance) {
+            if (position.x > startingXPos + distance)
+            {
                 direction = -1;
             }
 
-            if (position.x < startingXPos - distance) {
+            if (position.x < startingXPos - distance)
+            {
                 direction = 1;
             }
 
@@ -62,21 +68,27 @@ public class Bee : MonoBehaviour {
         transform.localScale = new Vector3(scale.x * direction, scale.y, scale.z);
         transform.position = position;
 
-        if (target != null) {
+
+        if (target != null)
+        {
+
             target.transform.position = transform.position + offset;
         }
 
     }
 
 
-    void OnCollisionStay2D(Collision2D col) {
+    void OnCollisionStay2D(Collision2D col)
+    {
 
-        if (col.gameObject.tag == "Player") {
+        if (col.gameObject.tag == "Player")
+        {
             target = col.gameObject;
             offset = target.transform.position - transform.position;
         }
     }
-    void OnCollisionExit2D(Collision2D col) {
+    void OnCollisionExit2D(Collision2D col)
+    {
         target = null;
     }
 

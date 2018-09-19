@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour {
 
@@ -15,18 +15,96 @@ public class FollowPlayer : MonoBehaviour {
     [SerializeField] float followAheadUpAndDown = 4f;
     [SerializeField] float smoothing = 1f;
 
+
+    private float yValue;
     void Start() {
 
         //zPos = transform.position.z;
+
+        yValue = transform.position.y;
+
+    }
+
+
+    private void Update()
+
+    {
+        if (player == null)
+        {
+            return;
+        }
+        targetPos = new Vector3(player.transform.position.x, yValue, transform.position.z);
+
+
+        isLerping = true;
+
+
+        if (player.transform.localScale.x > 0f)
+        {
+            targetPos = new Vector3(targetPos.x + followAhead, targetPos.y, targetPos.z);
+            MoveUpAndDown();
+        }
+        else
+        {
+            targetPos = new Vector3(targetPos.x - followAhead, targetPos.y, targetPos.z);
+            MoveUpAndDown();
+        }
+
+
+
+
+
+        transform.position = Vector3.Lerp(transform.position, targetPos, smoothing * Time.deltaTime);
+
+        //transform.position = targetPos;   //Vector3.Lerp(transform.position, targetPos, smoothing * Time.deltaTime);
+       
+    }
+
+
+    private void MoveUpAndDown()
+    {
+
+        //if (player.transform.position.y > transform.position.y + followAheadUpAndDown)
+        //{
+        //    Debug.Log("ÖVER");
+        //    targetPos.y += followAheadUpAndDown;
+        //    yValue = targetPos.y;
+        //    //targetPos = new Vector3(targetPos.x, targetPos.y + followAheadUpAndDown, targetPos.z);
+        //}
+        //else if (player.transform.position.y < transform.position.y - followAheadUpAndDown)
+        //{
+        //    Debug.Log("UNDER");
+        //    targetPos.y -= followAheadUpAndDown;
+        //    yValue = targetPos.y;
+
+        //    //targetPos = new Vector3(targetPos.x, targetPos.y - followAheadUpAndDown, targetPos.z);
+
+        //}
+
+
+    }
+
+
+
+
+
+
+
+
+
+    private void LateUpdate()
+    {
+
+
+
+
 
     }
 
     //FixedUpdate syncs better with player movement
     void FixedUpdate() {
 
-        if (player == null) {
-            return;
-        }
+
 
         ////move camera to the right
         //if (player.transform.position.x > transform.position.x + moveCameraAt) {
@@ -50,28 +128,9 @@ public class FollowPlayer : MonoBehaviour {
         //}
 
 
-        targetPos = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
 
-        isLerping = true;
-
-
-        if (player.transform.localScale.x > 0f) {
-            targetPos = new Vector3(targetPos.x + followAhead, targetPos.y, targetPos.z);
-        }
-        else {
-            targetPos = new Vector3(targetPos.x - followAhead, targetPos.y, targetPos.z);
-        }
-
-        if (player.transform.position.y > transform.position.y + followAheadUpAndDown) {
-            targetPos = new Vector3(targetPos.x, targetPos.y + followAheadUpAndDown, targetPos.z);
-        }
-        else if (player.transform.position.y < transform.position.y - followAheadUpAndDown) {
-            targetPos = new Vector3(targetPos.x, targetPos.y - followAheadUpAndDown, targetPos.z);
-
-        }
 
         transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothing);
-
 
     }
 }

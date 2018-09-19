@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4159676456656322}
   - component: {fileID: 212038780765531870}
   - component: {fileID: 50198879720575452}
+  - component: {fileID: 114540417134328234}
+  - component: {fileID: 58054920015646238}
   m_Layer: 0
   m_Name: CloudDrop
   m_TagString: Untagged
@@ -35,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1875282971406372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.28, y: 3.47, z: 0}
+  m_LocalPosition: {x: 2, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,6 +63,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58054920015646238
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875282971406372}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.004334271, y: -0.1365313}
+  serializedVersion: 2
+  m_Radius: 0.21480018
+--- !u!114 &114540417134328234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875282971406372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ed56a8f197e4a3f863c4069d2a4efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212038780765531870
 SpriteRenderer:
   m_ObjectHideFlags: 1
