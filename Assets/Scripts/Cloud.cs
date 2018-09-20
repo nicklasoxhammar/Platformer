@@ -5,7 +5,12 @@ using UnityEngine;
 public class Cloud : MonoBehaviour {
 
 
+    [SerializeField] Sprite idleSprite;
+    [SerializeField] Sprite evilSprite;
+    [SerializeField] Sprite happySprite;
+
     [SerializeField] GameObject dropPrefab;
+    [SerializeField] ParticleSystem flashPrefab;
     [SerializeField] GameObject destinations;
     [SerializeField] float speed = 4f;
 
@@ -34,6 +39,12 @@ public class Cloud : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
+    private ParticleSystem flash;
+
+    public int poolSize = 10;
+    [SerializeField] bool expandeblePoolSize = true;
+    public List<GameObject> dropPool;
+
 	// Use this for initialization
 	void Start () {
         
@@ -42,6 +53,8 @@ public class Cloud : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         animator = GetComponent<Animator>();
+
+        flash = Instantiate(flashPrefab, transform.position, Quaternion.LookRotation(Vector2.up));
 
 
 	}
@@ -70,7 +83,32 @@ public class Cloud : MonoBehaviour {
 	}
 
 
+    private void SetUpDropPool()
+    {
+        dropPool = new List<GameObject>();
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject drop = Instantiate(dropPrefab);
+            drop.SetActive(false);
+            dropPool.Add(drop);
 
+        }
+
+    }
+
+
+    private GameObject GetDrop()
+    {
+        for (int i = 0; i < dropPool.Count; i++)
+        {
+            if (!dropPool[i].gameObject.activeInHierarchy && dropPool[i] != null)
+            {
+                return dropPool[i];
+            }
+        }
+
+        if (expandeblePoolSize)
+        {             GameObject newDrop = Instantiate(dropPrefab);             dropPool.Add(newDrop);             newDrop.SetActive(false);             return newDrop;         }          return null;     }
 
 
 
@@ -159,25 +197,46 @@ public class Cloud : MonoBehaviour {
         freeze = true;
         if(IAmEvil())
         {
+            SetSpriteTo(evilSprite);
+
+            playFlashVFX();
+
             StartRain();
         }
         else
         {
-            Debug.Log("I AM NOT EVIL!");   
+            SetSpriteTo(happySprite);
         }
 
-        yield return new WaitForSeconds(getRandomFreezeTime());
+        yield return new WaitForSeconds(GetRandomFreezeTime());
         setRandomIndexDestination();
         setNewTimeBetweenFreeze();
+        flash.Stop();
+        SetSpriteTo(idleSprite);
         freeze = false;
 
     }
 
-    private float getRandomFreezeTime()
+    private float GetRandomFreezeTime()
     {
         return Random.Range(minFreezeTime, maxFreezeTime);
     }
 
+    private void SetSpriteTo(Sprite sprite)
+    {
+        if (sprite != null)
+        {
+            spriteRenderer.sprite = sprite;
+
+        }
+    }
+
+    private void playFlashVFX()
+    {
+        flash.Clear();
+        flash.transform.position = transform.position;
+        flash.Play();
+    }
 
     private bool IAmEvil()
     {
@@ -223,8 +282,13 @@ private void StartRain()
     {
         while (freeze)
         {
-            GameObject drop = Instantiate(dropPrefab, transform.parent, true);
-            drop.transform.position = GetPositionForDrop();
+            GameObject drop = GetDrop();
+            if (drop != null)
+            {
+                drop.transform.position = GetPositionForDrop();
+                drop.SetActive(true);
+            }
+
             yield return new WaitForSeconds(getTimeBetweenDrops());
         }
     }
@@ -265,3 +329,4 @@ private void StartRain()
 
 
 }
+
