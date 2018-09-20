@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50198879720575452}
   - component: {fileID: 114540417134328234}
   - component: {fileID: 58054920015646238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CloudDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

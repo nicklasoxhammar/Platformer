@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 4360384292215082}
   - component: {fileID: 212997134961045082}
   - component: {fileID: 114818859189260562}
+  - component: {fileID: 95158079782781410}
   m_Layer: 0
   m_Name: CloudObjekt
   m_TagString: Untagged
@@ -95,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840307362178948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.13, y: 5.12, z: 0}
+  m_LocalPosition: {x: 2.1, y: 7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4360384292215082}
@@ -157,6 +158,24 @@ Transform:
   m_Father: {fileID: 4475430327176064}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95158079782781410
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594495094673712}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2046d6dac03794867b5335cb33537925, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114818859189260562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,14 +188,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropPrefab: {fileID: 1875282971406372, guid: c27084fe10a01443481c1dec6736ced4, type: 2}
+  flashPrefab: {fileID: 198477502228538662, guid: 510167ff9e6c64e0694ceb5cafe01ec7,
+    type: 2}
   destinations: {fileID: 1524077456872640}
-  speed: 30
-  evilnessPercent: 50
-  minTime: 0.51
-  maxTime: 3
-  freezeTime: 2
+  speed: 5
+  evilnessPercent: 100
+  minTime: 1
+  maxTime: 1
+  minFreezeTime: 2
+  maxFreezeTime: 2
   widthOfRain: 0.35
-  timeBetweenDrops: 0.2
+  minTimeBetweenDrops: 0.2
+  maxTimeBetweenDrops: 0.2
 --- !u!212 &212997134961045082
 SpriteRenderer:
   m_ObjectHideFlags: 1

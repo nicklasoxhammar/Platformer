@@ -6,6 +6,7 @@ public class Cloud : MonoBehaviour {
 
 
     [SerializeField] GameObject dropPrefab;
+    [SerializeField] ParticleSystem flashPrefab;
     [SerializeField] GameObject destinations;
     [SerializeField] float speed = 4f;
 
@@ -34,6 +35,9 @@ public class Cloud : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
+    private ParticleSystem flash;
+
+
 	// Use this for initialization
 	void Start () {
         
@@ -42,6 +46,8 @@ public class Cloud : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         animator = GetComponent<Animator>();
+
+        flash = Instantiate(flashPrefab, transform.position, Quaternion.LookRotation(Vector2.up));
 
 
 	}
@@ -159,6 +165,8 @@ public class Cloud : MonoBehaviour {
         freeze = true;
         if(IAmEvil())
         {
+            playFlashVFX();
+
             StartRain();
         }
         else
@@ -166,18 +174,26 @@ public class Cloud : MonoBehaviour {
             Debug.Log("I AM NOT EVIL!");   
         }
 
-        yield return new WaitForSeconds(getRandomFreezeTime());
+        yield return new WaitForSeconds(GetRandomFreezeTime());
         setRandomIndexDestination();
         setNewTimeBetweenFreeze();
+        flash.Stop();
         freeze = false;
 
     }
 
-    private float getRandomFreezeTime()
+    private float GetRandomFreezeTime()
     {
         return Random.Range(minFreezeTime, maxFreezeTime);
     }
 
+
+    private void playFlashVFX()
+    {
+        flash.Clear();
+        flash.transform.position = transform.position;
+        flash.Play();
+    }
 
     private bool IAmEvil()
     {
@@ -265,3 +281,4 @@ private void StartRain()
 
 
 }
+
