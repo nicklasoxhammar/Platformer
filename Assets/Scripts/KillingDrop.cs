@@ -30,14 +30,13 @@ public class KillingDrop : MonoBehaviour
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
-                player.Die();
+            player.Die();
             PlayVFX();
             gameObject.SetActive(false);
 
         }
         else
         {
-            //PARTICLE SYSTEM
             PlayVFX();
             gameObject.SetActive(false);
 

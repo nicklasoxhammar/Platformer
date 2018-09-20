@@ -5,6 +5,10 @@ using UnityEngine;
 public class Cloud : MonoBehaviour {
 
 
+    [SerializeField] Sprite idleSprite;
+    [SerializeField] Sprite evilSprite;
+    [SerializeField] Sprite happySprite;
+
     [SerializeField] GameObject dropPrefab;
     [SerializeField] ParticleSystem flashPrefab;
     [SerializeField] GameObject destinations;
@@ -193,19 +197,22 @@ public class Cloud : MonoBehaviour {
         freeze = true;
         if(IAmEvil())
         {
+            SetSpriteTo(evilSprite);
+
             playFlashVFX();
 
             StartRain();
         }
         else
         {
-            Debug.Log("I AM NOT EVIL!");   
+            SetSpriteTo(happySprite);
         }
 
         yield return new WaitForSeconds(GetRandomFreezeTime());
         setRandomIndexDestination();
         setNewTimeBetweenFreeze();
         flash.Stop();
+        SetSpriteTo(idleSprite);
         freeze = false;
 
     }
@@ -215,6 +222,14 @@ public class Cloud : MonoBehaviour {
         return Random.Range(minFreezeTime, maxFreezeTime);
     }
 
+    private void SetSpriteTo(Sprite sprite)
+    {
+        if (sprite != null)
+        {
+            spriteRenderer.sprite = sprite;
+
+        }
+    }
 
     private void playFlashVFX()
     {

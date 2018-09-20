@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840307362178948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1, y: 7.5, z: 0}
+  m_LocalPosition: {x: 2.85, y: 3.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4360384292215082}
@@ -187,12 +187,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 727539844410c42bba24ef2ce9708105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleSprite: {fileID: 21300000, guid: 338c5605fa4224ca78a2fe30ec88bd1b, type: 3}
+  evilSprite: {fileID: 21300000, guid: 137300f71c2cb447699d72842f68efee, type: 3}
+  happySprite: {fileID: 21300000, guid: 42150de4b4a624f5a89bc8dcc5cc5c3d, type: 3}
   dropPrefab: {fileID: 1875282971406372, guid: c27084fe10a01443481c1dec6736ced4, type: 2}
   flashPrefab: {fileID: 198477502228538662, guid: 510167ff9e6c64e0694ceb5cafe01ec7,
     type: 2}
   destinations: {fileID: 1524077456872640}
   speed: 5
-  evilnessPercent: 100
+  evilnessPercent: 50
   minTime: 1
   maxTime: 1
   minFreezeTime: 2
@@ -200,6 +203,9 @@ MonoBehaviour:
   widthOfRain: 0.35
   minTimeBetweenDrops: 0.2
   maxTimeBetweenDrops: 0.2
+  poolSize: 10
+  expandeblePoolSize: 1
+  dropPool: []
 --- !u!212 &212997134961045082
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -235,7 +241,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 42bde6cb59357406fad984b8b1581607, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 338c5605fa4224ca78a2fe30ec88bd1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
