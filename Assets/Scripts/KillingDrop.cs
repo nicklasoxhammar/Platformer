@@ -5,9 +5,14 @@ using UnityEngine;
 public class KillingDrop : MonoBehaviour
 {
 
+    [SerializeField] ParticleSystem VFXPrefab;
+
+    private ParticleSystem splashVFX;
+
     // Use this for initialization
     void Start()
     {
+        splashVFX = Instantiate(VFXPrefab, transform.position, Quaternion.LookRotation(Vector2.up));
 
     }
 
@@ -26,17 +31,37 @@ public class KillingDrop : MonoBehaviour
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
                 player.Die();
-            Destroy(gameObject);
+            PlayVFX();
+            gameObject.SetActive(false);
 
         }
         else
         {
-            //Particle system
-            Destroy(gameObject);
+            //PARTICLE SYSTEM
+            PlayVFX();
+            gameObject.SetActive(false);
 
         }
     }
 
+
+
+    private void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
+    }
+
+
+
+
+    private void PlayVFX()
+    {
+        splashVFX.Clear();
+        splashVFX.transform.position = transform.position;
+        splashVFX.Play();
+
+
+    }
 
 
 }
