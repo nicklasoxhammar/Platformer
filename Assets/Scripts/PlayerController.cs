@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
 
         MoveHorizontal();
-        //limit player velocity to the dashforce.
+        //limit player velocity
         if (rb != null) {
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, dashForce);
         }
