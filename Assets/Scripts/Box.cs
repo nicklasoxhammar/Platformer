@@ -10,15 +10,19 @@ public class Box : MonoBehaviour {
     bool canPickUp = true;
     bool canDrop = false;
 
+    GameManager GM;
+
     SpriteRenderer sprite;
 
     private void Start() {
+        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update() {
 
         if (beingCarried) {
+            player.isCarryingBox = true;
             MoveWithPlayer();
         }
 
@@ -45,7 +49,7 @@ public class Box : MonoBehaviour {
 
     private void OnCollisionExit2D(Collision2D collision) {
 
-        if (!beingCarried) {
+        if (!beingCarried && player != null) {
             player.isCarryingBox = false;
         }
 
@@ -66,7 +70,6 @@ public class Box : MonoBehaviour {
             Color newAlpha = sprite.color;
             newAlpha.a = 1.0f;
             sprite.color = newAlpha;
-
         }
 
         float xPos = player.transform.position.x + 2f;
