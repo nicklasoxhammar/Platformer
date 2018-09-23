@@ -12,6 +12,9 @@ public class Cloud : MonoBehaviour {
     [SerializeField] GameObject dropPrefab;
     [SerializeField] ParticleSystem flashPrefab;
     [SerializeField] GameObject destinations;
+
+
+    [SerializeField] bool bounceIsOn = true;
     [SerializeField] float speed = 4f;
 
     [SerializeField] [Range(0, 100)] int evilnessPercent = 50;
@@ -56,6 +59,10 @@ public class Cloud : MonoBehaviour {
 
         flash = Instantiate(flashPrefab, transform.position, Quaternion.LookRotation(Vector2.up));
 
+        if(!bounceIsOn)
+        {
+            GetComponent<Collider2D>().enabled = false;
+        }
 
 	}
 	
@@ -323,7 +330,6 @@ private void StartRain()
             }
         }
     }
-
 
 
 
