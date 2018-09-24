@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour {
     public float startDashTime = 0.5f;
     public float dashRefreshTime = 0.05f;
 
-    float dashDirection = 1.0f;
     bool isGrounded = true;
 
     [HideInInspector] public Rigidbody2D rb;

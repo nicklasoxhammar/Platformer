@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 212997134961045082}
   - component: {fileID: 114818859189260562}
   - component: {fileID: 95158079782781410}
+  - component: {fileID: 58961422110356712}
   m_Layer: 0
   m_Name: CloudObjekt
   m_TagString: Untagged
@@ -158,6 +159,21 @@ Transform:
   m_Father: {fileID: 4475430327176064}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58961422110356712
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594495094673712}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 530f9e3f1ce38481e96f2a19b2982fc3, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.2341038, y: 1.05235}
+  serializedVersion: 2
+  m_Radius: 0.3579774
 --- !u!95 &95158079782781410
 Animator:
   serializedVersion: 3
@@ -194,6 +210,7 @@ MonoBehaviour:
   flashPrefab: {fileID: 198477502228538662, guid: 510167ff9e6c64e0694ceb5cafe01ec7,
     type: 2}
   destinations: {fileID: 1524077456872640}
+  bounceIsOn: 1
   speed: 5
   evilnessPercent: 50
   minTime: 1
