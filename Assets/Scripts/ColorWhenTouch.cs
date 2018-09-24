@@ -14,8 +14,6 @@ public class ColorWhenTouch : MonoBehaviour
     private float duration = 0.5f;
 
 
-
-    bool isDark = false;
     bool colorIsChanging = true;
 
 
