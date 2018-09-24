@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private LayerMask whatIsGround;
 
 
-    private SkeletonAnimation skeletonAnimation;
+    public SkeletonAnimation skeletonAnimation;
 
 
 
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 
         MoveHorizontal();
         //limit player velocity
-        if (rb != null) {
+        if (rb != null && !freezeMovement) {
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, dashForce);
         }
 
@@ -171,6 +171,13 @@ public class PlayerController : MonoBehaviour {
 
 
     public void Die() {
+
+        freezeMovement = true;
+        Invoke("ReloadScene", 3);
+
+    }
+
+    void ReloadScene() {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
