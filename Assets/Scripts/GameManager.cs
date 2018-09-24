@@ -13,10 +13,12 @@ public class GameManager : MonoBehaviour {
     private GameObject dashButton;
 
     private void Start() {
-        dashButton = GameObject.Find("DashButton");
-        startDashButtonColor = dashButton.GetComponent<Image>().color;
-        
+        #if (UNITY_IOS || UNITY_ANDROID)
+                dashButton = GameObject.Find("DashButton");
+                startDashButtonColor = dashButton.GetComponent<Image>().color; 
+        #endif
     }
+
 
     void Update() {
         HandleDashBar();
@@ -63,9 +65,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void SetDashButtonColor() {
-        
 
-        if(dashButton == null) { return;}
+
+        if (dashButton == null) { return; }
 
         if (player.isCarryingBox) {
             Color yellow = Color.yellow;
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour {
         else {
             dashButton.GetComponent<Image>().color = startDashButtonColor;
         }
-      
+
 
     }
 }

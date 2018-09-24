@@ -198,6 +198,8 @@ MonoBehaviour:
   freezeMovement: 0
   canDash: 1
   dashTime: 0
+  isCarryingBox: 0
+  direction: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
