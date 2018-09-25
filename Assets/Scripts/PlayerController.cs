@@ -20,13 +20,19 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public bool canDash = true;
     [HideInInspector] public float dashTime;
     [HideInInspector] public bool isCarryingBox = false;
-
-    public float direction = 1.0f;
+    [HideInInspector] public float direction = 1.0f;
 
     Transform groundCheck;
     const float groundedRadius = 0.4f;
 
     [SerializeField] private LayerMask whatIsGround;
+
+    [SerializeField] AudioClip walkingSound;
+    [SerializeField] AudioClip jumpingSound;
+    [SerializeField] AudioClip dashingSound;
+    [SerializeField] AudioClip deathSound;
+
+    AudioSource audioSource;
 
 
     public SkeletonAnimation skeletonAnimation;
@@ -35,6 +41,7 @@ public class PlayerController : MonoBehaviour {
 
 
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -105,6 +112,7 @@ public class PlayerController : MonoBehaviour {
             Dash(dashForce);
 
             direction = 1.0f;
+            PlayAudio("Walk");
         }
         //Left
         else if (CrossPlatformInputManager.GetAxisRaw("Horizontal") < 0f) {
@@ -114,13 +122,56 @@ public class PlayerController : MonoBehaviour {
             Dash(-dashForce);
 
             direction = -1.0f;
+            PlayAudio("Walk");
 
         }
         else {
+            if (audioSource.clip == walkingSound) {
+                audioSource.Stop();
+            }
             rb.velocity = new Vector2(0f, rb.velocity.y);
             ShowRightAnimation();
             //Dash when no movement
             Dash(dashForce);
+        }
+
+
+    }
+
+
+    void PlayAudio(string action) {
+
+        switch (action) {
+            case "Walk":
+                if (isGrounded && !audioSource.isPlaying) {
+                    audioSource.clip = walkingSound;
+                    audioSource.Play();
+                }
+                break;
+
+            case "Jump":
+                if (isGrounded) {
+                    audioSource.clip = jumpingSound;
+                    audioSource.Play();
+                }
+                break;
+
+            case "Dash":
+                audioSource.clip = dashingSound;
+                if (!audioSource.isPlaying) {
+                    audioSource.Play();
+                }
+                break;
+
+            case "Die":
+                audioSource.clip = deathSound;
+                if (!audioSource.isPlaying) {
+                    audioSource.Play();
+                }
+                break;
+
+            default:
+                break;
         }
 
 
@@ -132,6 +183,7 @@ public class PlayerController : MonoBehaviour {
         if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded) {
 
             rb.AddForce(new Vector2(0.0f, jumpForce));
+            PlayAudio("Jump");
         }
     }
 
@@ -159,6 +211,7 @@ public class PlayerController : MonoBehaviour {
             rb.velocity = new Vector2(force, rb.velocity.y);
             skeletonAnimation.AnimationName = "RUN";
             Camera.main.gameObject.GetComponent<CameraShake>().shake = true;
+            PlayAudio("Dash");
 
         }
         else {
@@ -171,8 +224,10 @@ public class PlayerController : MonoBehaviour {
 
     public void Die() {
 
+        PlayAudio("Die");
+
         freezeMovement = true;
-        Invoke("ReloadScene", 3);
+        Invoke("ReloadScene", 1);
 
     }
 

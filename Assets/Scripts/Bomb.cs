@@ -6,8 +6,19 @@ public class Bomb : MonoBehaviour {
 
     [SerializeField] float time = 5.0f;
     [SerializeField] GameObject explosionParticles;
+    [SerializeField] AudioClip tickSound;
+    [SerializeField] AudioClip explosionSound;
+
+    AudioSource audioSource;
 
     private bool blownUp = false;
+
+    private void Start() {
+        audioSource = GetComponent<AudioSource>();
+
+        StartCoroutine(Tick());
+
+    }
 
     void Update() {
 
@@ -36,23 +47,51 @@ public class Bomb : MonoBehaviour {
         }
     }
 
+    IEnumerator Tick() {
+
+        audioSource.clip = tickSound;
+        audioSource.Play();
+
+        yield return new WaitForSeconds(time / 5);
+
+        if (time > 0) {
+            StartCoroutine(Tick());
+        }
+    }
+
+
+
     void Explode() {
+        audioSource.clip = explosionSound;
+        audioSource.Play();
         blownUp = true;
         GameObject particles = Instantiate(explosionParticles, transform.position, Quaternion.identity);
         Destroy(particles, 3.0f);
-
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        Destroy(gameObject, 0.2f);
+        Destroy(GetComponentInChildren<ParticleSystem>());
+        StartCoroutine(Done());
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
 
         if (collision.gameObject.tag == "Player" && blownUp) {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-
-            player.Die();
             player.rb.AddForceAtPosition(Vector2.up * 100, transform.position, ForceMode2D.Force);
 
+            player.Die();
         }
+    }
+
+    IEnumerator Done() {
+
+        yield return new WaitForSeconds(0.2f);
+
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+
+        yield return new WaitForSeconds(3.0f);
+
+        Destroy(gameObject);
+
+
     }
 }

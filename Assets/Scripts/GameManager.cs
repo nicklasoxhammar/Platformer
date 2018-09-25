@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     [SerializeField] GameObject levelCompleteScreen;
+    [SerializeField] AudioClip levelCompleteSound;
+
     public PlayerController player;
     public int flowerCounter;
     public GameObject dashBar;
@@ -12,11 +14,15 @@ public class GameManager : MonoBehaviour {
     private Color startDashButtonColor;
     private GameObject dashButton;
 
+    AudioSource audioSource;
+
     private void Start() {
-        #if (UNITY_IOS || UNITY_ANDROID)
+#if (UNITY_IOS || UNITY_ANDROID)
                 dashButton = GameObject.Find("DashButton");
                 startDashButtonColor = dashButton.GetComponent<Image>().color; 
-        #endif
+#endif
+
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -26,6 +32,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LevelComplete() {
+        audioSource.clip = levelCompleteSound;
+        audioSource.Play();
         levelCompleteScreen.SetActive(true);
     }
 

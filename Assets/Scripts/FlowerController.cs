@@ -9,10 +9,15 @@ public class FlowerController : MonoBehaviour {
     private Animator animator;
     private bool picked = false;
 
+    [SerializeField] AudioClip flowerSound;
+    AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
         gameManager = FindObjectOfType<GameManager>();
         gameManager.AddFlower();
+
+        audioSource = GetComponent<AudioSource>();
 
         animator = GetComponent<Animator>();
 	}
@@ -22,6 +27,8 @@ public class FlowerController : MonoBehaviour {
     {
         if(collision.tag == "Player" && !picked)
         {
+            audioSource.clip = flowerSound;
+            audioSource.Play();
             picked = true;
             gameManager.pickedFlower();
             animator.SetBool("run", true);
