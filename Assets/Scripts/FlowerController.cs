@@ -15,9 +15,8 @@ public class FlowerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gameManager = FindObjectOfType<GameManager>();
-        gameManager.AddFlower();
-
         audioSource = GetComponent<AudioSource>();
+        gameManager.AddFlower();
 
         animator = GetComponent<Animator>();
 	}

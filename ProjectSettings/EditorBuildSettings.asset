@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Fannys.unity
     guid: bb26120348517480eacf8d9788ace79e
+  - enabled: 1
+    path: Assets/Scenes/Nicklas1.unity
+    guid: 05f734eee45d2864b8646ff6e4e035de
   m_configObjects: {}

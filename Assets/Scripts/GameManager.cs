@@ -4,25 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
-    [SerializeField] GameObject levelCompleteScreen;
+    GameObject levelCompleteScreen;
     [SerializeField] AudioClip levelCompleteSound;
+    Text flowerCounterText;
 
-    public PlayerController player;
-    public int flowerCounter;
-    public GameObject dashBar;
+    [HideInInspector] public GameObject dashBar;
 
     private Color startDashButtonColor;
     private GameObject dashButton;
+    private int flowersTotal = 0;
+    private int pickedFlowers = 0;
+    PlayerController player;
 
     AudioSource audioSource;
 
-    private void Start() {
+    private void Awake() {
+        player = FindObjectOfType<PlayerController>();
 #if (UNITY_IOS || UNITY_ANDROID)
-                dashButton = GameObject.Find("DashButton");
-                startDashButtonColor = dashButton.GetComponent<Image>().color; 
+            dashButton = GameObject.Find("DashButton");
+            startDashButtonColor = dashButton.GetComponent<Image>().color; 
 #endif
 
         audioSource = GetComponent<AudioSource>();
+
+        levelCompleteScreen = GameObject.Find("Level Complete Screen");
+        levelCompleteScreen.SetActive(false);
+        flowerCounterText = GameObject.Find("Flower Counter Text").GetComponent<Text>();
+        dashBar = GameObject.Find("Dash Bar Meter");
+
     }
 
 
@@ -35,13 +44,15 @@ public class GameManager : MonoBehaviour {
         audioSource.clip = levelCompleteSound;
         audioSource.Play();
         levelCompleteScreen.SetActive(true);
+        GameObject.Find("Mobile Input UI").SetActive(false);
+        GameObject.Find("Dash Bar").SetActive(false);
     }
 
     public void pickedFlower() {
-        flowerCounter--;
-        Debug.Log("FLOWER PICKED");
+        pickedFlowers++;
+        flowerCounterText.text = pickedFlowers + "/" + flowersTotal;
 
-        if (flowerCounter <= 0) {
+        if (pickedFlowers == flowersTotal) {
             //ALLA PLOCKADE.
             Debug.Log("ALLA PLOCKADE");
         }
@@ -50,7 +61,8 @@ public class GameManager : MonoBehaviour {
 
 
     public void AddFlower() {
-        flowerCounter++;
+        flowersTotal++;
+        flowerCounterText.text = pickedFlowers + "/" + flowersTotal;
     }
 
     private void HandleDashBar() {

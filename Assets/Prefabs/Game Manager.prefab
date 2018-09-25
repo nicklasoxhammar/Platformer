@@ -144,11 +144,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586933916440058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f9dd743d4edaf40811cca9ef36804a, type: 3}
+  m_Script: {fileID: 11500000, guid: 873d3629062b13544ba7bfc6ef15c31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelCompleteScreen: {fileID: 0}
   levelCompleteSound: {fileID: 8300000, guid: 21ea4f39c2d2be546b194480f2148ef4, type: 3}
-  player: {fileID: 0}
-  flowerCounter: 0
   dashBar: {fileID: 0}
