@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] AudioClip deathSound;
 
     AudioSource audioSource;
+    GameManager GM;
 
 
     public SkeletonAnimation skeletonAnimation;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         audioSource = GetComponent<AudioSource>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
+        GM = FindObjectOfType<GameManager>();
 
         rb = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
@@ -226,15 +228,9 @@ public class PlayerController : MonoBehaviour {
 
         PlayAudio("Die");
 
-        freezeMovement = true;
-        Invoke("ReloadScene", 1);
-
+        GM.PlayerDied();
+        Destroy(this);
     }
 
-    void ReloadScene() {
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-    }
 
 }

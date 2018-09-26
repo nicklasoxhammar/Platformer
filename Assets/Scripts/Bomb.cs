@@ -76,9 +76,11 @@ public class Bomb : MonoBehaviour {
 
         if (collision.gameObject.tag == "Player" && blownUp) {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.rb.AddForceAtPosition(Vector2.up * 100, transform.position, ForceMode2D.Force);
+            if (player != null) {
+                player.rb.AddForceAtPosition(Vector2.up * 100, transform.position, ForceMode2D.Force);
 
-            player.Die();
+                player.Die();
+            }
         }
     }
 

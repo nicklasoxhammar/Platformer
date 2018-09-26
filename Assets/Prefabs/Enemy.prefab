@@ -260,7 +260,7 @@ MonoBehaviour:
   distance: 10
   deathParticles: {fileID: 1730898597688678, guid: 65cabca7ef0d8ca46bd2c41b82b9604c,
     type: 2}
-  deathSound: {fileID: 8300000, guid: df8dfd836ff5a3242b7634226138ad12, type: 3}
+  deathSound: {fileID: 8300000, guid: 87f066de6b9b31b4ba2afd0da941b49c, type: 3}
 --- !u!114 &114401023842976080
 MonoBehaviour:
   m_ObjectHideFlags: 1

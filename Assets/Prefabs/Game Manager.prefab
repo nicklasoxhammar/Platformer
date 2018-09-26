@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4716566574827616}
-  - component: {fileID: 114165032687785600}
   - component: {fileID: 82034255378516914}
+  - component: {fileID: 114856136085891674}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -52,7 +52,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -136,7 +136,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114165032687785600
+--- !u!114 &114856136085891674
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586933916440058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 873d3629062b13544ba7bfc6ef15c31c, type: 3}
+  m_Script: {fileID: 11500000, guid: 01f9dd743d4edaf40811cca9ef36804a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelCompleteSound: {fileID: 8300000, guid: 21ea4f39c2d2be546b194480f2148ef4, type: 3}
