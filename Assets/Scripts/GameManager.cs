@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     Text flowerCounterText;
 
     [HideInInspector] public GameObject dashBar;
+    [HideInInspector] public bool dashButtonYellow = false;
 
     private Color startDashButtonColor;
     private Color startDashBarColor;
@@ -115,7 +116,7 @@ public class GameManager : MonoBehaviour {
     public void SetDashButtonColor() {
         if (dashButton == null) { return; }
 
-        if (player.isCarryingBox) {
+        if (dashButtonYellow || player.isCarryingBox) {
             Color yellow = Color.yellow;
             yellow.a = 0.5f;
             dashButton.GetComponent<Image>().color = yellow;
@@ -124,6 +125,14 @@ public class GameManager : MonoBehaviour {
             dashButton.GetComponent<Image>().color = startDashButtonColor;
         }
 
+        /*if (player.isCarryingBox) {
+            Color yellow = Color.yellow;
+            yellow.a = 0.5f;
+            dashButton.GetComponent<Image>().color = yellow;
+        }
+        else {
+            dashButton.GetComponent<Image>().color = startDashButtonColor;
+        }*/
 
     }
 

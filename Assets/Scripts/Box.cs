@@ -5,18 +5,22 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Box : MonoBehaviour {
 
+    [SerializeField] AudioClip pickUpSound;
+    [SerializeField] AudioClip dropSound;
+
     PlayerController player;
     bool beingCarried = false;
     bool canPickUp = true;
     bool canDrop = false;
 
     GameManager GM;
-
     SpriteRenderer sprite;
+    AudioSource audioSource;
 
     private void Start() {
         GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         sprite = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -33,9 +37,13 @@ public class Box : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D collision) {
         if (collision.gameObject.tag == "Player") {
             player = collision.gameObject.GetComponent<PlayerController>();
-            player.isCarryingBox = true;
+            Debug.Log(player.isCarryingBox);
+            if (player.isCarryingBox) { return; }
 
             if (CrossPlatformInputManager.GetButtonDown("Dash") && canPickUp) {
+                player.isCarryingBox = true;
+                audioSource.clip = pickUpSound;
+                audioSource.Play();
                 Color newAlpha = sprite.color;
                 newAlpha.a = 0.5f;
                 sprite.color = newAlpha;
@@ -64,6 +72,8 @@ public class Box : MonoBehaviour {
         }
 
         if (CrossPlatformInputManager.GetButtonUp("Dash") && canDrop) {
+            audioSource.clip = dropSound;
+            audioSource.Play();
             beingCarried = false;
             canPickUp = true;
             player.isCarryingBox = false;

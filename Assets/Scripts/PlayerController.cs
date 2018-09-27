@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 
     bool isGrounded = true;
     bool dead = false;
+    bool collidingWithBox;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDashing = false;
@@ -209,7 +210,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Dash(float force) {
 
-        if (CrossPlatformInputManager.GetButton("Dash") && canDash && !isCarryingBox) {
+        if (CrossPlatformInputManager.GetButton("Dash") && canDash && !isCarryingBox && !collidingWithBox) {
             isDashing = true;
             rb.velocity = new Vector2(force, rb.velocity.y);
             skeletonAnimation.AnimationName = "RUN";
@@ -239,6 +240,20 @@ public class PlayerController : MonoBehaviour {
         skeletonAnimation.AnimationName = "FALLING";
 
         GM.PlayerDied();
+    }
+
+    private void OnCollisionStay2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Box") {
+            collidingWithBox = true;
+            GM.dashButtonYellow = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Box") {
+            collidingWithBox = false;
+            GM.dashButtonYellow = false;
+        }
     }
 
 

@@ -149,3 +149,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompleteSound: {fileID: 8300000, guid: 21ea4f39c2d2be546b194480f2148ef4, type: 3}
   dashBar: {fileID: 0}
+  dashButtonYellow: 0

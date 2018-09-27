@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Water
   - GameManager
+  - Box
   layers:
   - Default
   - TransparentFX
