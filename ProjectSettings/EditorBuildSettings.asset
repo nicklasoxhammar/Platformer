@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nicklas2.unity
     guid: 654ee613b2f6f854584afa42547b27e9
+  - enabled: 1
+    path: Assets/Scenes/Nicklas3.unity
+    guid: f2db2a0292a9f2c4880276dd92acf07e
   - enabled: 0
     path: Assets/Scenes/Fannys.unity
     guid: bb26120348517480eacf8d9788ace79e

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public float dashRefreshTime = 0.05f;
 
     bool isGrounded = true;
+    bool dead = false;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDashing = false;
@@ -226,10 +227,18 @@ public class PlayerController : MonoBehaviour {
 
     public void Die() {
 
+        if (dead) { return; }
+
+        dead = true;
+
         PlayAudio("Die");
+        freezeMovement = true;
+        rb.velocity = Vector3.zero;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
+        skeletonAnimation.AnimationName = "FALLING";
 
         GM.PlayerDied();
-        Destroy(this);
     }
 
 

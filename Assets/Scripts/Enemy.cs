@@ -8,9 +8,12 @@ public class Enemy : MonoBehaviour {
     Rigidbody2D rb;
     AudioSource audioSource;
 
+
     [SerializeField] float speed = 5.0f;
     [SerializeField] float jumpForce = 500.0f;
     [SerializeField] float distance = 10.0f;
+    [SerializeField] float bombDropRate = 5.0f;
+    [SerializeField] GameObject bomb;
     [SerializeField] GameObject deathParticles;
     [SerializeField] AudioClip deathSound;
 
@@ -18,6 +21,8 @@ public class Enemy : MonoBehaviour {
 
     float startingXPos;
     float startingYPos;
+
+    float bombTimer = 0.0f;
 
     private SkeletonAnimation skeletonAnimation;
 
@@ -49,6 +54,16 @@ public class Enemy : MonoBehaviour {
         }
 
         transform.localScale = new Vector3(direction, 1.0f, 1.0f);
+
+
+        if (bombDropRate > 0) {
+            bombTimer += Time.deltaTime;
+
+            if (bombTimer > bombDropRate) {
+                DropBomb();
+                bombTimer = 0;
+            }
+        }
 
     }
 
@@ -101,10 +116,17 @@ public class Enemy : MonoBehaviour {
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
 
+        bombDropRate = 0;
+
         GameObject particles = Instantiate(deathParticles, transform.position, Quaternion.identity);
         Destroy(particles, 3.0f);
 
         Destroy(gameObject, 3.0f);
+    }
+
+
+    void DropBomb() {
+        Instantiate(bomb, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), transform.rotation);
     }
 
 

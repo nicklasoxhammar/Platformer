@@ -61,7 +61,7 @@ public class CompleteLevelSkateboard : MonoBehaviour {
         GameObject particles = Instantiate(levelCompleteParticles, transform.position, Quaternion.identity);
         Destroy(particles, 3.0f);
 
-        Destroy(gameObject);
+        transform.localScale = Vector3.zero;
 
         GM.LevelComplete();
     }

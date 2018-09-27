@@ -23,10 +23,7 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         player = FindObjectOfType<PlayerController>();
-#if (UNITY_IOS || UNITY_ANDROID)
-        dashButton = GameObject.Find("Dash Button");
-        startDashButtonColor = dashButton.GetComponent<Image>().color;
-#endif
+
         audioSource = GetComponent<AudioSource>();
 
         levelCompleteScreen = GameObject.Find("Level Complete Screen");
@@ -40,7 +37,20 @@ public class GameManager : MonoBehaviour {
 
         dashBar = GameObject.Find("Dash Bar Meter");
         startDashBarColor = dashBar.GetComponent<Image>().color;
+    }
 
+    private void Start() {
+        StartCoroutine(InitCoroutine());
+    }
+
+    //For some reason the gameManager couldnt find the dash button in Awake or Start(after loading from another scene), so we find it here instead.
+    IEnumerator InitCoroutine() {
+        yield return new WaitForEndOfFrame();
+
+#if (UNITY_IOS || UNITY_ANDROID)
+        dashButton = GameObject.Find("Dash Button");
+        startDashButtonColor = dashButton.GetComponent<Image>().color;
+#endif
     }
 
 
