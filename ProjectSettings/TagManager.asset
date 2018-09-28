@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Water
   - GameManager
+  - GiraffeBack
   layers:
   - Default
   - TransparentFX
