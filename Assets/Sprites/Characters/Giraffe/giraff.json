@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "JoxXj0IYrob/w68bU9f0ShWozrw", "spine": "3.6.53", "width": 1282.27, "height": 1329.44, "images": "./images/" },
+"skeleton": { "hash": "HcrKYvil31A7z4e/wdONUfAMfU8", "spine": "3.6.53", "width": 1282.27, "height": 1329.44, "images": "./images/" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "kropp", "parent": "root", "length": 418.46, "rotation": 178.93, "x": 723.29, "y": -922.26 },
@@ -48,7 +48,7 @@
 	{ "name": "Huvud", "bone": "Huvud", "attachment": "Huvud" },
 	{ "name": "mun", "bone": "mun", "attachment": "mun" },
 	{ "name": "GRASS", "bone": "GRASS" },
-	{ "name": "GRASS3", "bone": "GRASS3", "attachment": "GRASS3" },
+	{ "name": "GRASS3", "bone": "GRASS3" },
 	{ "name": "GRASS2", "bone": "GRASS2" },
 	{ "name": "EAR_RIGHT", "bone": "EAR_RIGHT", "attachment": "EAR_RIGHT" },
 	{ "name": "EAR_LEFT", "bone": "EAR_LEFT", "attachment": "EAR_LEFT" },
@@ -168,7 +168,6 @@
 		"slots": {
 			"EYE_LEFT": {
 				"attachment": [
-					{ "time": 0, "name": "EYE_LEFT" },
 					{ "time": 0.1, "name": "EYE_BLUNDAR_LEFT" },
 					{ "time": 0.2667, "name": "EYE_LEFT" },
 					{ "time": 0.4, "name": "EYE_BLUNDAR_LEFT" },
@@ -177,7 +176,6 @@
 			},
 			"EYE_RIGHT": {
 				"attachment": [
-					{ "time": 0, "name": "EYE_RIGHT" },
 					{ "time": 0.1, "name": "EYE.BLUNDAR_RIGHT" },
 					{ "time": 0.2667, "name": "EYE_RIGHT" },
 					{ "time": 0.4, "name": "EYE.BLUNDAR_RIGHT" },
@@ -208,43 +206,36 @@
 			"GRASS2": {
 				"rotate": [
 					{ "time": 0, "angle": 0 },
-					{ "time": 0.3333, "angle": 7.88 },
-					{ "time": 1.3333, "angle": 0 }
+					{
+						"time": 0.7,
+						"angle": 43.21,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 2.4, "angle": 0 }
 				]
 			},
 			"GRASS": {
 				"rotate": [
 					{ "time": 0, "angle": 0 },
-					{ "time": 0.7, "angle": 13.04 },
-					{ "time": 1.3333, "angle": 0 }
+					{ "time": 1.7, "angle": -41.95 },
+					{ "time": 2.3667, "angle": 0 }
 				]
 			},
 			"GRASS3": {
 				"rotate": [
 					{ "time": 0, "angle": 0 },
-					{ "time": 1, "angle": 11.04 },
-					{ "time": 1.3333, "angle": 0 }
+					{ "time": 1, "angle": 25.78 },
+					{ "time": 2.4333, "angle": 0 }
 				],
 				"scale": [
-					{ "time": 0, "x": 1, "y": 1 }
+					{ "time": 0, "x": 1, "y": 1 },
+					{ "time": 1.4667, "x": 1.404, "y": 1 },
+					{ "time": 2.4333, "x": 1, "y": 1 }
 				]
 			}
 		}
 	},
 	"EatingGrassDown": {
-		"slots": {
-			"GRASS": {
-				"attachment": [
-					{ "time": 0, "name": "GRASS" },
-					{ "time": 1.6667, "name": "GRASS" }
-				]
-			},
-			"GRASS2": {
-				"attachment": [
-					{ "time": 0, "name": "GRASS2" }
-				]
-			}
-		},
 		"bones": {
 			"Hals_Bottom": {
 				"rotate": [
@@ -262,78 +253,6 @@
 						"curve": [ 0.25, 0, 0.75, 1 ]
 					},
 					{ "time": 1.6667, "angle": -40.61 }
-				],
-				"translate": [
-					{ "time": 1.1667, "x": 0, "y": 0, "curve": "stepped" },
-					{ "time": 1.6667, "x": 0, "y": 0 }
-				]
-			},
-			"GRASS2": {
-				"rotate": [
-					{ "time": 0, "angle": 0 },
-					{ "time": 0.9333, "angle": 27.08 },
-					{ "time": 1.6667, "angle": 0 }
-				]
-			},
-			"GRASS": {
-				"rotate": [
-					{ "time": 0, "angle": 0 },
-					{ "time": 0.8333, "angle": -33.57 },
-					{ "time": 1.6667, "angle": 0 }
-				]
-			},
-			"GRASS3": {
-				"rotate": [
-					{ "time": 0, "angle": 0 },
-					{ "time": 0.4, "angle": 18.78 },
-					{ "time": 1.6667, "angle": 0 }
-				]
-			},
-			"mun": {
-				"rotate": [
-					{ "time": 0, "angle": 0, "curve": "stepped" },
-					{ "time": 1.6667, "angle": 0 }
-				],
-				"translate": [
-					{ "time": 0, "x": 0, "y": 0 },
-					{ "time": 1.0667, "x": -1.77, "y": 2.67 },
-					{ "time": 1.6667, "x": 0, "y": 0 }
-				],
-				"scale": [
-					{ "time": 0, "x": 1, "y": 1 },
-					{ "time": 0.5667, "x": 1.133, "y": 1.243 },
-					{ "time": 1.6667, "x": 1, "y": 1 }
-				]
-			},
-			"SVANS": {
-				"rotate": [
-					{
-						"time": 0,
-						"angle": 0,
-						"curve": [ 0.25, 0, 0.75, 1 ]
-					},
-					{
-						"time": 1.0667,
-						"angle": -16,
-						"curve": [ 0.25, 0, 0.75, 1 ]
-					},
-					{ "time": 1.6667, "angle": 0 }
-				]
-			},
-			"SVANSTOFS": {
-				"rotate": [
-					{
-						"time": 0,
-						"angle": 0,
-						"curve": [ 0.25, 0, 0.75, 1 ]
-					},
-					{ "time": 0.5333, "angle": 22.75 },
-					{
-						"time": 1.2,
-						"angle": -25.88,
-						"curve": [ 0.25, 0, 0.75, 1 ]
-					},
-					{ "time": 1.6667, "angle": 0 }
 				]
 			}
 		}
@@ -354,21 +273,6 @@
 					{ "time": 0.1667, "name": "EYE_RIGHT" },
 					{ "time": 0.2667, "name": "EYE.BLUNDAR_RIGHT" },
 					{ "time": 0.3667, "name": "EYE_RIGHT" }
-				]
-			},
-			"GRASS": {
-				"attachment": [
-					{ "time": 0, "name": null }
-				]
-			},
-			"GRASS2": {
-				"attachment": [
-					{ "time": 0, "name": null }
-				]
-			},
-			"GRASS3": {
-				"attachment": [
-					{ "time": 0, "name": "GRASS3" }
 				]
 			}
 		},
@@ -555,18 +459,6 @@
 		}
 	},
 	"Idle": {
-		"slots": {
-			"EYE_RIGHT": {
-				"attachment": [
-					{ "time": 0.3, "name": "EYE_RIGHT" }
-				]
-			},
-			"GRASS3": {
-				"attachment": [
-					{ "time": 0, "name": "GRASS3" }
-				]
-			}
-		},
 		"bones": {
 			"mun": {
 				"rotate": [
@@ -584,61 +476,10 @@
 					{ "time": 2.3333, "x": 1, "y": 1 }
 				]
 			},
-			"GRASS": {
-				"rotate": [
-					{ "time": 0, "angle": 0 },
-					{
-						"time": 0.8333,
-						"angle": 15.71,
-						"curve": [ 0.25, 0, 0.75, 1 ]
-					},
-					{ "time": 1.6667, "angle": 0 }
-				]
-			},
-			"GRASS2": {
-				"rotate": [
-					{ "time": 0, "angle": 0 },
-					{ "time": 0.8, "angle": 5.16 },
-					{ "time": 1.6667, "angle": 0 }
-				]
-			},
-			"GRASS3": {
-				"rotate": [
-					{ "time": 0, "angle": 0 },
-					{ "time": 0.3667, "angle": -1.83 },
-					{ "time": 0.7667, "angle": 6.69 },
-					{ "time": 1.1667, "angle": -12.12 },
-					{ "time": 1.6667, "angle": 0 }
-				]
-			},
-			"EAR_RIGHT": {
-				"rotate": [
-					{ "time": 0, "angle": 0, "curve": "stepped" },
-					{ "time": 1.6667, "angle": 0 }
-				]
-			},
 			"Huvud": {
 				"rotate": [
 					{ "time": 0, "angle": 0 },
 					{ "time": 0.7, "angle": -2.76 },
-					{ "time": 2.3333, "angle": 0 }
-				]
-			},
-			"SVANSTOFS": {
-				"rotate": [
-					{ "time": 0, "angle": 0 },
-					{ "time": 0.7333, "angle": 32.32 },
-					{ "time": 2.3333, "angle": 0 }
-				]
-			},
-			"SVANS": {
-				"rotate": [
-					{ "time": 0, "angle": 0 },
-					{
-						"time": 1.1667,
-						"angle": -6.91,
-						"curve": [ 0.25, 0, 0.75, 1 ]
-					},
 					{ "time": 2.3333, "angle": 0 }
 				]
 			},
@@ -731,14 +572,34 @@
 			}
 		}
 	},
-	"MoveThroatDown": {
-		"slots": {
-			"GRASS": {
-				"attachment": [
-					{ "time": 0, "name": "GRASS" }
+	"MoveTail": {
+		"bones": {
+			"SVANS": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.7333,
+						"angle": -16,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.6667, "angle": 0 }
+				]
+			},
+			"SVANSTOFS": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.4667, "angle": 22.75 },
+					{ "time": 1, "angle": -38.88 },
+					{ "time": 1.6667, "angle": 0 }
 				]
 			}
-		},
+		}
+	},
+	"MoveThroatDown": {
 		"bones": {
 			"Hals_Bottom": {
 				"rotate": [
@@ -781,13 +642,6 @@
 		}
 	},
 	"MoveThroatUp": {
-		"slots": {
-			"GRASS2": {
-				"attachment": [
-					{ "time": 0, "name": "GRASS2" }
-				]
-			}
-		},
 		"bones": {
 			"Hals_Bottom": {
 				"rotate": [
@@ -806,7 +660,6 @@
 			},
 			"EAR_RIGHT": {
 				"rotate": [
-					{ "time": 0, "angle": 0, "curve": "stepped" },
 					{ "time": 0.7, "angle": 0 },
 					{ "time": 1.1333, "angle": -52.62, "curve": "stepped" },
 					{
@@ -837,42 +690,19 @@
 		"slots": {
 			"EYE_LEFT": {
 				"attachment": [
-					{ "time": 0, "name": "EYE_BLUNDAR_LEFT" },
-					{ "time": 2.3333, "name": "EYE_BLUNDAR_LEFT" }
+					{ "time": 0, "name": "EYE_BLUNDAR_LEFT" }
 				]
 			},
 			"EYE_RIGHT": {
 				"attachment": [
-					{ "time": 0, "name": "EYE.BLUNDAR_RIGHT" },
-					{ "time": 2.3333, "name": "EYE.BLUNDAR_RIGHT" }
-				]
-			},
-			"GRASS": {
-				"attachment": [
-					{ "time": 0, "name": null }
-				]
-			},
-			"GRASS2": {
-				"attachment": [
-					{ "time": 0, "name": null }
-				]
-			},
-			"kropp": {
-				"attachment": [
-					{ "time": 0, "name": "kropp" },
-					{ "time": 2.3333, "name": "kropp" }
+					{ "time": 0, "name": "EYE.BLUNDAR_RIGHT" }
 				]
 			}
 		},
 		"bones": {
 			"kropp": {
 				"translate": [
-					{ "time": 0, "x": 0, "y": -142.94, "curve": "stepped" },
-					{ "time": 2.3333, "x": 0, "y": -142.94 }
-				],
-				"scale": [
-					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
-					{ "time": 2.3333, "x": 1, "y": 1 }
+					{ "time": 0, "x": 0, "y": -142.94 }
 				]
 			},
 			"Hals_Bottom": {
@@ -914,54 +744,45 @@
 			},
 			"ben1_2": {
 				"rotate": [
-					{ "time": 0, "angle": -63.31, "curve": "stepped" },
-					{ "time": 2.3333, "angle": -63.31 }
+					{ "time": 0, "angle": -63.31 }
 				]
 			},
 			"ben1_1": {
 				"rotate": [
-					{ "time": 0, "angle": 144.63, "curve": "stepped" },
-					{ "time": 2.3333, "angle": 144.63 }
+					{ "time": 0, "angle": 144.63 }
 				]
 			},
 			"ben2_2_copy_2": {
 				"rotate": [
-					{ "time": 0, "angle": -56.46, "curve": "stepped" },
-					{ "time": 2.3333, "angle": -56.46 }
+					{ "time": 0, "angle": -56.46 }
 				]
 			},
 			"ben2_1_copy_2": {
 				"rotate": [
-					{ "time": 0, "angle": 140.88, "curve": "stepped" },
-					{ "time": 2.3333, "angle": 140.88 }
+					{ "time": 0, "angle": 140.88 }
 				]
 			},
 			"ben3_2_copy": {
 				"rotate": [
-					{ "time": 0, "angle": -62.98, "curve": "stepped" },
-					{ "time": 2.3333, "angle": -62.98 }
+					{ "time": 0, "angle": -62.98 }
 				]
 			},
 			"ben3_1_copy": {
 				"rotate": [
-					{ "time": 0, "angle": 145.83, "curve": "stepped" },
-					{ "time": 2.3333, "angle": 145.83 }
+					{ "time": 0, "angle": 145.83 }
 				]
 			},
 			"ben4_2_copy_2": {
 				"rotate": [
-					{ "time": 0, "angle": -69.1, "curve": "stepped" },
-					{ "time": 2.3333, "angle": -69.1 }
+					{ "time": 0, "angle": -69.1 }
 				]
 			},
 			"ben4_1_copy_2": {
 				"rotate": [
-					{ "time": 0, "angle": 136.35, "curve": "stepped" },
-					{ "time": 2.3333, "angle": 136.35 }
+					{ "time": 0, "angle": 136.35 }
 				],
 				"translate": [
-					{ "time": 0, "x": 2.06, "y": 4.04, "curve": "stepped" },
-					{ "time": 2.3333, "x": 2.06, "y": 4.04 }
+					{ "time": 0, "x": 2.06, "y": 4.04 }
 				]
 			},
 			"SVANSTOFS": {
