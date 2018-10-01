@@ -1,0 +1,160 @@
+
+Enemy.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ARM LEFT
+  rotate: false
+  xy: 332, 31
+  size: 24, 25
+  orig: 24, 25
+  offset: 0, 0
+  index: -1
+BACK FOOT
+  rotate: false
+  xy: 336, 177
+  size: 171, 77
+  orig: 171, 77
+  offset: 0, 0
+  index: -1
+BODY
+  rotate: true
+  xy: 145, 145
+  size: 109, 189
+  orig: 109, 189
+  offset: 0, 0
+  index: -1
+Back Forearm
+  rotate: false
+  xy: 145, 38
+  size: 70, 27
+  orig: 70, 27
+  offset: 0, 0
+  index: -1
+Back Hand
+  rotate: false
+  xy: 300, 30
+  size: 30, 26
+  orig: 30, 26
+  offset: 0, 0
+  index: -1
+Back Knee
+  rotate: false
+  xy: 102, 25
+  size: 41, 41
+  orig: 41, 41
+  offset: 0, 0
+  index: -1
+Back Lower Leg
+  rotate: true
+  xy: 2, 26
+  size: 40, 98
+  orig: 40, 98
+  offset: 0, 0
+  index: -1
+Back Thigh
+  rotate: true
+  xy: 435, 136
+  size: 39, 72
+  orig: 39, 72
+  offset: 0, 0
+  index: -1
+Back Upper Arm
+  rotate: false
+  xy: 316, 58
+  size: 79, 76
+  orig: 79, 76
+  offset: 0, 0
+  index: -1
+EYEBROWS
+  rotate: false
+  xy: 2, 2
+  size: 26, 22
+  orig: 26, 22
+  offset: 0, 0
+  index: -1
+FRONT FOOT
+  rotate: false
+  xy: 145, 67
+  size: 169, 76
+  orig: 169, 76
+  offset: 0, 0
+  index: -1
+Front Elbow
+  rotate: false
+  xy: 30, 2
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+Front Forearm
+  rotate: false
+  xy: 437, 80
+  size: 54, 54
+  orig: 54, 54
+  offset: 0, 0
+  index: -1
+Front Hand
+  rotate: false
+  xy: 186, 11
+  size: 28, 25
+  orig: 28, 25
+  offset: 0, 0
+  index: -1
+Front Knee
+  rotate: false
+  xy: 260, 27
+  size: 38, 38
+  orig: 38, 38
+  offset: 0, 0
+  index: -1
+Front Lower Leg
+  rotate: true
+  xy: 336, 136
+  size: 39, 97
+  orig: 39, 97
+  offset: 0, 0
+  index: -1
+Front Thigh
+  rotate: true
+  xy: 437, 44
+  size: 34, 72
+  orig: 34, 72
+  offset: 0, 0
+  index: -1
+Front Upper Arm
+  rotate: false
+  xy: 397, 38
+  size: 38, 96
+  orig: 38, 96
+  offset: 0, 0
+  index: -1
+HEAD
+  rotate: false
+  xy: 2, 68
+  size: 141, 186
+  orig: 141, 186
+  offset: 0, 0
+  index: -1
+NECK
+  rotate: true
+  xy: 145, 12
+  size: 24, 39
+  orig: 24, 39
+  offset: 0, 0
+  index: -1
+Pupill
+  rotate: true
+  xy: 216, 7
+  size: 27, 37
+  orig: 27, 37
+  offset: 0, 0
+  index: -1
+ÖGA
+  rotate: true
+  xy: 217, 36
+  size: 29, 41
+  orig: 29, 41
+  offset: 0, 0
+  index: -1

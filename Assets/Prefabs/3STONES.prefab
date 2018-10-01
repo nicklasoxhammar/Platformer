@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4903625667688620}
   - component: {fileID: 212773843276470940}
   - component: {fileID: 70183596666768636}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stone_green_x256_09 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
