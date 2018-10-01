@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 20983800415608288}
   - component: {fileID: 81885279593895810}
   - component: {fileID: 114878345272176284}
-  - component: {fileID: 114738541326811404}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -38,8 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4143468655043854}
-  - component: {fileID: 114576320104945428}
-  - component: {fileID: 114082338224425106}
+  - component: {fileID: 114738541326811404}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -121,11 +119,9 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1419803915725668}
   m_Enabled: 1
-  
 --- !u!114 &114738541326811404
-
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642320314412604}
@@ -164,6 +160,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minShakeValue: 0.1
-  maxShakeValue: 10
-  shake: 0
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Cinemachine.CinemachineBrain+BrainEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Cinemachine.CinemachineBrain+VcamEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
