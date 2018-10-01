@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private LayerMask whatIsGround;
 
 
-    public SkeletonAnimation skeletonAnimation;
+    private SkeletonAnimation skeletonAnimation;
 
 
 

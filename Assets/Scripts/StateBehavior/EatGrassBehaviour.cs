@@ -30,8 +30,6 @@ public class EatGrassBehaviour : StateMachineBehaviour {
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         skeletonAnimation = animator.GetComponent<SkeletonAnimation>();
 
-        AnimationState state = new AnimationState();
-
         goToIdleTimer = Random.Range(goToIdleMinTime, goToIdleMaxTime);
         SetBlinkTimer();
 
