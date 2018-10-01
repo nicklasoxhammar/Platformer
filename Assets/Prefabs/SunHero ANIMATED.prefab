@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 61614769280968648}
   - component: {fileID: 58952694557145768}
   - component: {fileID: 82278820544231872}
-  - component: {fileID: 81535422233064792}
   m_Layer: 0
   m_Name: SunHero ANIMATED
   m_TagString: Player
@@ -179,13 +178,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!81 &81535422233064792
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1856417450700274}
-  m_Enabled: 1
 --- !u!82 &82278820544231872
 AudioSource:
   m_ObjectHideFlags: 1

@@ -37,7 +37,6 @@ public class Box : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D collision) {
         if (collision.gameObject.tag == "Player") {
             player = collision.gameObject.GetComponent<PlayerController>();
-            Debug.Log(player.isCarryingBox);
             if (player.isCarryingBox) { return; }
 
             if (CrossPlatformInputManager.GetButtonDown("Dash") && canPickUp) {

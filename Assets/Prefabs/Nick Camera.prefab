@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114763271789199024}
   - component: {fileID: 114227308130014478}
   - component: {fileID: 114615224057915892}
+  - component: {fileID: 81552954914906028}
   m_Layer: 0
   m_Name: Nick Camera
   m_TagString: MainCamera
@@ -67,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406643587611136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.92, y: 6.6600003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4126767308951854}
@@ -98,7 +99,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 8
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -114,6 +115,13 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!81 &81552954914906028
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406643587611136}
+  m_Enabled: 1
 --- !u!114 &114227308130014478
 MonoBehaviour:
   m_ObjectHideFlags: 1
