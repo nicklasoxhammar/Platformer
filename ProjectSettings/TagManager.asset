@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Water
   - GameManager
+  - Box
   - GiraffeBack
   - EndOfGround
   layers:

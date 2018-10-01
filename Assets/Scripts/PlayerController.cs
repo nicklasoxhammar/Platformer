@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
     public float dashRefreshTime = 0.05f;
 
     bool isGrounded = true;
+    bool dead = false;
+    bool collidingWithBox;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDashing = false;
@@ -20,13 +22,20 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public bool canDash = true;
     [HideInInspector] public float dashTime;
     [HideInInspector] public bool isCarryingBox = false;
-
-    public float direction = 1.0f;
+    [HideInInspector] public float direction = 1.0f;
 
     Transform groundCheck;
     const float groundedRadius = 0.4f;
 
     [SerializeField] private LayerMask whatIsGround;
+
+    [SerializeField] AudioClip walkingSound;
+    [SerializeField] AudioClip jumpingSound;
+    [SerializeField] AudioClip dashingSound;
+    [SerializeField] AudioClip deathSound;
+
+    AudioSource audioSource;
+    GameManager GM;
 
 
     private SkeletonAnimation skeletonAnimation;
@@ -35,7 +44,9 @@ public class PlayerController : MonoBehaviour {
 
 
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
+        GM = FindObjectOfType<GameManager>();
 
         rb = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
@@ -105,6 +116,7 @@ public class PlayerController : MonoBehaviour {
             Dash(dashForce);
 
             direction = 1.0f;
+            PlayAudio("Walk");
         }
         //Left
         else if (CrossPlatformInputManager.GetAxisRaw("Horizontal") < 0f) {
@@ -114,13 +126,56 @@ public class PlayerController : MonoBehaviour {
             Dash(-dashForce);
 
             direction = -1.0f;
+            PlayAudio("Walk");
 
         }
         else {
+            if (audioSource.clip == walkingSound) {
+                audioSource.Stop();
+            }
             rb.velocity = new Vector2(0f, rb.velocity.y);
             ShowRightAnimation();
             //Dash when no movement
             Dash(dashForce);
+        }
+
+
+    }
+
+
+    void PlayAudio(string action) {
+
+        switch (action) {
+            case "Walk":
+                if (isGrounded && !audioSource.isPlaying) {
+                    audioSource.clip = walkingSound;
+                    audioSource.Play();
+                }
+                break;
+
+            case "Jump":
+                if (isGrounded) {
+                    audioSource.clip = jumpingSound;
+                    audioSource.Play();
+                }
+                break;
+
+            case "Dash":
+                audioSource.clip = dashingSound;
+                if (!audioSource.isPlaying) {
+                    audioSource.Play();
+                }
+                break;
+
+            case "Die":
+                audioSource.clip = deathSound;
+                if (!audioSource.isPlaying) {
+                    audioSource.Play();
+                }
+                break;
+
+            default:
+                break;
         }
 
 
@@ -132,6 +187,7 @@ public class PlayerController : MonoBehaviour {
         if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded) {
 
             rb.AddForce(new Vector2(0.0f, jumpForce));
+            PlayAudio("Jump");
         }
     }
 
@@ -154,11 +210,12 @@ public class PlayerController : MonoBehaviour {
 
     private void Dash(float force) {
 
-        if (CrossPlatformInputManager.GetButton("Dash") && canDash && !isCarryingBox) {
+        if (CrossPlatformInputManager.GetButton("Dash") && canDash && !isCarryingBox && !collidingWithBox) {
             isDashing = true;
             rb.velocity = new Vector2(force, rb.velocity.y);
             skeletonAnimation.AnimationName = "RUN";
             Camera.main.gameObject.GetComponent<CameraShake>().shake = true;
+            PlayAudio("Dash");
 
         }
         else {
@@ -171,15 +228,33 @@ public class PlayerController : MonoBehaviour {
 
     public void Die() {
 
+        if (dead) { return; }
+
+        dead = true;
+
+        PlayAudio("Die");
         freezeMovement = true;
-        Invoke("ReloadScene", 3);
+        rb.velocity = Vector3.zero;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
+        skeletonAnimation.AnimationName = "FALLING";
 
+        GM.PlayerDied();
     }
 
-    void ReloadScene() {
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+    private void OnCollisionStay2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Box") {
+            collidingWithBox = true;
+            GM.dashButtonYellow = true;
+        }
     }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Box") {
+            collidingWithBox = false;
+            GM.dashButtonYellow = false;
+        }
+    }
+
 
 }

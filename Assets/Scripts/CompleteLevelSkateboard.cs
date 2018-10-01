@@ -8,10 +8,14 @@ public class CompleteLevelSkateboard : MonoBehaviour {
     private Vector3 offset;
 
     [SerializeField] GameObject levelCompleteParticles;
+    [SerializeField] AudioClip skateboardSound;
+
     GameManager GM;
+    AudioSource audioSource;
 
     private void Start() {
         GM = (GameManager)FindObjectOfType(typeof(GameManager));
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter2D(Collision2D col) {
@@ -29,6 +33,9 @@ public class CompleteLevelSkateboard : MonoBehaviour {
     }
 
     void CompleteLevel() {
+
+        audioSource.clip = skateboardSound;
+        audioSource.Play();
        
         player.GetComponent<PlayerController>().freezeMovement = true;
         Destroy(player.GetComponent<Rigidbody2D>());
@@ -54,7 +61,7 @@ public class CompleteLevelSkateboard : MonoBehaviour {
         GameObject particles = Instantiate(levelCompleteParticles, transform.position, Quaternion.identity);
         Destroy(particles, 3.0f);
 
-        Destroy(gameObject);
+        transform.localScale = Vector3.zero;
 
         GM.LevelComplete();
     }
