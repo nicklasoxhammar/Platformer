@@ -7,8 +7,15 @@ public class GameManager : MonoBehaviour {
 
     GameObject levelCompleteScreen;
     GameObject deathScreen;
+    GameObject challengesScreen;
+    Text challengeOneText;
+    Text challengeTwoText;
+    Text challengeThreeText;
+
     [SerializeField] AudioClip levelCompleteSound;
     Text flowerCounterText;
+
+    List<Challenge> challenges;
 
     //Challenges
     [Header("Challenges - pick two!")]
@@ -17,6 +24,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField] bool neverPickUpBox = false;
     [SerializeField] bool neverDash = false;
 
+    private float timeChallengeTimer = 0.0f;
+    [HideInInspector] public bool hasPickedUpBox = false;
+    [HideInInspector] public bool hasDashed = false;
 
     [HideInInspector] public GameObject dashBar;
     [HideInInspector] public bool dashButtonYellow = false;
@@ -26,14 +36,28 @@ public class GameManager : MonoBehaviour {
     private GameObject dashButton;
     private int flowersTotal = 0;
     private int pickedFlowers = 0;
+    private bool started = false;
     PlayerController player;
+
+
+    //Player prefs stuffs
+    int currentLevel;
+    int challengeOneComplete;
+    int challengeTwoComplete;
+    int challengeThreeComplete;
 
     AudioSource audioSource;
 
     private void Awake() {
         player = FindObjectOfType<PlayerController>();
+        player.freezeMovement = true;
 
         audioSource = GetComponent<AudioSource>();
+
+        challengesScreen = GameObject.Find("Challenges Screen");
+        challengeOneText = GameObject.Find("Challenge One").GetComponent<Text>();
+        challengeTwoText = GameObject.Find("Challenge Two").GetComponent<Text>();
+        challengeThreeText = GameObject.Find("Challenge Three").GetComponent<Text>();
 
         levelCompleteScreen = GameObject.Find("Level Complete Screen");
         levelCompleteScreen.SetActive(false);
@@ -42,14 +66,71 @@ public class GameManager : MonoBehaviour {
         deathScreen.SetActive(false);
 
 
-        flowerCounterText = GameObject.Find("Flower Counter Text").GetComponent<Text>();
+        //flowerCounterText = GameObject.Find("Flower Counter Text").GetComponent<Text>();
 
         dashBar = GameObject.Find("Dash Bar Meter");
         startDashBarColor = dashBar.GetComponent<Image>().color;
+        dashBar.transform.parent.gameObject.SetActive(false);
     }
 
     private void Start() {
         StartCoroutine(InitCoroutine());
+
+        GetPlayerPrefs();
+        HandleChallenges();
+    }
+
+    private void HandleChallenges() {
+        challenges = new List<Challenge>();
+
+        List<Challenge> currentChallenges = new List<Challenge> {
+            new Challenge("Time", timeChallenge, "Complete in " + timeChallenge + " seconds"),
+            new Challenge("Enemies", eliminateAllEnemies, "Eliminate all enemies"),
+            new Challenge("Box", neverPickUpBox, "Don't pick up a box"),
+            new Challenge("Dash", neverDash, "No dashing!")
+         };
+
+        foreach (Challenge c in currentChallenges) {
+
+            if (c.boolValue || c.floatValue > 0.1f) {
+                challenges.Add(c);
+            }
+
+            if (challenges.Count == 2) { break; }
+        }
+
+
+        if (challengeOneComplete == 1) {
+            challengeOneText.text = challengeOneText.text + " - Completed!";
+        }
+
+        if (challengeTwoComplete == 1) {
+            challengeTwoText.text = challenges[0].challengeText + " - Completed!";
+        }
+        else {
+            challengeTwoText.text = challenges[0].challengeText;
+        }
+
+
+        if (challengeThreeComplete == 1) {
+            challengeThreeText.text = challenges[1].challengeText + " - Completed!";
+        }
+        else {
+            challengeThreeText.text = challenges[1].challengeText;
+        }
+
+    }
+
+
+    public void StartButtonPressed() {
+        started = true;
+
+        dashBar.transform.parent.gameObject.SetActive(true);
+        challengesScreen.SetActive(false);
+
+        player.freezeMovement = false;
+
+
     }
 
     //For some reason the gameManager couldnt find the dash button in Awake or Start(after loading from another scene), so we find it here instead.
@@ -66,9 +147,19 @@ public class GameManager : MonoBehaviour {
     void Update() {
         HandleDashBar();
         SetDashButtonColor();
+
+        if (started) {
+
+            if (challenges[0].challengeText == "Time" || challenges[1].challengeText == "Time") {
+                timeChallengeTimer += Time.deltaTime;
+            }
+
+        }
     }
 
     public void LevelComplete() {
+        started = false;
+
         audioSource.clip = levelCompleteSound;
         audioSource.Play();
         levelCompleteScreen.SetActive(true);
@@ -85,7 +176,7 @@ public class GameManager : MonoBehaviour {
 
     public void pickedFlower() {
         pickedFlowers++;
-        flowerCounterText.text = pickedFlowers + "/" + flowersTotal;
+        //flowerCounterText.text = pickedFlowers + "/" + flowersTotal;
 
         if (pickedFlowers == flowersTotal) {
             //ALLA PLOCKADE.
@@ -97,7 +188,7 @@ public class GameManager : MonoBehaviour {
 
     public void AddFlower() {
         flowersTotal++;
-        flowerCounterText.text = pickedFlowers + "/" + flowersTotal;
+        //flowerCounterText.text = pickedFlowers + "/" + flowersTotal;
     }
 
     private void HandleDashBar() {
@@ -133,32 +224,62 @@ public class GameManager : MonoBehaviour {
             dashButton.GetComponent<Image>().color = startDashButtonColor;
         }
 
-        /*if (player.isCarryingBox) {
-            Color yellow = Color.yellow;
-            yellow.a = 0.5f;
-            dashButton.GetComponent<Image>().color = yellow;
-        }
-        else {
-            dashButton.GetComponent<Image>().color = startDashButtonColor;
-        }*/
-
     }
 
     void SetPlayerPrefs() {
         int progress = PlayerPrefs.GetInt("Progress", 1);
-        int currentLevel = SceneManager.GetActiveScene().buildIndex;
-
-        int previousScore = PlayerPrefs.GetInt("Level " + currentLevel + " flowers picked", 0);
 
         if (currentLevel >= progress) {
             PlayerPrefs.SetInt("Progress", currentLevel + 1);
         }
 
-        if (pickedFlowers > previousScore) {
-            PlayerPrefs.SetInt("Level " + currentLevel + " flowers picked", pickedFlowers);
+        CheckIfChallengesCompleted();
+
+        if (pickedFlowers == flowersTotal) { PlayerPrefs.SetInt("Level " + currentLevel + " challenge one", 1); }
+        if (challenges[0].completed) { PlayerPrefs.SetInt("Level " + currentLevel + " challenge two", 1); }
+        if (challenges[1].completed) { PlayerPrefs.SetInt("Level " + currentLevel + " challenge three", 1); }
+
+    }
+
+    void GetPlayerPrefs() {
+
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
+
+        //1 = challenge complete
+        challengeOneComplete = PlayerPrefs.GetInt("Level " + currentLevel + " challenge one", 0);
+        challengeTwoComplete = PlayerPrefs.GetInt("Level " + currentLevel + " challenge two", 0);
+        challengeThreeComplete = PlayerPrefs.GetInt("Level " + currentLevel + " challenge three", 0);
+
+    }
+
+
+    void CheckIfChallengesCompleted() {
+
+        foreach (Challenge c in challenges) {
+
+            switch (c.challengeName) {
+
+                case "Time":
+                    if (timeChallengeTimer <= timeChallenge) { c.completed = true; }
+                    break;
+
+                case "Enemies":
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    if (enemies.Length == 0) { c.completed = true; }
+                    break;
+
+                case "Box":
+                    if (!hasPickedUpBox) { c.completed = true; }
+                    break;
+
+                case "Dash":
+                    if (!hasDashed) { c.completed = true; }
+                    break;
+
+                default: break;
+            }
         }
 
-        PlayerPrefs.SetInt("Level " + currentLevel + " total flowers", flowersTotal);
     }
 
     public void MainMenu() {
