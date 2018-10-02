@@ -10,6 +10,14 @@ public class GameManager : MonoBehaviour {
     [SerializeField] AudioClip levelCompleteSound;
     Text flowerCounterText;
 
+    //Challenges
+    [Header("Challenges - pick two!")]
+    [SerializeField] float timeChallenge = 0.0f;
+    [SerializeField] bool eliminateAllEnemies = false;
+    [SerializeField] bool neverPickUpBox = false;
+    [SerializeField] bool neverDash = false;
+
+
     [HideInInspector] public GameObject dashBar;
     [HideInInspector] public bool dashButtonYellow = false;
 
