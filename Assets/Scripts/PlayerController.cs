@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
     GameManager GM;
 
 
-    public SkeletonAnimation skeletonAnimation;
+    private SkeletonAnimation skeletonAnimation;
 
 
 
