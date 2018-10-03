@@ -12,7 +12,6 @@ public class SleepBehaviour : StateMachineBehaviour {
     private string sleepAnimationName = "Sleep";
     private string moveEarsAnimationName = "MoveEarsSlow";
     string getUpAnimationName = "GetUp";
-    string idleAnimationName = "Idle";
 
 
     private float moveEarsTimer;

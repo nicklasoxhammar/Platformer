@@ -258,7 +258,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 500
   distance: 10
-  dropsBombs: 0
+  bombDropRate: 5
   bomb: {fileID: 1381776895885908, guid: a63e225854e365f4180b2e760fcc969a, type: 2}
   deathParticles: {fileID: 1730898597688678, guid: 65cabca7ef0d8ca46bd2c41b82b9604c,
     type: 2}
