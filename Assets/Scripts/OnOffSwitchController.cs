@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
+
 
 public class OnOffSwitchController : MonoBehaviour {
 
@@ -39,9 +41,10 @@ public class OnOffSwitchController : MonoBehaviour {
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+
+        if(collision.tag == "Player" && CrossPlatformInputManager.GetButtonDown("Dash"))
         {
             TurnSwitch();
         }

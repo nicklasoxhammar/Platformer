@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 using Spine.Unity;
 public class PlayerController : MonoBehaviour {
 
+
+
+    private string fallingAnimationName = "FALLING";
+    private string jumpAnimationName = "JUMP";
+    private string idleAnimationName = "STANDING";
+
+
     public float speed = 400.0f;
     public float jumpForce = 500.0f;
     public float dashForce = 50.0f;
@@ -14,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 
     bool isGrounded = true;
     bool dead = false;
-    bool collidingWithBox;
+    public bool collidingWithInteractableThing;    
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDashing = false;
@@ -194,15 +201,15 @@ public class PlayerController : MonoBehaviour {
 
     private void ShowRightAnimation() {
         if (rb.velocity.y < 0 && !isGrounded) {
-            skeletonAnimation.AnimationName = "FALLING";
+            skeletonAnimation.AnimationName = fallingAnimationName;
 
         }
         else if (rb.velocity.y > 0 && !isGrounded) {
-            skeletonAnimation.AnimationName = "JUMP";
+            skeletonAnimation.AnimationName = jumpAnimationName;
 
         }
         else {
-            skeletonAnimation.AnimationName = "STANDING";
+            skeletonAnimation.AnimationName = idleAnimationName;
         }
     }
 
@@ -210,7 +217,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Dash(float force) {
 
-        if (CrossPlatformInputManager.GetButton("Dash") && canDash && !isCarryingBox && !collidingWithBox) {
+        if (CrossPlatformInputManager.GetButton("Dash") && canDash && !isCarryingBox && !collidingWithInteractableThing) {
             isDashing = true;
             rb.velocity = new Vector2(force, rb.velocity.y);
             skeletonAnimation.AnimationName = "RUN";
@@ -237,24 +244,60 @@ public class PlayerController : MonoBehaviour {
         rb.velocity = Vector3.zero;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
-        skeletonAnimation.AnimationName = "FALLING";
+        skeletonAnimation.AnimationName = fallingAnimationName;
 
         GM.PlayerDied();
     }
 
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "InteractableThing")
+        {
+            DashButtonIsInteractable(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "InteractableThing")
+        {
+            DashButtonIsInteractable(false);
+        }
+    }
+
+
     private void OnCollisionStay2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Box") {
-            collidingWithBox = true;
-            GM.dashButtonYellow = true;
+        if (collision.gameObject.tag == "InteractableThing") {
+            DashButtonIsInteractable(true);
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Box") {
-            collidingWithBox = false;
-            GM.dashButtonYellow = false;
+        if (collision.gameObject.tag == "InteractableThing") {
+            DashButtonIsInteractable(false);
         }
     }
+
+
+    private void DashButtonIsInteractable(bool status)
+    {
+        collidingWithInteractableThing = status;
+        GM.dashButtonYellow = status;
+    }
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "DeadlyThing")
+        {
+            Die();
+        }
+    }
+
+
 
 
 }

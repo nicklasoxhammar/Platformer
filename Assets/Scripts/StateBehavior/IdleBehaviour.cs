@@ -10,10 +10,7 @@ public class IdleBehaviour : StateMachineBehaviour {
     private bool fromSleep = true;
     string getUpAnimationName = "GetUp";
     string idleAnimationName = "Idle";
-    string eatGrassAnimationName = "EatUpGrass";
-    private string moveThroatDown = "MoveThroatDown";
     private string MoveThroatUp = "MoveThroatUp";
-    private string idleDown = "EatingGrassDown";
     private string moveTail = "MoveTail";
 
     private SkeletonAnimation skeletonAnimation;
@@ -49,7 +46,6 @@ public class IdleBehaviour : StateMachineBehaviour {
         else
         {
             skeletonAnimation.AnimationState.SetAnimation(0, MoveThroatUp, false);
-            //skeletonAnimation.AnimationState.SetAnimation(2, eatGrassAnimationName, true);
         }
         skeletonAnimation.AnimationState.AddAnimation(0, idleAnimationName, true, 0f);
 

@@ -67,6 +67,13 @@ Back Upper Arm
   orig: 79, 76
   offset: 0, 0
   index: -1
+EYE
+  rotate: true
+  xy: 217, 36
+  size: 29, 41
+  orig: 29, 41
+  offset: 0, 0
+  index: -1
 EYEBROWS
   rotate: false
   xy: 2, 2
@@ -149,12 +156,5 @@ Pupill
   xy: 216, 7
   size: 27, 37
   orig: 27, 37
-  offset: 0, 0
-  index: -1
-ÖGA
-  rotate: true
-  xy: 217, 36
-  size: 29, 41
-  orig: 29, 41
   offset: 0, 0
   index: -1
