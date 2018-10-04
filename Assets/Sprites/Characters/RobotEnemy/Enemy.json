@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "JNepqa/ofKlrEhh5pMkwA0o2ZF4", "spine": "3.6.53", "width": 233, "height": 532, "images": "./images/" },
+"skeleton": { "hash": "gz7wcIe3xomXC1XLWtfkh/CnmTY", "spine": "3.6.53", "width": 233, "height": 532, "images": "./images/" },
 "bones": [
 	{ "name": "Hip BONE", "x": -8.16, "y": 184.24, "color": "9c9c9cff" },
 	{ "name": "BODY", "parent": "Hip BONE", "length": 143.59, "rotation": 88.45, "x": -0.29, "y": 0.06, "color": "f7ee38ff" },
@@ -52,7 +52,7 @@
 "slots": [
 	{ "name": "NECK", "bone": "NECK", "attachment": "NECK" },
 	{ "name": "HEAD", "bone": "HEAD", "attachment": "HEAD" },
-	{ "name": "ÖGA", "bone": "EYE", "attachment": "ÖGA" },
+	{ "name": "EYE", "bone": "EYE", "attachment": "EYE" },
 	{ "name": "Pupill", "bone": "Pupill", "attachment": "Pupill" },
 	{ "name": "EYEBROWS", "bone": "EYEBROWS", "attachment": "EYEBROWS" },
 	{ "name": "Back Upper Arm", "bone": "Back Upper Arm", "attachment": "Back Upper Arm" },
@@ -102,6 +102,9 @@
 		"Back Upper Arm": {
 			"Back Upper Arm": { "x": 28.72, "y": -1.45, "rotation": 39.26, "width": 79, "height": 76 }
 		},
+		"EYE": {
+			"EYE": { "x": -0.22, "y": 0.23, "rotation": -88.99, "width": 29, "height": 41 }
+		},
 		"EYEBROWS": {
 			"EYEBROWS": { "x": 10.13, "y": 0.3, "rotation": 34.94, "width": 26, "height": 22 }
 		},
@@ -137,9 +140,6 @@
 		},
 		"Pupill": {
 			"Pupill": { "x": -0.21, "y": -0.06, "rotation": -88.99, "width": 27, "height": 37 }
-		},
-		"ÖGA": {
-			"ÖGA": { "x": -0.22, "y": 0.23, "rotation": -88.99, "width": 29, "height": 41 }
 		}
 	}
 },

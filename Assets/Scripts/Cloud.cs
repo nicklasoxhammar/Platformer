@@ -191,9 +191,7 @@ public class Cloud : MonoBehaviour {
             if (timer <= 0)
             {
                 StartCoroutine(Freeze());
-
             }
-
         }
     }
 
@@ -234,7 +232,6 @@ public class Cloud : MonoBehaviour {
         if (sprite != null)
         {
             spriteRenderer.sprite = sprite;
-
         }
     }
 
@@ -257,10 +254,7 @@ public class Cloud : MonoBehaviour {
 
 private void StartRain()
     {
-
         StartCoroutine(InstantiateDrop());  
-
-        
     }
 
     private Vector3 GetPositionForDrop()
@@ -330,9 +324,5 @@ private void StartRain()
             }
         }
     }
-
-
-
-
 }
 

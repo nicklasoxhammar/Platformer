@@ -3,75 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using Spine;
-using System;
 
 public class RobotEnemyController : MonoBehaviour
 {
-    [SerializeField] Collider2D playerToFollow;
 
-    private SkeletonAnimation skeletonAnimation;
-    private Animator animator;
-    private Rigidbody2D rb;
-    Bone eye;
-    Bone playerHead;
-    private string eyeBoneName = "Pupill";
-    private string playerHeadBoneName = "Huvud";
-    private bool isDead = false;
-    public bool isFreezed = false;
-    private bool playerInSight = false;
+    //Changes direction when touch collider with tag "Block"
+
+    [SerializeField] Collider2D playerToFollow;
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float runSpeed = 4f;
-    private int direction = 1;
+    //LASER:
+    [SerializeField][Header("LaserShoot")] GameObject LaserPrefab;
+    [SerializeField] float minTimeBetweenLaserShoot = 1f;
+    [SerializeField] float maxTimeBetweenLaserShoot = 3f;
+    [SerializeField] int poolSize = 10;
+    private List<GameObject> laserPool;
 
-
+    //ANIMATION
+    private SkeletonAnimation skeletonAnimation;
+    Bone pupil;
+    Bone eye;
+    Vector3 eyePos;
+    Vector3 targetPos;
+    private string pupilBoneName = "Pupill";
+    private string eyeBoneName = "EYE";
     private string walkAnimationName = "WALK";
     private string dieAnimationName = "DIE";
     private string runAnimationName = "RUN";
-
     private float secFadeAway = 0.5f;
+
+    private bool isDead = false;
+    private bool isFreezed = false;
+    private bool playerInSight = false;
+    private int direction = 1;
+    private bool isShooting = false;
 
     // Use this for initialization
     void Start()
     {
         if (playerToFollow == null) { return; }
 
+        InitLaserPool();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
+        pupil = skeletonAnimation.skeleton.FindBone(pupilBoneName);
         eye = skeletonAnimation.skeleton.FindBone(eyeBoneName);
-        playerHead = playerToFollow.GetComponent<SkeletonAnimation>().skeleton.FindBone(playerHeadBoneName);
-        rb = GetComponent<Rigidbody2D>();
-
-        animator = GetComponent<Animator>();
-
         skeletonAnimation.AnimationState.Complete += AnimationCompleteListener;
-
-        skeletonAnimation.AnimationState.SetAnimation(0, walkAnimationName, true);
-
-
+        ChangeAnimation();
     }
-
-    private void AnimationCompleteListener(TrackEntry trackEntry)
-    {
-        if(trackEntry.animation.Name == dieAnimationName)
-        {
-            //Fade away and destroy
-            LeanTween.value(1f, 0f, secFadeAway).setEaseInCubic().setOnUpdate((float val) => {
-                skeletonAnimation.skeleton.a = val;
-            }).setOnComplete(() => {
-                Destroy(gameObject);
-            });
-
-
-
-        }
-    }
-
 
     // Update is called once per frame
     void Update()
     {
+        CheckIfPlayerAreInSight();
+        SetDirectionToFollowPlayer();
+        MakeEyeFollowPlayer();
+        ShootLaserIfPlayerInSight();
 
-        CheckPlayerInsight();
-
+        //Change Speed
         if (playerInSight)
         {
             MoveWithThisSpeed(runSpeed);
@@ -82,13 +70,15 @@ public class RobotEnemyController : MonoBehaviour
         }
 
         //Face the direction....but not at the edge.
-        if (!isFreezed)
+        if (!isFreezed && !isDead)
         { 
         transform.localScale = new Vector3(direction, 1f, 1f);
         }
 
+        SnapOutOfFreezeWhenJumpOver();
     }
 
+    //Calls from Update
     private void MoveWithThisSpeed(float speed)
     {
         if (isDead != true && !isFreezed)
@@ -97,15 +87,13 @@ public class RobotEnemyController : MonoBehaviour
             position.x += speed * direction * Time.deltaTime;
             transform.position = position;
         }
-
     }
 
-    //FÖLJA ÖGONEN
 
-    private void CheckPlayerInsight()
+    private void CheckIfPlayerAreInSight()
     {
-        Vector3 eyePos = eye.GetWorldPosition(skeletonAnimation.transform);
-        Vector3 targetPos = playerToFollow.bounds.center;
+        eyePos = pupil.GetWorldPosition(skeletonAnimation.transform);
+        targetPos = playerToFollow.bounds.center;
         RaycastHit2D hit = Physics2D.Linecast(eyePos, targetPos);
 
         //DEBUG THING:..
@@ -115,33 +103,86 @@ public class RobotEnemyController : MonoBehaviour
 
         }
        ////
-         if (hit.collider.tag == "Player" && !isDead && !playerInSight)
+        /// 
+        // HITS PLAYER         if (hit != false && hit.collider.tag == "Player" && !isDead)
         {
-            playerInSight = true;
-            skeletonAnimation.AnimationState.SetAnimation(0, runAnimationName, true);
+            if(!playerInSight)
+            {
+                playerInSight = true;
+                ChangeAnimation();
+            }
+        }
+        else if (hit != false && hit.collider.tag != "Player" && !isDead && playerInSight)
+        {
+            playerInSight = false;
+            isFreezed = false;
+            ChangeAnimation();
+        }
+    }
 
-            bool directionToLeft = hit.point.x < eyePos.x;
-            if(directionToLeft)
+    //Called from Update
+    private void SetDirectionToFollowPlayer()
+    {
+        if (!isFreezed && playerInSight)
+        {
+            //Direction follow the player...
+            float offset = 3f;
+
+            if (targetPos.x < eyePos.x - offset)
             {
                 direction = -1;
             }
-            else
+            else if (targetPos.x > eyePos.x + offset)
             {
                 direction = 1;
             }
         }
-        else if (hit.collider.tag != "Player" && !isDead && playerInSight)
+    }
+
+    private void ChangeAnimation()
+    {
+        if(!isFreezed && !isDead)
         {
-            playerInSight = false;
-            isFreezed = false;
-            skeletonAnimation.AnimationState.SetAnimation(0, walkAnimationName, true);
+            if(playerInSight)
+            {
+                skeletonAnimation.AnimationState.SetAnimation(0, runAnimationName, true);
+            }
+            else
+            {
+                skeletonAnimation.AnimationState.SetAnimation(0, walkAnimationName, true);
+            }
         }
-            
+    }
+
+    //Called from Update
+    private void SnapOutOfFreezeWhenJumpOver()
+    {
+        if(isFreezed && targetPos.x > eyePos.x && direction == 1 || isFreezed && targetPos.x < eyePos.x && direction == -1)
+        {
+            isFreezed = false;
+            ChangeAnimation();
+        }
+    }
+
+    //Called from Update
+    private void MakeEyeFollowPlayer()
+    {
+        if (playerInSight)
+        {
+            float LowerRotationBound = -55.0f;
+            float UpperRotationBound = 55.0f;
+            Vector3 tempVec = targetPos - eyePos;
+            float tempRot = Mathf.Atan2(tempVec.y, tempVec.x * transform.localScale.x) * Mathf.Rad2Deg;
+            eye.Rotation = Mathf.Clamp(tempRot, LowerRotationBound, UpperRotationBound);
+        }
+        else
+        {
+            eye.Rotation = 0;
+        }
     }
 
 
-
-
+    //Freeze at edge or just change direction.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Block")
@@ -150,18 +191,8 @@ public class RobotEnemyController : MonoBehaviour
             {
                 isFreezed = true;
                 skeletonAnimation.AnimationState.AddEmptyAnimation(0, 0.5f, 0f);
-
             }
                 direction *= -1;
-                    
-
-
-            //if(playerInSight)
-            //{
-            //    isFreezed = true;
-            //    skeletonAnimation.AnimationState.AddEmptyAnimation(0, 0.5f, 0f);
-            //}
-           //else
         }
     }
 
@@ -171,7 +202,6 @@ public class RobotEnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-
             if (player.isDashing)
             {
                 Die();
@@ -188,14 +218,7 @@ public class RobotEnemyController : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        //Make it small så player can jump over it when die.
-        BoxCollider2D thisCollider = GetComponent<BoxCollider2D>();
-        Vector2 size = thisCollider.size;
-        size.y *= 0.1f;
-        thisCollider.size = size;
-        Vector2 colliderOffset = thisCollider.offset;
-        colliderOffset.y *= 0.1f;
-        thisCollider.offset = colliderOffset;
+        ChangeSizeOfColliderWhenDead();
         //Die Animation and trigger when its done..
         skeletonAnimation.AnimationState.SetAnimation(0, dieAnimationName, false);
 
@@ -203,4 +226,94 @@ public class RobotEnemyController : MonoBehaviour
         //KANSKE MOLN NÄR DEN FÖRRSVINNER?
     }
 
+    //When DIE-animation is completed...
+    private void AnimationCompleteListener(TrackEntry trackEntry)
+    {
+        if (trackEntry.animation.Name == dieAnimationName)
+        {
+            Debug.Log("DED");
+
+            //Fade away and destroy
+            LeanTween.value(1f, 0f, secFadeAway).setEaseInCubic().setOnUpdate((float val) => {
+                skeletonAnimation.skeleton.a = val;
+            }).setOnComplete(() => {
+                Destroy(gameObject);
+            });
+        }
+    }
+
+    //Change size, player can jump over it when its dead.
+    private void ChangeSizeOfColliderWhenDead()
+    {
+        BoxCollider2D thisCollider = GetComponent<BoxCollider2D>();
+        Vector2 size = thisCollider.size;
+        size.y *= 0.1f;
+        thisCollider.size = size;
+        Vector2 colliderOffset = thisCollider.offset;
+        colliderOffset.y *= 0.1f;
+        thisCollider.offset = colliderOffset;
+    }
+
+
+
+
+    //LASER STUFF
+
+    private void InitLaserPool()
+    {
+        laserPool = new List<GameObject>();
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject newLaser = Instantiate(LaserPrefab);
+            newLaser.SetActive(false);
+            laserPool.Add(newLaser);
+        }
+    }
+
+    private void ShootLaserIfPlayerInSight()
+    {
+        if(playerInSight && !isDead && !isShooting)
+        {
+            isShooting = true;
+            StartCoroutine(InstantiateLaser());
+        }
+        else if (!playerInSight || isDead)
+        {
+            isShooting = false;
+        }
+    }
+
+    IEnumerator InstantiateLaser()
+    {
+        while (isShooting)
+        {
+            //GameObject laser = Instantiate(LaserPrefab);
+            GameObject laser = GetLaserFromPool();
+            if(laser != null)
+            {
+                laser.transform.position = eyePos;
+                laser.SetActive(true);
+            }
+            yield return new WaitForSeconds(GetRandomTimeBetweenShoots());
+        }
+    }
+
+
+    private float GetRandomTimeBetweenShoots()
+    {
+        return Random.Range(minTimeBetweenLaserShoot, maxTimeBetweenLaserShoot);
+    }
+
+
+    private GameObject GetLaserFromPool()
+    {
+        for (int i = 0; i < laserPool.Count; i++)
+        {
+            if(!laserPool[i].gameObject.activeInHierarchy)
+            {
+                return laserPool[i];
+            }
+        }
+        return null;
+    }
 }

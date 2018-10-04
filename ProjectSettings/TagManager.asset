@@ -11,6 +11,8 @@ TagManager:
   - Undefined
   - InteractableThing
   - Block
+  - DeadlyThing
+  - LaserFlyingThru
   layers:
   - Default
   - TransparentFX
