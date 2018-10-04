@@ -10,15 +10,21 @@ public class RobotEnemyController : MonoBehaviour
     //Changes direction when touch collider with tag "Block"
 
     [SerializeField] Collider2D playerToFollow;
-    [SerializeField] private float walkSpeed = 2f;
+    [SerializeField] [Header("Movement:")] private float walkSpeed = 2f;
     [SerializeField] private float runSpeed = 4f;
+    [SerializeField] private bool makeRandomDirectionChanges = true;
+    [SerializeField] private float minTimeBeforeChangeDirection = 4f;
+    [SerializeField] private float maxTimeBeforeChangeDirection = 10f;
+    private float changeDirectionTimer = 0f;
+    private float timeBeforeChangeDirection;
+
     //LASER:
-    [SerializeField][Header("LaserShoot")] GameObject LaserPrefab;
+    [SerializeField][Header("LaserShoot:")] GameObject LaserPrefab;
     [SerializeField] float minTimeBetweenLaserShoot = 1f;
     [SerializeField] float maxTimeBetweenLaserShoot = 3f;
     [SerializeField] int poolSize = 10;
     private List<GameObject> laserPool;
-
+    [SerializeField] ParticleSystem dieVFX;
     //ANIMATION
     private SkeletonAnimation skeletonAnimation;
     Bone pupil;
@@ -30,7 +36,6 @@ public class RobotEnemyController : MonoBehaviour
     private string walkAnimationName = "WALK";
     private string dieAnimationName = "DIE";
     private string runAnimationName = "RUN";
-    private float secFadeAway = 0.5f;
 
     private bool isDead = false;
     private bool isFreezed = false;
@@ -58,7 +63,7 @@ public class RobotEnemyController : MonoBehaviour
         SetDirectionToFollowPlayer();
         MakeEyeFollowPlayer();
         ShootLaserIfPlayerInSight();
-
+        StartTurnTimer();
         //Change Speed
         if (playerInSight)
         {
@@ -77,6 +82,26 @@ public class RobotEnemyController : MonoBehaviour
 
         SnapOutOfFreezeWhenJumpOver();
     }
+
+    private void StartTurnTimer()
+    {
+        if(makeRandomDirectionChanges && !playerInSight)
+        {
+            timeBeforeChangeDirection -= Time.deltaTime;
+            if (timeBeforeChangeDirection <= 0)
+            {
+                direction *= -1;
+                ResetChangeDirectionTimer();
+            }
+        }
+    }
+
+    private void ResetChangeDirectionTimer()
+    {
+        timeBeforeChangeDirection = Random.Range(minTimeBeforeChangeDirection, maxTimeBeforeChangeDirection);
+        changeDirectionTimer = 0;
+    }
+
 
     //Calls from Update
     private void MoveWithThisSpeed(float speed)
@@ -221,9 +246,6 @@ public class RobotEnemyController : MonoBehaviour
         ChangeSizeOfColliderWhenDead();
         //Die Animation and trigger when its done..
         skeletonAnimation.AnimationState.SetAnimation(0, dieAnimationName, false);
-
-
-        //KANSKE MOLN NÄR DEN FÖRRSVINNER?
     }
 
     //When DIE-animation is completed...
@@ -231,14 +253,27 @@ public class RobotEnemyController : MonoBehaviour
     {
         if (trackEntry.animation.Name == dieAnimationName)
         {
-            Debug.Log("DED");
-
+            //Dust Effect
+            if (dieVFX != null)
+            {
+                ParticleSystem vfx = Instantiate(dieVFX, transform);
+                Destroy(vfx, vfx.main.duration);
+            }
             //Fade away and destroy
-            LeanTween.value(1f, 0f, secFadeAway).setEaseInCubic().setOnUpdate((float val) => {
+            LeanTween.value(1f, 0f, dieVFX.main.duration).setEaseOutCubic().setOnUpdate((float val) => {
                 skeletonAnimation.skeleton.a = val;
             }).setOnComplete(() => {
                 Destroy(gameObject);
             });
+        }
+    }
+
+    private void PlayVFX()
+    {
+        if (dieVFX != null)
+        {
+            ParticleSystem vfx = Instantiate(dieVFX, transform);
+            Destroy(vfx, vfx.main.duration);
         }
     }
 
@@ -253,6 +288,7 @@ public class RobotEnemyController : MonoBehaviour
         colliderOffset.y *= 0.1f;
         thisCollider.offset = colliderOffset;
     }
+
 
 
 
@@ -287,14 +323,16 @@ public class RobotEnemyController : MonoBehaviour
     {
         while (isShooting)
         {
-            //GameObject laser = Instantiate(LaserPrefab);
-            GameObject laser = GetLaserFromPool();
-            if(laser != null)
-            {
-                laser.transform.position = eyePos;
-                laser.SetActive(true);
-            }
             yield return new WaitForSeconds(GetRandomTimeBetweenShoots());
+            if (!isDead)
+            {
+                GameObject laser = GetLaserFromPool();
+                if (laser != null)
+                {
+                    laser.transform.position = eyePos;
+                    laser.SetActive(true);
+                }
+            }
         }
     }
 

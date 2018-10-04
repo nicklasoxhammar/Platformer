@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  crashVFXPrefan: {fileID: 198548451936725006, guid: acc420c2620744ed8a4b607f4fc080be,
+    type: 2}
 --- !u!212 &212634496199092372
 SpriteRenderer:
   m_ObjectHideFlags: 1
