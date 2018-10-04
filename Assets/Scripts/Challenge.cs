@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Challenge : MonoBehaviour {
+public class Challenge {
 
     public float floatValue = 0;
     public bool boolValue = false;

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 
     Transform groundCheck;
     const float groundedRadius = 0.4f;
-
+   
     [SerializeField] private LayerMask whatIsGround;
 
     [SerializeField] AudioClip walkingSound;

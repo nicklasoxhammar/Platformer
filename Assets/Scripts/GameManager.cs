@@ -129,8 +129,6 @@ public class GameManager : MonoBehaviour {
         challengesScreen.SetActive(false);
 
         player.freezeMovement = false;
-
-
     }
 
     //For some reason the gameManager couldnt find the dash button in Awake or Start(after loading from another scene), so we find it here instead.
