@@ -13,36 +13,18 @@ public class KillingDrop : MonoBehaviour
     void Start()
     {
         splashVFX = Instantiate(VFXPrefab, transform.position, Quaternion.LookRotation(Vector2.up));
-
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-
             player.Die();
-            PlayVFX();
-            gameObject.SetActive(false);
-
         }
-        else
-        {
-            PlayVFX();
-            gameObject.SetActive(false);
-
-        }
+        PlayVFX();
+        gameObject.SetActive(false);
     }
-
 
 
     private void OnBecameInvisible()
@@ -51,15 +33,11 @@ public class KillingDrop : MonoBehaviour
     }
 
 
-
-
     private void PlayVFX()
     {
         splashVFX.Clear();
         splashVFX.transform.position = transform.position;
         splashVFX.Play();
-
-
     }
 
 

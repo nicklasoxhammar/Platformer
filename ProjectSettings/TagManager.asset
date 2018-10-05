@@ -8,9 +8,11 @@ TagManager:
   - Enemy
   - Water
   - GameManager
-  - Box
-  - GiraffeBack
-  - EndOfGround
+  - Undefined
+  - InteractableThing
+  - Block
+  - DeadlyThing
+  - LaserFlyingThru
   layers:
   - Default
   - TransparentFX

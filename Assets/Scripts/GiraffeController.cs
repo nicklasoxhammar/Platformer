@@ -6,24 +6,15 @@ using Spine.Unity;
 public class GiraffeController : MonoBehaviour {
 
     private Animator animator;
-    [SerializeField] Collider2D giraffeBack;
+    private int goToIdleStateHash = Animator.StringToHash("GoToIdle");
 
-	// Use this for initialization
-	void Start () {
-        
+	void Start ()
+    {
         animator = GetComponentInParent<Animator>();
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-
-
 	}
 
-
-
-
-
+    public void WakeUpGiraffe()
+    {
+        animator.SetTrigger(goToIdleStateHash);
+    }
 }
