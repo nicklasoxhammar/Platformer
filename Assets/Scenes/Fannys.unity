@@ -548,16 +548,26 @@ Prefab:
     - target: {fileID: 114449932521003146, guid: d2db29e1e723942c594af324874bc68e,
         type: 2}
       propertyPath: minTimeBetweenLaserShoot
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114449932521003146, guid: d2db29e1e723942c594af324874bc68e,
         type: 2}
       propertyPath: maxTimeBetweenLaserShoot
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1293796572604418, guid: d2db29e1e723942c594af324874bc68e, type: 2}
       propertyPath: m_Name
       value: RobotEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114449932521003146, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: makeRandomDirectionChanges
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114449932521003146, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: poolSize
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
@@ -917,15 +927,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4885768624109154, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10.6
       objectReference: {fileID: 0}
     - target: {fileID: 4885768624109154, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 4885768624109154, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4885768624109154, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -955,7 +965,7 @@ Prefab:
     - target: {fileID: 20408134579357126, guid: ec34aee746e8c6c419cff3ff963fc5b2,
         type: 2}
       propertyPath: orthographic size
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
@@ -1314,72 +1324,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49, type: 2}
-  m_IsPrefabAsset: 0
---- !u!1001 &1621221732
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 20.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 4.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
-      propertyPath: m_RootOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 33132141314769216, guid: d2db29e1e723942c594af324874bc68e,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114449932521003146, guid: d2db29e1e723942c594af324874bc68e,
-        type: 2}
-      propertyPath: playerToFollow
-      value: 
-      objectReference: {fileID: 560346312}
-    - target: {fileID: 114449932521003146, guid: d2db29e1e723942c594af324874bc68e,
-        type: 2}
-      propertyPath: minTimeBetweenLaserShoot
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114449932521003146, guid: d2db29e1e723942c594af324874bc68e,
-        type: 2}
-      propertyPath: maxTimeBetweenLaserShoot
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293796572604418, guid: d2db29e1e723942c594af324874bc68e, type: 2}
-      propertyPath: m_Name
-      value: RobotEnemy (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1639049515
 Prefab:

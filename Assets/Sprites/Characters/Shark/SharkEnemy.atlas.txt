@@ -1,0 +1,62 @@
+
+SharkEnemy.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Eye
+  rotate: false
+  xy: 942, 880
+  size: 63, 59
+  orig: 63, 59
+  offset: 0, 0
+  index: -1
+Pupil
+  rotate: false
+  xy: 2, 2
+  size: 19, 14
+  orig: 19, 14
+  offset: 0, 0
+  index: -1
+Svart i mun
+  rotate: false
+  xy: 204, 427
+  size: 142, 100
+  orig: 142, 100
+  offset: 0, 0
+  index: -1
+WingFront 1 copy
+  rotate: false
+  xy: 2, 18
+  size: 162, 293
+  orig: 162, 293
+  offset: 0, 0
+  index: -1
+WingFront copy
+  rotate: false
+  xy: 2, 313
+  size: 200, 306
+  orig: 200, 306
+  offset: 0, 0
+  index: -1
+down mun
+  rotate: false
+  xy: 204, 326
+  size: 126, 99
+  orig: 126, 99
+  offset: 0, 0
+  index: -1
+kropp
+  rotate: false
+  xy: 2, 621
+  size: 938, 318
+  orig: 938, 318
+  offset: 0, 0
+  index: -1
+top mun
+  rotate: false
+  xy: 204, 529
+  size: 156, 90
+  orig: 156, 90
+  offset: 0, 0
+  index: -1
