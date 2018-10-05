@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour {
 
-    [SerializeField] float time = 5.0f;
+    public float time = 5.0f;
     [SerializeField] GameObject explosionParticles;
     [SerializeField] AudioClip tickSound;
     [SerializeField] AudioClip explosionSound;
