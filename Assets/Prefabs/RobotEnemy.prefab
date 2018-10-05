@@ -176,6 +176,9 @@ MonoBehaviour:
   playerToFollow: {fileID: 0}
   walkSpeed: 2
   runSpeed: 6
+  makeRandomDirectionChanges: 1
+  minTimeBeforeChangeDirection: 4
+  maxTimeBeforeChangeDirection: 10
   LaserPrefab: {fileID: 1712949349531846, guid: 7bf432cdea7014a64828749145e8e41e,
     type: 2}
   minTimeBetweenLaserShoot: 0.5
