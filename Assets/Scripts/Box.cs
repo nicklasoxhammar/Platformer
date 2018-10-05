@@ -41,6 +41,7 @@ public class Box : MonoBehaviour {
 
             if (CrossPlatformInputManager.GetButtonDown("Dash") && canPickUp) {
                 player.isCarryingBox = true;
+                GM.hasPickedUpBox = true;
                 audioSource.clip = pickUpSound;
                 audioSource.Play();
                 Color newAlpha = sprite.color;

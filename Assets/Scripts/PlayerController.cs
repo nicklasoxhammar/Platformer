@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 
     Transform groundCheck;
     const float groundedRadius = 0.4f;
-
+   
     [SerializeField] private LayerMask whatIsGround;
 
     [SerializeField] AudioClip walkingSound;
@@ -73,6 +73,10 @@ public class PlayerController : MonoBehaviour {
     void Update() {
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
+        if (isGrounded && freezeMovement) {
+            rb.velocity = Vector3.zero;
+
+        }
 
         Jump();
 
@@ -216,8 +220,8 @@ public class PlayerController : MonoBehaviour {
 
 
     private void Dash(float force) {
-
         if (CrossPlatformInputManager.GetButton("Dash") && canDash && !isCarryingBox && !collidingWithInteractableThing) {
+            GM.hasDashed = true;
             isDashing = true;
             rb.velocity = new Vector2(force, rb.velocity.y);
             skeletonAnimation.AnimationName = "RUN";
