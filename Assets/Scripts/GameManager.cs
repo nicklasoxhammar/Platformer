@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour {
     private void Awake() {
         player = FindObjectOfType<PlayerController>();
         player.freezeMovement = true;
+        player.cantDie = true;
 
         audioSource = GetComponent<AudioSource>();
 
@@ -129,6 +130,7 @@ public class GameManager : MonoBehaviour {
         challengesScreen.SetActive(false);
 
         player.freezeMovement = false;
+        player.cantDie = false;
     }
 
     //For some reason the gameManager couldnt find the dash button in Awake or Start(after loading from another scene), so we find it here instead.

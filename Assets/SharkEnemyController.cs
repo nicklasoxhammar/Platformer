@@ -5,6 +5,14 @@ using Spine.Unity;
 
 public class SharkEnemyController : MonoBehaviour {
 
+    [SerializeField] Transform player;
+    [SerializeField] GameObject deathParticles;
+    [SerializeField] private float speed = 4f;
+    [SerializeField] private float followDistance = 10f;
+
+    private int direction = 1;
+    private bool followPlayer = false;
+
 
     //Flying animations... Använd en i taget av flying.
     private string flying1AnimationName = "Flying1";
@@ -25,9 +33,7 @@ public class SharkEnemyController : MonoBehaviour {
 
     //Annars kan alla kombineras och köras samtidigt.
 
-
-	// Use this for initialization
-	void Start () {
+    void Start() {
 
         SkeletonAnimation skeletonAnimation = GetComponent<SkeletonAnimation>();
         skeletonAnimation.AnimationState.SetAnimation(0, flying2AnimationName, true);
@@ -38,10 +44,81 @@ public class SharkEnemyController : MonoBehaviour {
         skeletonAnimation.AnimationState.AddAnimation(3, closeMouthAnimationName, false, 3f);
 
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
+    void Update() {
+        CheckFollowDistance();
+        SetDirectionToFollowPlayer();
+
+        if (followPlayer) {
+
+            transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+
+            if (direction == 1) {
+                transform.right = player.position - transform.position;
+            }
+            else {
+                transform.right = -(player.position - transform.position);
+            }
+        }
+      
+
+        transform.localScale = new Vector3(direction * -1, 1f, 1f);
+    }
+
+
+
+    void CheckFollowDistance() {
+        if (followPlayer) { return; }
+
+        if(transform.position.x - player.position.x < followDistance && transform.position.x - player.position.x > - followDistance) { followPlayer = true; }
+    }
+
+    //Called from Update
+    private void SetDirectionToFollowPlayer() {
+        //Direction follow the player...
+        float offset = 3f;
+
+        if (player.position.x < transform.position.x - offset) {
+            direction = -1;
+        }
+        else if (player.position.x > transform.position.x + offset) {
+            direction = 1;
+        }
+
+    }
+
+    private void ChangeAnimation() {
+        /*if (playerInSight) {
+            skeletonAnimation.AnimationState.SetAnimation(0, runAnimationName, true);
+        }
+        else {
+            skeletonAnimation.AnimationState.SetAnimation(0, walkAnimationName, true);
+        }*/
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Player") {
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player.isDashing) {
+                Die();
+            }
+            else{
+                player.Die();
+            }
+        }
+    }
+
+
+
+    private void Die() {
+
+        GameObject particles = Instantiate(deathParticles, transform.position, Quaternion.identity);
+        Destroy(particles, 3.0f);
+        Destroy(this.gameObject);
+    }
+
+
+
 }
