@@ -8,22 +8,19 @@ public class RobotEnemyController : MonoBehaviour
 {
 
     //Changes direction when touch collider with tag "Block"
-
+    [SerializeField] GameObject objectPoolManagerPrefab;
     [SerializeField] Collider2D playerToFollow;
     [SerializeField] [Header("Movement:")] private float walkSpeed = 2f;
     [SerializeField] private float runSpeed = 4f;
     [SerializeField] private bool makeRandomDirectionChanges = true;
     [SerializeField] private float minTimeBeforeChangeDirection = 4f;
     [SerializeField] private float maxTimeBeforeChangeDirection = 10f;
-    private float changeDirectionTimer = 0f;
     private float timeBeforeChangeDirection;
 
     //LASER:
     [SerializeField][Header("LaserShoot:")] GameObject LaserPrefab;
     [SerializeField] float minTimeBetweenLaserShoot = 1f;
     [SerializeField] float maxTimeBetweenLaserShoot = 3f;
-    [SerializeField] int poolSize = 10;
-    private List<GameObject> laserPool;
     [SerializeField] ParticleSystem dieVFX;
     //ANIMATION
     private SkeletonAnimation skeletonAnimation;
@@ -38,17 +35,28 @@ public class RobotEnemyController : MonoBehaviour
     private string runAnimationName = "RUN";
 
     private bool isDead = false;
-    private bool isFreezed = false;
+    public bool isFreezed = false;
     private bool playerInSight = false;
     private int direction = 1;
     private bool isShooting = false;
 
+    private LaserObjectPool objectPool;
+    private bool isSeenByTheCamera = false;
+    [SerializeField] [Range(0.0f, 1.0f)] float increaseSightOutsideCamera;
+
+    private void Awake()
+    {
+        if (LaserObjectPool.instance == null)
+        {
+            Instantiate(objectPoolManagerPrefab);
+        }
+    }
     // Use this for initialization
     void Start()
     {
         if (playerToFollow == null) { return; }
+        objectPool = LaserObjectPool.instance;
 
-        InitLaserPool();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         pupil = skeletonAnimation.skeleton.FindBone(pupilBoneName);
         eye = skeletonAnimation.skeleton.FindBone(eyeBoneName);
@@ -59,6 +67,7 @@ public class RobotEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckIfEnemyIsSeenByCamera();
         CheckIfPlayerAreInSight();
         SetDirectionToFollowPlayer();
         MakeEyeFollowPlayer();
@@ -83,9 +92,25 @@ public class RobotEnemyController : MonoBehaviour
         SnapOutOfFreezeWhenJumpOver();
     }
 
+    private void CheckIfEnemyIsSeenByCamera()
+    {
+        Vector2 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
+        float minPoint = 0 - increaseSightOutsideCamera;
+        float maxPoint = 1 + increaseSightOutsideCamera;
+        if(screenPoint.x < maxPoint && screenPoint.x > minPoint && screenPoint.y < maxPoint && screenPoint.y > minPoint)
+        {
+            isSeenByTheCamera = true;
+        }
+        else
+        {
+            isSeenByTheCamera = false;
+        }
+
+    }
+
     private void StartTurnTimer()
     {
-        if(makeRandomDirectionChanges && !playerInSight)
+        if(makeRandomDirectionChanges && !playerInSight && !isFreezed)
         {
             timeBeforeChangeDirection -= Time.deltaTime;
             if (timeBeforeChangeDirection <= 0)
@@ -99,14 +124,13 @@ public class RobotEnemyController : MonoBehaviour
     private void ResetChangeDirectionTimer()
     {
         timeBeforeChangeDirection = Random.Range(minTimeBeforeChangeDirection, maxTimeBeforeChangeDirection);
-        changeDirectionTimer = 0;
     }
 
 
     //Calls from Update
     private void MoveWithThisSpeed(float speed)
     {
-        if (isDead != true && !isFreezed)
+        if (!isDead && !isFreezed)
         {
             Vector2 position = transform.position;
             position.x += speed * direction * Time.deltaTime;
@@ -114,34 +138,30 @@ public class RobotEnemyController : MonoBehaviour
         }
     }
 
-
+    //called from update
     private void CheckIfPlayerAreInSight()
     {
-        eyePos = pupil.GetWorldPosition(skeletonAnimation.transform);
-        targetPos = playerToFollow.bounds.center;
-        RaycastHit2D hit = Physics2D.Linecast(eyePos, targetPos);
-
-        //DEBUG THING:..
-        Debug.DrawLine(eyePos, targetPos);
-        if (hit != false){
-            Debug.DrawLine(eyePos, hit.point, Color.red);
-
-        }
-       ////
-        /// 
-        // HITS PLAYER         if (hit != false && hit.collider.tag == "Player" && !isDead)
+        if (isSeenByTheCamera)
         {
-            if(!playerInSight)
+            eyePos = pupil.GetWorldPosition(skeletonAnimation.transform);
+            targetPos = playerToFollow.bounds.center;
+            RaycastHit2D hit = Physics2D.Linecast(eyePos, targetPos);
+
+            // HITS PLAYER
+            if (hit != false && hit.collider.tag == "Player" && !isDead)
             {
-                playerInSight = true;
+                if (!playerInSight)
+                {
+                    playerInSight = true;
+                    ChangeAnimation();
+                }
+            }
+            else if (hit != false && hit.collider.tag != "Player" && !isDead && playerInSight)
+            {
+                playerInSight = false;
+                isFreezed = false;
                 ChangeAnimation();
             }
-        }
-        else if (hit != false && hit.collider.tag != "Player" && !isDead && playerInSight)
-        {
-            playerInSight = false;
-            isFreezed = false;
-            ChangeAnimation();
         }
     }
 
@@ -218,8 +238,11 @@ public class RobotEnemyController : MonoBehaviour
                 skeletonAnimation.AnimationState.AddEmptyAnimation(0, 0.5f, 0f);
             }
                 direction *= -1;
+            // so the enemy not change direction close to the edge:
+            timeBeforeChangeDirection += 1;
         }
     }
+
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -237,8 +260,6 @@ public class RobotEnemyController : MonoBehaviour
             }
         }
     }
-
-
 
     private void Die()
     {
@@ -290,22 +311,6 @@ public class RobotEnemyController : MonoBehaviour
     }
 
 
-
-
-
-    //LASER STUFF
-
-    private void InitLaserPool()
-    {
-        laserPool = new List<GameObject>();
-        for (int i = 0; i < poolSize; i++)
-        {
-            GameObject newLaser = Instantiate(LaserPrefab);
-            newLaser.SetActive(false);
-            laserPool.Add(newLaser);
-        }
-    }
-
     private void ShootLaserIfPlayerInSight()
     {
         if(playerInSight && !isDead && !isShooting)
@@ -326,7 +331,8 @@ public class RobotEnemyController : MonoBehaviour
             yield return new WaitForSeconds(GetRandomTimeBetweenShoots());
             if (!isDead)
             {
-                GameObject laser = GetLaserFromPool();
+                //GameObject laser = GetLaserFromPool();
+                GameObject laser = objectPool.GetObjectFromPool();
                 if (laser != null)
                 {
                     laser.transform.position = eyePos;
@@ -342,16 +348,4 @@ public class RobotEnemyController : MonoBehaviour
         return Random.Range(minTimeBetweenLaserShoot, maxTimeBetweenLaserShoot);
     }
 
-
-    private GameObject GetLaserFromPool()
-    {
-        for (int i = 0; i < laserPool.Count; i++)
-        {
-            if(!laserPool[i].gameObject.activeInHierarchy)
-            {
-                return laserPool[i];
-            }
-        }
-        return null;
-    }
 }

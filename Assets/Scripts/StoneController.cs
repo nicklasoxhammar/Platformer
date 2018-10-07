@@ -37,9 +37,6 @@ public class StoneController : MonoBehaviour
         startMass = myRigidBody.mass;
     }
 
-
-
-
     private void FixedUpdate()
     {
         if(!elevatorIsOn)
@@ -50,7 +47,6 @@ public class StoneController : MonoBehaviour
         {
             runElevator();
         }
-
     }
 
 
@@ -140,11 +136,8 @@ public class StoneController : MonoBehaviour
                 {
                     indexDestination = 0;
                 }
-
             }
-
         }
-
     }
 
 
@@ -152,8 +145,5 @@ public class StoneController : MonoBehaviour
     {
         elevatorIsOn = status;
     }
-
-
-
 
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LaserController : MonoBehaviour {
     
-    [SerializeField] float speed = 1f;
     [SerializeField] ParticleSystem crashVFXPrefan;
     private ParticleSystem crashVFX;
     private Vector2 targetPosition;
     private Rigidbody2D rb;
     private Collider2D target;
+    [SerializeField] float speed = 10f;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class LaserController : MonoBehaviour {
         if (target == null) { return; }
         rb = GetComponent<Rigidbody2D>();
 
-        crashVFX = Instantiate(crashVFXPrefan);
+        crashVFX = Instantiate(crashVFXPrefan, transform.parent);
 	}
 
     // Update is called once per frame
@@ -32,7 +32,9 @@ public class LaserController : MonoBehaviour {
         crashVFX.transform.rotation = transform.rotation;
         crashVFX.transform.position = transform.position;
         crashVFX.Play();
+        gameObject.SetActive(false);
     }
+
 
     public void ResetLaser()
     {
@@ -48,7 +50,6 @@ public class LaserController : MonoBehaviour {
         if(collision.gameObject.tag != "LaserFlyingThru")
         {
             PlayCrashVFX();
-            gameObject.SetActive(false);
         }
     }
 

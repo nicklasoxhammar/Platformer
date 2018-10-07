@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1293796572604418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5, y: -2.27, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -173,12 +173,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b1971fecd93459c81a1265929b8cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPoolManagerPrefab: {fileID: 1211181584369650, guid: 74b944455c9c14da7b092e604ea0e74e,
+    type: 2}
   playerToFollow: {fileID: 0}
   walkSpeed: 2
   runSpeed: 6
+  makeRandomDirectionChanges: 0
+  minTimeBeforeChangeDirection: 4
+  maxTimeBeforeChangeDirection: 10
   LaserPrefab: {fileID: 1712949349531846, guid: 7bf432cdea7014a64828749145e8e41e,
     type: 2}
   minTimeBetweenLaserShoot: 0.5
-  maxTimeBetweenLaserShoot: 1
-  poolSize: 10
+  maxTimeBetweenLaserShoot: 0.5
   dieVFX: {fileID: 198148122341536102, guid: 0e2329c307d764e43ac2966d301ea5fd, type: 2}
+  increaseSightOutsideCamera: 0

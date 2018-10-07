@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cloud : MonoBehaviour {
+public class Cloud : MonoBehaviour
+{
 
+    [SerializeField] GameObject objectPoolManagerPrefab;
 
     [SerializeField] Sprite idleSprite;
     [SerializeField] Sprite evilSprite;
@@ -43,14 +45,23 @@ public class Cloud : MonoBehaviour {
     private Animator animator;
 
     private ParticleSystem flash;
+    private DropObjectPool objectPool;
 
-    public int poolSize = 10;
-    [SerializeField] bool expandeblePoolSize = true;
-    public List<GameObject> dropPool;
 
-	// Use this for initialization
-	void Start () {
-        
+    private void Awake()
+    {
+        if (DropObjectPool.instance == null)
+        {
+            Instantiate(objectPoolManagerPrefab);
+        }
+    }
+
+
+    // Use this for initialization
+    void Start()
+    {
+        objectPool = DropObjectPool.instance;
+
         setNewTimeBetweenFreeze();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -58,24 +69,21 @@ public class Cloud : MonoBehaviour {
         animator = GetComponent<Animator>();
 
         flash = Instantiate(flashPrefab, transform.position, Quaternion.LookRotation(Vector2.up));
+        flash.transform.parent = transform.parent;
 
-        if(!bounceIsOn)
+        if (!bounceIsOn)
         {
             GetComponent<Collider2D>().enabled = false;
         }
+    }
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
+    // Update is called once per frame
+    void Update()
+    {
         MoveHorizontal();
         FreezeCountDown();
 
-
-
-
-        if(freeze)
+        if (freeze)
         {
             animator.enabled = false;
         }
@@ -83,39 +91,9 @@ public class Cloud : MonoBehaviour {
         {
             animator.enabled = true;
         }
-
-
-
-
-	}
-
-
-    private void SetUpDropPool()
-    {
-        dropPool = new List<GameObject>();
-        for (int i = 0; i < poolSize; i++)
-        {
-            GameObject drop = Instantiate(dropPrefab);
-            drop.SetActive(false);
-            dropPool.Add(drop);
-
-        }
-
     }
 
 
-    private GameObject GetDrop()
-    {
-        for (int i = 0; i < dropPool.Count; i++)
-        {
-            if (!dropPool[i].gameObject.activeInHierarchy && dropPool[i] != null)
-            {
-                return dropPool[i];
-            }
-        }
-
-        if (expandeblePoolSize)
-        {             GameObject newDrop = Instantiate(dropPrefab);             dropPool.Add(newDrop);             newDrop.SetActive(false);             return newDrop;         }          return null;     }
 
 
 
@@ -131,16 +109,16 @@ public class Cloud : MonoBehaviour {
             if (transform.position == moveTowards)
             {
                 //reached your destination
-                if(indexDestination == 0)
+                if (indexDestination == 0)
                 {
                     setMovingForwardTo(true);
                 }
-                else if(indexDestination == destinations.transform.childCount - 1)
-                {   
+                else if (indexDestination == destinations.transform.childCount - 1)
+                {
                     setMovingForwardTo(false);
                 }
 
-                if(areMovingForward)
+                if (areMovingForward)
                 {
                     indexDestination++;
                 }
@@ -148,21 +126,17 @@ public class Cloud : MonoBehaviour {
                 {
                     indexDestination--;
                 }
-
-
             }
         }
-
     }
 
     private void setMovingForwardTo(bool status)
     {
-        if(status)
+        if (status)
         {
             areMovingForward = true;
             //transform.localScale = new Vector3(1f, 1f, 1f);
             animator.SetBool("GoingForward", true);
-
         }
         else
         {
@@ -184,7 +158,7 @@ public class Cloud : MonoBehaviour {
 
     private void FreezeCountDown()
     {
-        if(!freeze)
+        if (!freeze)
         {
             timer -= Time.deltaTime;
 
@@ -200,7 +174,7 @@ public class Cloud : MonoBehaviour {
     IEnumerator Freeze()
     {
         freeze = true;
-        if(IAmEvil())
+        if (IAmEvil())
         {
             SetSpriteTo(evilSprite);
 
@@ -219,7 +193,6 @@ public class Cloud : MonoBehaviour {
         flash.Stop();
         SetSpriteTo(idleSprite);
         freeze = false;
-
     }
 
     private float GetRandomFreezeTime()
@@ -244,17 +217,15 @@ public class Cloud : MonoBehaviour {
 
     private bool IAmEvil()
     {
-        int random = Random.Range(0,100);
-
+        int random = Random.Range(0, 100);
         return random <= evilnessPercent;
-
     }
 
 
 
-private void StartRain()
+    private void StartRain()
     {
-        StartCoroutine(InstantiateDrop());  
+        StartCoroutine(InstantiateDrop());
     }
 
     private Vector3 GetPositionForDrop()
@@ -271,11 +242,7 @@ private void StartRain()
 
         float randomX = Random.Range(minX, maxX);
         Vector3 randomPos = new Vector3(randomX, yPosition, transform.position.z);
-
-
-
         return randomPos;
-
     }
 
 
@@ -283,7 +250,8 @@ private void StartRain()
     {
         while (freeze)
         {
-            GameObject drop = GetDrop();
+            //GameObject drop = GetDrop();
+            GameObject drop = objectPool.GetObjectFromPool();
             if (drop != null)
             {
                 drop.transform.position = GetPositionForDrop();
@@ -301,18 +269,13 @@ private void StartRain()
         return Random.Range(minTimeBetweenDrops, maxTimeBetweenDrops);
     }
 
-
-
-
-
-
     private void setRandomIndexDestination()
     {
         int random = Random.Range(0, 2);
-        if(random == 0)
+        if (random == 0)
         {
             //change direction.
-            if(areMovingForward)
+            if (areMovingForward)
             {
                 indexDestination--;
                 setMovingForwardTo(false);
