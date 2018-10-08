@@ -11,7 +11,7 @@ public class ColorWhenTouch : MonoBehaviour
     private Color changeToColor = Color.black;
 
     private float colorCount = 0;
-    private float duration = 0.5f;
+    [SerializeField ]private float duration = 0.5f;
 
 
     bool colorIsChanging = true;
@@ -91,4 +91,12 @@ public class ColorWhenTouch : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            SetColorToWhite();
+        }
+    }
 }
