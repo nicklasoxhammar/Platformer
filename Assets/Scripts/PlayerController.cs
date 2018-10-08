@@ -254,7 +254,8 @@ public class PlayerController : MonoBehaviour {
         rb.velocity = Vector3.zero;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
-        skeletonAnimation.AnimationName = fallingAnimationName;
+        GetComponent<MeshRenderer>().enabled = false;
+        rb.isKinematic = true;
 
         GM.PlayerDied();
     }

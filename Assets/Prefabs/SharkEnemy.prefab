@@ -20,14 +20,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4660234775921150}
   - component: {fileID: 33896517885480828}
-  - component: {fileID: 23328121251734290}
   - component: {fileID: 114095311128612020}
   - component: {fileID: 114393153995347730}
   - component: {fileID: 61791195894010326}
   - component: {fileID: 58276264442089492}
+  - component: {fileID: 23328121251734290}
   m_Layer: 0
   m_Name: SharkEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716469189838242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.5, y: -23, z: 0}
+  m_LocalPosition: {x: 31.5, y: 11.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
 --- !u!33 &33896517885480828
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  walkSpeed: 2
-  runSpeed: 4
+  deathParticles: {fileID: 1730898597688678, guid: 65cabca7ef0d8ca46bd2c41b82b9604c,
+    type: 2}
+  speed: 6
   followDistance: 20
