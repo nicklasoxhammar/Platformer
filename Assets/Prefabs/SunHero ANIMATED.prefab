@@ -289,6 +289,7 @@ MonoBehaviour:
   dashForce: 30
   startDashTime: 0.5
   dashRefreshTime: 0.05
+  collidingWithInteractableThing: 0
   rb: {fileID: 0}
   isDashing: 0
   freezeMovement: 0
@@ -303,7 +304,6 @@ MonoBehaviour:
   jumpingSound: {fileID: 8300000, guid: 02a855e125cdf1e49ba5cbb84cb71aba, type: 3}
   dashingSound: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   deathSound: {fileID: 8300000, guid: 61f97b39420bf4e4a88b37cee9fb3339, type: 3}
-  skeletonAnimation: {fileID: 0}
 --- !u!114 &114311497575760218
 MonoBehaviour:
   m_ObjectHideFlags: 1
