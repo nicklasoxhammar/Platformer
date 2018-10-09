@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class ObjectFallFromTree : MonoBehaviour
 {
-
+    [SerializeField] float rotationAngle = 20f;
     Rigidbody2D rg;
     // Use this for initialization
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
-        //rg.isKinematic = true;
         rg.gravityScale = 0;
         rg.velocity = Vector3.zero;
     }
@@ -20,9 +20,9 @@ public class ObjectFallFromTree : MonoBehaviour
     {
         float animationTime = time * 0.5f;
 
-        LeanTween.rotateZ(gameObject, 10f, animationTime).setEaseShake().setRepeat(2).setLoopPingPong().setOnComplete(() =>
+        LeanTween.rotateZ(gameObject, GetRandomAngle(), animationTime).setEaseShake().setRepeat(2).setLoopPingPong().setOnComplete(() =>
         {
-            LeanTween.rotateZ(gameObject, -10f, animationTime).setEaseOutBack().setOnComplete(() =>
+            LeanTween.rotateZ(gameObject, GetRandomAngle(), animationTime).setEaseOutBack().setOnComplete(() =>
             {
                 //rg.isKinematic = false;
                 rg.gravityScale = 1;
@@ -31,8 +31,13 @@ public class ObjectFallFromTree : MonoBehaviour
         });
     }
 
+    private float GetRandomAngle()
+    {
+        return Random.Range(-rotationAngle, rotationAngle);
+    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
