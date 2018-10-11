@@ -255,13 +255,9 @@ public class RobotEnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            if (player.isDashing)
+            if (player.isDashing && !isDead)
             {
                 Die();
-            }
-            else if(!isDead)
-            {
-                player.Die();
             }
         }
         else if(collision.gameObject.name == "Tree" && !isDead)

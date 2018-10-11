@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4286884598212184}
   - component: {fileID: 212618623398538464}
   - component: {fileID: 114554713205323438}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4739664447973648}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 58952694557145768}
   - component: {fileID: 82278820544231872}
   - component: {fileID: 114066306296551830}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SunHero ANIMATED
   m_TagString: Player
   m_Icon: {fileID: 0}

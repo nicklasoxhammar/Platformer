@@ -255,7 +255,10 @@ public class PlayerController : MonoBehaviour {
         GM.PlayerDied();
     }
 
-
+    public bool IsWearingShield()
+    {
+        return shield.GetIsWearingShield();
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -297,7 +300,12 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "DeadlyThing")
+        //Enemy... killed when not dashing
+        if(collision.gameObject.tag == "Enemy" && !shield.GetIsWearingShield() && !isDashing)
+        {
+            Die();
+        }
+        else if (collision.gameObject.tag == "DeadlyThing" && !shield.GetIsWearingShield())
         {
             Die();
         }

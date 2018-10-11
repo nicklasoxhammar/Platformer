@@ -80,12 +80,7 @@ public class Enemy : MonoBehaviour {
             if (player.isDashing) {
                 Die();
             }
-            else {
-                player.Die();
-            }
         }
-
-
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
 
             rb.AddForce(new Vector2(0.0f, jumpForce));

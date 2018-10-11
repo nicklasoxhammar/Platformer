@@ -18,11 +18,6 @@ public class KillingDrop : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.Die();
-        }
         PlayVFX();
         gameObject.SetActive(false);
     }
