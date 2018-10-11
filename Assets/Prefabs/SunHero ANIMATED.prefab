@@ -20,13 +20,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4286884598212184}
   - component: {fileID: 212618623398538464}
+  - component: {fileID: 114554713205323438}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1706566129392874
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1856417450700274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.8, y: -24.9, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4739664447973648}
@@ -317,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 0}
+    m_RawSignal: {fileID: 11400000, guid: 8608ec81ee27a15488d33f9dad239e91, type: 2}
     m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_RepeatMode: 0
@@ -336,11 +337,11 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_AttackTime: 0
-      m_SustainTime: 0.2
-      m_DecayTime: 0.7
-      m_ScaleWithImpact: 1
+      m_SustainTime: 0
+      m_DecayTime: 0.5
+      m_ScaleWithImpact: 0
       m_HoldForever: 0
-    m_ImpactRadius: 100
+    m_ImpactRadius: 200
     m_DirectionMode: 0
     m_DissipationMode: 2
     m_DissipationDistance: 1000
@@ -360,7 +361,6 @@ MonoBehaviour:
   dashForce: 30
   startDashTime: 0.5
   dashRefreshTime: 0.05
-  collidingWithInteractableThing: 0
   rb: {fileID: 0}
   isDashing: 0
   freezeMovement: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
   jumpingSound: {fileID: 8300000, guid: 02a855e125cdf1e49ba5cbb84cb71aba, type: 3}
   dashingSound: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   deathSound: {fileID: 8300000, guid: 61f97b39420bf4e4a88b37cee9fb3339, type: 3}
-  shield: {fileID: 1428082170021342}
+  shield: {fileID: 114554713205323438}
 --- !u!114 &114311497575760218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,6 +406,22 @@ MonoBehaviour:
   _animationName: STANDING
   loop: 1
   timeScale: 1
+--- !u!114 &114554713205323438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1428082170021342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9ddc35e99b84cf9bd681d274f31ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldTimer: 0
+  blinkThreshold: 2
+  timeBetweenBlink: 0.2
+  scaleSize: 1.2
+  scaleTime: 1
 --- !u!212 &212618623398538464
 SpriteRenderer:
   m_ObjectHideFlags: 1

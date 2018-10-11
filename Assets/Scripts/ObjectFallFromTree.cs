@@ -7,27 +7,39 @@ public class ObjectFallFromTree : MonoBehaviour
 {
     [SerializeField] float rotationAngle = 20f;
     Rigidbody2D rg;
+    private bool isFallen = false;
+
+    ////the object will not be placed on top of each other with dynamic rg..
     // Use this for initialization
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
         rg.gravityScale = 0;
-        rg.velocity = Vector3.zero;
+        //Set layer to ignore player when objects still are in tree.
+        gameObject.layer = 11;
     }
 
-
-    public void ShakeAndFall(float time)
+    private void Update()
     {
-        float animationTime = time * 0.5f;
-
-        LeanTween.rotateZ(gameObject, GetRandomAngle(), animationTime).setEaseShake().setRepeat(2).setLoopPingPong().setOnComplete(() =>
+        //Stay if something touch when they not fallen.
+        if (!isFallen)
         {
-            LeanTween.rotateZ(gameObject, GetRandomAngle(), animationTime).setEaseOutBack().setOnComplete(() =>
-            {
-                //rg.isKinematic = false;
-                rg.gravityScale = 1;
+            rg.velocity = Vector2.zero;
+        }
+    }
 
-            });
+    public void ShakeAndFall(float dropAfterTime)
+    {
+        float time = dropAfterTime * 0.33f;
+        
+        //Rotate
+        LeanTween.rotateZ(gameObject, GetRandomAngle(), time).setEaseShake().setRepeat(3).setLoopPingPong().setOnComplete(() =>
+        {
+            gameObject.layer = 0;
+            rg.gravityScale = 1;
+            isFallen = true;
+
+            LeanTween.rotateZ(gameObject, GetRandomAngle(), time).setEaseOutQuad();
         });
     }
 
@@ -37,11 +49,12 @@ public class ObjectFallFromTree : MonoBehaviour
     }
 
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            rg.velocity = Vector2.zero;
+            rg.velocity = Vector3.zero;
+            rg.isKinematic = true;
         }
     }
 

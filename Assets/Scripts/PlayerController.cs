@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.SceneManagement;
 using Spine.Unity;
+using Cinemachine;
 public class PlayerController : MonoBehaviour {
 
 
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 
     bool isGrounded = true;
     bool dead = false;
-    public bool collidingWithInteractableThing;    
+    private bool collidingWithInteractableThing;    
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDashing = false;
@@ -44,18 +45,17 @@ public class PlayerController : MonoBehaviour {
     AudioSource audioSource;
     GameManager GM;
 
-    [SerializeField] GameObject shield;
-    private bool isWearingShield = false;
-    private float shieldTimer = 0;
+    [SerializeField] ShieldController shield;
 
     private SkeletonAnimation skeletonAnimation;
 
-
+    private CinemachineImpulseSource cinemachineImpulseSource;
 
 
     void Start() {
         audioSource = GetComponent<AudioSource>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
+        cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
         GM = FindObjectOfType<GameManager>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -91,7 +91,6 @@ public class PlayerController : MonoBehaviour {
 
 
         DashTimers();
-        ShieldTimer();
 
     }
 
@@ -229,13 +228,12 @@ public class PlayerController : MonoBehaviour {
             isDashing = true;
             rb.velocity = new Vector2(force, rb.velocity.y);
             skeletonAnimation.AnimationName = "RUN";
-    //        Camera.main.gameObject.GetComponent<CameraShake>().shake = true;
+            cinemachineImpulseSource.GenerateImpulse();
             PlayAudio("Dash");
 
         }
         else {
             isDashing = false;
-      //      Camera.main.gameObject.GetComponent<CameraShake>().shake = false;
         }
 
     }
@@ -308,41 +306,10 @@ public class PlayerController : MonoBehaviour {
             InvincibleObject invincibleObject = collision.gameObject.GetComponent<InvincibleObject>();
             if (invincibleObject != null)
             {
-                WearShield(invincibleObject.GetInvincibleTime());
+                shield.WearShieldInSec(invincibleObject.GetInvincibleTime());
             }
         }
     }
 
-
-    private void WearShield(int inSec)
-    {
-        isWearingShield = true;
-        shieldTimer += inSec;
-        shield.SetActive(true);
-    }
-
-    //Called from update
-    private void ShieldTimer()
-    {
-        shieldTimer -= Time.deltaTime;
-        if(shieldTimer <= 4)
-        {
-            
-        }
-        else if(shieldTimer <=2)
-        {
-            
-        }
-        else if (shieldTimer <= 0)
-        {
-            isWearingShield = false;
-            shield.SetActive(false);
-        }
-    }
-
-    IEnumerator BlinkShield(float time)
-    {
-        yield return new WaitForSeconds(time);
-    }
 
 }

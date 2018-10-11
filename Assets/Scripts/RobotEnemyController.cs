@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using Spine;
-
+using Cinemachine;
 public class RobotEnemyController : MonoBehaviour
 {
 
@@ -44,6 +44,11 @@ public class RobotEnemyController : MonoBehaviour
     private bool isSeenByTheCamera = false;
     [SerializeField] [Range(0.0f, 1.0f)] float increaseSightOutsideCamera;
 
+
+    //private void Reset()
+    //{
+    //    playerToFollow = FindObjectOfType<PlayerController>().GetComponent<Collider2D>();
+    //}
     private void Awake()
     {
         if (LaserObjectPool.instance == null)
@@ -54,8 +59,8 @@ public class RobotEnemyController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (playerToFollow == null) { return; }
         objectPool = LaserObjectPool.instance;
+        playerToFollow = FindObjectOfType<PlayerController>().GetComponent<Collider2D>();
 
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         pupil = skeletonAnimation.skeleton.FindBone(pupilBoneName);
@@ -259,12 +264,17 @@ public class RobotEnemyController : MonoBehaviour
                 player.Die();
             }
         }
+        else if(collision.gameObject.name == "Tree" && !isDead)
+        {
+            Die();
+        }
     }
 
     private void Die()
     {
         isDead = true;
-        ChangeSizeOfColliderWhenDead();
+        //Ignore player layer.
+        gameObject.layer = 11;
         //Die Animation and trigger when its done..
         skeletonAnimation.AnimationState.SetAnimation(0, dieAnimationName, false);
     }
@@ -297,19 +307,6 @@ public class RobotEnemyController : MonoBehaviour
             Destroy(vfx, vfx.main.duration);
         }
     }
-
-    //Change size, player can jump over it when its dead.
-    private void ChangeSizeOfColliderWhenDead()
-    {
-        BoxCollider2D thisCollider = GetComponent<BoxCollider2D>();
-        Vector2 size = thisCollider.size;
-        size.y *= 0.1f;
-        thisCollider.size = size;
-        Vector2 colliderOffset = thisCollider.offset;
-        colliderOffset.y *= 0.1f;
-        thisCollider.offset = colliderOffset;
-    }
-
 
     private void ShootLaserIfPlayerInSight()
     {

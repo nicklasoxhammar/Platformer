@@ -23,8 +23,9 @@ GameObject:
   - component: {fileID: 114593945175579640}
   - component: {fileID: 114088891569187556}
   - component: {fileID: 61035865517739758}
-  m_Layer: 0
-  m_Name: treetest
+  - component: {fileID: 58068632320793674}
+  m_Layer: 2
+  m_Name: Tree
   m_TagString: InteractableThing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4076389114436138}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: HolderForAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +312,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1460990778188850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.7250004, y: -17.324997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4093818159411568}
@@ -324,7 +325,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032271800815324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 14, z: 0}
+  m_LocalPosition: {x: 0, y: 16.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4076389114436138}
@@ -343,6 +344,21 @@ Transform:
   m_Father: {fileID: 4021252933254028}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58068632320793674
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032271800815324}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: c0d62921485ee4440868ac43762e0062, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.6916399, y: 4.8946714}
+  serializedVersion: 2
+  m_Radius: 9.01604
 --- !u!61 &61035865517739758
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -355,7 +371,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13756633, y: -1.8742409}
+  m_Offset: {x: -0.7340231, y: -3.2045383}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -366,7 +382,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5476356, y: 21.251518}
+  m_Size: {x: 2.740549, y: 23.912113}
   m_EdgeRadius: 0
 --- !u!114 &114061814122576742
 MonoBehaviour:
@@ -385,7 +401,7 @@ MonoBehaviour:
   m_Targets:
   - target: {fileID: 4870768156705836}
     weight: 1
-    radius: 9
+    radius: 12
   - target: {fileID: 0}
     weight: 1
     radius: 1
@@ -400,13 +416,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2417044a0802c426e85f8c1197017a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPutInTreePrefab: {fileID: 1632725817488128, guid: 898736700a6c34440bd11f0a51d1d6c7,
-    type: 2}
-  numberOfObjects: 4
-  sizeOfObjectArea: 6
-  offsetYArea: 4
-  ShakeBeforeFall: 3
-  deathAngle: 70
+  objectsToPutInTree:
+  - objectPrefab: {fileID: 114899756960833472, guid: 898736700a6c34440bd11f0a51d1d6c7,
+      type: 2}
+    numberOfItems: 1
+  - objectPrefab: {fileID: 114727983487712392, guid: 2dec4b35a1b964bda906fb31974e30ef,
+      type: 2}
+    numberOfItems: 10
+  sizeOfObjectArea: 1
+  offsetYArea: 5.2
+  ShakeBeforeFall: 2
+  deathAngle: -90
+  waitBeforeDrop: 3.5
+  dropRandomness: 0
   VRCamBig: {fileID: 114951134654193948}
   VRCamObjectInTree: {fileID: 114259203535889342}
   targetGroup: {fileID: 114470358412954242}
