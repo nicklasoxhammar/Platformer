@@ -131,8 +131,8 @@ public class TreeController : MonoBehaviour
     {
         treeIsDead = true;
         gameObject.tag = "KillsEnemy";
-        //Set Layer to Ground so player can jump on it.
-        gameObject.layer = 9;
+        //Set Layer to Jumpable tree so player can jump on it.
+        gameObject.layer = 14;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = true;
         VRCamBig.enabled = false;
