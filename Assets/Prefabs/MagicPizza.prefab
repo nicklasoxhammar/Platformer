@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 50
+  zeroRotationWhenFalling: 0
 --- !u!114 &114932411076365652
 MonoBehaviour:
   m_ObjectHideFlags: 1

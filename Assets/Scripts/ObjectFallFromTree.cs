@@ -8,6 +8,8 @@ public class ObjectFallFromTree : MonoBehaviour
     [SerializeField] float rotationAngle = 20f;
     Rigidbody2D rg;
     private bool isFallen = false;
+    [SerializeField] bool zeroZWhenFallen = true;
+    [SerializeField] bool jumpableWhenFallen = false;
 
     ////the object will not be placed on top of each other with dynamic rg..
     // Use this for initialization
@@ -38,8 +40,14 @@ public class ObjectFallFromTree : MonoBehaviour
             gameObject.layer = 0;
             rg.gravityScale = 1;
             isFallen = true;
-
-            LeanTween.rotateZ(gameObject, GetRandomAngle(), time).setEaseOutQuad();
+            if(!zeroZWhenDone)
+            {
+                LeanTween.rotateZ(gameObject, GetRandomAngle(), time).setEaseOutQuad();
+            }
+            else
+            {
+                LeanTween.rotateZ(gameObject, 0f, time).setEaseOutQuad();
+            }
         });
     }
 
@@ -55,6 +63,12 @@ public class ObjectFallFromTree : MonoBehaviour
         {
             rg.velocity = Vector3.zero;
             rg.isKinematic = true;
+            //Set to ground.
+            if(jumpableWhenFallen)
+            {
+                //Set to "Jumpable"
+                gameObject.layer = 13;
+            }
         }
     }
 
