@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour {
     private bool started = false;
     PlayerController player;
 
+    //pulsing dashbutton stuff
+    Vector3 startScale = Vector3.one;
+    Vector3 endScale = new Vector3(1.1f, 1.1f, 1.0f);
+    float pulseCounter = 0.0f;
+
 
     //Player prefs stuffs
     int currentLevel;
@@ -220,11 +225,27 @@ public class GameManager : MonoBehaviour {
         if (dashButtonYellow || player.isCarryingBox) {
             Color yellow = new Color32(191, 185, 30, 200);
             dashButton.GetComponent<Image>().color = yellow;
+            pulseDashButton();     
         }
         else {
             dashButton.GetComponent<Image>().color = startDashButtonColor;
+            dashButton.transform.localScale = Vector3.one;
         }
 
+    }
+
+    public void pulseDashButton() {
+
+        pulseCounter += Time.deltaTime;
+        Vector3 scale = Vector3.Lerp(startScale, endScale, pulseCounter);
+        dashButton.transform.localScale = scale;
+        
+        if(pulseCounter >= 1) {
+            pulseCounter = 0.0f;
+            Vector3 temp = startScale;
+            startScale = endScale;
+            endScale = temp;
+        }
     }
 
     void SetPlayerPrefs() {
