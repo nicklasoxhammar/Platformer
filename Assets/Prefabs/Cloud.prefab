@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 727539844410c42bba24ef2ce9708105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPoolManagerPrefab: {fileID: 1903752558144572, guid: 1014803f825204e18afdbc613e4587d4,
+    type: 2}
   idleSprite: {fileID: 21300000, guid: 338c5605fa4224ca78a2fe30ec88bd1b, type: 3}
   evilSprite: {fileID: 21300000, guid: 137300f71c2cb447699d72842f68efee, type: 3}
   happySprite: {fileID: 21300000, guid: 42150de4b4a624f5a89bc8dcc5cc5c3d, type: 3}

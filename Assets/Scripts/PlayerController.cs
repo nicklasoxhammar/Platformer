@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.SceneManagement;
 using Spine.Unity;
+using Cinemachine;
 public class PlayerController : MonoBehaviour {
 
 
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour {
     ParticleSystem dashParticles;
     bool isGrounded = true;
     bool dead = false;
-    public bool collidingWithInteractableThing;    
+    private bool collidingWithInteractableThing;    
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDashing = false;
@@ -46,15 +47,17 @@ public class PlayerController : MonoBehaviour {
     AudioSource audioSource;
     GameManager GM;
 
+    [SerializeField] ShieldController shield;
 
     private SkeletonAnimation skeletonAnimation;
 
-
+    private CinemachineImpulseSource cinemachineImpulseSource;
 
 
     void Start() {
         audioSource = GetComponent<AudioSource>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
+        cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
         GM = FindObjectOfType<GameManager>();
 
         dashParticles = GetComponentInChildren<ParticleSystem>();
@@ -229,7 +232,7 @@ public class PlayerController : MonoBehaviour {
             isDashing = true;
             rb.velocity = new Vector2(force, rb.velocity.y);
             skeletonAnimation.AnimationName = "RUN";
-            Camera.main.gameObject.GetComponent<CameraShake>().shake = true;
+            cinemachineImpulseSource.GenerateImpulse();
             PlayAudio("Dash");
             if (!dashParticles.isPlaying) { dashParticles.Play(); }
 
@@ -237,7 +240,6 @@ public class PlayerController : MonoBehaviour {
         else {
             dashParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             isDashing = false;
-            Camera.main.gameObject.GetComponent<CameraShake>().shake = false;
         }
 
     }
@@ -260,7 +262,10 @@ public class PlayerController : MonoBehaviour {
         GM.PlayerDied();
     }
 
-
+    public bool IsWearingShield()
+    {
+        return shield.GetIsWearingShield();
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -302,13 +307,24 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "DeadlyThing")
+        //Enemy... killed when not dashing
+        if(collision.gameObject.tag == "Enemy" && !shield.GetIsWearingShield() && !isDashing)
         {
             Die();
         }
+        else if (collision.gameObject.tag == "DeadlyThing" && !shield.GetIsWearingShield())
+        {
+            Die();
+        }
+        else if(collision.gameObject.tag == "Invincible")
+        {
+            InvincibleObject invincibleObject = collision.gameObject.GetComponent<InvincibleObject>();
+            if (invincibleObject != null)
+            {
+                shield.WearShieldInSec(invincibleObject.GetInvincibleTime());
+            }
+        }
     }
-
-
 
 
 }

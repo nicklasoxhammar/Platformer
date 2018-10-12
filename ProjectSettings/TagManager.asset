@@ -8,11 +8,12 @@ TagManager:
   - Enemy
   - Water
   - GameManager
-  - Undefined
   - InteractableThing
   - Block
   - DeadlyThing
-  - LaserFlyingThru
+  - Invincible
+  - GiraffeBack
+  - KillsEnemy
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - Wall
   - Ground
   - Cloud
-  - 
-  - 
+  - IgnorePlayer
+  - Player
   - 
   - 
   - 

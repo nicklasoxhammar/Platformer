@@ -13,19 +13,22 @@ public class KillingDrop : MonoBehaviour
     void Start()
     {
         splashVFX = Instantiate(VFXPrefab, transform.position, Quaternion.LookRotation(Vector2.up));
+        splashVFX.transform.parent = transform.parent;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.Die();
-        }
         PlayVFX();
         gameObject.SetActive(false);
     }
 
+    IEnumerator SetGameObjectInActivDelay(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        gameObject.SetActive(false);
+        //Show...
+        transform.localScale = new Vector3(1, 1, 1);
+    }
 
     private void OnBecameInvisible()
     {
