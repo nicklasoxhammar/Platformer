@@ -2255,25 +2255,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4216473229151600, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49,
     type: 2}
   m_PrefabInternal: {fileID: 1782207410}
---- !u!1 &785043429 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1278828809057876, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49,
-    type: 2}
-  m_PrefabInternal: {fileID: 1616367366}
---- !u!114 &785043435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 785043429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: What a pretty flower!
-  time: 2
-  unlimitedTriggers: 0
 --- !u!1001 &788135565
 Prefab:
   m_ObjectHideFlags: 0
@@ -2283,15 +2264,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4885768624109154, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12.44
       objectReference: {fileID: 0}
     - target: {fileID: 4885768624109154, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 6.6600003
       objectReference: {fileID: 0}
     - target: {fileID: 4885768624109154, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4885768624109154, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2321,7 +2302,7 @@ Prefab:
     - target: {fileID: 20408134579357126, guid: ec34aee746e8c6c419cff3ff963fc5b2,
         type: 2}
       propertyPath: orthographic size
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec34aee746e8c6c419cff3ff963fc5b2, type: 2}
@@ -3675,7 +3656,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1212922482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.78, y: -5.63, z: 1}
+  m_LocalPosition: {x: 3.9, y: -5.63, z: 1}
   m_LocalScale: {x: 3, y: 3, z: 0}
   m_Children: []
   m_Father: {fileID: 192079240}
@@ -4287,11 +4268,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4216473229151600, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 21.356237
+      value: 115.1
       objectReference: {fileID: 0}
     - target: {fileID: 4216473229151600, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.5
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 4216473229151600, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4320,6 +4301,11 @@ Prefab:
     - target: {fileID: 1278828809057876, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49, type: 2}
       propertyPath: m_Name
       value: Flower (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212998648769799440, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49, type: 2}
@@ -5785,7 +5771,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4216473229151600, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.0309825
+      value: 54.7
       objectReference: {fileID: 0}
     - target: {fileID: 4216473229151600, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49, type: 2}
       propertyPath: m_LocalPosition.y

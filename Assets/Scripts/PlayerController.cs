@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
     public float startDashTime = 0.5f;
     public float dashRefreshTime = 0.05f;
 
+    ParticleSystem dashParticles;
     bool isGrounded = true;
     bool dead = false;
     public bool collidingWithInteractableThing;    
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public bool freezeMovement = false;
     [HideInInspector] public bool canDash = true;
     [HideInInspector] public float dashTime;
+    [HideInInspector] public bool cantDie = false;
     [HideInInspector] public bool isCarryingBox = false;
     [HideInInspector] public float direction = 1.0f;
 
@@ -54,6 +56,8 @@ public class PlayerController : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         GM = FindObjectOfType<GameManager>();
+
+        dashParticles = GetComponentInChildren<ParticleSystem>();
 
         rb = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
@@ -227,9 +231,11 @@ public class PlayerController : MonoBehaviour {
             skeletonAnimation.AnimationName = "RUN";
             Camera.main.gameObject.GetComponent<CameraShake>().shake = true;
             PlayAudio("Dash");
+            if (!dashParticles.isPlaying) { dashParticles.Play(); }
 
         }
         else {
+            dashParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             isDashing = false;
             Camera.main.gameObject.GetComponent<CameraShake>().shake = false;
         }
@@ -239,7 +245,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Die() {
 
-        if (dead) { return; }
+        if (dead || cantDie) { return; }
 
         dead = true;
 
@@ -248,7 +254,8 @@ public class PlayerController : MonoBehaviour {
         rb.velocity = Vector3.zero;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
-        skeletonAnimation.AnimationName = fallingAnimationName;
+        GetComponent<MeshRenderer>().enabled = false;
+        rb.isKinematic = true;
 
         GM.PlayerDied();
     }

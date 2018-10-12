@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
     [Header("Challenges - pick two!")]
     [SerializeField] float timeChallenge = 0.0f;
     [SerializeField] bool eliminateAllEnemies = false;
+    [SerializeField] bool dontEliminateEnemies = false;
     [SerializeField] bool neverPickUpBox = false;
     [SerializeField] bool neverDash = false;
 
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour {
     private void Awake() {
         player = FindObjectOfType<PlayerController>();
         player.freezeMovement = true;
+        player.cantDie = true;
 
         audioSource = GetComponent<AudioSource>();
 
@@ -85,7 +87,8 @@ public class GameManager : MonoBehaviour {
 
         List<Challenge> currentChallenges = new List<Challenge> {
             new Challenge("Time", timeChallenge, "Complete in " + timeChallenge + " seconds"),
-            new Challenge("Enemies", eliminateAllEnemies, "Eliminate all enemies"),
+            new Challenge("EliminateEnemies", eliminateAllEnemies, "Eliminate all enemies"),
+            new Challenge("DontEliminateEnemies", dontEliminateEnemies, "Don't eliminate enemies"),
             new Challenge("Box", neverPickUpBox, "Don't pick up a box"),
             new Challenge("Dash", neverDash, "No dashing!")
          };
@@ -129,6 +132,7 @@ public class GameManager : MonoBehaviour {
         challengesScreen.SetActive(false);
 
         player.freezeMovement = false;
+        player.cantDie = false;
     }
 
     //For some reason the gameManager couldnt find the dash button in Awake or Start(after loading from another scene), so we find it here instead.
@@ -261,9 +265,14 @@ public class GameManager : MonoBehaviour {
                     if (timeChallengeTimer <= timeChallenge) { c.completed = true; }
                     break;
 
-                case "Enemies":
+                case "EliminateEnemies":
                     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                     if (enemies.Length == 0) { c.completed = true; }
+                    break;
+
+                case "DontEliminateEnemies":
+                    GameObject[] enemies1 = GameObject.FindGameObjectsWithTag("Enemy");
+                    if (enemies1.Length > 0) { c.completed = true; }
                     break;
 
                 case "Box":
