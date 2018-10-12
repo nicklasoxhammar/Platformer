@@ -218,8 +218,7 @@ public class GameManager : MonoBehaviour {
         if (dashButton == null) { return; }
 
         if (dashButtonYellow || player.isCarryingBox) {
-            Color yellow = Color.yellow;
-            yellow.a = 0.5f;
+            Color yellow = new Color32(191, 185, 30, 200);
             dashButton.GetComponent<Image>().color = yellow;
         }
         else {
