@@ -65,9 +65,6 @@ public class StartingScene : MonoBehaviour {
     void ShowStartingScreen() {
 
         LevelButtonsUI.SetActive(false);
-
-        Debug.Log("REACH!");
-
     }
 
 
