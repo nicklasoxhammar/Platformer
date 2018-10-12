@@ -197,6 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 20
+  zeroZWhenFallen: 1
+  jumpableWhenFallen: 1
 --- !u!114 &114631208526823948
 MonoBehaviour:
   m_ObjectHideFlags: 1

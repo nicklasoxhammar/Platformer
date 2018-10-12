@@ -37,10 +37,11 @@ public class ObjectFallFromTree : MonoBehaviour
         //Rotate
         LeanTween.rotateZ(gameObject, GetRandomAngle(), time).setEaseShake().setRepeat(3).setLoopPingPong().setOnComplete(() =>
         {
-            gameObject.layer = 0;
+            //Ignore jumpable tree
+            gameObject.layer = 15;
             rg.gravityScale = 1;
             isFallen = true;
-            if(!zeroZWhenDone)
+            if(!zeroZWhenFallen)
             {
                 LeanTween.rotateZ(gameObject, GetRandomAngle(), time).setEaseOutQuad();
             }
@@ -61,10 +62,19 @@ public class ObjectFallFromTree : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            
             rg.velocity = Vector3.zero;
             rg.isKinematic = true;
             //Set to ground.
             if(jumpableWhenFallen)
+            {
+                //Set to "Jumpable"
+                gameObject.layer = 13;
+            }
+        }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Jumpable"))
+        {
+            if (jumpableWhenFallen)
             {
                 //Set to "Jumpable"
                 gameObject.layer = 13;

@@ -30,8 +30,8 @@ TagManager:
   - IgnorePlayer
   - Player
   - Jumpable
-  - 
-  - 
+  - JumpableTree
+  - IgnoreJumpableTree
   - 
   - 
   - 
