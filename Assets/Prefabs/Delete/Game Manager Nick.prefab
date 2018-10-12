@@ -2014,6 +2014,7 @@ MonoBehaviour:
   levelCompleteSound: {fileID: 8300000, guid: 21ea4f39c2d2be546b194480f2148ef4, type: 3}
   timeChallenge: 60
   eliminateAllEnemies: 1
+  dontEliminateEnemies: 0
   neverPickUpBox: 0
   neverDash: 0
   hasPickedUpBox: 0
