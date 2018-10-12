@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4286884598212184}
   - component: {fileID: 212618623398538464}
   - component: {fileID: 114554713205323438}
+  - component: {fileID: 114382217074826424}
   m_Layer: 12
   m_Name: Shield
   m_TagString: Untagged
@@ -375,7 +376,7 @@ MonoBehaviour:
   jumpingSound: {fileID: 8300000, guid: 02a855e125cdf1e49ba5cbb84cb71aba, type: 3}
   dashingSound: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   deathSound: {fileID: 8300000, guid: 61f97b39420bf4e4a88b37cee9fb3339, type: 3}
-  shield: {fileID: 114554713205323438}
+  shield: {fileID: 114382217074826424}
 --- !u!114 &114311497575760218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,6 +407,22 @@ MonoBehaviour:
   _animationName: STANDING
   loop: 1
   timeScale: 1
+--- !u!114 &114382217074826424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1428082170021342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9ddc35e99b84cf9bd681d274f31ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldTimer: 0
+  blinkThreshold: 2
+  timeBetweenBlink: 0.2
+  scaleSize: 1.2
+  scaleTime: 1
 --- !u!114 &114554713205323438
 MonoBehaviour:
   m_ObjectHideFlags: 1

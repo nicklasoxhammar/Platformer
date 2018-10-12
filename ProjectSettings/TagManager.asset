@@ -13,6 +13,7 @@ TagManager:
   - DeadlyThing
   - Invincible
   - GiraffeBack
+  - KillsEnemy
   layers:
   - Default
   - TransparentFX

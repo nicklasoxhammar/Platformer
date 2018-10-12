@@ -260,7 +260,7 @@ public class RobotEnemyController : MonoBehaviour
                 Die();
             }
         }
-        else if(collision.gameObject.name == "Tree" && !isDead)
+        else if(collision.gameObject.tag == "KillsEnemy" && !isDead)
         {
             Die();
         }

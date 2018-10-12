@@ -130,15 +130,13 @@ public class TreeController : MonoBehaviour
     private void ShakeToDeath()
     {
         treeIsDead = true;
+        gameObject.tag = "KillsEnemy";
+        //Set Layer to Ground so player can jump on it.
+        gameObject.layer = 9;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = true;
         VRCamBig.enabled = false;
-        LeanTween.rotateZ(transform.parent.gameObject, deathAngle, 2f).setEaseOutBounce().setOnComplete(() =>
-        {
-            isMoving = false;
-            //Set Layer to Ground so player can jump on it.
-            gameObject.layer = 9;
-        });
+        LeanTween.rotateZ(transform.parent.gameObject, deathAngle, 2f).setEaseOutBounce();
     }
 
     private void ShakeAndFallObjects()
