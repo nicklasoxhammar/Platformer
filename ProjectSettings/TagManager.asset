@@ -14,6 +14,7 @@ TagManager:
   - Invincible
   - GiraffeBack
   - KillsEnemy
+  - EndOfGround
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Cloud
   - IgnorePlayer
   - Player
-  - 
+  - Jumpable
   - 
   - 
   - 

@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 50
+  zeroRotationWhenFalling: 0
 --- !u!212 &212463188757226472
 SpriteRenderer:
   m_ObjectHideFlags: 1
