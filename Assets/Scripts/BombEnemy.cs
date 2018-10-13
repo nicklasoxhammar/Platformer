@@ -22,7 +22,7 @@ public class BombEnemy : MonoBehaviour {
     float startingXPos;
     float startingYPos;
 
-    private float rotationSpeed = 5.0f;
+    private float rotationSpeed = 250.0f;
 
     float bombTimer = 0.0f;
 
@@ -98,7 +98,7 @@ public class BombEnemy : MonoBehaviour {
   
         }
 
-        transform.Rotate(0, 0, rotationSpeed * direction * -1);
+        transform.Rotate(0, 0, rotationSpeed * direction * -1 * Time.deltaTime);
 
     }
 
