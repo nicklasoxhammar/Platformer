@@ -18,10 +18,13 @@ public class IntroScene : MonoBehaviour {
     public GameObject sunGround;
     public GameObject sunHero;
     public GameObject president;
+    public ParticleSystem StartComputerVFX;
 
     public CinemachineVirtualCamera cameraStartSun;
     public CinemachineVirtualCamera cameraSunClose;
     public CinemachineVirtualCamera cameraAtTheSun;
+    public CinemachineVirtualCamera cameraPresidentAndComputen;
+    public CinemachineVirtualCamera computerClose;
 
     private SkeletonAnimation sunHeroSkeleton;
     private SkeletonAnimation presidentSkeletonn;
@@ -34,6 +37,7 @@ public class IntroScene : MonoBehaviour {
 
     private bool isPrinting = false;
     private float timeBeforeFadeOutText = 1f;
+    private float speedWritingText = 0.1f; 
 
 	// Use this for initialization
 	void Start () {
@@ -41,7 +45,7 @@ public class IntroScene : MonoBehaviour {
         sunHeroSkeleton = sunHero.GetComponent<SkeletonAnimation>();
         presidentSkeletonn = president.GetComponent<SkeletonAnimation>();
 
-        startText.SetTextTo("Yesterday...", 0.15f, 1f);
+        startText.SetTextTo("Yesterday...", 0.15f, 1f, true);
 
         StartCoroutine(DelayAndShowCameraCloseSun(2f));
         StartCoroutine(DelayAndShowCameraAtTheSun(5f));
@@ -95,6 +99,12 @@ public class IntroScene : MonoBehaviour {
         president.transform.localScale = new Vector3(direction, 1f, 1f);
         LeanTween.moveX(president, president.transform.position.x + distance, 3f).setOnComplete(() => {
             presidentSkeletonn.state.SetAnimation(1, idlePresident, true);
+            StartComputerVFX.Play();
+            computerClose.enabled = true;
+
+
+
+
         });
     }
 
@@ -108,15 +118,18 @@ public class IntroScene : MonoBehaviour {
 
             if (newDialogue.name == DialogueText.Name.Elda)
             {
-                bubbleSunHeroTalks.ShowAndPrintText(newDialogue.text, 0.1f, timeBeforeFadeOutText);
+                bubbleSunHeroTalks.ShowAndPrintText(newDialogue.text, speedWritingText, timeBeforeFadeOutText, !newDialogue.textcontinuing);
             }
             else
             {
-                bubblePresidentTalks.ShowAndPrintText(newDialogue.text, 0.1f, timeBeforeFadeOutText);
+                bubblePresidentTalks.ShowAndPrintText(newDialogue.text, speedWritingText, timeBeforeFadeOutText, !newDialogue.textcontinuing);
             }
 
-            yield return new WaitForSeconds(bubbleSunHeroTalks.GetTimeForPrintingText(newDialogue.text, 0.1f) + timeBeforeFadeOutText);
+            yield return new WaitForSeconds(bubbleSunHeroTalks.GetTimeForPrintingText(newDialogue.text, speedWritingText) + timeBeforeFadeOutText + 1f);
         }
-        MovePresidentHorizontal(-5f);
+        MovePresidentHorizontal(-10f);
+        bubbleSunHeroTalks.Hide();
+        bubblePresidentTalks.Hide();
+        cameraPresidentAndComputen.enabled = true;
     }
 }

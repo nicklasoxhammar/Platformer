@@ -12,6 +12,7 @@ public class DialogueText
     }
     [SerializeField] public Name name;
     [TextArea(4, 10)] [SerializeField] public string text;
+    public bool textcontinuing = false;
 }
 
 public class DialogueSystem : MonoBehaviour {
@@ -30,6 +31,11 @@ public class DialogueSystem : MonoBehaviour {
         if(index < dialogues.Count)
         {
             index++;
+            if(index != dialogues.Count)
+            {
+                if (dialogues[index].name == dialogues[index - 1].name)
+                    dialogues[index - 1].textcontinuing = true;
+            }
             return dialogues[index-1];
         }
         else return null;
