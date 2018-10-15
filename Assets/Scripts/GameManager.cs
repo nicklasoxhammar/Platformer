@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
     Text flowerCounterText;
 
     List<Challenge> challenges;
+    List<string> challengesCompleted;
+    private string challengeOneString = "Find all flowers";
 
     //Challenges
     [Header("Challenges - pick two!")]
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour {
     int challengeThreeComplete;
 
     AudioSource audioSource;
+    SceneHandler sceneHandler;
 
     private void Awake() {
         player = FindObjectOfType<PlayerController>();
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour {
         player.cantDie = true;
 
         audioSource = GetComponent<AudioSource>();
+        sceneHandler = GetComponent<SceneHandler>();
 
         challengesScreen = GameObject.Find("Challenges Screen");
         challengeOneText = GameObject.Find("Challenge One").GetComponent<Text>();
@@ -109,7 +113,10 @@ public class GameManager : MonoBehaviour {
 
 
         if (challengeOneComplete == 1) {
-            challengeOneText.text = challengeOneText.text + " - Completed!";
+            challengeOneText.text = challengeOneString + " - Completed!";
+        }
+        else {
+            challengeOneText.text = challengeOneString;
         }
 
         if (challengeTwoComplete == 1) {
@@ -169,10 +176,28 @@ public class GameManager : MonoBehaviour {
 
         audioSource.clip = levelCompleteSound;
         audioSource.Play();
-        levelCompleteScreen.SetActive(true);
         GameObject.Find("Mobile Input UI").SetActive(false);
         GameObject.Find("Dash Bar").SetActive(false);
         SetPlayerPrefs();
+
+        StartCoroutine(SetUpLevelCompleteScreen());
+        
+    }
+
+    IEnumerator SetUpLevelCompleteScreen() {
+        yield return new WaitForSeconds(1.0f);
+        levelCompleteScreen.SetActive(true);
+        GameObject flowers = GameObject.Find("Level Complete Flowers");
+        Animator[] flowerAnimators = flowers.GetComponentsInChildren<Animator>();
+        GameObject completedChallengesObject = GameObject.Find("Completed Challenges");
+        Text[] challengesText = completedChallengesObject.GetComponentsInChildren<Text>();
+
+        for(int i = 0; i < challengesCompleted.Count; i++) {
+            flowerAnimators[i].SetBool("run", true);
+            challengesText[i].text = challengesCompleted[i];
+            yield return new WaitForSeconds(0.5f);
+        }
+
     }
 
     public void PlayerDied() {
@@ -256,10 +281,10 @@ public class GameManager : MonoBehaviour {
         }
 
         CheckIfChallengesCompleted();
-
-        if (pickedFlowers == flowersTotal) { PlayerPrefs.SetInt("Level " + currentLevel + " challenge one", 1); }
-        if (challenges[0].completed) { PlayerPrefs.SetInt("Level " + currentLevel + " challenge two", 1); }
-        if (challenges[1].completed) { PlayerPrefs.SetInt("Level " + currentLevel + " challenge three", 1); }
+        challengesCompleted = new List<string>();
+        if (pickedFlowers == flowersTotal) { PlayerPrefs.SetInt("Level " + currentLevel + " challenge one", 1); challengesCompleted.Add(challengeOneString); }
+        if (challenges[0].completed) { PlayerPrefs.SetInt("Level " + currentLevel + " challenge two", 1); challengesCompleted.Add(challenges[0].challengeText); }
+        if (challenges[1].completed) { PlayerPrefs.SetInt("Level " + currentLevel + " challenge three", 1); challengesCompleted.Add(challenges[1].challengeText); }
 
     }
 
@@ -309,16 +334,5 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public void MainMenu() {
-        SceneManager.LoadScene(0);
-    }
-
-    public void NextLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void TryAgain() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
 }
 
