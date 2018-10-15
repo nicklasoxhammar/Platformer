@@ -8,7 +8,6 @@ public class DelayLetters : MonoBehaviour
 {
 
     private Text text;
-    public bool isPrinting = false;
     private Color color;
 
     // Use this for initialization
@@ -22,7 +21,6 @@ public class DelayLetters : MonoBehaviour
     public void SetTextTo(string newText, float speed, float secToKeepText, bool fadeOut)
     {
         text.text = "";
-        //isPrinting = true;
         StartCoroutine(DelayPrintFade(newText, speed, secToKeepText, fadeOut));
     }
 
@@ -32,9 +30,15 @@ public class DelayLetters : MonoBehaviour
         for (int i = 0; i < newText.Length; i++)
         {
             yield return new WaitForSeconds(speed);
-            text.text += newText[i];
+            if(newText[i].Equals('@'))
+            {
+                text.text += System.Environment.NewLine;
+            }
+            else
+            {
+                text.text += newText[i];
+            }
         }
-        //isPrinting = false;
         FadeOut(secToKeepText, fadeOut);
     }
 
@@ -57,8 +61,10 @@ public class DelayLetters : MonoBehaviour
         {
             text.text = "";
         }
-
-
     }
 
+    public float GetTimeForPrintingText(string printString, float speed)
+    {
+        return printString.Length * speed;
+    }
 }

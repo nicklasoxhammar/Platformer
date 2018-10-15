@@ -8,14 +8,16 @@ using Spine.Unity;
 public class IntroScene : MonoBehaviour {
 
     public DialogueSystem dialogueSystem;
-    public FadeToBlack earth;
     public DelayLetters startText;
+    public DelayLetters disconnectEarthText;
 
 
     public BubbleTextController bubbleSunHeroTalks;
     public BubbleTextController bubblePresidentTalks;
     public GameObject yellowSquare;
     public GameObject sunGround;
+    public GameObject sunAtBeginning;
+    public GameObject earth;
     public GameObject sunHero;
     public GameObject president;
     public ParticleSystem StartComputerVFX;
@@ -58,11 +60,14 @@ public class IntroScene : MonoBehaviour {
     {
         yield return new WaitForSeconds(seconds);
         cameraSunClose.enabled = true;
+        cameraStartSun.enabled = false;
     }
     IEnumerator DelayAndShowCameraAtTheSun(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         cameraAtTheSun.enabled = true;
+        cameraSunClose.enabled = false;
+
         LeanTween.alpha(yellowSquare, 0f, 1f).setOnComplete(() => 
         {
             MoveSunHeroHorizontal(-13f);
@@ -101,14 +106,35 @@ public class IntroScene : MonoBehaviour {
             presidentSkeletonn.state.SetAnimation(1, idlePresident, true);
             StartComputerVFX.Play();
             computerClose.enabled = true;
-
-
+            cameraPresidentAndComputen.enabled = false;
+            StartCoroutine(WaitAndDisconnectEarth(2f));
 
 
         });
     }
 
+    IEnumerator WaitAndDisconnectEarth(float sec)
+    {
+        string textToComputer = "foreach(sunRayToEarth sunRay in sun)@{@sunRay.enable = false;@}";
+        float durationPrintingText = disconnectEarthText.GetTimeForPrintingText(textToComputer, speedWritingText);
+        yield return new WaitForSeconds(sec);
+        disconnectEarthText.SetTextTo(textToComputer, speedWritingText, 1f, true);
 
+        yield return new WaitForSeconds(durationPrintingText + 2f);
+
+        //FADE IN WHITE SWUARE
+        sunAtBeginning.SetActive(false);
+        earth.SetActive(true);
+        cameraStartSun.enabled = true;
+        computerClose.enabled = false;
+
+        Invoke("FadeEarthToBlack", 2f);
+    }
+
+    private void FadeEarthToBlack()
+    {
+        LeanTween.color(earth, Color.black, 1f);
+    }
 
     IEnumerator StartDialouge()
     {
@@ -131,5 +157,6 @@ public class IntroScene : MonoBehaviour {
         bubbleSunHeroTalks.Hide();
         bubblePresidentTalks.Hide();
         cameraPresidentAndComputen.enabled = true;
+        cameraAtTheSun.enabled = false;
     }
 }
