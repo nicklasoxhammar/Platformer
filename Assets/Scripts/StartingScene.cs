@@ -11,8 +11,10 @@ public class StartingScene : MonoBehaviour {
 
     GameObject LevelButtonsUI;
     GameObject StartingScreenUI;
+    GameObject ScrollingCanvas;
 
     private void Awake() {
+        ScrollingCanvas = GameObject.Find("Scrolling Canvas");
         LevelButtonsUI = GameObject.Find("Level Buttons UI");
         StartingScreenUI = GameObject.Find("Starting Screen UI");
     }
@@ -37,7 +39,7 @@ public class StartingScene : MonoBehaviour {
 
     public void SetUpButtons() {
         StartingScreenUI.SetActive(false);
-        LevelButtonsUI.SetActive(true);
+        ScrollingCanvas.SetActive(true);
         Camera.main.backgroundColor = Color.black;
 
         //get how many levels the player has completed
@@ -64,7 +66,7 @@ public class StartingScene : MonoBehaviour {
 
     void ShowStartingScreen() {
 
-        LevelButtonsUI.SetActive(false);
+        ScrollingCanvas.SetActive(false);
     }
 
 
