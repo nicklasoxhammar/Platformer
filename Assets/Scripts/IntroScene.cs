@@ -31,7 +31,7 @@ public class IntroScene : MonoBehaviour
     public CinemachineVirtualCamera computerClose;
 
     private SkeletonAnimation sunHeroSkeleton;
-    private SkeletonAnimation presidentSkeletonn;
+    private SkeletonAnimation presidentSkeleton;
     private string runSunHero = "RUN";
     private string idleSunHero = "STANDING";
     private string runPresident = "PresidentRun";
@@ -39,7 +39,7 @@ public class IntroScene : MonoBehaviour
     private string flaxEarsName = "FlaxEars";
 
 
-    private float timeBeforeFadeOutText = 2f;
+    private float timeBeforeFadeOutText = 1.5f;
     private float timeBetweenLettersStartText = 5f;
     private float timeBetweenLettersDialogueText = 3f;
     private float timeBetweenLettersComputerText = 3f;
@@ -49,12 +49,12 @@ public class IntroScene : MonoBehaviour
     {
 
         sunHeroSkeleton = sunHero.GetComponent<SkeletonAnimation>();
-        presidentSkeletonn = president.GetComponent<SkeletonAnimation>();
+        presidentSkeleton = president.GetComponent<SkeletonAnimation>();
 
         startText.SetTextTo("Yesterday...", timeBetweenLettersStartText, 2f, true);
 
         StartCoroutine(DelayAndShowCameraCloseSun(2.5f));
-        StartCoroutine(DelayAndShowCameraAtTheSun(5.5f));
+        StartCoroutine(DelayAndShowCameraAtTheSun(4.5f));
 
         //earth.enabled = true;
         //earth.Fade(1f);
@@ -73,7 +73,7 @@ public class IntroScene : MonoBehaviour
         cameraAtTheSun.enabled = true;
         cameraSunClose.enabled = false;
         yellowSquare.alpha = 1;
-        LeanTween.alphaCanvas(yellowSquare, 0f, 1f).setOnComplete(() =>
+        LeanTween.alphaCanvas(yellowSquare, 0f, 3f).setEaseOutQuad().setOnComplete(() =>
         {
             MoveSunHeroHorizontal(-13f);
 
@@ -89,6 +89,7 @@ public class IntroScene : MonoBehaviour
         LeanTween.moveX(sunHero, sunHero.transform.position.x + distance, 55f * Time.deltaTime).setOnComplete(() =>
         {
             sunHeroSkeleton.AnimationName = idleSunHero;
+            presidentSkeleton.state.AddAnimation(2, flaxEarsName, true, 0);
             StartCoroutine(StartDialouge());
         });
     }
@@ -100,25 +101,25 @@ public class IntroScene : MonoBehaviour
         {
             direction = -1f;
         }
-        presidentSkeletonn.state.SetAnimation(1, runPresident, true);
+        presidentSkeleton.state.SetAnimation(1, runPresident, true);
         president.transform.localScale = new Vector3(direction, 1f, 1f);
         LeanTween.moveX(president, president.transform.position.x + distance, 70f * Time.deltaTime).setOnComplete(() =>
         {
-            presidentSkeletonn.state.SetAnimation(1, idlePresident, true);
+            presidentSkeleton.state.SetAnimation(1, idlePresident, true);
             StartComputerVFX.Play();
             computerClose.enabled = true;
             cameraPresidentAndComputen.enabled = false;
-            StartCoroutine(WaitAndDisconnectEarth(1f));
+            StartCoroutine(WaitAndDisconnectEarth(2.5f));
 
 
         });
     }
 
-    IEnumerator WaitAndDisconnectEarth(float sec)
+    IEnumerator WaitAndDisconnectEarth(float secondsBeforeWriteText)
     {
         string textToComputer = "foreach(sunRayToEarth sunRay in sun)@{@sunRay.SetActive(false);@}";
         float durationPrintingText = disconnectEarthText.GetTimeForPrintingText(textToComputer, timeBetweenLettersDialogueText, 1f);
-        yield return new WaitForSeconds(sec);
+        yield return new WaitForSeconds(secondsBeforeWriteText);
         disconnectEarthText.SetTextTo(textToComputer, timeBetweenLettersComputerText, 10f, false);
 
         yield return new WaitForSeconds(durationPrintingText + 2f);
@@ -169,7 +170,7 @@ public class IntroScene : MonoBehaviour
             {
                 bubblePresidentTalks.ShowBubbleAndPrintText(newDialogue.text, timeBetweenLettersDialogueText, timeBeforeFadeOutText, !newDialogue.textcontinuing);
             }
-            yield return new WaitForSeconds(bubbleSunHeroTalks.GetTimeForPrintingText(newDialogue.text, timeBetweenLettersDialogueText, timeBeforeFadeOutText - 0.5f));
+            yield return new WaitForSeconds(bubbleSunHeroTalks.GetTimeForPrintingText(newDialogue.text, timeBetweenLettersDialogueText, timeBeforeFadeOutText));
         }
         MovePresidentToComputer(-10f);
         bubbleSunHeroTalks.Hide();
