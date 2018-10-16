@@ -39,9 +39,4 @@ public class BubbleTextController : MonoBehaviour {
         });
     }
 
-    public float GetTimeForPrintingText(string printString, float timeBetweenLetters, float secToKeepText)
-    {
-        return text.GetTimeForPrintingText(printString, timeBetweenLetters, secToKeepText);
-    }
-
 }

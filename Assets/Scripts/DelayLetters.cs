@@ -9,11 +9,16 @@ public class DelayLetters : MonoBehaviour
 
     private Text text;
     private Color color;
+    private IntroScene introScene;
+
+
     // Use this for initialization
     void Start()
     {
         text = GetComponent<Text>();
         color = text.color;
+        introScene = FindObjectOfType<IntroScene>();
+
     }
 
 
@@ -38,6 +43,7 @@ public class DelayLetters : MonoBehaviour
                 text.text += newText[i];
             }
         }
+
         FadeOut(secToKeepText, fadeOut);
     }
 
@@ -48,6 +54,8 @@ public class DelayLetters : MonoBehaviour
     IEnumerator FadeOutDelay(float secToKeepText, bool fadeOut)
     {
         yield return new WaitForSeconds(secToKeepText);
+        //Tell the text is done...
+        introScene.SetIsPrintingTo(false);
         if (fadeOut)
         {
             LeanTween.alphaText(GetComponent<RectTransform>(), 0, 1f).setOnComplete(() =>
@@ -58,14 +66,8 @@ public class DelayLetters : MonoBehaviour
         }
     }
 
-    public float GetTimeForPrintingText(string printString, float timeBetweenLetters, float secToKeepText)
-    {
-        return printString.Length * (timeBetweenLetters * Time.deltaTime) + secToKeepText;
-    }
-
     public void ResetText()
     {
         text.text = "";
     }
-
 }
