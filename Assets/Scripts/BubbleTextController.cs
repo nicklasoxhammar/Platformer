@@ -26,21 +26,22 @@ public class BubbleTextController : MonoBehaviour {
         LeanTween.scale(gameObject, new Vector3(0f, 0f, 0f), 1f).setEaseInBack();
     }
 
-    public void PrintText(string printString, float speed, float secToKeepText, bool fadeOut)
+    public void PrintText(string printString, float timeBetweenLetters, float secToKeepText, bool fadeOut)
     {
-        text.SetTextTo(printString, speed, secToKeepText, fadeOut);
+        text.SetTextTo(printString, timeBetweenLetters, secToKeepText, fadeOut);
     }
 
-    public void ShowAndPrintText(string printString, float speed, float secToKeepText, bool fadeOut)
+    public void ShowBubbleAndPrintText(string printString, float timeBetweenLetters, float secToKeepText, bool fadeOut)
     {
         LeanTween.scale(gameObject, new Vector3(1f, 1f, 1f), 1f).setEaseOutBounce().setOnComplete(() => 
         {
-            PrintText(printString, speed, secToKeepText, fadeOut);
+            PrintText(printString, timeBetweenLetters, secToKeepText, fadeOut);
         });
     }
 
-    public float GetTimeForPrintingText(string printString, float speed)
+    public float GetTimeForPrintingText(string printString, float timeBetweenLetters, float secToKeepText)
     {
-        return printString.Length * speed;
+        return text.GetTimeForPrintingText(printString, timeBetweenLetters, secToKeepText);
     }
+
 }

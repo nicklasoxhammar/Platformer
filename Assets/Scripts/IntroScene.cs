@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using Cinemachine;
 using Spine.Unity;
 
-public class IntroScene : MonoBehaviour {
+public class IntroScene : MonoBehaviour
+{
 
     public DialogueSystem dialogueSystem;
     public DelayLetters startText;
@@ -14,7 +15,8 @@ public class IntroScene : MonoBehaviour {
 
     public BubbleTextController bubbleSunHeroTalks;
     public BubbleTextController bubblePresidentTalks;
-    public GameObject yellowSquare;
+    public CanvasGroup yellowSquare;
+    public CanvasGroup whiteSquare;
     public GameObject sunGround;
     public GameObject sunAtBeginning;
     public GameObject earth;
@@ -37,24 +39,27 @@ public class IntroScene : MonoBehaviour {
     private string flaxEarsName = "FlaxEars";
 
 
-    private bool isPrinting = false;
-    private float timeBeforeFadeOutText = 1f;
-    private float speedWritingText = 0.1f; 
+    private float timeBeforeFadeOutText = 2f;
+    private float timeBetweenLettersStartText = 5f;
+    private float timeBetweenLettersDialogueText = 3f;
+    private float timeBetweenLettersComputerText = 3f;
 
-	// Use this for initialization
-	void Start () {
-        
+    // Use this for initialization
+    void Start()
+    {
+
         sunHeroSkeleton = sunHero.GetComponent<SkeletonAnimation>();
         presidentSkeletonn = president.GetComponent<SkeletonAnimation>();
 
-        startText.SetTextTo("Yesterday...", 0.15f, 1f, true);
+        startText.SetTextTo("Yesterday...", timeBetweenLettersStartText, 2f, true);
 
-        StartCoroutine(DelayAndShowCameraCloseSun(2f));
-        StartCoroutine(DelayAndShowCameraAtTheSun(5f));
+        StartCoroutine(DelayAndShowCameraCloseSun(2.5f));
+        StartCoroutine(DelayAndShowCameraAtTheSun(5.5f));
 
         //earth.enabled = true;
         //earth.Fade(1f);
     }
+
 
     IEnumerator DelayAndShowCameraCloseSun(float seconds)
     {
@@ -67,33 +72,28 @@ public class IntroScene : MonoBehaviour {
         yield return new WaitForSeconds(seconds);
         cameraAtTheSun.enabled = true;
         cameraSunClose.enabled = false;
-
-        LeanTween.alpha(yellowSquare, 0f, 1f).setOnComplete(() => 
+        yellowSquare.alpha = 1;
+        LeanTween.alphaCanvas(yellowSquare, 0f, 1f).setOnComplete(() =>
         {
             MoveSunHeroHorizontal(-13f);
 
         });
         LeanTween.scaleY(sunGround, 1.1f, 5f).setEaseInOutSine().setLoopPingPong();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 
 
     private void MoveSunHeroHorizontal(float distance)
     {
         sunHeroSkeleton.AnimationName = runSunHero;
         sunHero.transform.localScale = new Vector3(-1f, 1f, 1f);
-        LeanTween.moveX(sunHero, sunHero.transform.position.x + distance, 3f).setOnComplete(() => {
+        LeanTween.moveX(sunHero, sunHero.transform.position.x + distance, 55f * Time.deltaTime).setOnComplete(() =>
+        {
             sunHeroSkeleton.AnimationName = idleSunHero;
             StartCoroutine(StartDialouge());
         });
     }
 
-    private void MovePresidentHorizontal(float distance)
+    private void MovePresidentToComputer(float distance)
     {
         float direction = 1f;
         if (distance < 0)
@@ -102,12 +102,13 @@ public class IntroScene : MonoBehaviour {
         }
         presidentSkeletonn.state.SetAnimation(1, runPresident, true);
         president.transform.localScale = new Vector3(direction, 1f, 1f);
-        LeanTween.moveX(president, president.transform.position.x + distance, 3f).setOnComplete(() => {
+        LeanTween.moveX(president, president.transform.position.x + distance, 70f * Time.deltaTime).setOnComplete(() =>
+        {
             presidentSkeletonn.state.SetAnimation(1, idlePresident, true);
             StartComputerVFX.Play();
             computerClose.enabled = true;
             cameraPresidentAndComputen.enabled = false;
-            StartCoroutine(WaitAndDisconnectEarth(2f));
+            StartCoroutine(WaitAndDisconnectEarth(1f));
 
 
         });
@@ -115,26 +116,44 @@ public class IntroScene : MonoBehaviour {
 
     IEnumerator WaitAndDisconnectEarth(float sec)
     {
-        string textToComputer = "foreach(sunRayToEarth sunRay in sun)@{@sunRay.enable = false;@}";
-        float durationPrintingText = disconnectEarthText.GetTimeForPrintingText(textToComputer, speedWritingText);
+        string textToComputer = "foreach(sunRayToEarth sunRay in sun)@{@sunRay.SetActive(false);@}";
+        float durationPrintingText = disconnectEarthText.GetTimeForPrintingText(textToComputer, timeBetweenLettersDialogueText, 1f);
         yield return new WaitForSeconds(sec);
-        disconnectEarthText.SetTextTo(textToComputer, speedWritingText, 1f, true);
+        disconnectEarthText.SetTextTo(textToComputer, timeBetweenLettersComputerText, 10f, false);
 
         yield return new WaitForSeconds(durationPrintingText + 2f);
-
-        //FADE IN WHITE SWUARE
         sunAtBeginning.SetActive(false);
         earth.SetActive(true);
-        cameraStartSun.enabled = true;
-        computerClose.enabled = false;
+        //WhiteSquare for fade..
 
-        Invoke("FadeEarthToBlack", 2f);
+        LeanTween.alphaCanvas(whiteSquare, 1f, 0.5f).setOnComplete(() =>
+         {
+             disconnectEarthText.ResetText();
+            cameraStartSun.enabled = true;
+             computerClose.enabled = false;
+
+            LeanTween.alphaCanvas(whiteSquare, 0f, 0.5f);
+             FadeEarthToBlack();
+         });
+
+
     }
+
 
     private void FadeEarthToBlack()
     {
-        LeanTween.color(earth, Color.black, 1f);
+        StartCoroutine(FadeEarthAndShowTextBubbles());
     }
+
+
+    IEnumerator FadeEarthAndShowTextBubbles()
+    {
+        yield return new WaitForSeconds(4f);
+        LeanTween.color(earth, Color.black, 1f).setEaseOutExpo();
+    }
+
+
+
 
     IEnumerator StartDialouge()
     {
@@ -144,16 +163,15 @@ public class IntroScene : MonoBehaviour {
 
             if (newDialogue.name == DialogueText.Name.Elda)
             {
-                bubbleSunHeroTalks.ShowAndPrintText(newDialogue.text, speedWritingText, timeBeforeFadeOutText, !newDialogue.textcontinuing);
+                bubbleSunHeroTalks.ShowBubbleAndPrintText(newDialogue.text, timeBetweenLettersDialogueText, timeBeforeFadeOutText, !newDialogue.textcontinuing);
             }
             else
             {
-                bubblePresidentTalks.ShowAndPrintText(newDialogue.text, speedWritingText, timeBeforeFadeOutText, !newDialogue.textcontinuing);
+                bubblePresidentTalks.ShowBubbleAndPrintText(newDialogue.text, timeBetweenLettersDialogueText, timeBeforeFadeOutText, !newDialogue.textcontinuing);
             }
-
-            yield return new WaitForSeconds(bubbleSunHeroTalks.GetTimeForPrintingText(newDialogue.text, speedWritingText) + timeBeforeFadeOutText + 1f);
+            yield return new WaitForSeconds(bubbleSunHeroTalks.GetTimeForPrintingText(newDialogue.text, timeBetweenLettersDialogueText, timeBeforeFadeOutText - 0.5f));
         }
-        MovePresidentHorizontal(-10f);
+        MovePresidentToComputer(-10f);
         bubbleSunHeroTalks.Hide();
         bubblePresidentTalks.Hide();
         cameraPresidentAndComputen.enabled = true;

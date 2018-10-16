@@ -9,7 +9,6 @@ public class DelayLetters : MonoBehaviour
 
     private Text text;
     private Color color;
-
     // Use this for initialization
     void Start()
     {
@@ -18,19 +17,19 @@ public class DelayLetters : MonoBehaviour
     }
 
 
-    public void SetTextTo(string newText, float speed, float secToKeepText, bool fadeOut)
+    public void SetTextTo(string newText, float timeBetweenLetters, float secToKeepText, bool fadeOut)
     {
         text.text = "";
-        StartCoroutine(DelayPrintFade(newText, speed, secToKeepText, fadeOut));
+        StartCoroutine(DelayPrintFade(newText, timeBetweenLetters * Time.deltaTime, secToKeepText, fadeOut));
     }
 
 
-    IEnumerator DelayPrintFade(string newText, float speed, float secToKeepText, bool fadeOut)
+    IEnumerator DelayPrintFade(string newText, float timeBetweenLetters, float secToKeepText, bool fadeOut)
     {
         for (int i = 0; i < newText.Length; i++)
         {
-            yield return new WaitForSeconds(speed);
-            if(newText[i].Equals('@'))
+            yield return new WaitForSeconds(timeBetweenLetters);
+            if (newText[i].Equals('@'))
             {
                 text.text += System.Environment.NewLine;
             }
@@ -57,14 +56,16 @@ public class DelayLetters : MonoBehaviour
                 text.color = color;
             });
         }
-        else
-        {
-            text.text = "";
-        }
     }
 
-    public float GetTimeForPrintingText(string printString, float speed)
+    public float GetTimeForPrintingText(string printString, float timeBetweenLetters, float secToKeepText)
     {
-        return printString.Length * speed;
+        return printString.Length * (timeBetweenLetters * Time.deltaTime) + secToKeepText;
     }
+
+    public void ResetText()
+    {
+        text.text = "";
+    }
+
 }
