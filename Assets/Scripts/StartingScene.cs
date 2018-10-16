@@ -37,7 +37,12 @@ public class StartingScene : MonoBehaviour {
         SceneManager.LoadScene(sceneToLoad);
     }
 
+    public void LoadIntro() {
+        SceneManager.LoadScene("Intro");
+    }
+
     public void SetUpButtons() {
+        GetComponent<SceneHandler>().fadeIn = true;
         StartingScreenUI.SetActive(false);
         ScrollingCanvas.SetActive(true);
         Camera.main.backgroundColor = Color.black;

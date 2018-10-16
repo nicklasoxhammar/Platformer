@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneHandler : MonoBehaviour {
 
     Image fadeImage;
-    bool fadeIn = true;
+    [HideInInspector] public bool fadeIn = true;
     bool fadeOut = false;
     float fadeTime = 0.5f;
     Color color;
@@ -23,6 +23,7 @@ public class SceneHandler : MonoBehaviour {
 	void Update () {
 
         if (fadeIn) {
+            fadeImage.gameObject.SetActive(true);
             progress += Time.deltaTime;
             color.a = Mathf.Lerp(1, 0, progress / fadeTime);
             fadeImage.color = color;

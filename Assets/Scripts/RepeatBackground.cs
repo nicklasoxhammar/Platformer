@@ -11,6 +11,8 @@ public class RepeatBackground : MonoBehaviour {
 
     private float backgroundWidth;
 
+    private float speed = 10.0f;
+
 
     void Start() {
 
@@ -44,7 +46,11 @@ public class RepeatBackground : MonoBehaviour {
             otherBackground.position = new Vector3(currentBackground.position.x - backgroundWidth, otherBackground.position.y, otherBackground.position.z);
         }
 
+        transform.position = new Vector3(transform.position.x + 1 * speed * Time.deltaTime, transform.position.y);
+
     }
+
+    
 
 
 }
