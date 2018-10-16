@@ -75,14 +75,14 @@ public class IntroScene : MonoBehaviour
         yellowSquare.alpha = 1;
         LeanTween.alphaCanvas(yellowSquare, 0f, 3f).setEaseOutQuad().setOnComplete(() =>
         {
-            MoveSunHeroHorizontal(-13f);
+            MoveSunHeroHorizontalAndStartDialogue(-13f);
 
         });
         LeanTween.scaleY(sunGround, 1.1f, 5f).setEaseInOutSine().setLoopPingPong();
     }
 
 
-    private void MoveSunHeroHorizontal(float distance)
+    private void MoveSunHeroHorizontalAndStartDialogue(float distance)
     {
         sunHeroSkeleton.AnimationName = runSunHero;
         sunHero.transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -141,6 +141,12 @@ public class IntroScene : MonoBehaviour
     }
 
 
+    private void EldaSkateToTheEarth()
+    {
+        
+    }
+
+
     private void FadeEarthToBlack()
     {
         StartCoroutine(FadeEarthAndShowTextBubbles());
@@ -150,7 +156,10 @@ public class IntroScene : MonoBehaviour
     IEnumerator FadeEarthAndShowTextBubbles()
     {
         yield return new WaitForSeconds(4f);
-        LeanTween.color(earth, Color.black, 1f).setEaseOutExpo();
+        LeanTween.color(earth, Color.black, 1f).setEaseOutExpo().setOnComplete(() => 
+        {
+            Invoke("EldaSkateToTheEarth", 2f);
+        });
     }
 
 
