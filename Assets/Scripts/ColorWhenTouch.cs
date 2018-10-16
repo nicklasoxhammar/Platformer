@@ -30,9 +30,7 @@ public class ColorWhenTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         ChangeColor();
-
     }
 
 
@@ -55,11 +53,7 @@ public class ColorWhenTouch : MonoBehaviour
             changeFromColor = Color.white;
             changeToColor = Color.black;
             colorIsChanging = true;
-
-
         }
-
-
     }
 
 
@@ -79,7 +73,6 @@ public class ColorWhenTouch : MonoBehaviour
                 colorIsChanging = false;
                 colorCount = 0;
             }
-
         }
     }
 

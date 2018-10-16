@@ -6,91 +6,105 @@ filter: Linear,Linear
 repeat: none
 ARM LEFT
   rotate: true
-  xy: 223, 187
+  xy: 175, 56
   size: 48, 83
   orig: 48, 83
   offset: 0, 0
   index: -1
 ARM RIGHT
-  rotate: true
-  xy: 387, 198
+  rotate: false
+  xy: 414, 83
   size: 37, 82
   orig: 37, 82
   offset: 0, 0
   index: -1
 BEN L
   rotate: false
-  xy: 471, 187
+  xy: 136, 25
   size: 30, 48
   orig: 30, 48
   offset: 0, 0
   index: -1
 BEN R
   rotate: false
-  xy: 222, 79
+  xy: 405, 31
   size: 60, 50
   orig: 60, 50
   offset: 0, 0
   index: -1
+BodyPresedent@1x
+  rotate: false
+  xy: 329, 167
+  size: 100, 87
+  orig: 100, 87
+  offset: 0, 0
+  index: -1
+HeadPresedent@1x
+  rotate: false
+  xy: 2, 75
+  size: 171, 179
+  orig: 171, 179
+  offset: 0, 0
+  index: -1
 Huvud
   rotate: false
-  xy: 2, 87
+  xy: 175, 106
   size: 152, 148
   orig: 152, 148
   offset: 0, 0
   index: -1
 KROPP copy 3
-  rotate: false
-  xy: 81, 6
+  rotate: true
+  xy: 431, 201
   size: 53, 79
   orig: 53, 79
   offset: 0, 0
   index: -1
 PUPILLER
   rotate: false
-  xy: 156, 69
+  xy: 451, 181
   size: 18, 18
   orig: 18, 18
   offset: 0, 0
   index: -1
 Shape 1
   rotate: false
-  xy: 156, 89
+  xy: 260, 36
   size: 64, 68
   orig: 64, 68
   offset: 0, 0
   index: -1
 Shape 2
-  rotate: false
-  xy: 156, 159
+  rotate: true
+  xy: 58, 8
   size: 65, 76
   orig: 65, 76
   offset: 0, 0
   index: -1
 pupillR
   rotate: false
-  xy: 136, 67
+  xy: 431, 181
   size: 18, 18
   orig: 18, 18
   offset: 0, 0
   index: -1
 ÖRALEFT
-  rotate: false
-  xy: 223, 131
+  rotate: true
+  xy: 2, 2
   size: 71, 54
   orig: 71, 54
   offset: 0, 0
   index: -1
 ÖRARIGHT
-  rotate: false
-  xy: 2, 2
+  rotate: true
+  xy: 329, 88
   size: 77, 83
   orig: 77, 83
   offset: 0, 0
   index: -1
 Ögon
   rotate: false
-  xy: 308, 188
+  xy: 326, 39
   size: 77, 47
   orig: 77, 47
   offset: 0, 0

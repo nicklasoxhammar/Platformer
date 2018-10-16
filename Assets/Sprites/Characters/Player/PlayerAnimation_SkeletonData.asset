@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: PlayerAnimation_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: f7a350f6580284d36b27f4f44a33f70b, type: 2}
+  - {fileID: 11400000, guid: 50e8ad923361047fa8481f2b065154c5, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: b5fde39047dd2472b9cdb64623e56fb1, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 4137cbfc006824e2ba847fce9f27e08e, type: 3}
   fromAnimation: []
   toAnimation: []
   duration: []

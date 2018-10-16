@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     private string fallingAnimationName = "FALLING";
     private string jumpAnimationName = "JUMP";
     private string idleAnimationName = "STANDING";
+    private string runAnimationName = "RUN";
 
 
     public float speed = 400.0f;
@@ -130,7 +131,7 @@ public class PlayerController : MonoBehaviour {
         if (CrossPlatformInputManager.GetAxisRaw("Horizontal") > 0f) {
             rb.velocity = new Vector2(speed * Time.deltaTime, rb.velocity.y);
             transform.localScale = new Vector3(1f, 1f, 1f);
-            skeletonAnimation.AnimationName = "RUN";
+            skeletonAnimation.AnimationName = runAnimationName;
             Dash(dashForce);
 
             direction = 1.0f;
@@ -140,7 +141,7 @@ public class PlayerController : MonoBehaviour {
         else if (CrossPlatformInputManager.GetAxisRaw("Horizontal") < 0f) {
             rb.velocity = new Vector2(-speed * Time.deltaTime, rb.velocity.y);
             transform.localScale = new Vector3(-1f, 1f, 1f);
-            skeletonAnimation.AnimationName = "RUN";
+            skeletonAnimation.AnimationName = runAnimationName;
             Dash(-dashForce);
 
             direction = -1.0f;
@@ -231,7 +232,7 @@ public class PlayerController : MonoBehaviour {
             GM.hasDashed = true;
             isDashing = true;
             rb.velocity = new Vector2(force, rb.velocity.y);
-            skeletonAnimation.AnimationName = "RUN";
+            skeletonAnimation.AnimationName = runAnimationName;
             cinemachineImpulseSource.GenerateImpulse();
             PlayAudio("Dash");
             if (!dashParticles.isPlaying) { dashParticles.Play(); }
