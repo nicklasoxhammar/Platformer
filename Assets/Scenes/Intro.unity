@@ -454,8 +454,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 572532853}
-  m_Follow: {fileID: 572532853}
+  m_LookAt: {fileID: 181938718}
+  m_Follow: {fileID: 181938718}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 8
@@ -13242,7 +13242,7 @@ MonoBehaviour:
     text: "Yes, Elda, you\u2019re fired!"
     textcontinuing: 0
   - name: 0
-    text: WHAT?! But why?!!!!
+    text: WHAT?! But why?!!!
     textcontinuing: 0
   - name: 0
     text: I've worked all my life to give Earth our sunshine!
@@ -13251,10 +13251,7 @@ MonoBehaviour:
     text: YES! EXACTLY! And the people on Earth just don't give a SHIT!
     textcontinuing: 0
   - name: 1
-    text: Pollution! War! They grow things they don't eat!
-    textcontinuing: 0
-  - name: 1
-    text: They buy stuff they don't need!
+    text: Pollution! War! Overconsumption! They grow things they don't eat!
     textcontinuing: 0
   - name: 0
     text: "But\u2026 but... I love the earth!"
@@ -13263,7 +13260,7 @@ MonoBehaviour:
     text: I know, but your entire department has been fired.
     textcontinuing: 0
   - name: 0
-    text: WHAT?!!! But...
+    text: WHAT???!!!
     textcontinuing: 0
   - name: 1
     text: No more sun for the earth! MUAHAHHA!
