@@ -50,21 +50,24 @@ public class StartingScene : MonoBehaviour {
         //get how many levels the player has completed
         int progress = PlayerPrefs.GetInt("Progress", 1);
 
-        //unlock completed level buttons
-        for (int i = 1; i < progress + 1; i++) {
-            int challengesCompleted = 0;
-            LevelButtonsUI.transform.GetChild(i - 1).GetComponent<Button>().interactable = true;
+        //show how many levels there are and unlock completed level buttons
+        for (int i = 1; i < SceneManager.sceneCountInBuildSettings - 1; i++) {
+            LevelButtonsUI.transform.GetChild(i - 1).gameObject.SetActive(true);
 
-            challengesCompleted += PlayerPrefs.GetInt("Level " + i + " challenge one", 0);
-            challengesCompleted += PlayerPrefs.GetInt("Level " + i + " challenge two", 0);
-            challengesCompleted += PlayerPrefs.GetInt("Level " + i + " challenge three", 0);
+            if (i <= progress) {
+                int challengesCompleted = 0;
+                LevelButtonsUI.transform.GetChild(i - 1).GetComponent<Button>().interactable = true;
 
-            for (int y = 0; y < challengesCompleted; y++) {
-                LevelButtonsUI.transform.GetChild(i - 1).GetChild(y).GetComponent<Image>().sprite = doneFlower;
+                challengesCompleted += PlayerPrefs.GetInt("Level " + i + " challenge one", 0);
+                challengesCompleted += PlayerPrefs.GetInt("Level " + i + " challenge two", 0);
+                challengesCompleted += PlayerPrefs.GetInt("Level " + i + " challenge three", 0);
+
+                for (int y = 0; y < challengesCompleted; y++) {
+                    LevelButtonsUI.transform.GetChild(i - 1).GetChild(y).GetComponent<Image>().sprite = doneFlower;
+                }
             }
-
+        
         }
-
 
     }
 
