@@ -39,9 +39,9 @@ public class BubbleTextController : MonoBehaviour {
         });
     }
 
-    public float GetTimeForPrintingText(string printString, float timeBetweenLetters, float secToKeepText)
+    public void SetOffsetTo(Vector3 vector3)
     {
-        return text.GetTimeForPrintingText(printString, timeBetweenLetters, secToKeepText);
+        offset = vector3;
     }
 
 }
