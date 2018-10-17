@@ -44,8 +44,8 @@ public class IntroScene : MonoBehaviour
     private string idlePresident = "PresidentIdle";
 
     //Text and Dialouge stuff...
-    private float timeBeforeFadeOutText = 0.2f;
-    private float timeBetweenLettersStartText = 0.1f;
+    private float timeBeforeFadeOutText = 0.45f;
+    private float timeBetweenLettersStartText = 0.12f;
     private float timeBetweenLettersDialogueText = 0.04f;
     private float timeBetweenLettersComputerText = 0.05f;
     private bool isPrintingText = true;
@@ -54,6 +54,7 @@ public class IntroScene : MonoBehaviour
     private float delayStartCodingAtComputer = 2.5f;
     private float timeBeforeFadeoutComputerText = 0.5f;
     //Move character stuff...
+    private float secToWaitBeforeSunHeroMoves = 0.5f;
     private float distanceMoveSunHero = -13f;
     private float distanceMovePresident = -10f;
     //low value = FASTER..
@@ -66,7 +67,8 @@ public class IntroScene : MonoBehaviour
     private float timeBeforeFadeOutSkateText = 1.5f;
     //Other stuff...
     private float delayBeforeFadeOutEarth = 3f;
-    private float secShowEarthWhenItsBlack = 2f;
+    private float secShowEarthWhenItsBlack = 1f;
+    private float secBeforeFadeInSun = 0.5f;
 
 
     // Use this for initialization
@@ -75,8 +77,8 @@ public class IntroScene : MonoBehaviour
         sunHeroSkeleton = sunHero.GetComponent<SkeletonAnimation>();
         presidentSkeleton = president.GetComponent<SkeletonAnimation>();
         LeanTween.rotateAround(sunAtBeginning, Vector3.forward, 360, 150f).setLoopClamp();
-        startText.SetTextTo("Yesterday...", timeBetweenLettersStartText, 2f, true);
 
+        startText.SetTextTo("Yesterday...", timeBetweenLettersStartText, secBeforeFadeInSun, true);
         StartCoroutine(ShowCamerasAtTheSun(2.5f, 2f));
     }
 
@@ -93,13 +95,11 @@ public class IntroScene : MonoBehaviour
         cameraAtTheSun.enabled = true;
         cameraSunClose.enabled = false;
         yellowSquare.alpha = 1;
-        LeanTween.alphaCanvas(yellowSquare, 0f, 3f).setEaseOutQuad().setOnComplete(() =>
-        {
-            //Starts the dialouge
-            MoveSunHeroAndStartDialogue();
-        });
-        //The sun ground is moving...
+        LeanTween.alphaCanvas(yellowSquare, 0f, 2.5f).setEaseOutQuad();
+        //Move sun ground.
         LeanTween.scaleY(sunGround, 1.1f, 5f).setEaseInOutSine().setLoopPingPong();
+        yield return new WaitForSeconds(secToWaitBeforeSunHeroMoves);
+        MoveSunHeroAndStartDialogue();
     }
 
     private void MoveSunHeroAndStartDialogue()
@@ -137,34 +137,61 @@ public class IntroScene : MonoBehaviour
         sunAtBeginning.SetActive(false);
         earth.SetActive(true);
         //WhiteSquare for fade..
-        LeanTween.alphaCanvas(whiteSquare, 1f, 2f).setEaseInQuad().setOnComplete(() =>
+        LeanTween.alphaCanvas(whiteSquare, 1f, 1f).setEaseInQuad().setOnComplete(() =>
          {
              disconnectEarthText.ResetText();
-             cameraStartSun.enabled = true;
+             cameraSkate.enabled = true;
              cameraComputerClose.enabled = false;
-            LeanTween.alphaCanvas(whiteSquare, 0f, 2f).setEaseOutQuad();
-            LeanTween.color(earth, Color.black, 1f).setDelay(delayBeforeFadeOutEarth).setEaseOutExpo().setOnComplete(() =>
-             {
-                StartCoroutine(ShowBlackFade());
-             });
+             LeanTween.alphaCanvas(whiteSquare, 0f, 1f).setEaseOutQuad();
+             //Make Earth Black...
+             LeanTween.color(earth, Color.black, 1f).setDelay(delayBeforeFadeOutEarth).setEaseOutExpo().setOnComplete(() =>
+              {
+                  //StartCoroutine(ShowBlackFade());
+                  ShowSunClose();
+              });
          });
     }
 
-    IEnumerator ShowBlackFade()
+    //IEnumerator ShowBlackFade()
+    //{
+    //    yield return new WaitForSeconds(secShowEarthWhenItsBlack);
+    //    LeanTween.alphaCanvas(blackSquare, 1f, 0.8f).setOnComplete(() =>
+    //    {
+    //        //Fade In done..do stuff...
+    //        earth.SetActive(false);
+    //        sunAtBeginning.SetActive(true);
+    //        LeanTween.alphaCanvas(blackSquare, 0f, 0.8f).setOnComplete(() => 
+    //        {
+    //            //fade out done..
+    //            StartSkateToEarth();  
+    //        });
+    //    });
+    //}
+
+    private void ShowSunClose()
     {
-        yield return new WaitForSeconds(secShowEarthWhenItsBlack);
-        LeanTween.alphaCanvas(blackSquare, 1f, 0.8f).setOnComplete(() =>
+        LeanTween.alphaCanvas(yellowSquare, 1f, 0.8f).setDelay(secShowEarthWhenItsBlack).setOnComplete(() =>
         {
-            //Fade In done..do stuff...
-            earth.SetActive(false);
+            cameraSunClose.enabled = true;
             sunAtBeginning.SetActive(true);
-            LeanTween.alphaCanvas(blackSquare, 0f, 0.8f).setOnComplete(() => 
-            {
-                //fade out done..
-                StartSkateToEarth();  
-            });
+            //cameraStartSun.enabled = false;
+            cameraSkate.enabled = false;
+
+            LeanTween.alphaCanvas(yellowSquare, 0f, 0.5f);
+            earth.SetActive(false);
+            StartCoroutine(ZoomOutFromSun());
         });
     }
+
+
+    IEnumerator ZoomOutFromSun()
+    {
+        yield return new WaitForSeconds(1f);
+        cameraSkate.enabled = true;
+        yield return new WaitForSeconds(2f);
+        StartSkateToEarth();
+    }
+
 
 
     private void StartSkateToEarth()
@@ -177,8 +204,8 @@ public class IntroScene : MonoBehaviour
         sunHero.transform.position = sunAtBeginning.transform.position;
         sunHero.transform.localScale = Vector3.zero;
         sunHeroSkeleton.AnimationName = runSunHero;
-        LeanTween.scale(sunHero,new Vector3(1f, 1f, 1f), timeSkateFirstPosition);
-        LeanTween.move(sunHero, skatePosition1, timeSkateFirstPosition).setEaseInQuad().setOnComplete(() => 
+        LeanTween.scale(sunHero, new Vector3(1f, 1f, 1f), timeSkateFirstPosition);
+        LeanTween.move(sunHero, skatePosition1, timeSkateFirstPosition).setEaseInQuad().setOnComplete(() =>
         {
             sunHeroSkeleton.AnimationName = idleSunHero;
             StartCoroutine(SunHeroTalksOnSkateboard());
@@ -197,7 +224,7 @@ public class IntroScene : MonoBehaviour
         LeanTween.move(sunHero, skatePosition2, timeSkateLastPosition).setEaseInExpo().setOnComplete(() =>
         {
             //LOAD NEXT SCENE?
-            Debug.Log("LOAD NEXT SCENE");
+            //SceneManager.LoadScene(1); 
         });
     }
 

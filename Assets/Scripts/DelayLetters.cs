@@ -10,6 +10,7 @@ public class DelayLetters : MonoBehaviour
     private Text text;
     private Color color;
     private IntroScene introScene;
+    private float fadeOutTime = 0.6f;
 
 
     // Use this for initialization
@@ -56,7 +57,7 @@ public class DelayLetters : MonoBehaviour
         introScene.SetIsPrintingTo(false);
         if (fadeOut)
         {
-            LeanTween.alphaText(GetComponent<RectTransform>(), 0, 1f).setOnComplete(() =>
+            LeanTween.alphaText(GetComponent<RectTransform>(), 0, fadeOutTime).setOnComplete(() =>
             {
                 text.text = "";
                 text.color = color;
