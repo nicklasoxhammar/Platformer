@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 using Spine.Unity;
+using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class IntroScene : MonoBehaviour
 {
@@ -50,7 +52,7 @@ public class IntroScene : MonoBehaviour
     private float timeBetweenLettersComputerText = 0.05f;
     private bool isPrintingText = true;
     //Computer stuff...
-    private string textToComputer = "foreach(sunRayToEarth sunRay in sun)@{@sunRay.SetActive(false);@}";
+    private string textToComputer = "foreach(SunRayToEarth sunRay in sun)@{@sunRay.SetActive(false);@}";
     private float delayStartCodingAtComputer = 2.5f;
     private float timeBeforeFadeoutComputerText = 0.5f;
     //Move character stuff...
@@ -58,8 +60,8 @@ public class IntroScene : MonoBehaviour
     private float distanceMoveSunHero = -13f;
     private float distanceMovePresident = -10f;
     //low value = FASTER..
-    private float sunHeroMovingSpeed = 0.02f;
-    private float presidentMovingSpeed = 0.02f;
+    private float sunHeroMovingSpeed = 0.03f;
+    private float presidentMovingSpeed = 0.03f;
     //Skate stuff...
     private float timeSkateFirstPosition = 2f;
     private float timeSkateLastPosition = 2f;
@@ -69,7 +71,6 @@ public class IntroScene : MonoBehaviour
     private float delayBeforeFadeOutEarth = 3f;
     private float secShowEarthWhenItsBlack = 1f;
     private float secBeforeFadeInSun = 0.5f;
-
 
     // Use this for initialization
     void Start()
@@ -81,7 +82,6 @@ public class IntroScene : MonoBehaviour
         startText.SetTextTo("Yesterday...", timeBetweenLettersStartText, secBeforeFadeInSun, true);
         StartCoroutine(ShowCamerasAtTheSun(2.5f, 2f));
     }
-
 
     IEnumerator ShowCamerasAtTheSun(float delayFirstCamera, float timeShowCloseCamera)
     {
@@ -172,13 +172,13 @@ public class IntroScene : MonoBehaviour
     {
         LeanTween.alphaCanvas(yellowSquare, 1f, 0.8f).setDelay(secShowEarthWhenItsBlack).setOnComplete(() =>
         {
+            earth.SetActive(false);
             cameraSunClose.enabled = true;
             sunAtBeginning.SetActive(true);
             //cameraStartSun.enabled = false;
             cameraSkate.enabled = false;
 
             LeanTween.alphaCanvas(yellowSquare, 0f, 0.5f);
-            earth.SetActive(false);
             StartCoroutine(ZoomOutFromSun());
         });
     }
@@ -220,11 +220,10 @@ public class IntroScene : MonoBehaviour
         yield return new WaitUntil(() => isPrintingText == false);
         bubbleSunHeroTalks.Hide();
         sunHeroSkeleton.AnimationName = runSunHero;
-        LeanTween.scale(sunHero, new Vector3(5f, 5f, 5f), timeSkateFirstPosition);
+        LeanTween.scale(sunHero, new Vector3(5f, 5f, 5f), timeSkateLastPosition);
         LeanTween.move(sunHero, skatePosition2, timeSkateLastPosition).setEaseInExpo().setOnComplete(() =>
         {
-            //LOAD NEXT SCENE?
-            //SceneManager.LoadScene(1); 
+            LoadLevelOne();
         });
     }
 
@@ -260,4 +259,12 @@ public class IntroScene : MonoBehaviour
     {
         isPrintingText = status;
     }
+
+    public void LoadLevelOne()
+    {
+        SceneManager.LoadScene(1); 
+    }
+
+
+
 }
