@@ -44,6 +44,8 @@ public class RobotEnemyController : MonoBehaviour
     private bool isSeenByTheCamera = false;
     [SerializeField] [Range(0.0f, 1.0f)] float increaseSightOutsideCamera;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip deathSound;
 
     //private void Reset()
     //{
@@ -59,6 +61,8 @@ public class RobotEnemyController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         objectPool = LaserObjectPool.instance;
         playerToFollow = FindObjectOfType<PlayerController>().GetComponent<Collider2D>();
 
@@ -273,6 +277,9 @@ public class RobotEnemyController : MonoBehaviour
         gameObject.layer = 11;
         //Die Animation and trigger when its done..
         skeletonAnimation.AnimationState.SetAnimation(0, dieAnimationName, false);
+
+        audioSource.clip = deathSound;
+        audioSource.Play();
     }
 
     //When DIE-animation is completed...

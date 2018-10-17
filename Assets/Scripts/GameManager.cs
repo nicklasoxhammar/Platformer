@@ -192,7 +192,13 @@ public class GameManager : MonoBehaviour {
         GameObject completedChallengesObject = GameObject.Find("Completed Challenges");
         Text[] challengesText = completedChallengesObject.GetComponentsInChildren<Text>();
 
-        for(int i = 0; i < challengesCompleted.Count; i++) {
+        //Hide the "next level button" if the next scene is the intro.
+        GameObject nextLevelButton = GameObject.Find("Next Level Button");
+        if (SceneManager.GetActiveScene().buildIndex + 2 == SceneManager.sceneCountInBuildSettings) {
+            nextLevelButton.SetActive(false);
+        }
+
+        for (int i = 0; i < challengesCompleted.Count; i++) {
             flowerAnimators[i].SetBool("run", true);
             challengesText[i].text = challengesCompleted[i];
             yield return new WaitForSeconds(0.5f);

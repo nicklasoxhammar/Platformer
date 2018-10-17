@@ -10,6 +10,7 @@ public class SharkEnemyController : MonoBehaviour {
     [SerializeField] private float speed = 4f;
     [SerializeField] private float followDistance = 10f;
     [SerializeField] AudioClip biteSound;
+    [SerializeField] AudioClip deathSound;
 
     private int direction = 1;
     private float chewingDistance = 10.0f;
@@ -122,10 +123,15 @@ public class SharkEnemyController : MonoBehaviour {
 
 
     private void Die() {
+        audioSource.clip = deathSound;
+        audioSource.Play();
 
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
         GameObject particles = Instantiate(deathParticles, transform.position, Quaternion.identity);
         Destroy(particles, 3.0f);
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 3.0f);
     }
 
 
