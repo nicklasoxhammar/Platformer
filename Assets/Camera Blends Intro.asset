@@ -15,7 +15,7 @@ MonoBehaviour:
   - m_From: VR SunClose
     m_To: VR AtTheSun
     m_Blend:
-      m_Style: 1
+      m_Style: 0
       m_Time: 0
       m_CustomCurve:
         serializedVersion: 2
@@ -26,11 +26,40 @@ MonoBehaviour:
   - m_From: VR ComputerClose
     m_To: VR Sun Start
     m_Blend:
-      m_Style: 1
+      m_Style: 0
       m_Time: 0
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: VR Sun Start
+    m_To: VR SunClose
+    m_Blend:
+      m_Style: 7
+      m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 2.1107702
+          outSlope: 2.1107702
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.13333333
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
         m_RotationOrder: 0

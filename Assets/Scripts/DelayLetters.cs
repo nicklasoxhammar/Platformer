@@ -18,14 +18,13 @@ public class DelayLetters : MonoBehaviour
         text = GetComponent<Text>();
         color = text.color;
         introScene = FindObjectOfType<IntroScene>();
-
     }
 
 
     public void SetTextTo(string newText, float timeBetweenLetters, float secToKeepText, bool fadeOut)
     {
         text.text = "";
-        StartCoroutine(DelayPrintFade(newText, timeBetweenLetters * Time.deltaTime, secToKeepText, fadeOut));
+        StartCoroutine(DelayPrintFade(newText, timeBetweenLetters, secToKeepText, fadeOut));
     }
 
 
@@ -43,7 +42,6 @@ public class DelayLetters : MonoBehaviour
                 text.text += newText[i];
             }
         }
-
         FadeOut(secToKeepText, fadeOut);
     }
 

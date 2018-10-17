@@ -39,4 +39,9 @@ public class BubbleTextController : MonoBehaviour {
         });
     }
 
+    public void SetOffsetTo(Vector3 vector3)
+    {
+        offset = vector3;
+    }
+
 }
