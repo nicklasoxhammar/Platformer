@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716469189838242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.5, y: 11.29, z: 0}
+  m_LocalPosition: {x: 101.1, y: 24.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -267,6 +267,7 @@ MonoBehaviour:
   player: {fileID: 0}
   deathParticles: {fileID: 1730898597688678, guid: 65cabca7ef0d8ca46bd2c41b82b9604c,
     type: 2}
-  speed: 6
-  followDistance: 20
+  speed: 8
+  followDistance: 5
   biteSound: {fileID: 8300000, guid: 6d9bb653e2208e34e87fe0bac2337240, type: 3}
+  deathSound: {fileID: 8300000, guid: df8dfd836ff5a3242b7634226138ad12, type: 3}

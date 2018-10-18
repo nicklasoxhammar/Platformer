@@ -37,10 +37,12 @@ public class BombEnemy : MonoBehaviour {
 
     }
 
-    void Update() {
+    private void FixedUpdate() {
         Move();
+    }
 
-
+    void Update() {
+  
         if (bombDropRate > 0) {
             bombTimer += Time.deltaTime;
 

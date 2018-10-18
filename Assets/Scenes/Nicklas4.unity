@@ -2342,7 +2342,6 @@ GameObject:
   m_Component:
   - component: {fileID: 459490396}
   - component: {fileID: 459490395}
-  - component: {fileID: 459490394}
   m_Layer: 0
   m_Name: Mountain_A
   m_TagString: Untagged
@@ -2350,18 +2349,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &459490394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 459490393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ee0e765b8efc54797e8a5182ba04e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothing: 5
 --- !u!212 &459490395
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2415,11 +2402,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 459490393}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 93.1, y: 11.97, z: 1}
+  m_LocalPosition: {x: 73.52, y: 11.97, z: 1}
   m_LocalScale: {x: 4, y: 5, z: 1}
   m_Children: []
-  m_Father: {fileID: 974309351}
-  m_RootOrder: 9
+  m_Father: {fileID: 1908324401}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &460948921
 Prefab:
@@ -2696,7 +2683,6 @@ GameObject:
   m_Component:
   - component: {fileID: 620652280}
   - component: {fileID: 620652279}
-  - component: {fileID: 620652278}
   m_Layer: 0
   m_Name: Mountain (1)
   m_TagString: Untagged
@@ -2704,18 +2690,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &620652278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 620652277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ee0e765b8efc54797e8a5182ba04e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothing: 5
 --- !u!212 &620652279
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2772,8 +2746,8 @@ Transform:
   m_LocalPosition: {x: 61.4, y: -0.38, z: 1}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 974309351}
-  m_RootOrder: 7
+  m_Father: {fileID: 1908324401}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &654778686
 Prefab:
@@ -2932,7 +2906,6 @@ GameObject:
   m_Component:
   - component: {fileID: 665028715}
   - component: {fileID: 665028717}
-  - component: {fileID: 665028716}
   m_Layer: 0
   m_Name: Mountain_A (1)
   m_TagString: Untagged
@@ -2950,21 +2923,9 @@ Transform:
   m_LocalPosition: {x: 81.4, y: 7.4, z: 1}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
-  m_Father: {fileID: 974309351}
-  m_RootOrder: 10
+  m_Father: {fileID: 1908324401}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &665028716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 665028714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ee0e765b8efc54797e8a5182ba04e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothing: 5
 --- !u!212 &665028717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4493,16 +4454,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 941321176}
-  - {fileID: 1429227254}
+  - {fileID: 1908324401}
   - {fileID: 1311114811}
   - {fileID: 328415722}
   - {fileID: 1183210922}
   - {fileID: 1965890601}
   - {fileID: 713559607}
-  - {fileID: 620652280}
-  - {fileID: 1075269176}
-  - {fileID: 459490396}
-  - {fileID: 665028715}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4872,7 +4829,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1075269176}
   - component: {fileID: 1075269175}
-  - component: {fileID: 1075269174}
   m_Layer: 0
   m_Name: Mountain (2)
   m_TagString: Untagged
@@ -4880,18 +4836,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1075269174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1075269173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ee0e765b8efc54797e8a5182ba04e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothing: 5
 --- !u!212 &1075269175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4948,8 +4892,8 @@ Transform:
   m_LocalPosition: {x: 75.52, y: -0.38, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 974309351}
-  m_RootOrder: 8
+  m_Father: {fileID: 1908324401}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1080839171
 Prefab:
@@ -4989,6 +4933,10 @@ Prefab:
     - target: {fileID: 4875775877231280, guid: d6a930ae5806a5b4c8d2be5e0281b0e1, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018696020063170, guid: d6a930ae5806a5b4c8d2be5e0281b0e1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a930ae5806a5b4c8d2be5e0281b0e1, type: 2}
@@ -7369,7 +7317,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1429227254}
   - component: {fileID: 1429227253}
-  - component: {fileID: 1429227252}
   m_Layer: 0
   m_Name: Mountain
   m_TagString: Untagged
@@ -7377,18 +7324,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1429227252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1429227251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ee0e765b8efc54797e8a5182ba04e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothing: 5
 --- !u!212 &1429227253
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7445,8 +7380,8 @@ Transform:
   m_LocalPosition: {x: 38.40562, y: -0.38, z: 1}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
-  m_Father: {fileID: 974309351}
-  m_RootOrder: 1
+  m_Father: {fileID: 1908324401}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1433025919 stripped
 Transform:
@@ -8493,6 +8428,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1908324400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1908324401}
+  - component: {fileID: 1908324402}
+  m_Layer: 0
+  m_Name: Mountains
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1908324401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1908324400}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1429227254}
+  - {fileID: 620652280}
+  - {fileID: 1075269176}
+  - {fileID: 459490396}
+  - {fileID: 665028715}
+  m_Father: {fileID: 974309351}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1908324402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1908324400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ee0e765b8efc54797e8a5182ba04e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothing: 5
 --- !u!1 &1953493138
 GameObject:
   m_ObjectHideFlags: 0

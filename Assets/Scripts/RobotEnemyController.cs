@@ -46,6 +46,7 @@ public class RobotEnemyController : MonoBehaviour
 
     AudioSource audioSource;
     [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip laserSound;
 
     //private void Reset()
     //{
@@ -335,6 +336,8 @@ public class RobotEnemyController : MonoBehaviour
                 GameObject laser = objectPool.GetObjectFromPool();
                 if (laser != null)
                 {
+                    audioSource.clip = laserSound;
+                    audioSource.Play();
                     laser.transform.position = eyePos;
                     laser.SetActive(true);
                 }
