@@ -19,6 +19,8 @@ public class Parallax : MonoBehaviour {
     // Use this for initialization
     void Start() {
         // the previous frame had the current frames camera position.
+        cam = Camera.main.transform;
+
         previousCamPos = cam.position;
 
         //assigning corresponding parallaxScales
