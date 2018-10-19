@@ -7469,7 +7469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: Now it feels like something is stalking me...
+  dialogue: Now it feels like something is following me...
   time: 3
   unlimitedTriggers: 0
 --- !u!61 &1549855115
