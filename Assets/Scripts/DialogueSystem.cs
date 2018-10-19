@@ -12,6 +12,7 @@ public class DialogueText
     }
     [SerializeField] public Name name;
     [TextArea(4, 10)] [SerializeField] public string text;
+    [HideInInspector]
     public bool textcontinuing = false;
 }
 

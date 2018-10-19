@@ -6,6 +6,7 @@ public class RepeatBackground : MonoBehaviour {
 
     private Transform cam;             //reference to the main cameras transform.
 
+    public Transform cameraIfNotMain;
     private Transform currentBackground;
     private Transform otherBackground;
 
@@ -17,6 +18,10 @@ public class RepeatBackground : MonoBehaviour {
     void Start() {
 
         cam = Camera.main.transform;
+        if (cameraIfNotMain!=null)
+        {
+            cam = cameraIfNotMain;
+        }
 
         currentBackground = backgrounds[0];
         otherBackground = backgrounds[1];
