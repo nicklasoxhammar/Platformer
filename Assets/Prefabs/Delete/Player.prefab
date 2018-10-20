@@ -247,11 +247,23 @@ MonoBehaviour:
   jumpForce: 1700
   dashForce: 50
   startDashTime: 0.5
-  dashCooldownTime: 2
+  dashRefreshTime: 0.05
+  rb: {fileID: 0}
   isDashing: 0
+  freezeMovement: 0
+  canDash: 1
+  dashTime: 0
+  cantDie: 0
+  isCarryingBox: 0
+  direction: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
+  walkingSound: {fileID: 0}
+  jumpingSound: {fileID: 0}
+  dashingSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  shield: {fileID: 0}
 --- !u!212 &212153959344732374
 SpriteRenderer:
   m_ObjectHideFlags: 1

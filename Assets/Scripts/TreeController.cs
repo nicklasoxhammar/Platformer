@@ -37,6 +37,8 @@ public class TreeController : MonoBehaviour
 
     private List<ObjectFallFromTree> listOfObjects = new List<ObjectFallFromTree>();
 
+    private const int jumpableLayer = 14;
+
     // Use this for initialization
     void Start()
     {
@@ -132,7 +134,7 @@ public class TreeController : MonoBehaviour
         treeIsDead = true;
         gameObject.tag = "KillsEnemy";
         //Set Layer to Jumpable tree so player can jump on it.
-        gameObject.layer = 14;
+        gameObject.layer = jumpableLayer;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = true;
         VRCamBig.enabled = false;

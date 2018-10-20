@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] bool neverPickUpBox = false;
     [SerializeField] bool neverDash = false;
 
-    private float timeChallengeTimer = 0.0f;
+    public float timeChallengeTimer = 0.0f;
     [HideInInspector] public bool hasPickedUpBox = false;
     [HideInInspector] public bool hasDashed = false;
 
