@@ -52,7 +52,8 @@ public class StoneController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Debug.Log("COLL!!!" + collision.gameObject.name);
+
         if (!elevatorIsOn && collision.transform.tag == "Player")
         {
             playerCollision = true;
@@ -120,6 +121,7 @@ public class StoneController : MonoBehaviour
     private void runElevator()
     {
         myRigidBody.isKinematic = true;
+        //Just standing still if no positions.
 
         //Just standing still if no positions.
         if(destinations.transform.childCount > 0)
@@ -128,7 +130,7 @@ public class StoneController : MonoBehaviour
 
             transform.position = Vector2.MoveTowards(transform.position, moveTowards, elevatorSpeed * Time.deltaTime);
 
-            if (myRigidBody.position == moveTowards && indexDestination <= destinations.transform.childCount - 1)
+            if (Vector3.Distance(transform.position, moveTowards) <= 0.01)
             {
                 //reached your destination
                 indexDestination++;
