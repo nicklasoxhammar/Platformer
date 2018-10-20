@@ -10,15 +10,20 @@ public class ObjectFallFromTree : MonoBehaviour
     private bool isFallen = false;
     [SerializeField] bool zeroZWhenFallen = true;
     [SerializeField] bool jumpableWhenFallen = false;
+    private const int ignorePlayerLayer = 11;
+    private const int ignoreJumpableTreeLayer = 15;
+    private const int jumpableLayer = 13;
+
 
     ////the object will not be placed on top of each other with dynamic rg..
+
     // Use this for initialization
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
         rg.gravityScale = 0;
         //Set layer to ignore player when objects still are in tree.
-        gameObject.layer = 11;
+        gameObject.layer = ignorePlayerLayer;
     }
 
     private void Update()
@@ -37,8 +42,7 @@ public class ObjectFallFromTree : MonoBehaviour
         //Rotate
         LeanTween.rotateZ(gameObject, GetRandomAngle(), time).setEaseShake().setRepeat(3).setLoopPingPong().setOnComplete(() =>
         {
-            //Ignore jumpable tree
-            gameObject.layer = 15;
+            gameObject.layer = ignoreJumpableTreeLayer;
             rg.gravityScale = 1;
             isFallen = true;
             if(!zeroZWhenFallen)
@@ -68,16 +72,14 @@ public class ObjectFallFromTree : MonoBehaviour
             //Set to ground.
             if(jumpableWhenFallen)
             {
-                //Set to "Jumpable"
-                gameObject.layer = 13;
+                gameObject.layer = jumpableLayer;
             }
         }
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Jumpable"))
         {
             if (jumpableWhenFallen)
             {
-                //Set to "Jumpable"
-                gameObject.layer = 13;
+                gameObject.layer = jumpableLayer;
             }
         }
     }

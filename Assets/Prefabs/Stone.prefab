@@ -97,11 +97,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483028951857572}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0.36110255}
+  m_LocalPosition: {x: -22.8, y: 0, z: 0.36110255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4413626471252380}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4328795552375332
 Transform:
@@ -110,11 +110,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1140104882386692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0.36110255}
+  m_LocalPosition: {x: 2.77, y: 0, z: 0.36110255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4413626471252380}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4404776358042364
 Transform:
@@ -139,8 +139,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4060262453038894}
   - {fileID: 4328795552375332}
+  - {fileID: 4060262453038894}
   m_Father: {fileID: 4604525810407714}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -151,7 +151,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1396317070293516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 45.27, y: 34.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4404776358042364}
@@ -173,7 +173,7 @@ Rigidbody2D:
   m_Mass: 0.3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 7b173f4e13d464f1b89d95af71df4ad2, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -246,9 +246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elevatorIsOn: 0
   destinations: {fileID: 1067820179563618}
-  elevatorSpeed: 2
-  speedGoingUp: 2
-  secToWaitBeforeGoingUp: 0.5
+  elevatorSpeed: 4
+  speedGoingUp: 1
+  secToWaitBeforeGoingUp: 1
 --- !u!212 &212264167923156216
 SpriteRenderer:
   m_ObjectHideFlags: 1

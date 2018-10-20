@@ -146,4 +146,8 @@ public class StoneController : MonoBehaviour
         elevatorIsOn = status;
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        
+    }
 }
