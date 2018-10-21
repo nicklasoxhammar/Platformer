@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d67986878e44ffcbd9efd9573c7d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earsAndBlinkMinTime: 4
-  earsAndBlinkMaxTime: 7
+  earsAndBlinkMinTime: 2
+  earsAndBlinkMaxTime: 4
   pickUpGrassMinTime: 4
   pickUpGrassMaxTime: 8
 --- !u!114 &114255344329941940
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84034c89095d4403f80bf7206e427e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goToIdleMinTime: 2
+  goToIdleMinTime: 3
   goToIdleMaxTime: 6
   blinkMintime: 1
   blinkMaxTime: 2

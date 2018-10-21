@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 58922856869731572}
   - component: {fileID: 114323255533632242}
   - component: {fileID: 114198958668138404}
-  - component: {fileID: 114614384307991262}
   m_Layer: 0
   m_Name: MagicPizza
   m_TagString: Invincible
@@ -106,22 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibleTime: 10
---- !u!114 &114614384307991262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565435942638914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: 'I LOVE PIZZA!
-
-    Now I feel even more invincible...!!'
-  time: 3
-  unlimitedTriggers: 0
 --- !u!212 &212951009189021746
 SpriteRenderer:
   m_ObjectHideFlags: 1

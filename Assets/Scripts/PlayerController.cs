@@ -90,10 +90,6 @@ public class PlayerController : MonoBehaviour {
 
 
 
-            //if (transform.position.y < -50f) {
-            //    Die();
-            //}
-
 
         DashTimers();
 

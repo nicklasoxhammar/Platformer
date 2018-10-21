@@ -15,7 +15,7 @@ public class IdleBehaviour : StateMachineBehaviour {
 
     private SkeletonAnimation skeletonAnimation;
 
-    string[] earsAndBlinkAnimationNames = new string[] { "MoveEarsFast", "MoveEarsSlow", "Blink" };
+    string[] earsAndBlinkAnimationNames = new string[] { "MoveEarsFast", "Blink" };
     float earsAndBlinkTimer;
     [SerializeField][Header("Blink And Move Ears:")] float earsAndBlinkMinTime = 1f;
     [SerializeField] float earsAndBlinkMaxTime = 8f;

@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 58412604934107724}
   - component: {fileID: 114479452726230620}
   - component: {fileID: 114051118065938756}
-  - component: {fileID: 114294989666973260}
   m_Layer: 0
   m_Name: MagicStrawberry
   m_TagString: Invincible
@@ -94,22 +93,6 @@ MonoBehaviour:
   VFXWhenDisappear: {fileID: 198148122341536102, guid: 0e2329c307d764e43ac2966d301ea5fd,
     type: 2}
   fadeTime: 1
---- !u!114 &114294989666973260
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431044306694724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: 'mmm....! Strawberries!
-
-    Now I feel invincible...!'
-  time: 3
-  unlimitedTriggers: 0
 --- !u!114 &114479452726230620
 MonoBehaviour:
   m_ObjectHideFlags: 1
