@@ -19,7 +19,7 @@ public class StoneController : MonoBehaviour
     [SerializeField] float secToWaitBeforeGoingUp = 0.5f;
 
     private Vector3 startPosition;
-    public bool playerCollision = false;
+    private bool playerCollision = false;
     private bool moveStoneBackToStart = true;
 
     // Use this for initialization
@@ -30,7 +30,7 @@ public class StoneController : MonoBehaviour
         myRigidBody.isKinematic = true;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if(!elevatorIsOn)
         {

@@ -248,9 +248,8 @@ MonoBehaviour:
   destinations: {fileID: 1067820179563618}
   elevatorSpeed: 4
   speedGoingUp: 1
-  secToWaitBeforeGoingUp: 1
+  secToWaitBeforeGoingUp: 1.5
   playerCollision: 0
-  moveStoneBackToStart: 1
 --- !u!212 &212264167923156216
 SpriteRenderer:
   m_ObjectHideFlags: 1
