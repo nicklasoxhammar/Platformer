@@ -17,11 +17,8 @@ public class OnOffSwitchController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
         myRenderer = GetComponent<SpriteRenderer>();
-
         changeSprite();
-
 	}
 	
 
@@ -37,28 +34,17 @@ public class OnOffSwitchController : MonoBehaviour {
         }
     }
 
-
-
-
-
     private void OnTriggerStay2D(Collider2D collision)
     {
-
         if(collision.tag == "Player" && CrossPlatformInputManager.GetButtonDown("Dash"))
         {
             TurnSwitch();
         }
     }
 
-
-
-
-
     private void TurnSwitch()
     {
         if (lockSwitchWhenTurnedOn && switchStatus) { return; }
-
-
             switchStatus = !switchStatus;
             changeSprite();
 
@@ -67,8 +53,4 @@ public class OnOffSwitchController : MonoBehaviour {
                 stone.SetElevatorStatusTo(switchStatus);
             }
     }
-
-
-
-
 }

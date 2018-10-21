@@ -90,10 +90,6 @@ public class PlayerController : MonoBehaviour {
 
 
 
-        if (transform.position.y < -50f) {
-            Die();
-        }
-
 
         DashTimers();
 
@@ -327,5 +323,20 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Invincible")
+        {
+            InvincibleObject invincibleObject = collision.gameObject.GetComponent<InvincibleObject>();
+            if (invincibleObject != null)
+            {
+                shield.WearShieldInSec(invincibleObject.GetInvincibleTime());
+            }
+        }
+        else if (collision.gameObject.tag == "DieBottomCollider")
+        {
+            Die();
+        }
+    }
 
 }

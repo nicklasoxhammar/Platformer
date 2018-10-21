@@ -15,6 +15,7 @@ TagManager:
   - GiraffeBack
   - KillsEnemy
   - EndOfGround
+  - DieBottomCollider
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Jumpable
   - JumpableTree
   - IgnoreJumpableTree
-  - BackgroundCamera
+  - 
   - 
   - 
   - 

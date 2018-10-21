@@ -35,7 +35,7 @@ public class RobotEnemyController : MonoBehaviour
     private string runAnimationName = "RUN";
 
     private bool isDead = false;
-    public bool isFreezed = false;
+    private bool isFreezed = false;
     private bool playerInSight = false;
     private int direction = 1;
     private bool isShooting = false;
@@ -48,10 +48,7 @@ public class RobotEnemyController : MonoBehaviour
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip laserSound;
 
-    //private void Reset()
-    //{
-    //    playerToFollow = FindObjectOfType<PlayerController>().GetComponent<Collider2D>();
-    //}
+
     private void Awake()
     {
         if (LaserObjectPool.instance == null)
@@ -254,8 +251,8 @@ public class RobotEnemyController : MonoBehaviour
     }
 
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    //Changed to collision stay... now player can wear shield, stand close and dash...
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
