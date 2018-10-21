@@ -6,21 +6,33 @@ public class DisapperTouchPlayer : MonoBehaviour {
 
     [SerializeField] private ParticleSystem VFXWhenDisappear;
     [SerializeField] private float fadeTime = 1f;
-
+    private int ignorePlayerLayer = 11;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            //Ignore player layer...
-            gameObject.layer = 11;
-            ParticleSystem VFX = Instantiate(VFXWhenDisappear, transform);
-            LeanTween.alpha(gameObject, 0, fadeTime).setEaseOutSine().setOnComplete(() =>
-            {
-                Destroy(gameObject, 2f);
-
-            });
-
+            DisappearAndPlayVFX();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            DisappearAndPlayVFX();
+        }
+    }
+
+    private void DisappearAndPlayVFX()
+    {
+        gameObject.layer = ignorePlayerLayer;
+        ParticleSystem VFX = Instantiate(VFXWhenDisappear, transform);
+        LeanTween.alpha(gameObject, 0, fadeTime).setEaseOutSine().setOnComplete(() =>
+        {
+            //Wait if there's dialouge...
+            Destroy(gameObject, 5f);
+
+        });
     }
 }
