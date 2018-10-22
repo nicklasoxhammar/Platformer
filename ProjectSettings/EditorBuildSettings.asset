@@ -26,9 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LotsOfBees.unity
     guid: 549882c174a178247a402bf6359491c7
-  - enabled: 1
-    path: Assets/Scenes/Fannys.unity
-    guid: bb26120348517480eacf8d9788ace79e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 1d2c0942665724bbf85276111c894dbd

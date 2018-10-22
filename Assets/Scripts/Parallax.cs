@@ -28,7 +28,7 @@ public class Parallax : MonoBehaviour {
 
     }
 
-    void Update() {
+    void FixedUpdate() {
 
             //the parallax is the opposite of the camera movement because the previous frame multiplied by the scale.
             float parallax = (previousCamPos.x - cam.position.x) * parallaxScales;

@@ -28,7 +28,6 @@ public class ColorWhenTouch : MonoBehaviour
     {
         if (spriteRenderer.color != Color.white && !colorIsChanging)
         {
-            Debug.Log("CHANGECOLOR");
             colorIsChanging = true;
             LeanTween.color(gameObject, Color.white, duration).setOnComplete(() => 
             {
