@@ -16,6 +16,7 @@ TagManager:
   - KillsEnemy
   - EndOfGround
   - DieBottomCollider
+  - ChangeColor
   layers:
   - Default
   - TransparentFX

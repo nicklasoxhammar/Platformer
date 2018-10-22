@@ -682,11 +682,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4070322098468472, guid: f94b2b7db52324b44a0b082a4ae2b6f9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 90.59789
+      value: 91.69789
       objectReference: {fileID: 0}
     - target: {fileID: 4070322098468472, guid: f94b2b7db52324b44a0b082a4ae2b6f9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -55.55453
+      value: -58.262543
       objectReference: {fileID: 0}
     - target: {fileID: 4070322098468472, guid: f94b2b7db52324b44a0b082a4ae2b6f9, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2981,6 +2981,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1792170730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1431044306694724, guid: c4ab1765944d84d518b6fccb96ceadc8,
+    type: 2}
+  m_PrefabInternal: {fileID: 750836517}
+--- !u!114 &1792170731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1792170730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: 'Strawberries!
+
+    I feel invincible...!!'
+  time: 2
+  unlimitedTriggers: 0
 --- !u!4 &1799643292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4432110855699462, guid: 0214a74ec0ae5443aac4a20ed245a593,
@@ -3085,11 +3106,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 25.1
+      value: 26.2
       objectReference: {fileID: 0}
     - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -62.891983
+      value: -65.6
       objectReference: {fileID: 0}
     - target: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e, type: 2}
       propertyPath: m_LocalPosition.z
