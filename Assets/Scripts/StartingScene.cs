@@ -41,7 +41,16 @@ public class StartingScene : MonoBehaviour {
         SceneManager.LoadScene("Intro");
     }
 
+    //Called when "Play" button is pressed
     public void SetUpButtons() {
+
+        //If this is the first time the game is launched - load the intro scene.
+        if(PlayerPrefs.GetInt("First Launch", 0) == 0) {
+            PlayerPrefs.SetInt("First Launch", 1);
+            LoadIntro();
+            return;
+        }
+
         GetComponent<SceneHandler>().fadeIn = true;
         StartingScreenUI.SetActive(false);
         ScrollingCanvas.SetActive(true);

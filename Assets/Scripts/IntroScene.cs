@@ -72,9 +72,32 @@ public class IntroScene : MonoBehaviour
     private float secShowEarthWhenItsBlack = 1f;
     private float secBeforeFadeInSun = 0.5f;
 
+    int eldaCounter = 0;
+
+    //Audio stuff
+    [Header("Audio")]
+    /*[SerializeField] AudioClip eldaDialogueSound;
+    [SerializeField] AudioClip presidentDialogueSound;*/
+    [SerializeField] AudioClip typingSound;
+    [SerializeField] AudioClip shutDownEarthSound;
+    [SerializeField] AudioClip spaceSound;
+    [SerializeField] AudioClip sunSound;
+    [SerializeField] AudioClip[] eldaSounds;
+    [SerializeField] AudioClip[] presidentSounds;
+    AudioSource ambienceAudioSource;
+    AudioSource dialogueAudioSource;
+    
+
     // Use this for initialization
     void Start()
     {
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        ambienceAudioSource = audioSources[0];
+        dialogueAudioSource = audioSources[1];
+
+        ambienceAudioSource.clip = spaceSound;
+        ambienceAudioSource.Play();
+
         sunHeroSkeleton = sunHero.GetComponent<SkeletonAnimation>();
         presidentSkeleton = president.GetComponent<SkeletonAnimation>();
         LeanTween.rotateAround(sunAtBeginning, Vector3.forward, 360, 150f).setLoopClamp();
@@ -92,6 +115,8 @@ public class IntroScene : MonoBehaviour
 
         //Camera at the sun...
         yield return new WaitForSeconds(timeShowCloseCamera);
+        ambienceAudioSource.clip = sunSound;
+        ambienceAudioSource.Play();
         cameraAtTheSun.enabled = true;
         cameraSunClose.enabled = false;
         yellowSquare.alpha = 1;
@@ -131,8 +156,11 @@ public class IntroScene : MonoBehaviour
     IEnumerator WaitAndDisconnectEarth()
     {
         yield return new WaitForSeconds(delayStartCodingAtComputer);
+        ambienceAudioSource.clip = typingSound;
+        ambienceAudioSource.Play();
         disconnectEarthText.SetTextTo(textToComputer, timeBetweenLettersComputerText, timeBeforeFadeoutComputerText, false);
         yield return new WaitUntil(() => isPrintingText == false);
+        ambienceAudioSource.Stop();
         isPrintingText = true;
         sunAtBeginning.SetActive(false);
         earth.SetActive(true);
@@ -150,6 +178,10 @@ public class IntroScene : MonoBehaviour
                   ShowSunClose();
               });
          });
+
+        yield return new WaitForSeconds(delayBeforeFadeOutEarth + 0.7f);
+        ambienceAudioSource.clip = shutDownEarthSound;
+        ambienceAudioSource.Play();
     }
 
     //IEnumerator ShowBlackFade()
@@ -170,6 +202,9 @@ public class IntroScene : MonoBehaviour
 
     private void ShowSunClose()
     {
+        ambienceAudioSource.clip = spaceSound;
+        ambienceAudioSource.Play();
+
         LeanTween.alphaCanvas(yellowSquare, 1f, 0.8f).setDelay(secShowEarthWhenItsBlack).setOnComplete(() =>
         {
             earth.SetActive(false);
@@ -217,6 +252,8 @@ public class IntroScene : MonoBehaviour
     {
         bubbleSunHeroTalks.SetOffsetTo(new Vector3(-4.5f, -6f, 0f));
         bubbleSunHeroTalks.ShowBubbleAndPrintText(sunHeroSkateText, timeBetweenLettersDialogueText, timeBeforeFadeOutSkateText, true);
+        dialogueAudioSource.clip = eldaSounds[eldaCounter];
+        dialogueAudioSource.Play();
         yield return new WaitUntil(() => isPrintingText == false);
         bubbleSunHeroTalks.Hide();
         sunHeroSkeleton.AnimationName = runSunHero;
@@ -230,18 +267,24 @@ public class IntroScene : MonoBehaviour
 
     IEnumerator StartDialouge()
     {
+        int presidentCounter = 0;
         //StartIsPrintingCheck();
         for (int i = 0; i < dialogueSystem.GetSize(); i++)
         {
             isPrintingText = true;
             DialogueText newDialogue = dialogueSystem.GetNextDialogue();
-            if (newDialogue.name == DialogueText.Name.Elda)
-            {
+            if (newDialogue.name == DialogueText.Name.Elda) {
                 bubbleSunHeroTalks.ShowBubbleAndPrintText(newDialogue.text, timeBetweenLettersDialogueText, timeBeforeFadeOutText, !newDialogue.textcontinuing);
+                dialogueAudioSource.clip = eldaSounds[eldaCounter];
+                dialogueAudioSource.Play();
+                eldaCounter++;
             }
             else
             {
                 bubblePresidentTalks.ShowBubbleAndPrintText(newDialogue.text, timeBetweenLettersDialogueText, timeBeforeFadeOutText, !newDialogue.textcontinuing);
+                dialogueAudioSource.clip = presidentSounds[presidentCounter];
+                dialogueAudioSource.Play();
+                presidentCounter++;
             }
             yield return new WaitUntil(() => isPrintingText == false);
         }

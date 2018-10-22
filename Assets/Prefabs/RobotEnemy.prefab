@@ -155,7 +155,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -188,7 +188,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -282,7 +282,6 @@ MonoBehaviour:
   minTimeBetweenLaserShoot: 2
   maxTimeBetweenLaserShoot: 2
   dieVFX: {fileID: 198148122341536102, guid: 0e2329c307d764e43ac2966d301ea5fd, type: 2}
-  isFreezed: 0
   increaseSightOutsideCamera: 0
   deathSound: {fileID: 8300000, guid: df8dfd836ff5a3242b7634226138ad12, type: 3}
   laserSound: {fileID: 8300000, guid: 40b9c1fa9d677a8478f2a8eaef260602, type: 3}

@@ -1129,6 +1129,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &442225963
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897676150278836, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 55daee1c4d5b748648a110b603b5dc07, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &474833699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3594,7 +3648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.2}
   m_AnchorMax: {x: 0.5, y: 0.2}
-  m_AnchoredPosition: {x: 0, y: -11.036499}
+  m_AnchoredPosition: {x: 0, y: -6.030339}
   m_SizeDelta: {x: 1920, y: 1904.1001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &921902793
@@ -5417,6 +5471,27 @@ Prefab:
     - target: {fileID: 1345270470998302, guid: 6d064f4403096b84386912a408d18bf4, type: 2}
       propertyPath: m_Name
       value: Skateboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 212425714076615420, guid: 6d064f4403096b84386912a408d18bf4,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bde6f836b5625bf41aba68e89df9751f,
+        type: 3}
+    - target: {fileID: 212425714076615420, guid: 6d064f4403096b84386912a408d18bf4,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.3882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 212425714076615420, guid: 6d064f4403096b84386912a408d18bf4,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.3882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 212425714076615420, guid: 6d064f4403096b84386912a408d18bf4,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.3882353
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114680399046754108, guid: 6d064f4403096b84386912a408d18bf4, type: 2}
@@ -7862,13 +7937,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1687390371}
   - component: {fileID: 1687390372}
+  - component: {fileID: 1687390373}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1687390371
 Transform:
   m_ObjectHideFlags: 0
@@ -7898,6 +7974,17 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 1693646893}
   - {fileID: 401973668}
+--- !u!114 &1687390373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687390370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1cd9cb2c7c278546b4c206d44346d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1692722358
 GameObject:
   m_ObjectHideFlags: 0
