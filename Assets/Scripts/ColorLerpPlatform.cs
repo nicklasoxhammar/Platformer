@@ -15,6 +15,7 @@ public class ColorLerpPlatform : MonoBehaviour
     {
         grassTilesSorted = transform.GetComponentsInChildren<ColorWhenTouch>();
         grassTilesSorted = grassTilesSorted.OrderBy(go => go.transform.position.x).ToArray();
+
         //Set id to sorted tiles...
         int id = 0;
         foreach (ColorWhenTouch grassTile in grassTilesSorted)
@@ -42,7 +43,6 @@ public class ColorLerpPlatform : MonoBehaviour
         }
     }
 
-
     public void StartLerpColor(int idNumber)
     {
         if (!isLerping)
@@ -51,6 +51,5 @@ public class ColorLerpPlatform : MonoBehaviour
             StartCoroutine(ChangeColorToTheRight(idNumber));
             StartCoroutine(ChangeColorToTheLeft(idNumber));
         }
-
     }
 }
