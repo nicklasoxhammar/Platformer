@@ -7,89 +7,68 @@ public class ColorWhenTouch : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
-    private Color changeFromColor = Color.white;
-    private Color changeToColor = Color.black;
+    [SerializeField] private float duration = 0.5f;
 
-    private float colorCount = 0;
-    [SerializeField ]private float duration = 0.5f;
+    bool colorIsChanging = false;
 
-
-    bool colorIsChanging = true;
-
+    //Lerp the platform...
+    private int id;
+    private ColorLerpPlatform colorLerpPlatform;
 
     // Use this for initialization
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //SetColorToBlack();
+        SetColorToBlack();
+        colorLerpPlatform = transform.GetComponentInParent<ColorLerpPlatform>();
+
     }
 
-
-
-
-    // Update is called once per frame
-    void Update()
+    public void SetColorToWhite()
     {
-        ChangeColor();
-    }
-
-
-
-    private void SetColorToWhite()
-    {
-        if (spriteRenderer.color != Color.white)
+        if (spriteRenderer.color != Color.white && !colorIsChanging)
         {
-            changeFromColor = Color.black;
-            changeToColor = Color.white;
             colorIsChanging = true;
+            LeanTween.color(gameObject, Color.white, duration).setOnComplete(() => 
+            {
+                colorIsChanging = false;
+            });
         }
-
     }
 
     private void SetColorToBlack()
     {
         if (spriteRenderer.color != Color.black)
         {
-            changeFromColor = Color.white;
-            changeToColor = Color.black;
-            colorIsChanging = true;
-        }
-    }
-
-
-
-    private void ChangeColor()
-    {
-        if (colorIsChanging)
-        {
-            spriteRenderer.color = Color.Lerp(changeFromColor, changeToColor, colorCount);
-
-            if (colorCount < 1)
-            {
-                colorCount += Time.deltaTime / duration;
-            }
-            else
-            {
-                colorIsChanging = false;
-                colorCount = 0;
-            }
+            LeanTween.color(gameObject, Color.black, duration);
         }
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.tag == "Player")
+        {
             SetColorToWhite();
+            if(colorLerpPlatform != null)
+            {
+                colorLerpPlatform.StartLerpColor(id);
+            }
         }
     }
 
-
+    //Other stuff, like tree?
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             SetColorToWhite();
         }
+    }
+
+    //Called from colorLerpPlatform
+    public void SetIdToThisTile(int id)
+    {
+        this.id = id;
     }
 }
