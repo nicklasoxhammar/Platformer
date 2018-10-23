@@ -6,7 +6,7 @@ using System.Linq;
 
 public class ColorLerpPlatform : MonoBehaviour
 {
-    [SerializeField] float delayBetweenTiles = 1f;
+    [SerializeField] float delayBetweenTiles = 0.1f;
     private ColorWhenTouch[] grassTilesSorted;
     private bool isLerping = false;
 

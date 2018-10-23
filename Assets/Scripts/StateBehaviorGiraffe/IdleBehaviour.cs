@@ -8,30 +8,35 @@ public class IdleBehaviour : StateMachineBehaviour {
     Animator animator;
 
     private bool fromSleep = true;
-    string getUpAnimationName = "GetUp";
-    string idleAnimationName = "Idle";
+    private string getUpAnimationName = "GetUp";
+    private string idleAnimationName = "Idle";
     private string MoveThroatUp = "MoveThroatUp";
     private string moveTail = "MoveTail";
+    int isEatingHash = Animator.StringToHash("isEating");
 
     private SkeletonAnimation skeletonAnimation;
+    private GiraffeController giraffeController;
 
-    string[] earsAndBlinkAnimationNames = new string[] { "MoveEarsFast", "Blink" };
-    float earsAndBlinkTimer;
-    [SerializeField][Header("Blink And Move Ears:")] float earsAndBlinkMinTime = 1f;
-    [SerializeField] float earsAndBlinkMaxTime = 8f;
+    private string[] earsAndBlinkAnimationNames = new string[] { "MoveEarsFast", "Blink" };
+    private float earsAndBlinkTimer;
+    //Blink And Move Ears:
+    private float earsAndBlinkMinTime;
+    private float earsAndBlinkMaxTime;
 
-
-    int isEatingHash = Animator.StringToHash("isEating");
-    [SerializeField]
-    [Header("Pick Up Grass...")]
-    float pickUpGrassMinTime = 5f;
-    [SerializeField] float pickUpGrassMaxTime = 5f;
+    //Go from Idle and pick Up Grass...
+    private float pickUpGrassMinTime;
+    private float pickUpGrassMaxTime;
     private float pickUpgrassTimer;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        
         skeletonAnimation = animator.GetComponent<SkeletonAnimation>();
+        giraffeController = animator.gameObject.GetComponent<GiraffeController>();
+
+        earsAndBlinkMinTime = giraffeController.EarsAndBlinkMinTime;
+        earsAndBlinkMaxTime = giraffeController.EarsAndBlinkMaxTime;
+        pickUpGrassMinTime = giraffeController.GoFromIdleToEatMinTime;
+        pickUpGrassMaxTime = giraffeController.GoFromIdleToEatMaxTime;
 
         SetMoveEarsAndBlinkTimer();
         pickUpgrassTimer = Random.Range(pickUpGrassMinTime, pickUpGrassMaxTime);
@@ -48,30 +53,24 @@ public class IdleBehaviour : StateMachineBehaviour {
             skeletonAnimation.AnimationState.SetAnimation(0, MoveThroatUp, false);
         }
         skeletonAnimation.AnimationState.AddAnimation(0, idleAnimationName, true, 0f);
-
 	}
 
 
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-
         CountDownEarTimer();
         CountDownGoToGrassState(animator);
-
     }
 
-    private void CountDownGoToGrassState(Animator animator)
+    private void CountDownGoToGrassState(Animator animatorObject)
     {
         pickUpgrassTimer -= Time.deltaTime;
         if(pickUpgrassTimer<= 0)
         {
-            animator.SetBool(isEatingHash, true);
+            animatorObject.SetBool(isEatingHash, true);
         }
     }
-
-
-
 
     private void CountDownEarTimer()
     {
@@ -85,11 +84,12 @@ public class IdleBehaviour : StateMachineBehaviour {
         }
     }
 
-
     private void SetMoveEarsAndBlinkTimer()
     {
         earsAndBlinkTimer = Random.Range(earsAndBlinkMinTime, earsAndBlinkMaxTime);
     }
+
+
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 	//

@@ -37,6 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4094316113197044}
+  - component: {fileID: 114692459845418144}
   m_Layer: 0
   m_Name: 3Grass
   m_TagString: Untagged
@@ -221,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc88c0de088749458ab897bf43e2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0.5
 --- !u!114 &114405631976996594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc88c0de088749458ab897bf43e2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0.5
 --- !u!114 &114640461352606800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,6 +246,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc88c0de088749458ab897bf43e2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0.5
+--- !u!114 &114692459845418144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455225058819316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4334075617cb24a65a5a82e929b4dac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBetweenTiles: 0.1
 --- !u!212 &212366684068168184
 SpriteRenderer:
   m_ObjectHideFlags: 1

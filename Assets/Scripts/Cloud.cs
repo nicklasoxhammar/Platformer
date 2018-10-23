@@ -93,14 +93,10 @@ public class Cloud : MonoBehaviour
         }
     }
 
-
-
-
-
     private void MoveHorizontal()
     {
         //Just standing still if no positions.
-        if (destinations.transform.childCount > 0 && !freeze)
+        if (destinations != null && destinations.transform.childCount > 0 && !freeze)
         {
             Vector3 moveTowards = destinations.transform.GetChild(indexDestination).position;
 
@@ -153,8 +149,6 @@ public class Cloud : MonoBehaviour
         float randomNumber = Random.Range(minTime, maxTime);
         timer = Mathf.Abs(randomNumber);
     }
-
-
 
     private void FreezeCountDown()
     {

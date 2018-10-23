@@ -44,10 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d67986878e44ffcbd9efd9573c7d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earsAndBlinkMinTime: 2
-  earsAndBlinkMaxTime: 4
-  pickUpGrassMinTime: 4
-  pickUpGrassMaxTime: 8
 --- !u!114 &114255344329941940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -59,10 +55,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84034c89095d4403f80bf7206e427e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goToIdleMinTime: 3
-  goToIdleMaxTime: 6
-  blinkMintime: 1
-  blinkMaxTime: 2
 --- !u!114 &114933661994767798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,8 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf02ef388e80e45c7add5a139db4ee48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTimeMovingEars: 2
-  maxTimeMovingEars: 6
 --- !u!1101 &1101071787688812022
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
