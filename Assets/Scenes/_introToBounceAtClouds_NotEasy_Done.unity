@@ -1270,20 +1270,6 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1855598109603020, guid: bdd6cc395f98d4d05a52fdf802601f6e, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114030418610538614, guid: bdd6cc395f98d4d05a52fdf802601f6e,
-        type: 2}
-      propertyPath: pickUpGrassMinTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114030418610538614, guid: bdd6cc395f98d4d05a52fdf802601f6e,
-        type: 2}
-      propertyPath: pickUpGrassMaxTime
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd6cc395f98d4d05a52fdf802601f6e, type: 2}
   m_IsPrefabAsset: 0
@@ -2405,7 +2391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &648935756
 Transform:
   m_ObjectHideFlags: 0
