@@ -163,8 +163,7 @@ public class GameManager : MonoBehaviour {
         SetDashButtonColor();
 
         if (started) {
-
-            if (challenges[0].challengeText == "Time" || challenges[1].challengeText == "Time") {
+            if (challenges[0].challengeName == "Time" || challenges[1].challengeName == "Time") {
                 timeChallengeTimer += Time.deltaTime;
             }
 
