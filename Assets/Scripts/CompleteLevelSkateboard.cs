@@ -40,6 +40,7 @@ public class CompleteLevelSkateboard : MonoBehaviour {
         player.GetComponent<PlayerController>().freezeMovement = true;
         Destroy(player.GetComponent<Rigidbody2D>());
 
+        GM.started = false; //Stops timer
         StartCoroutine(MoveAround());
     }
 
@@ -62,7 +63,6 @@ public class CompleteLevelSkateboard : MonoBehaviour {
         Destroy(particles, 3.0f);
 
         transform.localScale = Vector3.zero;
-
         GM.LevelComplete();
     }
    
