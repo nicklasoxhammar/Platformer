@@ -1182,6 +1182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb2058aa47c14049b7249b9526995e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeIn: 1
 --- !u!114 &114147502948564036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2100,7 +2101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.13333334, g: 0.13333334, b: 0.13333334, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2165,6 +2166,7 @@ MonoBehaviour:
   dontEliminateEnemies: 0
   neverPickUpBox: 0
   neverDash: 0
+  timeChallengeTimer: 0
   hasPickedUpBox: 0
   hasDashed: 0
   dashBar: {fileID: 0}

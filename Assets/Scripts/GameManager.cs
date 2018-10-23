@@ -211,13 +211,12 @@ public class GameManager : MonoBehaviour {
         GameObject.Find("Dash Bar").SetActive(false);
     }
 
-    public void pickedFlower() {
+    public void pickedFlower(FlowerController flower) {
         pickedFlowers++;
         //flowerCounterText.text = pickedFlowers + "/" + flowersTotal;
 
         if (pickedFlowers == flowersTotal) {
-            //ALLA PLOCKADE.
-            Debug.Log("ALLA PLOCKADE");
+            flower.gameObject.AddComponent<FoundAllFlowers>();
         }
     }
 
