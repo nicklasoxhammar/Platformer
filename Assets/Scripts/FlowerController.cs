@@ -29,7 +29,7 @@ public class FlowerController : MonoBehaviour {
             audioSource.clip = flowerSound;
             audioSource.Play();
             picked = true;
-            gameManager.pickedFlower();
+            gameManager.pickedFlower(this);
             animator.SetBool("run", true);
         }
     }

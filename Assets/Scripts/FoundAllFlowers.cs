@@ -9,15 +9,18 @@ public class FoundAllFlowers : MonoBehaviour
     [SerializeField] float rotateTime = 1f;
     [SerializeField] float timeBeforeDisappear = 1f;
     [SerializeField] float size = 3f;
-    // Use this for initialization
+ 
     void Start()
     {
-        Invoke("ShowFlower", 3f);
+        ShowFlower();
     }
 
 
     public void ShowFlower()
     {
+        transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform);
+        transform.localPosition = new Vector3(0.5f, 7.0f);
+
         transform.localScale = Vector3.zero;
         rotateId = LeanTween.rotateAround(gameObject, Vector3.forward, 360, 0.2f).setLoopClamp().id;
         LeanTween.scale(gameObject, new Vector3(size, size, size), rotateTime).setEaseInQuad().setOnComplete(() =>

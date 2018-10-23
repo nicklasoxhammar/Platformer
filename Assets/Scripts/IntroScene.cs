@@ -76,27 +76,28 @@ public class IntroScene : MonoBehaviour
 
     //Audio stuff
     [Header("Audio")]
-    /*[SerializeField] AudioClip eldaDialogueSound;
-    [SerializeField] AudioClip presidentDialogueSound;*/
-    [SerializeField] AudioClip typingSound;
-    [SerializeField] AudioClip shutDownEarthSound;
-    [SerializeField] AudioClip spaceSound;
-    [SerializeField] AudioClip sunSound;
     [SerializeField] AudioClip[] eldaSounds;
     [SerializeField] AudioClip[] presidentSounds;
-    AudioSource ambienceAudioSource;
+    //AudioSource ambienceAudioSource;
     AudioSource dialogueAudioSource;
+    AudioSource spaceAudioSource;
+    AudioSource sunAudioSource;
+    AudioSource typingAudioSource;
+    AudioSource shutDownAudioSource;
     
 
     // Use this for initialization
     void Start()
     {
         AudioSource[] audioSources = GetComponents<AudioSource>();
-        ambienceAudioSource = audioSources[0];
-        dialogueAudioSource = audioSources[1];
 
-        ambienceAudioSource.clip = spaceSound;
-        ambienceAudioSource.Play();
+        dialogueAudioSource = audioSources[0];
+        spaceAudioSource = audioSources[1];
+        sunAudioSource = audioSources[2];
+        typingAudioSource = audioSources[3];
+        shutDownAudioSource = audioSources[4];
+
+        spaceAudioSource.Play();
 
         sunHeroSkeleton = sunHero.GetComponent<SkeletonAnimation>();
         presidentSkeleton = president.GetComponent<SkeletonAnimation>();
@@ -115,8 +116,8 @@ public class IntroScene : MonoBehaviour
 
         //Camera at the sun...
         yield return new WaitForSeconds(timeShowCloseCamera);
-        ambienceAudioSource.clip = sunSound;
-        ambienceAudioSource.Play();
+        StartCoroutine(FadeOutSound(spaceAudioSource, 0.5f));
+        sunAudioSource.Play();
         cameraAtTheSun.enabled = true;
         cameraSunClose.enabled = false;
         yellowSquare.alpha = 1;
@@ -156,11 +157,11 @@ public class IntroScene : MonoBehaviour
     IEnumerator WaitAndDisconnectEarth()
     {
         yield return new WaitForSeconds(delayStartCodingAtComputer);
-        ambienceAudioSource.clip = typingSound;
-        ambienceAudioSource.Play();
+        StartCoroutine(FadeOutSound(sunAudioSource, 0.5f));
+        typingAudioSource.Play();
         disconnectEarthText.SetTextTo(textToComputer, timeBetweenLettersComputerText, timeBeforeFadeoutComputerText, false);
         yield return new WaitUntil(() => isPrintingText == false);
-        ambienceAudioSource.Stop();
+        StartCoroutine(FadeOutSound(typingAudioSource, 0.5f));
         isPrintingText = true;
         sunAtBeginning.SetActive(false);
         earth.SetActive(true);
@@ -180,8 +181,7 @@ public class IntroScene : MonoBehaviour
          });
 
         yield return new WaitForSeconds(delayBeforeFadeOutEarth + 0.7f);
-        ambienceAudioSource.clip = shutDownEarthSound;
-        ambienceAudioSource.Play();
+        shutDownAudioSource.Play();
     }
 
     //IEnumerator ShowBlackFade()
@@ -202,8 +202,7 @@ public class IntroScene : MonoBehaviour
 
     private void ShowSunClose()
     {
-        ambienceAudioSource.clip = spaceSound;
-        ambienceAudioSource.Play();
+        spaceAudioSource.Play();
 
         LeanTween.alphaCanvas(yellowSquare, 1f, 0.8f).setDelay(secShowEarthWhenItsBlack).setOnComplete(() =>
         {
@@ -257,6 +256,7 @@ public class IntroScene : MonoBehaviour
         yield return new WaitUntil(() => isPrintingText == false);
         bubbleSunHeroTalks.Hide();
         sunHeroSkeleton.AnimationName = runSunHero;
+        StartCoroutine(FadeOutSound(spaceAudioSource, timeSkateLastPosition));
         LeanTween.scale(sunHero, new Vector3(5f, 5f, 5f), timeSkateLastPosition);
         LeanTween.move(sunHero, skatePosition2, timeSkateLastPosition).setEaseInExpo().setOnComplete(() =>
         {
@@ -295,6 +295,19 @@ public class IntroScene : MonoBehaviour
         bubblePresidentTalks.Hide();
         cameraPresidentAndComputen.enabled = true;
         cameraAtTheSun.enabled = false;
+    }
+
+    IEnumerator FadeOutSound(AudioSource audioSource, float FadeTime) {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0) {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
     }
 
     //called from delayletters.remember to set it to true...

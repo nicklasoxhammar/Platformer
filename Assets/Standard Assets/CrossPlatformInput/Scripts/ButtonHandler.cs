@@ -9,8 +9,10 @@ namespace UnityStandardAssets.CrossPlatformInput
         public string Name;
 
         private void Start() {
-            SetAxisNeutralState();
-            SetUpState();
+#if (UNITY_IOS || UNITY_ANDROID)
+        SetAxisNeutralState();
+        SetUpState();
+#endif
         }
 
         void OnEnable()

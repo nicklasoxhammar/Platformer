@@ -15,8 +15,11 @@ public class Dialogue : MonoBehaviour {
     bool fade = false;
     float progress = 0.0f;
 
+    Color textColor;
+
     void Start() {
         text = GameObject.Find("Dialogue Text").GetComponent<Text>();
+        textColor = text.color;
     }
 
     private void Update() {
@@ -30,7 +33,7 @@ public class Dialogue : MonoBehaviour {
             if (progress >= 1) {
                 text.text = "";
                 fade = false;
-                text.color = Color.black;
+                text.color = textColor;
             }
         }
 
@@ -41,11 +44,12 @@ public class Dialogue : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
 
         if (collision.gameObject.tag == "Player" && !triggered) {
+            transform.parent = null; //here so that the dialogue doesnt get destroyed if the parent gets destroyed.
             CancelInvoke();
             fade = false;
             triggered = true;
             text.text = dialogue;
-            text.color = Color.black;
+            text.color = textColor;
 
             Invoke("RemoveDialogue", time);
         }
@@ -54,11 +58,12 @@ public class Dialogue : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
 
         if (collision.gameObject.tag == "Player" && !triggered) {
+            transform.parent = null; //here so that the dialogue doesnt get destroyed if the parent gets destroyed.
             CancelInvoke();
             fade = false;
             triggered = true;
             text.text = dialogue;
-            text.color = Color.black;
+            text.color = textColor;
 
             Invoke("RemoveDialogue", time);
         }
@@ -68,6 +73,5 @@ public class Dialogue : MonoBehaviour {
         progress = 0;
         fade = true;
     }
-
 
 }
