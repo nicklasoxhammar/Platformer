@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GiraffeStandUpWhenTouch : MonoBehaviour {
-
-
+    
     private GiraffeController giraffeController;
 
 	void Start ()
@@ -14,7 +13,9 @@ public class GiraffeStandUpWhenTouch : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        giraffeController.WakeUpGiraffe();
+        if(collision.gameObject.tag == "Player")
+        {
+            giraffeController.WakeUpGiraffe();
+        }
     }
-
 }

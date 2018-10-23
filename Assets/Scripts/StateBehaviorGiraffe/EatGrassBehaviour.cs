@@ -6,9 +6,8 @@ using Spine.Unity;
 public class EatGrassBehaviour : StateMachineBehaviour {
 
     SkeletonAnimation skeletonAnimation;
-
+    private GiraffeController giraffeController;
     int isEatingHash = Animator.StringToHash("isEating");
-
     //Animation Names
     private string idleDown = "EatingGrassDown";
     private string moveThroatDown = "MoveThroatDown";
@@ -16,17 +15,22 @@ public class EatGrassBehaviour : StateMachineBehaviour {
     string eatGrassAnimationName = "EatUpGrass";
 
     private float goToIdleTimer;
-    [SerializeField]float goToIdleMinTime = 1f;
-    [SerializeField]float goToIdleMaxTime = 2f;
+    private float goToIdleMinTime;
+    private float goToIdleMaxTime;
 
     private float blinkTimer;
-    [SerializeField] float blinkMintime = 0.5f;
-    [SerializeField] float blinkMaxTime = 2f;
+    private float blinkMintime;
+    private float blinkMaxTime;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
     {
         skeletonAnimation = animator.GetComponent<SkeletonAnimation>();
+        giraffeController = animator.gameObject.GetComponent<GiraffeController>();
+        goToIdleMinTime = giraffeController.GoToIdleMinTime;
+        goToIdleMaxTime = giraffeController.GoToIdleMaxTime;
+        blinkMintime = giraffeController.BlinkEatMintime;
+        blinkMaxTime = giraffeController.BlinkEatMaxTime;
         goToIdleTimer = Random.Range(goToIdleMinTime, goToIdleMaxTime);
         SetBlinkTimer();
         skeletonAnimation.AnimationState.SetAnimation(0, moveThroatDown, false);
@@ -54,19 +58,4 @@ public class EatGrassBehaviour : StateMachineBehaviour {
     {
         blinkTimer = Random.Range(blinkMintime, blinkMaxTime);
     }
-
-	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
-	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
-	//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
 }
