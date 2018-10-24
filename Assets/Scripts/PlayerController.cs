@@ -88,9 +88,6 @@ public class PlayerController : MonoBehaviour {
 
         Jump();
 
-
-
-
         DashTimers();
 
     }
