@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
     private GameObject dashButton;
     private int flowersTotal = 0;
     private int pickedFlowers = 0;
-    private bool started = false;
+    [HideInInspector] public bool started = false;
     PlayerController player;
 
     //pulsing dashbutton stuff
@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LevelComplete() {
-        started = false;
+        //started = false; //this is done in completelevelskateboard for now.
 
         audioSource.clip = levelCompleteSound;
         audioSource.Play();
@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < challengesCompleted.Count; i++) {
             flowerAnimators[i].SetBool("run", true);
             challengesText[i].text = challengesCompleted[i];
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.0f);
         }
 
     }

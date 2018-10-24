@@ -2101,7 +2101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13333334, g: 0.13333334, b: 0.13333334, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2171,6 +2171,7 @@ MonoBehaviour:
   hasDashed: 0
   dashBar: {fileID: 0}
   dashButtonYellow: 0
+  started: 0
 --- !u!114 &114680676232831772
 MonoBehaviour:
   m_ObjectHideFlags: 1

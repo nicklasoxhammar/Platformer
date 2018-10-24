@@ -27,7 +27,7 @@ public class Bee : MonoBehaviour {
         scale = transform.localScale;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         position = transform.position;
 
