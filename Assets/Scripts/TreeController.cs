@@ -138,7 +138,10 @@ public class TreeController : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = true;
         VRCamBig.enabled = false;
-        LeanTween.rotateZ(transform.parent.gameObject, deathAngle, 2f).setEaseOutBounce();
+        LeanTween.rotateZ(transform.parent.gameObject, deathAngle, 2f).setEaseOutBounce().setOnComplete(() => 
+        {
+            gameObject.tag = "Untagged";
+        });
     }
 
     private void ShakeAndFallObjects()

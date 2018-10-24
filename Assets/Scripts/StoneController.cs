@@ -64,9 +64,8 @@ public class StoneController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (elevatorIsOn && collision.gameObject.tag == "Player")
             {
-            Debug.Log("STAY");
             target = collision.gameObject;
             offset = target.transform.position - transform.position;
             }
@@ -76,7 +75,6 @@ public class StoneController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         target = null;
-
         if(!elevatorIsOn && collision.transform.tag == "Player")
         {
             playerCollision = false;
