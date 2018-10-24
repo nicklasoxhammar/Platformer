@@ -17,12 +17,17 @@ public class EldaAnimationStartScene : MonoBehaviour {
     private int moveCounter = 0;
     private float speed = 0.15f;
     public Transform skateboard;
+    private float skateboardEndPosX;
+    public GameObject saveTheWorldText;
 
     // Use this for initialization
     void Start()
     {
-        skeletonAnimation = GetComponent<SkeletonAnimation>();
         rb = GetComponent<Rigidbody2D>();
+        skeletonAnimation = GetComponent<SkeletonAnimation>();
+        skateboardEndPosX = skateboard.transform.position.x;
+        skateboard.position = new Vector3(skateboardEndPosX + 10f, skateboard.transform.position.y);
+
     }
 
     // Update is called once per frame
@@ -41,31 +46,50 @@ public class EldaAnimationStartScene : MonoBehaviour {
             {
                 //jump;
                 rb.AddForce(new Vector2(150, 350));
-                if (moveCounter == movingPoints.childCount - 1)
-                {
-                    skateboard.position = startPosBeforeSkate.position;
-                    skateboard.gameObject.SetActive(true);
-                    //rb.isKinematic = true;
-                    //Invoke("startSkate", 1f);
-                }
+                moveCounter++;
             });
-            moveCounter++;
         }
+         if(moveCounter == movingPoints.childCount-1)
+            {
+            LeanTween.moveX(skateboard.gameObject, skateboardEndPosX, 1f);
+            }
     }
+
 
     private void startSkate()
     {
+        
         gameObject.transform.position = startPosBeforeSkate.position;
         LeanTween.moveX(gameObject, endPosSkate.position.x, 1f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        MoveAndJump();
+        if(collision.gameObject.tag == "Ground")
+        {
+            //SKATEBOARD
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+            saveTheWorldText.transform.SetParent(saveTheWorldText.transform.root);
+            skateboard.transform.SetParent(gameObject.transform);
+            skateboard.transform.localPosition = Vector3.zero;
+
+            gameObject.transform.parent = saveTheWorldText.transform;
+            LeanTween.moveX(saveTheWorldText, 0f, 3f).setOnComplete(() => 
+            {
+                gameObject.transform.SetParent(transform.root);
+                LeanTween.moveX(gameObject, -20, 2f);
+            });
+        }
+        else
+        {
+            MoveAndJump();
+        }
     }
 
     private void ShowRightAnimation()
     {
+        if(rb!=null)
+        {
         if (rb.velocity.y < 0)
         {
             skeletonAnimation.AnimationName = fallingAnimationName;
@@ -78,6 +102,7 @@ public class EldaAnimationStartScene : MonoBehaviour {
         else
         {
             skeletonAnimation.AnimationName = runAnimationName;
+        }
         }
     }
 }

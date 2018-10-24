@@ -6,29 +6,44 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Starting Scene.unity
+    path: Assets/Scenes/_0Starting Scene.unity
     guid: 97514bbca4fef7946a317279ae0ca4db
   - enabled: 1
-    path: Assets/Scenes/NickHowtoKillenemies.unity
+    path: Assets/Scenes/_1Level1.unity
+    guid: 695e85cb708804ee78bbeee8984b8308
+  - enabled: 1
+    path: Assets/Scenes/_2NickHowtoKillenemies.unity
     guid: 5d048c2f54ca02c4e8ba5dcd1ce585a7
   - enabled: 1
-    path: Assets/Scenes/Nicklas1.unity
-    guid: 05f734eee45d2864b8646ff6e4e035de
-  - enabled: 1
-    path: Assets/Scenes/Nicklas2.unity
+    path: Assets/Scenes/_3Nicklas2.unity
     guid: 654ee613b2f6f854584afa42547b27e9
   - enabled: 1
-    path: Assets/Scenes/Nicklas3.unity
+    path: Assets/Scenes/_4IntroToGiraffesAndStones_DONE.unity
+    guid: cfcbd5515951c4a66b8dafb5c2028e4e
+  - enabled: 1
+    path: Assets/Scenes/_5Nicklas1.unity
+    guid: 05f734eee45d2864b8646ff6e4e035de
+  - enabled: 1
+    path: Assets/Scenes/_6Nicklas3.unity
     guid: f2db2a0292a9f2c4880276dd92acf07e
   - enabled: 1
-    path: Assets/Scenes/Nicklas4.unity
-    guid: fb1d049570d236241b16007604eef8a4
+    path: Assets/Scenes/_7introToMagicStuffAndTrees_DONE.unity
+    guid: 74a60a0bc0d8d48f6b4cd6b1060119dc
   - enabled: 1
-    path: Assets/Scenes/LotsOfBees.unity
+    path: Assets/Scenes/_8LotsOfBees.unity
     guid: 549882c174a178247a402bf6359491c7
   - enabled: 1
-    path: Assets/Scenes/Nicklas5.unity
+    path: Assets/Scenes/_9Nicklas5.unity
     guid: be2e425b50861354c8e2218a3d1b1b78
+  - enabled: 1
+    path: Assets/Scenes/_10Nicklas4.unity
+    guid: fb1d049570d236241b16007604eef8a4
+  - enabled: 1
+    path: Assets/Scenes/_11introToBounceAtClouds_NotEasy_Done.unity
+    guid: 24ac552b0cf5047d1ae81b60bf481690
+  - enabled: 1
+    path: Assets/Scenes/_12ALotOfStones_NotEasy_DONE.unity
+    guid: 41c16f0b001ab42c788985b32b110986
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 1d2c0942665724bbf85276111c894dbd
