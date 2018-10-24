@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: ooh! Here's a lot of flowes that needs sun.
+  dialogue: Ooh! Here's a lot of flowes that needs sun.
   time: 2
   unlimitedTriggers: 0
 --- !u!60 &1987522678 stripped

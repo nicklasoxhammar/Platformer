@@ -113,6 +113,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &10830348
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 63.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -50.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552450862794998, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: dialogue
+      value: What a nice tree...!  I want to shake it!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!4 &32387394 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4070322098468472, guid: f94b2b7db52324b44a0b082a4ae2b6f9,
@@ -846,6 +893,11 @@ Prefab:
       propertyPath: playerToFollow
       value: 
       objectReference: {fileID: 745234930}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -1041,6 +1093,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -1371,6 +1428,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -1587,6 +1649,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -1993,12 +2060,12 @@ Prefab:
     - target: {fileID: 114656856725860478, guid: d6a930ae5806a5b4c8d2be5e0281b0e1,
         type: 2}
       propertyPath: timeChallenge
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 114656856725860478, guid: d6a930ae5806a5b4c8d2be5e0281b0e1,
         type: 2}
       propertyPath: dontEliminateEnemies
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a930ae5806a5b4c8d2be5e0281b0e1, type: 2}
@@ -2309,6 +2376,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -2365,6 +2437,11 @@ Prefab:
       propertyPath: m_Name
       value: RobotEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -2431,6 +2508,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -3917,6 +3999,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -4465,10 +4552,6 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856417450700274, guid: 8245f4cfe25104cb1845326badfcb731, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8245f4cfe25104cb1845326badfcb731, type: 2}
@@ -6365,6 +6448,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -6737,6 +6825,57 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fbb1cc9b68bc4870b2bd3b299d79c49, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1344352336
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 102.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -50.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552450862794998, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: dialogue
+      value: It's fun to shake trees!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715114253759860, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_Name
+      value: Dialogue Trigger (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1393997766
 GameObject:
   m_ObjectHideFlags: 0
@@ -6998,6 +7137,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -8323,6 +8467,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -9199,6 +9348,11 @@ Prefab:
       propertyPath: m_Name
       value: RobotEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
@@ -10601,6 +10755,11 @@ Prefab:
       propertyPath: minTimeBetweenLaserShoot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23363278468653278, guid: d2db29e1e723942c594af324874bc68e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21681a855d5b9451193701bd75997069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2db29e1e723942c594af324874bc68e, type: 2}
   m_IsPrefabAsset: 0
