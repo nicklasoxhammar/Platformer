@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < challengesCompleted.Count; i++) {
             flowerAnimators[i].SetBool("run", true);
             challengesText[i].text = challengesCompleted[i];
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.0f);
         }
 
     }
