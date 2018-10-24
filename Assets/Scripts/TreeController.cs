@@ -78,6 +78,10 @@ public class TreeController : MonoBehaviour
 
     private void ShakeTree()
     {
+<<<<<<< HEAD
+=======
+        Debug.Log("HELLO!");
+>>>>>>> 316a1a6ffe163a7118d1ad666de4e1cd304f3e8c
         Debug.Log(transform.parent.gameObject.name);
         VRCamBig.enabled = true;
         LeanTween.rotateZ(transform.parent.gameObject, 4f, 1f).setEaseInBack().setOnComplete(() =>
