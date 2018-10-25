@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour {
     ParticleSystem dashParticles;
     bool isGrounded = true;
     bool dead = false;
-    private bool collidingWithInteractableThing;    
+    public bool collidingWithInteractableThing;    
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDashing = false;

@@ -1087,6 +1087,57 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce62a560369914b649e38f421b550230, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &73363871
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -7.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -44.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552450862794998, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: dialogue
+      value: "Aargh! Raindrops ...! \nAnd I'm made of fire... :("
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715114253759860, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_Name
+      value: Dialogue Trigger (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &76042264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,6 +1380,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4269412471671690, guid: ce62a560369914b649e38f421b550230,
     type: 2}
   m_PrefabInternal: {fileID: 2085496488}
+--- !u!1001 &90651680
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -29.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552450862794998, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: dialogue
+      value: So fluffy! I just want to hug them...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715114253759860, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_Name
+      value: Dialogue Trigger (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &90666221
 GameObject:
   m_ObjectHideFlags: 0
@@ -5832,7 +5934,6 @@ GameObject:
   - component: {fileID: 404389029}
   - component: {fileID: 404389028}
   - component: {fileID: 404389027}
-  - component: {fileID: 404389025}
   m_Layer: 9
   m_Name: GrassRight1@2x
   m_TagString: Untagged
@@ -5840,20 +5941,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &404389025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 404389024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: "Aargh! Raindrops ...! \nAnd I'm made of fire... :("
-  time: 2
-  unlimitedTriggers: 0
 --- !u!4 &404389026
 Transform:
   m_ObjectHideFlags: 0
@@ -6248,7 +6335,7 @@ Prefab:
     - target: {fileID: 114656856725860478, guid: d6a930ae5806a5b4c8d2be5e0281b0e1,
         type: 2}
       propertyPath: eliminateAllEnemies
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1018696020063170, guid: d6a930ae5806a5b4c8d2be5e0281b0e1, type: 2}
       propertyPath: m_IsActive
@@ -6297,7 +6384,7 @@ Prefab:
     - target: {fileID: 114656856725860478, guid: d6a930ae5806a5b4c8d2be5e0281b0e1,
         type: 2}
       propertyPath: timeChallenge
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114656856725860478, guid: d6a930ae5806a5b4c8d2be5e0281b0e1,
         type: 2}
@@ -13918,7 +14005,6 @@ GameObject:
   - component: {fileID: 1087615232}
   - component: {fileID: 1087615231}
   - component: {fileID: 1087615230}
-  - component: {fileID: 1087615228}
   m_Layer: 9
   m_Name: GrassRight1@2x
   m_TagString: Untagged
@@ -13926,20 +14012,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1087615228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1087615227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: The clouds look fluffy!
-  time: 2
-  unlimitedTriggers: 0
 --- !u!4 &1087615229
 Transform:
   m_ObjectHideFlags: 0
@@ -19251,6 +19323,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4269412471671690, guid: ce62a560369914b649e38f421b550230,
     type: 2}
   m_PrefabInternal: {fileID: 1456058254}
+--- !u!1001 &1564624212
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.911442
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -36.324863
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552450862794998, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: dialogue
+      value: The clouds look fluffy!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &1566483061
 Prefab:
   m_ObjectHideFlags: 0
@@ -22702,7 +22821,6 @@ GameObject:
   - component: {fileID: 1910339777}
   - component: {fileID: 1910339776}
   - component: {fileID: 1910339775}
-  - component: {fileID: 1910339774}
   m_Layer: 9
   m_Name: GrassRight1@2x
   m_TagString: Untagged
@@ -22724,20 +22842,6 @@ Transform:
   m_Father: {fileID: 758173934}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1910339774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1910339772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: So fluffy! I just want to hug them...
-  time: 2
-  unlimitedTriggers: 0
 --- !u!61 &1910339775
 BoxCollider2D:
   m_ObjectHideFlags: 0

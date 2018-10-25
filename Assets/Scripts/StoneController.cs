@@ -22,6 +22,9 @@ public class StoneController : MonoBehaviour
     private bool playerCollision = false;
     private bool moveStoneBackToStart = true;
 
+    private GameObject target = null;
+    private Vector3 offset;
+
     // Use this for initialization
     void Start()
     {
@@ -36,9 +39,17 @@ public class StoneController : MonoBehaviour
         {
             MoveStoneElevatorOff();
         }
-        else
+    }
+
+    private void FixedUpdate()
+    {
+        if (elevatorIsOn)
         {
             RunElevator();
+        }
+        if (target != null)
+        {
+            target.transform.position = transform.position + offset;
         }
     }
 
@@ -49,23 +60,25 @@ public class StoneController : MonoBehaviour
             moveStoneBackToStart = false;
             playerCollision = true;
         }
-        else if (elevatorIsOn && collision.transform.tag == "Player")
-        {
-            collision.collider.transform.SetParent(transform);
-        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (elevatorIsOn && collision.gameObject.tag == "Player")
+            {
+            target = collision.gameObject;
+            offset = target.transform.position - transform.position;
+            }
     }
 
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        target = null;
         if(!elevatorIsOn && collision.transform.tag == "Player")
         {
             playerCollision = false;
             StartCoroutine(SetPlayerCollisionToFalse());
-        }
-        else if(elevatorIsOn && collision.transform.tag == "Player")
-        {
-            collision.collider.transform.SetParent(null);
         }
     }
 

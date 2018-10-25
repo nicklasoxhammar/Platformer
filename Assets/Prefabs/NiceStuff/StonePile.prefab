@@ -163,6 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4633592249516930}
   - component: {fileID: 212784647127456522}
+  - component: {fileID: 60993577180823322}
   m_Layer: 0
   m_Name: stone_grey_x256_11s
   m_TagString: Untagged
@@ -339,6 +340,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60993577180823322
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870184813675056}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 1.4}
+    newSize: {x: 2.56, y: 1.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.3958855, y: -0.68610716}
+      - {x: 1.15, y: 0.32}
+      - {x: 1.06, y: 0.42999998}
+      - {x: 0.91999996, y: 0.48999998}
+      - {x: -3.0806103, y: 1.9089093}
+      - {x: -6.5350513, y: 1.5030217}
+      - {x: -7.5332165, y: 2.3429608}
+      - {x: -10.592798, y: 1.1319928}
+      - {x: -10.959715, y: -0.610744}
 --- !u!212 &212018610118798050
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -373,7 +407,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0ed32963405711d449829dbdf0c01394, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -465,7 +499,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0ed32963405711d449829dbdf0c01394, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -787,7 +821,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4b075e50af609634eae69748813767ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

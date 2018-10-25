@@ -28,10 +28,9 @@ public class DisapperTouchPlayer : MonoBehaviour {
     {
         gameObject.layer = ignorePlayerLayer;
         ParticleSystem VFX = Instantiate(VFXWhenDisappear, transform);
-        LeanTween.alpha(gameObject, 0, fadeTime).setEaseOutSine().setOnComplete(() =>
+        LeanTween.alpha(gameObject, 0, VFX.main.duration).setEaseOutSine().setOnComplete(() =>
         {
-            //Wait if there's dialouge...
-            Destroy(gameObject, 5f);
+            Destroy(gameObject);
 
         });
     }
