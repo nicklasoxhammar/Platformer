@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 212252592531327276}
   - component: {fileID: 61036570859993390}
   - component: {fileID: 114131415706559022}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GrassMiddle2@2x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 212364961284733692}
   - component: {fileID: 61134776937045570}
   - component: {fileID: 114888602285352198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GrassMiddle4@2x
   m_TagString: Untagged
   m_Icon: {fileID: 0}

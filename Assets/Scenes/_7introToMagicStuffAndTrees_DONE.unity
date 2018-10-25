@@ -157,6 +157,10 @@ Prefab:
       propertyPath: dialogue
       value: What a nice tree...!  I want to shake it!
       objectReference: {fileID: 0}
+    - target: {fileID: 1715114253759860, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_Name
+      value: Dialogue Trigger Tree
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
   m_IsPrefabAsset: 0
@@ -1560,27 +1564,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6abf7394e7ad425da23c90761901f9b, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &330408160 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1565435942638914, guid: e6abf7394e7ad425da23c90761901f9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 330408159}
---- !u!114 &330408161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 330408160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: 'I LOVE PIZZA!
-
-    Now I feel even more invincible...!!'
-  time: 3
-  unlimitedTriggers: 0
 --- !u!4 &330408167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4971246407012702, guid: e6abf7394e7ad425da23c90761901f9b,
@@ -2696,6 +2679,79 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &603721192
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 30.126793
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -52.497974
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 61031533151208004, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.5493946
+      objectReference: {fileID: 0}
+    - target: {fileID: 61031533151208004, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.6278801
+      objectReference: {fileID: 0}
+    - target: {fileID: 61031533151208004, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -0.8240967
+      objectReference: {fileID: 0}
+    - target: {fileID: 61031533151208004, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.7063675
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715114253759860, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_Name
+      value: Dialogue Trigger Pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552450862794998, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: dialogue
+      value: 'I LOVE PIZZA!
+
+        Now I feel even more invincible...!!'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &607989790
 GameObject:
   m_ObjectHideFlags: 0
@@ -6555,6 +6611,69 @@ Transform:
   m_Father: {fileID: 991272010}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1305420150
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -52.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715114253759860, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+      propertyPath: m_Name
+      value: Dialogue Trigger StrawBerries
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552450862794998, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: dialogue
+      value: 'Strawberries!
+
+        I feel invincible...!!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 61031533151208004, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.89388657
+      objectReference: {fileID: 0}
+    - target: {fileID: 61031533151208004, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.7877731
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1330885460
 GameObject:
   m_ObjectHideFlags: 0
@@ -6871,7 +6990,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1715114253759860, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
       propertyPath: m_Name
-      value: Dialogue Trigger (1)
+      value: Dialogue Trigger Tree2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
@@ -8987,27 +9106,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1792170730 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1431044306694724, guid: c4ab1765944d84d518b6fccb96ceadc8,
-    type: 2}
-  m_PrefabInternal: {fileID: 750836517}
---- !u!114 &1792170731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1792170730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4e9814a1fc01f4f9ace199bf279d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: 'Strawberries!
-
-    I feel invincible...!!'
-  time: 2
-  unlimitedTriggers: 0
 --- !u!4 &1799643292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4432110855699462, guid: 0214a74ec0ae5443aac4a20ed245a593,
