@@ -115,7 +115,18 @@ public class SharkEnemyController : MonoBehaviour {
             else {
                 audioSource.clip = biteSound;
                 audioSource.Play();
-                player.Die();
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player.isDashing)
+            {
+                Die();
             }
         }
     }

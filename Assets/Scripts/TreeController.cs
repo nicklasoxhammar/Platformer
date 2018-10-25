@@ -132,15 +132,19 @@ public class TreeController : MonoBehaviour
     private void ShakeToDeath()
     {
         treeIsDead = true;
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        GetComponent<CircleCollider2D>().enabled = true;
         gameObject.tag = "KillsEnemy";
+
         //Set Layer to Jumpable tree so player can jump on it.
         gameObject.layer = jumpableLayer;
-        GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<CircleCollider2D>().enabled = true;
         VRCamBig.enabled = false;
         LeanTween.rotateZ(transform.parent.gameObject, deathAngle, 2f).setEaseOutBounce().setOnComplete(() => 
         {
+            isMoving = false;
             gameObject.tag = "Untagged";
+
         });
     }
 
@@ -168,5 +172,4 @@ public class TreeController : MonoBehaviour
     {
         return Random.Range(waitBeforeDrop, waitBeforeDrop + dropRandomness);
     }
-
 }

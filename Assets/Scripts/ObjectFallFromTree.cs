@@ -11,7 +11,6 @@ public class ObjectFallFromTree : MonoBehaviour
     [SerializeField] bool zeroZWhenFallen = true;
     [SerializeField] bool jumpableWhenFallen = false;
     private const int ignorePlayerLayer = 11;
-    private const int ignoreJumpableTreeLayer = 15;
     private const int jumpableLayer = 13;
 
 
@@ -38,11 +37,10 @@ public class ObjectFallFromTree : MonoBehaviour
     public void ShakeAndFall(float dropAfterTime)
     {
         float time = dropAfterTime * 0.33f;
-        
         //Rotate
         LeanTween.rotateZ(gameObject, GetRandomAngle(), time).setEaseShake().setRepeat(3).setLoopPingPong().setOnComplete(() =>
         {
-            gameObject.layer = ignoreJumpableTreeLayer;
+            gameObject.layer = 0;
             rg.gravityScale = 1;
             isFallen = true;
             if(!zeroZWhenFallen)
@@ -60,7 +58,6 @@ public class ObjectFallFromTree : MonoBehaviour
     {
         return Random.Range(-rotationAngle, rotationAngle);
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

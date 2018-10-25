@@ -1,0 +1,251 @@
+
+birdFishIllustratorNY.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Blue/Fena bottom
+  rotate: false
+  xy: 412, 469
+  size: 56, 41
+  orig: 56, 41
+  offset: 0, 0
+  index: -1
+Blue/Fena top
+  rotate: false
+  xy: 238, 456
+  size: 88, 54
+  orig: 88, 54
+  offset: 0, 0
+  index: -1
+Blue/Front Wing
+  rotate: false
+  xy: 2, 359
+  size: 142, 151
+  orig: 142, 151
+  offset: 0, 0
+  index: -1
+Blue/Pupil  copy
+  rotate: false
+  xy: 543, 545
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+Blue/body
+  rotate: false
+  xy: 2, 766
+  size: 469, 252
+  orig: 469, 252
+  offset: 0, 0
+  index: -1
+Blue/headthing
+  rotate: false
+  xy: 238, 386
+  size: 64, 68
+  orig: 64, 68
+  offset: 0, 0
+  index: -1
+Blue/horn
+  rotate: false
+  xy: 944, 927
+  size: 68, 91
+  orig: 68, 91
+  offset: 0, 0
+  index: -1
+Blue/wing back
+  rotate: false
+  xy: 146, 327
+  size: 90, 183
+  orig: 90, 183
+  offset: 0, 0
+  index: -1
+Gray/Fena bottom
+  rotate: false
+  xy: 802, 667
+  size: 56, 41
+  orig: 56, 41
+  offset: 0, 0
+  index: -1
+Gray/Fena top
+  rotate: false
+  xy: 617, 618
+  size: 88, 54
+  orig: 88, 54
+  offset: 0, 0
+  index: -1
+Gray/Front Leg
+  rotate: false
+  xy: 94, 115
+  size: 47, 89
+  orig: 47, 89
+  offset: 0, 0
+  index: -1
+Gray/Front Wing
+  rotate: false
+  xy: 473, 613
+  size: 142, 151
+  orig: 142, 151
+  offset: 0, 0
+  index: -1
+Gray/Leg Back
+  rotate: true
+  xy: 328, 468
+  size: 42, 82
+  orig: 42, 82
+  offset: 0, 0
+  index: -1
+Gray/MouthBottom
+  rotate: true
+  xy: 892, 711
+  size: 53, 49
+  orig: 53, 49
+  offset: 0, 0
+  index: -1
+Gray/MouthTop
+  rotate: true
+  xy: 944, 781
+  size: 53, 49
+  orig: 53, 49
+  offset: 0, 0
+  index: -1
+Gray/body
+  rotate: false
+  xy: 2, 512
+  size: 469, 252
+  orig: 469, 252
+  offset: 0, 0
+  index: -1
+Gray/headthing
+  rotate: false
+  xy: 238, 316
+  size: 64, 68
+  orig: 64, 68
+  offset: 0, 0
+  index: -1
+Gray/horn
+  rotate: false
+  xy: 473, 520
+  size: 68, 91
+  orig: 68, 91
+  offset: 0, 0
+  index: -1
+Gray/wing back
+  rotate: true
+  xy: 617, 674
+  size: 90, 183
+  orig: 90, 183
+  offset: 0, 0
+  index: -1
+Green/Fena bottom
+  rotate: false
+  xy: 146, 191
+  size: 56, 41
+  orig: 56, 41
+  offset: 0, 0
+  index: -1
+Green/Fena top
+  rotate: false
+  xy: 802, 710
+  size: 88, 54
+  orig: 88, 54
+  offset: 0, 0
+  index: -1
+Green/Front Leg
+  rotate: false
+  xy: 944, 836
+  size: 47, 89
+  orig: 47, 89
+  offset: 0, 0
+  index: -1
+Green/Front Wing
+  rotate: false
+  xy: 2, 206
+  size: 142, 151
+  orig: 142, 151
+  offset: 0, 0
+  index: -1
+Green/Leg Back
+  rotate: true
+  xy: 707, 630
+  size: 42, 82
+  orig: 42, 82
+  offset: 0, 0
+  index: -1
+Green/MouthBottom
+  rotate: false
+  xy: 143, 140
+  size: 53, 49
+  orig: 53, 49
+  offset: 0, 0
+  index: -1
+Green/MouthTop
+  rotate: false
+  xy: 216, 265
+  size: 53, 49
+  orig: 53, 49
+  offset: 0, 0
+  index: -1
+Green/body
+  rotate: false
+  xy: 473, 766
+  size: 469, 252
+  orig: 469, 252
+  offset: 0, 0
+  index: -1
+Green/eye1
+  rotate: false
+  xy: 271, 280
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+Green/eye2
+  rotate: true
+  xy: 860, 674
+  size: 34, 26
+  orig: 34, 26
+  offset: 0, 0
+  index: -1
+Green/eye3
+  rotate: false
+  xy: 2, 2
+  size: 34, 17
+  orig: 34, 17
+  offset: 0, 0
+  index: -1
+Green/eye4
+  rotate: true
+  xy: 1014, 984
+  size: 34, 8
+  orig: 34, 8
+  offset: 0, 0
+  index: -1
+Green/eyebryn
+  rotate: false
+  xy: 216, 238
+  size: 43, 25
+  orig: 43, 25
+  offset: 0, 0
+  index: -1
+Green/headthing
+  rotate: false
+  xy: 94, 45
+  size: 64, 68
+  orig: 64, 68
+  offset: 0, 0
+  index: -1
+Green/horn
+  rotate: false
+  xy: 146, 234
+  size: 68, 91
+  orig: 68, 91
+  offset: 0, 0
+  index: -1
+Green/wing back
+  rotate: false
+  xy: 2, 21
+  size: 90, 183
+  orig: 90, 183
+  offset: 0, 0
+  index: -1
