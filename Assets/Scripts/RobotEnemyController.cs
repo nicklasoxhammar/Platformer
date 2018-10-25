@@ -43,7 +43,6 @@ public class RobotEnemyController : MonoBehaviour
 
     private LaserObjectPool objectPool;
     private bool isSeenByTheCamera = false;
-    [SerializeField] [Range(0.0f, 1.0f)] float increaseSightOutsideCamera;
 
     AudioSource audioSource;
     [SerializeField] AudioClip deathSound;
@@ -99,22 +98,6 @@ public class RobotEnemyController : MonoBehaviour
 
         SnapOutOfFreezeWhenJumpOver();
     }
-
-   /* private void CheckIfEnemyIsSeenByCamera()
-    {
-        Vector2 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
-        float minPoint = 0 - increaseSightOutsideCamera;
-        float maxPoint = 1 + increaseSightOutsideCamera;
-        if(screenPoint.x < maxPoint && screenPoint.x > minPoint && screenPoint.y < maxPoint && screenPoint.y > minPoint)
-        {
-            isSeenByTheCamera = true;
-        }
-        else
-        {
-            isSeenByTheCamera = false;
-        }
-
-    }*/
 
     private void StartTurnTimer()
     {

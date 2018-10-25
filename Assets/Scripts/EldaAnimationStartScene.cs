@@ -19,6 +19,7 @@ public class EldaAnimationStartScene : MonoBehaviour {
     public Transform skateboard;
     private float skateboardEndPosX;
     public GameObject saveTheWorldText;
+    public Vector3 jumpOffset;
 
     // Use this for initialization
     void Start()
@@ -45,7 +46,7 @@ public class EldaAnimationStartScene : MonoBehaviour {
             LeanTween.moveX(gameObject, movingPoints.GetChild(moveCounter).transform.position.x, time).setOnComplete(() =>
             {
                 //jump;
-                rb.AddForce(new Vector2(150, 350));
+                LeanTween.move(gameObject, gameObject.transform.position + jumpOffset, 0.5f);
                 moveCounter++;
             });
         }
@@ -55,13 +56,6 @@ public class EldaAnimationStartScene : MonoBehaviour {
             }
     }
 
-
-    private void startSkate()
-    {
-        
-        gameObject.transform.position = startPosBeforeSkate.position;
-        LeanTween.moveX(gameObject, endPosSkate.position.x, 1f);
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
