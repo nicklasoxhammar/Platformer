@@ -13127,7 +13127,7 @@ SpriteRenderer:
   m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1903101636
@@ -13187,19 +13187,19 @@ MonoBehaviour:
   cameraComputerClose: {fileID: 537395819}
   cameraSkate: {fileID: 1784085103}
   eldaSounds:
-  - {fileID: 8300000, guid: 5a0dbd253ce2cb34c8d04cc076241b0f, type: 3}
-  - {fileID: 8300000, guid: 4b7db9a7578314f48a637204d0148059, type: 3}
-  - {fileID: 8300000, guid: e29aa108c6336cb41883188d54b33fac, type: 3}
-  - {fileID: 8300000, guid: 71944a5a9b20643429061eae80441e73, type: 3}
-  - {fileID: 8300000, guid: 9f196254ba3de1c4a8e696450aa0b677, type: 3}
-  - {fileID: 8300000, guid: e8328005d31bb584fa3c054d0563bb50, type: 3}
-  - {fileID: 8300000, guid: 3ab4d6478ab1fd84cb383cafb9f3e758, type: 3}
+  - {fileID: 8300000, guid: 1688c9e3e2cf5469aafc9c3e59df045d, type: 3}
+  - {fileID: 8300000, guid: ddc8df19050434dbcbf98b78dcea6ec8, type: 3}
+  - {fileID: 8300000, guid: e8d41d146732148eaad093d6e6573d08, type: 3}
+  - {fileID: 8300000, guid: 60a892380233049bb8dcc62108107140, type: 3}
+  - {fileID: 8300000, guid: 75fcbca734b69467b87e7bbfb32af47e, type: 3}
+  - {fileID: 8300000, guid: 8a2d9d389d9674d748f0f9db320041ca, type: 3}
+  - {fileID: 8300000, guid: 4f3e8a2093fcf43fdb13c653fc3d17d7, type: 3}
   presidentSounds:
-  - {fileID: 8300000, guid: d91b244da0027f644b19b9d5b81beb7e, type: 3}
-  - {fileID: 8300000, guid: 9e3f7cffe8a0f824cb997c9dbe7fc714, type: 3}
-  - {fileID: 8300000, guid: d30f7e0491f479f43be9a492516e2749, type: 3}
-  - {fileID: 8300000, guid: 1081069a4f364914e8e131e67a022fcb, type: 3}
-  - {fileID: 8300000, guid: a95e5c8856f0e044096a73705a395351, type: 3}
+  - {fileID: 8300000, guid: 73f0a3de5eeb0424fa248d22bf27a44d, type: 3}
+  - {fileID: 8300000, guid: 50762da1d008a49bba285dbb5efb0b6e, type: 3}
+  - {fileID: 8300000, guid: 339dda7ee490541448b15e8ea6a213be, type: 3}
+  - {fileID: 8300000, guid: 457fe44c8a7d940e3ba67164148c973b, type: 3}
+  - {fileID: 8300000, guid: c94f580d9b508475eab40077de5672c9, type: 3}
 --- !u!4 &1903101638
 Transform:
   m_ObjectHideFlags: 0
