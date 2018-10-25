@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 
-public class EldaAnimationStartScene : MonoBehaviour {
+public class EldaAnimationStartScene : MonoBehaviour
+{
 
     private string fallingAnimationName = "FALLING";
     private string jumpAnimationName = "JUMP";
@@ -17,17 +18,21 @@ public class EldaAnimationStartScene : MonoBehaviour {
     private int moveCounter = 0;
     private float speed = 0.15f;
     public Transform skateboard;
-    private float skateboardEndPosX;
+    //private float skateboardEndPosX;
     public GameObject saveTheWorldText;
     public Vector3 jumpOffset;
+    private int jumpId;
+    private bool moveSkateboardToElda = false;
+    private float moveSkateboardSpeed = 7f;
+    private float moveEldaSpeed = 6f;
+    private bool MoveToTheRight = false;
 
     // Use this for initialization
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
-        skateboardEndPosX = skateboard.transform.position.x;
-        skateboard.position = new Vector3(skateboardEndPosX + 10f, skateboard.transform.position.y);
 
     }
 
@@ -35,31 +40,27 @@ public class EldaAnimationStartScene : MonoBehaviour {
     void Update()
     {
         ShowRightAnimation();
+
+        if(moveSkateboardToElda && Vector3.Distance(skateboard.position,gameObject.transform.position) > 0.1f)
+        {
+            Vector3 newPos = Vector3.Lerp(skateboard.position, gameObject.transform.position, moveSkateboardSpeed * Time.deltaTime);
+            newPos.y = skateboard.position.y;
+            skateboard.position = newPos;
+        }
     }
 
-    private void MoveAndJump()
+    private void FixedUpdate()
     {
-        if (moveCounter < movingPoints.childCount)
+        if (MoveToTheRight)
         {
-            float distance = Vector2.Distance(transform.position, movingPoints.GetChild(moveCounter).transform.position);
-            float time = distance / speed * Time.deltaTime;
-            LeanTween.moveX(gameObject, movingPoints.GetChild(moveCounter).transform.position.x, time).setOnComplete(() =>
-            {
-                //jump;
-                LeanTween.move(gameObject, gameObject.transform.position + jumpOffset, 0.5f);
-                moveCounter++;
-            });
+            rb.AddRelativeForce(Vector2.right * moveEldaSpeed);
         }
-         if(moveCounter == movingPoints.childCount-1)
-            {
-            LeanTween.moveX(skateboard.gameObject, skateboardEndPosX, 1f);
-            }
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
             //SKATEBOARD
             transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -68,35 +69,58 @@ public class EldaAnimationStartScene : MonoBehaviour {
             skateboard.transform.localPosition = Vector3.zero;
 
             gameObject.transform.parent = saveTheWorldText.transform;
-            LeanTween.moveX(saveTheWorldText, 0f, 3f).setOnComplete(() => 
+            LeanTween.moveX(saveTheWorldText, 0f, 2f).setOnComplete(() =>
             {
                 gameObject.transform.SetParent(transform.root);
                 LeanTween.moveX(gameObject, -20, 2f);
             });
         }
-        else
+
+        if(collision.gameObject.tag == "Letters")
         {
-            MoveAndJump();
+            MoveToTheRight = true;
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EndOfGround")
+        {
+            //jump
+            rb.AddRelativeForce(new Vector2(0f,1f) * 330);
+        }
+        else if(collision.gameObject.tag == "Finish")
+        {
+            moveSkateboardToElda = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Letters")
+        {
+            MoveToTheRight = false;
         }
     }
 
     private void ShowRightAnimation()
     {
-        if(rb!=null)
+        if (rb != null)
         {
-        if (rb.velocity.y < 0)
-        {
-            skeletonAnimation.AnimationName = fallingAnimationName;
+            if (rb.velocity.y < 0)
+            {
+                skeletonAnimation.AnimationName = fallingAnimationName;
 
-        }
-        else if (rb.velocity.y > 0)
-        {
-            skeletonAnimation.AnimationName = jumpAnimationName;
-        }
-        else
-        {
-            skeletonAnimation.AnimationName = runAnimationName;
-        }
+            }
+            else if (rb.velocity.y > 0)
+            {
+                skeletonAnimation.AnimationName = jumpAnimationName;
+            }
+            else
+            {
+                skeletonAnimation.AnimationName = runAnimationName;
+            }
         }
     }
 }
