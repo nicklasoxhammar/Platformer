@@ -46,7 +46,7 @@ public class SceneHandler : MonoBehaviour {
 
     }
 
-    IEnumerator FadeOut(int sceneIndex) {
+    public IEnumerator FadeOutToScene(int sceneIndex) {
         fadeImage.gameObject.SetActive(true);
         fadeOut = true;
         yield return new WaitForSeconds(fadeTime);
@@ -54,14 +54,14 @@ public class SceneHandler : MonoBehaviour {
     }
 
     public void MainMenu() {
-        StartCoroutine(FadeOut(0));
+        StartCoroutine(FadeOutToScene(0));
     }
 
     public void NextLevel() {
-        StartCoroutine(FadeOut(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(FadeOutToScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void TryAgain() {
-        StartCoroutine(FadeOut(SceneManager.GetActiveScene().buildIndex));
+        StartCoroutine(FadeOutToScene(SceneManager.GetActiveScene().buildIndex));
     }
 }

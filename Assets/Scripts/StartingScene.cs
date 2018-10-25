@@ -13,6 +13,8 @@ public class StartingScene : MonoBehaviour {
     GameObject StartingScreenUI;
     GameObject ScrollingCanvas;
 
+    SceneHandler sceneHandler;
+
     private void Awake() {
         ScrollingCanvas = GameObject.Find("Scrolling Canvas");
         LevelButtonsUI = GameObject.Find("Level Buttons UI");
@@ -20,6 +22,8 @@ public class StartingScene : MonoBehaviour {
     }
 
     void Start() {
+
+        sceneHandler = GetComponent<SceneHandler>();
 
         if (!StartingScreen.started) {
             StartingScreen.started = true;
@@ -34,11 +38,11 @@ public class StartingScene : MonoBehaviour {
         Button clickedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         int sceneToLoad = int.Parse(clickedButton.GetComponentInChildren<Text>().text);
 
-        SceneManager.LoadScene(sceneToLoad);
+        StartCoroutine(sceneHandler.FadeOutToScene(sceneToLoad));
     }
 
     public void LoadIntro() {
-        SceneManager.LoadScene("Intro");
+        StartCoroutine(sceneHandler.FadeOutToScene(SceneManager.sceneCountInBuildSettings - 1));
     }
 
     //Called when "Play" button is pressed
