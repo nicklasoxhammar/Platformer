@@ -12,6 +12,7 @@ public class RobotEnemyController : MonoBehaviour
     [SerializeField] Collider2D playerToFollow;
     [SerializeField] [Header("Movement:")] private float walkSpeed = 2f;
     [SerializeField] private float runSpeed = 4f;
+    [SerializeField] private float viewDistance = 15.0f;
     [SerializeField] private bool makeRandomDirectionChanges = true;
     [SerializeField] private float minTimeBeforeChangeDirection = 4f;
     [SerializeField] private float maxTimeBeforeChangeDirection = 10f;
@@ -74,7 +75,7 @@ public class RobotEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckIfEnemyIsSeenByCamera();
+        //CheckIfEnemyIsSeenByCamera();
         CheckIfPlayerAreInSight();
         SetDirectionToFollowPlayer();
         MakeEyeFollowPlayer();
@@ -99,7 +100,7 @@ public class RobotEnemyController : MonoBehaviour
         SnapOutOfFreezeWhenJumpOver();
     }
 
-    private void CheckIfEnemyIsSeenByCamera()
+   /* private void CheckIfEnemyIsSeenByCamera()
     {
         Vector2 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
         float minPoint = 0 - increaseSightOutsideCamera;
@@ -113,7 +114,7 @@ public class RobotEnemyController : MonoBehaviour
             isSeenByTheCamera = false;
         }
 
-    }
+    }*/
 
     private void StartTurnTimer()
     {
@@ -148,7 +149,8 @@ public class RobotEnemyController : MonoBehaviour
     //called from update
     private void CheckIfPlayerAreInSight()
     {
-        if (isSeenByTheCamera)
+        Vector3 playerPos = playerToFollow.transform.position;
+        if ((playerPos.x > transform.position.x - viewDistance && playerPos.x < transform.position.x + viewDistance) && (playerPos.y > transform.position.y - viewDistance && playerPos.y < transform.position.y + viewDistance))
         {
             eyePos = pupil.GetWorldPosition(skeletonAnimation.transform);
             targetPos = playerToFollow.bounds.center;
@@ -163,12 +165,11 @@ public class RobotEnemyController : MonoBehaviour
                     ChangeAnimation();
                 }
             }
-            else if (hit != false && hit.collider.tag != "Player" && !isDead && playerInSight)
-            {
-                playerInSight = false;
-                isFreezed = false;
-                ChangeAnimation();
-            }
+          
+        }else {
+            playerInSight = false;
+            isFreezed = false;
+            ChangeAnimation();
         }
     }
 
@@ -201,7 +202,9 @@ public class RobotEnemyController : MonoBehaviour
             }
             else
             {
-                skeletonAnimation.AnimationState.SetAnimation(0, walkAnimationName, true);
+                if (skeletonAnimation.AnimationName != walkAnimationName) {
+                    skeletonAnimation.AnimationState.SetAnimation(0, walkAnimationName, true);
+                }
             }
         }
     }
