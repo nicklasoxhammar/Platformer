@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class StartingScene : MonoBehaviour {
+public class MainMenu : MonoBehaviour {
 
     [SerializeField] Sprite doneFlower;
 
@@ -16,18 +16,11 @@ public class StartingScene : MonoBehaviour {
     private void Awake() {
         ScrollingCanvas = GameObject.Find("Scrolling Canvas");
         LevelButtonsUI = GameObject.Find("Level Buttons UI");
-        StartingScreenUI = GameObject.Find("Starting Screen UI");
     }
 
     void Start() {
 
-        if (!StartingScreen.started) {
-            StartingScreen.started = true;
-            ShowStartingScreen();
-        }
-        else {
-            SetUpButtons();
-        }
+        SetUpButtons();
     }
 
     public void LoadScene() {
@@ -52,7 +45,6 @@ public class StartingScene : MonoBehaviour {
         }
 
         GetComponent<SceneHandler>().fadeIn = true;
-        StartingScreenUI.SetActive(false);
         ScrollingCanvas.SetActive(true);
         Camera.main.backgroundColor = Color.black;
 
@@ -60,7 +52,7 @@ public class StartingScene : MonoBehaviour {
         int progress = PlayerPrefs.GetInt("Progress", 1);
 
         //show how many levels there are and unlock completed level buttons
-        for (int i = 1; i < SceneManager.sceneCountInBuildSettings - 1; i++) {
+        for (int i = 1; i < SceneManager.sceneCountInBuildSettings - 2; i++) {
             LevelButtonsUI.transform.GetChild(i - 1).gameObject.SetActive(true);
 
             if (i <= progress) {
@@ -78,12 +70,6 @@ public class StartingScene : MonoBehaviour {
         
         }
 
-    }
-
-
-    void ShowStartingScreen() {
-
-        ScrollingCanvas.SetActive(false);
     }
 
 

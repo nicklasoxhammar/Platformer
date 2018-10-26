@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class StartingScreen : MonoBehaviour {
 
-    public static bool started = false; 
+    private void Start() {
+        Invoke("StartMainMenuScene", 10.0f);
+    }
 
-    private void Awake() {
-        DontDestroyOnLoad(this);
+    void StartMainMenuScene() { 
+        GetComponent<SceneHandler>().MainMenu();
     }
 
 }
