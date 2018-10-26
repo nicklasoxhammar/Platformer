@@ -17,7 +17,6 @@ public class SceneHandler : MonoBehaviour {
     void Awake() {
         fadeImage = GameObject.Find("Fade Image").GetComponent<Image>();
         color = fadeImage.color;
-
     }
 	
 	void Update () {
@@ -41,9 +40,6 @@ public class SceneHandler : MonoBehaviour {
             color.a = Mathf.Lerp(0, 1, progress / fadeTime);
             fadeImage.color = color;
         }
-
-
-
     }
 
     public IEnumerator FadeOutToScene(int sceneIndex) {

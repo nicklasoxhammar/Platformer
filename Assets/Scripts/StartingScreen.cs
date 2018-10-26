@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartingScreen : MonoBehaviour {
 
+    public GameObject blackSprite;
+
     private void Start() {
-        Invoke("StartMainMenuScene", 10.0f);
+        Invoke("GoToMainMenu", 10.0f);
     }
 
-    void StartMainMenuScene() { 
-        GetComponent<SceneHandler>().MainMenu();
-    }
-
+    public void GoToMainMenu()
+    {
+        blackSprite.SetActive(true);
+        LeanTween.alpha(blackSprite, 1, 0.5f).setOnComplete(() => 
+        {
+            SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 2);
+        });
+        }
 }
