@@ -1135,7 +1135,8 @@ Prefab:
       propertyPath: m_Name
       value: Dialogue Trigger (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114552450862794998, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &76042264

@@ -54,7 +54,7 @@ public class SceneHandler : MonoBehaviour {
     }
 
     public void MainMenu() {
-        StartCoroutine(FadeOutToScene(0));
+        StartCoroutine(FadeOutToScene(SceneManager.sceneCountInBuildSettings - 2));
     }
 
     public void NextLevel() {

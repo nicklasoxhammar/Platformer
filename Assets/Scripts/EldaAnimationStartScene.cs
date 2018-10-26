@@ -10,18 +10,10 @@ public class EldaAnimationStartScene : MonoBehaviour
     private string jumpAnimationName = "JUMP";
     private string idleAnimationName = "STANDING";
     private string runAnimationName = "RUN";
-    public Transform movingPoints;
-    public Transform startPosBeforeSkate;
-    public Transform endPosSkate;
     private SkeletonAnimation skeletonAnimation;
     private Rigidbody2D rb;
-    private int moveCounter = 0;
-    private float speed = 0.15f;
     public Transform skateboard;
-    //private float skateboardEndPosX;
     public GameObject saveTheWorldText;
-    public Vector3 jumpOffset;
-    private int jumpId;
     private bool moveSkateboardToElda = false;
     private float moveSkateboardSpeed = 7f;
     private float moveEldaSpeed = 6f;
@@ -30,17 +22,14 @@ public class EldaAnimationStartScene : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
         ShowRightAnimation();
-
         if(moveSkateboardToElda && Vector3.Distance(skateboard.position,gameObject.transform.position) > 0.1f)
         {
             Vector3 newPos = Vector3.Lerp(skateboard.position, gameObject.transform.position, moveSkateboardSpeed * Time.deltaTime);
@@ -57,7 +46,6 @@ public class EldaAnimationStartScene : MonoBehaviour
         }
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -67,7 +55,6 @@ public class EldaAnimationStartScene : MonoBehaviour
             saveTheWorldText.transform.SetParent(saveTheWorldText.transform.root);
             skateboard.transform.SetParent(gameObject.transform);
             skateboard.transform.localPosition = Vector3.zero;
-
             gameObject.transform.parent = saveTheWorldText.transform;
             LeanTween.moveX(saveTheWorldText, 0f, 2f).setOnComplete(() =>
             {
@@ -75,12 +62,10 @@ public class EldaAnimationStartScene : MonoBehaviour
                 LeanTween.moveX(gameObject, -20, 2f);
             });
         }
-
         if(collision.gameObject.tag == "Letters")
         {
             MoveToTheRight = true;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -104,6 +89,7 @@ public class EldaAnimationStartScene : MonoBehaviour
         }
     }
 
+    //Called from Update
     private void ShowRightAnimation()
     {
         if (rb != null)
@@ -111,7 +97,6 @@ public class EldaAnimationStartScene : MonoBehaviour
             if (rb.velocity.y < 0)
             {
                 skeletonAnimation.AnimationName = fallingAnimationName;
-
             }
             else if (rb.velocity.y > 0)
             {
