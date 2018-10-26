@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour {
 
         //Hide the "next level button" if the next scene is the intro.
         GameObject nextLevelButton = GameObject.Find("Next Level Button");
-        if (SceneManager.GetActiveScene().buildIndex + 2 == SceneManager.sceneCountInBuildSettings) {
+        if (SceneManager.GetActiveScene().buildIndex + 3 == SceneManager.sceneCountInBuildSettings) {
             nextLevelButton.SetActive(false);
         }
 

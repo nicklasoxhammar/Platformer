@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/97514bbca4fef7946a317279ae0ca4db
-    guid: 97514bbca4fef7946a317279ae0ca4db
-  - enabled: 0
-    path: Assets/Scenes/_0Starting Scene.unity
-    guid: c6c9a0bd32e5649709fdaf6ae365f15e
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/_0Starting Scene 1.unity
     guid: bccb483ac33254331bd17e2bd257113e
@@ -53,6 +50,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_13KillEnemyWithTrees.unity
     guid: 7fb6eb22ba02d44fabab4181c4c85be6
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: c6c9a0bd32e5649709fdaf6ae365f15e
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 1d2c0942665724bbf85276111c894dbd
