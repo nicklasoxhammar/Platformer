@@ -367,7 +367,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1018696020063170, guid: d6a930ae5806a5b4c8d2be5e0281b0e1, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a930ae5806a5b4c8d2be5e0281b0e1, type: 2}
@@ -1786,6 +1786,11 @@ Prefab:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 919412044}
+    - target: {fileID: 114865098712470494, guid: 30ae0ffe4dfba4a36ad6c0690f6c8c33,
+        type: 2}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 1796258673}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30ae0ffe4dfba4a36ad6c0690f6c8c33, type: 2}
   m_IsPrefabAsset: 0
@@ -2663,6 +2668,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0730b9276e6242a7992327c35643948, type: 2}
   m_IsPrefabAsset: 0
+--- !u!60 &1796258673 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 60427892907793078, guid: d0730b9276e6242a7992327c35643948,
+    type: 2}
+  m_PrefabInternal: {fileID: 1796258672}
 --- !u!1 &1806919220
 GameObject:
   m_ObjectHideFlags: 0

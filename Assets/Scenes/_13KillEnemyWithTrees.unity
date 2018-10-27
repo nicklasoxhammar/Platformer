@@ -186,18 +186,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114271114123937874, guid: 30ae0ffe4dfba4a36ad6c0690f6c8c33,
         type: 2}
-      propertyPath: m_Follow
+      propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 883742484}
     - target: {fileID: 114271114123937874, guid: 30ae0ffe4dfba4a36ad6c0690f6c8c33,
         type: 2}
-      propertyPath: m_LookAt
+      propertyPath: m_Follow
       value: 
       objectReference: {fileID: 883742484}
-    - target: {fileID: 1869067594933570, guid: 30ae0ffe4dfba4a36ad6c0690f6c8c33, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 114452781660288594, guid: 30ae0ffe4dfba4a36ad6c0690f6c8c33,
+        type: 2}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 358439583}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30ae0ffe4dfba4a36ad6c0690f6c8c33, type: 2}
   m_IsPrefabAsset: 0
@@ -573,6 +574,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0730b9276e6242a7992327c35643948, type: 2}
   m_IsPrefabAsset: 0
+--- !u!60 &358439583 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 60427892907793078, guid: d0730b9276e6242a7992327c35643948,
+    type: 2}
+  m_PrefabInternal: {fileID: 358439582}
 --- !u!1001 &359034465
 Prefab:
   m_ObjectHideFlags: 0
@@ -4174,27 +4180,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4941874879782102, guid: d2db29e1e723942c594af324874bc68e,
     type: 2}
   m_PrefabInternal: {fileID: 544590962}
---- !u!1 &1735785442 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1869067594933570, guid: 30ae0ffe4dfba4a36ad6c0690f6c8c33,
-    type: 2}
-  m_PrefabInternal: {fileID: 157915840}
---- !u!114 &1735785443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1735785442}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ConfineMode: 0
-  m_BoundingVolume: {fileID: 0}
-  m_BoundingShape2D: {fileID: 0}
-  m_ConfineScreenEdges: 1
-  m_Damping: 0
 --- !u!1 &1773043896
 GameObject:
   m_ObjectHideFlags: 0
