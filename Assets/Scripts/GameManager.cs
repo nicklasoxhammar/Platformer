@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour {
     private Color startDashButtonColor;
     private Color startDashBarColor;
     private GameObject dashButton;
+    private GameObject goBackToMainMenuButton;
     private int flowersTotal = 0;
     private int pickedFlowers = 0;
     [HideInInspector] public bool started = false;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour {
 
     AudioSource audioSource;
     SceneHandler sceneHandler;
+
 
     private void Awake() {
         player = FindObjectOfType<PlayerController>();
@@ -89,6 +91,9 @@ public class GameManager : MonoBehaviour {
 
         GetPlayerPrefs();
         HandleChallenges();
+
+        goBackToMainMenuButton = GameObject.Find("GoBackToMenuButton");
+        goBackToMainMenuButton.SetActive(false);
     }
 
     private void HandleChallenges() {
@@ -145,6 +150,8 @@ public class GameManager : MonoBehaviour {
 
         player.freezeMovement = false;
         player.cantDie = false;
+
+        goBackToMainMenuButton.SetActive(true);
     }
 
     //For some reason the gameManager couldnt find the dash button in Awake or Start(after loading from another scene), so we find it here instead.
@@ -186,6 +193,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator SetUpLevelCompleteScreen() {
         yield return new WaitForSeconds(1.0f);
         levelCompleteScreen.SetActive(true);
+        goBackToMainMenuButton.SetActive(false);
         GameObject flowers = GameObject.Find("Level Complete Flowers");
         Animator[] flowerAnimators = flowers.GetComponentsInChildren<Animator>();
         GameObject completedChallengesObject = GameObject.Find("Completed Challenges");
