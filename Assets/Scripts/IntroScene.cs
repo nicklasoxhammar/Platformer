@@ -311,6 +311,15 @@ public class IntroScene : MonoBehaviour
 
     public void LoadLevelOne()
     {
-        SceneManager.LoadScene(1); 
+        StartCoroutine(FadeOutSound(eldaAudioSource, 0.4f));
+        StartCoroutine(FadeOutSound(presidentAudioSource, 0.4f));
+        StartCoroutine(FadeOutSound(spaceAudioSource, 0.4f));
+        StartCoroutine(FadeOutSound(sunAudioSource, 0.4f));
+        StartCoroutine(FadeOutSound(typingAudioSource, 0.4f));
+        StartCoroutine(FadeOutSound(shutDownAudioSource, 0.4f));
+        LeanTween.alphaCanvas(blackSquare, 1, 0.6f).setOnComplete(() =>
+        {
+            SceneManager.LoadScene(1); 
+        });
     }
 }
