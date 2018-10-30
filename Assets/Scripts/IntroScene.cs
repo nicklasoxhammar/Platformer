@@ -74,6 +74,8 @@ public class IntroScene : MonoBehaviour
 
     int eldaCounter = 0;
 
+    bool rotateSun = true;
+
     //Audio stuff
     [Header("Audio")]
     [SerializeField] AudioClip[] eldaSounds;
@@ -103,10 +105,16 @@ public class IntroScene : MonoBehaviour
 
         sunHeroSkeleton = sunHero.GetComponent<SkeletonAnimation>();
         presidentSkeleton = president.GetComponent<SkeletonAnimation>();
-        LeanTween.rotateAround(sunAtBeginning, Vector3.forward, 360, 150f).setLoopClamp();
-
         startText.SetTextTo("Yesterday...", timeBetweenLettersStartText, secBeforeFadeInSun, true);
         StartCoroutine(ShowCamerasAtTheSun(2.5f, 2f));
+    }
+
+    private void Update()
+    {
+        if (rotateSun)
+        {
+            sunAtBeginning.transform.Rotate(Vector3.forward * 5 * Time.deltaTime);
+        }
     }
 
     IEnumerator ShowCamerasAtTheSun(float delayFirstCamera, float timeShowCloseCamera)
@@ -137,7 +145,6 @@ public class IntroScene : MonoBehaviour
         LeanTween.moveX(sunHero, sunHero.transform.position.x + distanceMoveSunHero, sunHeroMovingSpeed / Time.deltaTime).setOnComplete(() =>
         {
             sunHeroSkeleton.AnimationName = idleSunHero;
-            //presidentSkeleton.state.AddAnimation(2, flaxEarsName, true, 0);
             StartCoroutine(StartDialouge());
         });
     }
@@ -166,6 +173,7 @@ public class IntroScene : MonoBehaviour
         StartCoroutine(FadeOutSound(typingAudioSource, 0.5f));
         isPrintingText = true;
         sunAtBeginning.SetActive(false);
+        //rotateSun = false;
         earth.SetActive(true);
         //WhiteSquare for fade..
         LeanTween.alphaCanvas(whiteSquare, 1f, 1f).setEaseInQuad().setOnComplete(() =>
@@ -177,7 +185,6 @@ public class IntroScene : MonoBehaviour
              //Make Earth Black...
              LeanTween.color(earth, Color.black, 1f).setDelay(delayBeforeFadeOutEarth).setEaseOutExpo().setOnComplete(() =>
               {
-                  //StartCoroutine(ShowBlackFade());
                   ShowSunClose();
               });
          });
@@ -185,22 +192,6 @@ public class IntroScene : MonoBehaviour
         yield return new WaitForSeconds(delayBeforeFadeOutEarth + 0.7f);
         shutDownAudioSource.Play();
     }
-
-    //IEnumerator ShowBlackFade()
-    //{
-    //    yield return new WaitForSeconds(secShowEarthWhenItsBlack);
-    //    LeanTween.alphaCanvas(blackSquare, 1f, 0.8f).setOnComplete(() =>
-    //    {
-    //        //Fade In done..do stuff...
-    //        earth.SetActive(false);
-    //        sunAtBeginning.SetActive(true);
-    //        LeanTween.alphaCanvas(blackSquare, 0f, 0.8f).setOnComplete(() => 
-    //        {
-    //            //fade out done..
-    //            StartSkateToEarth();  
-    //        });
-    //    });
-    //}
 
     private void ShowSunClose()
     {
@@ -270,7 +261,6 @@ public class IntroScene : MonoBehaviour
     IEnumerator StartDialouge()
     {
         int presidentCounter = 0;
-        //StartIsPrintingCheck();
         for (int i = 0; i < dialogueSystem.GetSize(); i++)
         {
             isPrintingText = true;
@@ -309,7 +299,6 @@ public class IntroScene : MonoBehaviour
 
             yield return null;
         }
-
         audioSource.Stop();
         audioSource.volume = startVolume;
     }
@@ -324,7 +313,4 @@ public class IntroScene : MonoBehaviour
     {
         SceneManager.LoadScene(1); 
     }
-
-
-
 }

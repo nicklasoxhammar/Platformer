@@ -42,7 +42,9 @@ public class EldaAnimationStartScene : MonoBehaviour
     {
         if (MoveToTheRight)
         {
-            rb.AddRelativeForce(Vector2.right * moveEldaSpeed);
+            //rb.AddRelativeForce(Vector2.right * moveEldaSpeed);
+            rb.AddForce(Vector2.right * moveEldaSpeed);
+
         }
     }
 
