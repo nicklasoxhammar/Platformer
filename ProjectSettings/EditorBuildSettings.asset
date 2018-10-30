@@ -51,6 +51,9 @@ EditorBuildSettings:
     path: Assets/Scenes/_13KillEnemyWithTrees.unity
     guid: 7fb6eb22ba02d44fabab4181c4c85be6
   - enabled: 1
+    path: Assets/Scenes/_14BigCloud.unity
+    guid: 5cc6ae6af5d674077aaf5b0ac812b9ac
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: c6c9a0bd32e5649709fdaf6ae365f15e
   - enabled: 1
