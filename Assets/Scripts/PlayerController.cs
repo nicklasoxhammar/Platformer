@@ -334,6 +334,23 @@ public class PlayerController : MonoBehaviour {
         {
             Die();
         }
+        else if (collision.gameObject.tag == "Water")
+        {
+            StartCoroutine(DrownPlayer());
+        }
     }
 
+
+    IEnumerator DrownPlayer()
+    {
+        skeletonAnimation.GetComponent<MeshRenderer>().sortingOrder = -2;
+        //rb.velocity = new Vector2(0, -2.0f);
+        //rb.gravityScale = 10f;
+        freezeMovement = true;
+
+        yield return new WaitForSeconds(1.5f);
+
+        Die();
+
+    }
 }
