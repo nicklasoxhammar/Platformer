@@ -204,7 +204,7 @@ Transform:
   - {fileID: 177730617}
   - {fileID: 1527502241}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &419910572
 Prefab:
@@ -294,7 +294,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4875775877231280, guid: d6a930ae5806a5b4c8d2be5e0281b0e1, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1417554817919472, guid: d6a930ae5806a5b4c8d2be5e0281b0e1, type: 2}
       propertyPath: m_IsActive
@@ -458,7 +458,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4016559084529346, guid: 6d064f4403096b84386912a408d18bf4, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1345270470998302, guid: 6d064f4403096b84386912a408d18bf4, type: 2}
       propertyPath: m_Name
@@ -504,7 +504,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4732543315569062, guid: 8245f4cfe25104cb1845326badfcb731, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 33791371425078708, guid: 8245f4cfe25104cb1845326badfcb731,
         type: 2}
@@ -547,7 +547,7 @@ Transform:
   - {fileID: 1414325551}
   - {fileID: 419910573}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1400108308 stripped
 Transform:
@@ -642,9 +642,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4313047094508890, guid: d0730b9276e6242a7992327c35643948, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 60427892907793078, guid: d0730b9276e6242a7992327c35643948, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: d0730b9276e6242a7992327c35643948, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1441709110
@@ -744,6 +745,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4094316113197044, guid: 5b7be47c327094846a8938fb9ceb39eb,
     type: 2}
   m_PrefabInternal: {fileID: 1527502240}
+--- !u!1001 &1722728772
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4403736143805572, guid: 60c8d56a39c964914a8e6fdce8cc52a3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403736143805572, guid: 60c8d56a39c964914a8e6fdce8cc52a3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -63.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403736143805572, guid: 60c8d56a39c964914a8e6fdce8cc52a3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403736143805572, guid: 60c8d56a39c964914a8e6fdce8cc52a3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403736143805572, guid: 60c8d56a39c964914a8e6fdce8cc52a3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403736143805572, guid: 60c8d56a39c964914a8e6fdce8cc52a3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403736143805572, guid: 60c8d56a39c964914a8e6fdce8cc52a3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403736143805572, guid: 60c8d56a39c964914a8e6fdce8cc52a3, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 60386907520746946, guid: 60c8d56a39c964914a8e6fdce8cc52a3,
+        type: 2}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: 0.1599617
+      objectReference: {fileID: 0}
+    - target: {fileID: 60386907520746946, guid: 60c8d56a39c964914a8e6fdce8cc52a3,
+        type: 2}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: 129.00356
+      objectReference: {fileID: 0}
+    - target: {fileID: 60386907520746946, guid: 60c8d56a39c964914a8e6fdce8cc52a3,
+        type: 2}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
+      value: -0.7782326
+      objectReference: {fileID: 0}
+    - target: {fileID: 60386907520746946, guid: 60c8d56a39c964914a8e6fdce8cc52a3,
+        type: 2}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: -101.28045
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60c8d56a39c964914a8e6fdce8cc52a3, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!60 &1722728773 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 60386907520746946, guid: 60c8d56a39c964914a8e6fdce8cc52a3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1722728772}
 --- !u!1001 &1731829665
 Prefab:
   m_ObjectHideFlags: 0
@@ -781,7 +849,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4005658779359618, guid: 990fe6667d33a3c4eb5096b5d13d7abc, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114552450862794998, guid: 990fe6667d33a3c4eb5096b5d13d7abc,
         type: 2}
@@ -816,7 +884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ConfineMode: 0
   m_BoundingVolume: {fileID: 0}
-  m_BoundingShape2D: {fileID: 1987522678}
+  m_BoundingShape2D: {fileID: 1722728773}
   m_ConfineScreenEdges: 1
   m_Damping: 0
 --- !u!1 &1832001513
@@ -892,7 +960,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1884717044
 Prefab:
@@ -960,11 +1028,6 @@ MonoBehaviour:
   dialogue: Ooh! Here's a lot of flowers that needs sun.
   time: 2
   unlimitedTriggers: 0
---- !u!60 &1987522678 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 60427892907793078, guid: d0730b9276e6242a7992327c35643948,
-    type: 2}
-  m_PrefabInternal: {fileID: 1421233537}
 --- !u!1001 &2011367559
 Prefab:
   m_ObjectHideFlags: 0

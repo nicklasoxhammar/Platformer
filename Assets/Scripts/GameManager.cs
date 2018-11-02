@@ -187,7 +187,6 @@ public class GameManager : MonoBehaviour {
         SetPlayerPrefs();
 
         StartCoroutine(SetUpLevelCompleteScreen());
-        
     }
 
     IEnumerator SetUpLevelCompleteScreen() {
@@ -203,6 +202,8 @@ public class GameManager : MonoBehaviour {
         GameObject nextLevelButton = GameObject.Find("Next Level Button");
         if (SceneManager.GetActiveScene().buildIndex + 3 == SceneManager.sceneCountInBuildSettings) {
             nextLevelButton.SetActive(false);
+            GameObject menuButton = GameObject.Find("Main Menu Button");
+            menuButton.transform.position = new Vector3(Screen.width * 0.5f, menuButton.transform.position.y, 0);
         }
 
         for (int i = 0; i < challengesCompleted.Count; i++) {
@@ -217,6 +218,8 @@ public class GameManager : MonoBehaviour {
         deathScreen.SetActive(true);
         GameObject.Find("Mobile Input UI").SetActive(false);
         GameObject.Find("Dash Bar").SetActive(false);
+        goBackToMainMenuButton.SetActive(false);
+
     }
 
     public void pickedFlower(FlowerController flower) {

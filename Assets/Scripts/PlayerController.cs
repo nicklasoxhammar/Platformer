@@ -330,7 +330,7 @@ public class PlayerController : MonoBehaviour {
                 shield.WearShieldInSec(invincibleObject.GetInvincibleTime());
             }
         }
-        else if (collision.gameObject.tag == "Enemy" && !shield.GetIsWearingShield())
+        else if (collision.gameObject.tag == "Enemy" && !shield.GetIsWearingShield() && !isDashing)
         {
             Die();
         }

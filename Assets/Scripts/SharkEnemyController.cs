@@ -21,16 +21,16 @@ public class SharkEnemyController : MonoBehaviour {
     AudioSource audioSource;
 
     //Flying animations... Använd en i taget av flying.
-    private string flying1AnimationName = "Flying1";
+    //private string flying1AnimationName = "Flying1";
     private string flying2AnimationName = "Flying2";
-    private string glidInAirAnimationName = "Glidning";
-    private string SetWingsDownAnimationName = "WingsDowm";
-    private string SetWingsUpAnimationName = "WingsUp";
+    //private string glidInAirAnimationName = "Glidning";
+    //private string SetWingsDownAnimationName = "WingsDowm";
+    //private string SetWingsUpAnimationName = "WingsUp";
 
     //Mouth...använd en i taget.
     private string chewingAnimationName = "Chewing";
     private string closeMouthAnimationName = "CloseMouth";
-    private string openMouthAnimationName = "OpenMouth";
+    //private string openMouthAnimationName = "OpenMouth";
 
     //Other
     private string sniffAnimationName = "Sniff";

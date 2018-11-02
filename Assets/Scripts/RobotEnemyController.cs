@@ -29,6 +29,8 @@ public class RobotEnemyController : MonoBehaviour
     Bone eye;
     Vector3 eyePos;
     Vector3 targetPos;
+    private bool isSeenByTheCamera = false;
+
     private string pupilBoneName = "Pupill";
     private string eyeBoneName = "EYE";
     private string walkAnimationName = "WALK";
@@ -42,7 +44,6 @@ public class RobotEnemyController : MonoBehaviour
     private bool isShooting = false;
 
     private LaserObjectPool objectPool;
-    private bool isSeenByTheCamera = false;
 
     AudioSource audioSource;
     [SerializeField] AudioClip deathSound;

@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 public class BubbleTextController : MonoBehaviour {
 
-    private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
     public DelayLetters text;
     public Transform followObject;
     [SerializeField] Vector3 offset;
 	// Use this for initialization
 	void Start () {
-        canvasGroup = GetComponent<CanvasGroup>();
 	}
 
     private void Update()

@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
     float direction = 1;
 
     float startingXPos;
-    float startingYPos;
+    //float startingYPos;
 
     float bombTimer = 0.0f;
 
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 
         startingXPos = transform.position.x;
-        startingYPos = transform.position.y;
+        //startingYPos = transform.position.y;
 
     }
 
