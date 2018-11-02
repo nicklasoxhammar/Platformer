@@ -270,7 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4070322098468472}
   m_Layer: 0
-  m_Name: Ground 4_2
+  m_Name: Ground 4_2 Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

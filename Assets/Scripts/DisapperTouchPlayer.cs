@@ -5,7 +5,6 @@ using UnityEngine;
 public class DisapperTouchPlayer : MonoBehaviour {
 
     [SerializeField] private ParticleSystem VFXWhenDisappear;
-    [SerializeField] private float fadeTime = 1f;
     private int ignorePlayerLayer = 11;
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -8,7 +8,7 @@ public class EldaAnimationStartScene : MonoBehaviour
 
     private string fallingAnimationName = "FALLING";
     private string jumpAnimationName = "JUMP";
-    private string idleAnimationName = "STANDING";
+    //private string idleAnimationName = "STANDING";
     private string runAnimationName = "RUN";
     private SkeletonAnimation skeletonAnimation;
     private Rigidbody2D rb;
