@@ -16,7 +16,6 @@ public class BirdFishController : MonoBehaviour
     [SerializeField] float walkingSpeed = 300f;
     [SerializeField] ParticleSystem dieVFX;
 
-    [SerializeField] GameObject BoundingBoxForBody;
     private SkeletonAnimation skeletonAnimation;
     private Rigidbody2D rb;
     private bool isjumping = false;
@@ -32,7 +31,6 @@ public class BirdFishController : MonoBehaviour
     const float groundedRadius = 0.4f;
 
     private bool isDead = false;
-
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Transform groundCheck;
     private bool isGrounded = false;
@@ -55,7 +53,6 @@ public class BirdFishController : MonoBehaviour
 
     Spine.Animation jumpUpAnimation;
     Spine.Animation chewAnimation;
-
 
     // Use this for initialization
     void Start()
@@ -198,22 +195,6 @@ public class BirdFishController : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("HE");
-            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            if (player.isDashing && !isDead)
-            {
-                Die();
-            }
-        }
-        else if (collision.gameObject.tag == "KillsEnemy" && !isDead)
-        {
-            Die();
-        }
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isGrounded && isjumping)
@@ -231,15 +212,14 @@ public class BirdFishController : MonoBehaviour
         isjumping = false;
     }
 
-    private void Die()
+    //Called from triggerStay2d birdfishBodyCollider. bounding box...
+    public void Die()
     {
-        Debug.Log("DUE");
         if (!isDead)
         {
             isDead = true;
             //Ignore player layer.
             gameObject.layer = 11;
-            BoundingBoxForBody.gameObject.layer = 11;
             //Die Animation and trigger when its done..
             rb.velocity = Vector2.zero;
             skeletonAnimation.AnimationState.ClearTracks();
@@ -248,6 +228,10 @@ public class BirdFishController : MonoBehaviour
             audioSource.clip = deathSound;
             audioSource.Play();
         }
+    }
 
+    public bool GetIsDead()
+    {
+        return isDead;
     }
 }

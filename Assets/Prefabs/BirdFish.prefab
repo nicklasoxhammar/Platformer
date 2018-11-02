@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 4665956178478572}
   - component: {fileID: 50406402586782426}
   - component: {fileID: 60360072819326840}
+  - component: {fileID: 114620154574940136}
   m_Layer: 0
   m_Name: '[BoundingBox]BodyBox'
   m_TagString: Enemy
@@ -830,9 +831,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15858698, y: 1.9020772}
+  m_Offset: {x: -0.092523575, y: 1.7640591}
   serializedVersion: 2
-  m_Radius: 1.750382
+  m_Radius: 1.249651
 --- !u!60 &60360072819326840
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -1195,13 +1196,12 @@ MonoBehaviour:
   dontJumpAtAll: 0
   flyCrazyWhenWalking: 0
   smallJumpWhenWalk: 0
-  minJumpTime: 2
-  maxJumpTime: 2
+  minJumpTime: 4
+  maxJumpTime: 4
   minJumpForce: 3000
   maxJumpForce: 3000
   walkingSpeed: 200
   dieVFX: {fileID: 198148122341536102, guid: 0e2329c307d764e43ac2966d301ea5fd, type: 2}
-  BoundingBoxForBody: {fileID: 1265927451942688}
   timeBetweenChew: 1
   whatIsGround:
     serializedVersion: 2
@@ -1246,6 +1246,17 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
+--- !u!114 &114620154574940136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1265927451942688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6637f70e7cdf849d393e9827b21db009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114674460786794912
 MonoBehaviour:
   m_ObjectHideFlags: 1
