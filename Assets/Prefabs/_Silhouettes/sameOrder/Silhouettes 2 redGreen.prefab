@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4080290078717568}
   m_Layer: 0
-  m_Name: Silhouettes 2
+  m_Name: Silhouettes 2 redGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4097850408786954}
   - component: {fileID: 114228455298149272}
-  - component: {fileID: 114990904479572896}
   m_Layer: 0
   m_Name: Silhouettes3 MIDDLE
   m_TagString: Untagged
@@ -415,18 +414,6 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1335312562807856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ee0e765b8efc54797e8a5182ba04e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothing: 4
---- !u!114 &114990904479572896
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1141537301815762}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70ee0e765b8efc54797e8a5182ba04e8, type: 3}
