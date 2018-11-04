@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
     List<Challenge> challenges;
     List<string> challengesCompleted;
     private string challengeOneString = "Find all flowers";
+    [SerializeField] GameObject findAllFlowerPrefab;
 
     //Challenges
     [Header("Challenges - pick two!")]
@@ -227,7 +228,7 @@ public class GameManager : MonoBehaviour {
         //flowerCounterText.text = pickedFlowers + "/" + flowersTotal;
 
         if (pickedFlowers == flowersTotal) {
-            flower.gameObject.AddComponent<FoundAllFlowers>();
+            Instantiate(findAllFlowerPrefab, player.transform);
         }
     }
 

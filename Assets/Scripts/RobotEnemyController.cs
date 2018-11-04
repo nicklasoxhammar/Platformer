@@ -282,7 +282,10 @@ public class RobotEnemyController : MonoBehaviour
             LeanTween.value(1f, 0f, dieVFX.main.duration).setEaseOutCubic().setOnUpdate((float val) => {
                 skeletonAnimation.skeleton.a = val;
             }).setOnComplete(() => {
-                Destroy(gameObject);
+                if(gameObject != null)
+                {
+                    Destroy(gameObject);
+                }
             });
         }
     }

@@ -18,9 +18,6 @@ public class FoundAllFlowers : MonoBehaviour
 
     public void ShowFlower()
     {
-        transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform);
-        transform.localPosition = new Vector3(0.5f, 7.0f);
-
         transform.localScale = Vector3.zero;
         rotateId = LeanTween.rotateAround(gameObject, Vector3.forward, 360, 0.2f).setLoopClamp().id;
         LeanTween.scale(gameObject, new Vector3(size, size, size), rotateTime).setEaseInQuad().setOnComplete(() =>
