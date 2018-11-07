@@ -9,46 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1819483506140026}
+  m_RootGameObject: {fileID: 1720108819647120}
   m_IsPrefabAsset: 1
---- !u!1 &1819483506140026
+--- !u!1 &1720108819647120
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4910958906522034}
-  - component: {fileID: 114031590744883200}
+  - component: {fileID: 4669846763435658}
+  - component: {fileID: 58044395998276518}
   m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
+  m_Name: Block
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4910958906522034
+--- !u!4 &4669846763435658
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1819483506140026}
+  m_GameObject: {fileID: 1720108819647120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 75.9, y: -10.07, z: -0.69845504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114031590744883200
-MonoBehaviour:
+--- !u!58 &58044395998276518
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1819483506140026}
+  m_GameObject: {fileID: 1720108819647120}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 246180f11265649539e201be2f1d3ab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flowerCounter: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.0588703}
+  serializedVersion: 2
+  m_Radius: 1.5588703

@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 58749793419601738}
   - component: {fileID: 82966907200998774}
   m_Layer: 15
-  m_Name: BirdFish
+  m_Name: BirdFishJumpingWater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,7 +488,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200714645735802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.1, y: -55.1, z: 0}
+  m_LocalPosition: {x: -95.4, y: -55.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4732828696149608}
@@ -1198,8 +1198,8 @@ MonoBehaviour:
   smallJumpWhenWalk: 0
   minJumpTime: 4
   maxJumpTime: 4
-  minJumpForce: 3000
-  maxJumpForce: 3000
+  minJumpForce: 4261
+  maxJumpForce: 5732
   walkingSpeed: 200
   dieVFX: {fileID: 198148122341536102, guid: 0e2329c307d764e43ac2966d301ea5fd, type: 2}
   timeBetweenChew: 1
