@@ -21,23 +21,27 @@ public class CompleteLevelSkateboard : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col) {
 
         if (col.gameObject.tag == "Player") {
-            player = col.gameObject;
+            PlayerController playerController = col.gameObject.GetComponent<PlayerController>();
 
-            //Make player a child of the skateboard, so they move together
-            player.transform.parent = transform;
-            //center the player on top of the skateboard
-            player.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
+            if(playerController!= null && !playerController.GetIsDead())
+            {
+                player = col.gameObject;
+                //Make player a child of the skateboard, so they move together
+                player.transform.parent = transform;
+                //center the player on top of the skateboard
+                player.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
 
-            CompleteLevel();
+                CompleteLevel(playerController);
+            }
         }
     }
 
-    void CompleteLevel() {
+    void CompleteLevel(PlayerController playerController) {
 
         audioSource.clip = skateboardSound;
         audioSource.Play();
        
-        player.GetComponent<PlayerController>().freezeMovement = true;
+        playerController.freezeMovement = true;
         Destroy(player.GetComponent<Rigidbody2D>());
 
         GM.started = false; //Stops timer

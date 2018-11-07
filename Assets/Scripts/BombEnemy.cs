@@ -63,9 +63,6 @@ public class BombEnemy : MonoBehaviour {
             if (player.isDashing) {
                 Die();
             }
-            else {
-                player.Die();
-            }
         }
     }
 

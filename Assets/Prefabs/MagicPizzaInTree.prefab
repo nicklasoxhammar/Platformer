@@ -189,7 +189,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VFXWhenDisappear: {fileID: 198148122341536102, guid: 0e2329c307d764e43ac2966d301ea5fd,
     type: 2}
-  fadeTime: 1
 --- !u!114 &114899756960833472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -251,12 +250,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300060, guid: dc6a1aa0c74336b44bd1372909aface8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ebddb4a32131477196db4ce9e0efc1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.6, y: 2.6}
+  m_Size: {x: 1.65, y: 1.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

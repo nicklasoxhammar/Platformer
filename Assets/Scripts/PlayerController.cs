@@ -358,7 +358,10 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    public bool GetIsDead()
+    {
+        return dead;
+    }
 
 
-    //Called from triggerStay2d birdfishBodyCollider. bounding box...
 }

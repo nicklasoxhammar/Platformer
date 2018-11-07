@@ -16,6 +16,7 @@ public class RobotEnemyController : MonoBehaviour
     [SerializeField] private bool makeRandomDirectionChanges = true;
     [SerializeField] private float minTimeBeforeChangeDirection = 4f;
     [SerializeField] private float maxTimeBeforeChangeDirection = 10f;
+    [SerializeField] private float laserSpeed = 10f;
     private float timeBeforeChangeDirection;
 
     //LASER:
@@ -282,7 +283,10 @@ public class RobotEnemyController : MonoBehaviour
             LeanTween.value(1f, 0f, dieVFX.main.duration).setEaseOutCubic().setOnUpdate((float val) => {
                 skeletonAnimation.skeleton.a = val;
             }).setOnComplete(() => {
-                Destroy(gameObject);
+                if(this.gameObject != null)
+                {
+                    Destroy(gameObject);
+                }
             });
         }
     }
@@ -320,6 +324,7 @@ public class RobotEnemyController : MonoBehaviour
                 GameObject laser = objectPool.GetObjectFromPool();
                 if (laser != null)
                 {
+                    laser.GetComponent<LaserController>().SetSpeed(laserSpeed);
                     audioSource.clip = laserSound;
                     audioSource.Play();
                     laser.transform.position = eyePos;

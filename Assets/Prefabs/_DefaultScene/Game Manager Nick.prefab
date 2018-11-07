@@ -2179,6 +2179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCompleteSound: {fileID: 8300000, guid: 21ea4f39c2d2be546b194480f2148ef4, type: 3}
+  findAllFlowerPrefab: {fileID: 1071317072386220, guid: c75ec0c6157e8461590e8b0f716bcdbf,
+    type: 2}
   timeChallenge: 20
   eliminateAllEnemies: 1
   dontEliminateEnemies: 0

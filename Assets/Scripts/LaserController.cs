@@ -43,7 +43,10 @@ public class LaserController : MonoBehaviour {
         transform.rotation = Quaternion.Euler(0f, 0f, atan2 * Mathf.Rad2Deg);
     }
 
-
+    public void SetSpeed(float speed)
+    {
+        this.speed = speed;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
